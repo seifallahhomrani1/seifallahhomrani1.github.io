@@ -27,7 +27,7 @@ twitter_username: seifallah1
 github_username:  seifallahhomrani1
 
 # Build settings
-theme: jekyll-theme-console 
+remote_theme: b2a3e8/jekyll-theme-console
 plugins:
   - jekyll-feed
 
