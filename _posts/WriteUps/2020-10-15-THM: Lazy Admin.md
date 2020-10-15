@@ -31,9 +31,9 @@ PORT   STATE SERVICE REASON         VERSION
 </pre>
 - - - 
 Examining the source code of the running web service looking for some creds, found nothing. So I fire up gobuster using the *directory-list-2.3-medium.txt* wordlist and found a subdirectory called */content* : 
-![/content](/assets/images/writeups/thm/lazy_admin/content.png "/content")
+![/content](/assets/images/writeups/thm/lazy_admin/content.png)
 Found out that "Basic-CMS Sweetrice" is running here, firing up gobuster again and adding */content* to the URI and here's the result: 
-![/gobustercontent](/assets/images/writeups/thm/lazy_admin/gobuster_content.png "/gobuster_content")
+![/gobustercontent](/assets/images/writeups/thm/lazy_admin/gobuster_content.png)
 Did some research about this CMS and found that the 1.5.1 version suffers from a code execution vulnerability via the use of a cross site request forgery flaw.
 Check this link : [SweetRice-1.5.1-Code-Execution](https://packetstormsecurity.com/files/139521/SweetRice-1.5.1-Code-Execution.html)
 So basically, this means that I can upload a php reverse shell and execute it but first we need some credentials to login and then upload our file, so we need more enumeration.
