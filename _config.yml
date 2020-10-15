@@ -31,11 +31,10 @@ remote_theme: b2a3e8/jekyll-theme-console
 plugins:
   - jekyll-feed
   - jekyll-sitemap	
-
+  - jekyll-seo-tag
 header_pages: 
 - index.markdown
 - about.markdown
-- work.md
 
 style: dark
 listen_for_clients_preferred_style: false
