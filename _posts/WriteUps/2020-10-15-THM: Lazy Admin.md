@@ -31,7 +31,7 @@ PORT   STATE SERVICE REASON         VERSION
 </pre>
 - - - 
 Examining the source code of the running web service looking for some creds, found nothing. So I fire up gobuster using the *directory-list-2.3-medium.txt* wordlist and found a subdirectory called */content* : 
-![/content](/assets/images/writeups/thm/lazy_admin/content.png)
+![/content](/assets/images/writeups/thm/lazy_admin/user_flag.png)
 Found out that "Basic-CMS Sweetrice" is running here, firing up gobuster again and adding */content* to the URI and here's the result: 
 ![/gobustercontent](/assets/images/writeups/thm/lazy_admin/gobuster_content.png)
 Did some research about this CMS and found that the 1.5.1 version suffers from a code execution vulnerability via the use of a cross site request forgery flaw.
