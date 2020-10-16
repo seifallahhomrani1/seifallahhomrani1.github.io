@@ -3,6 +3,7 @@ title : TryHackMe: Linux Privelage Escalation | Service Exploits
 author : Seif-Allah
 description : Linux PrivEsc using running servives
 category : CTF-WriteUp
+layout : post
 ---
 ### <mark style='background-color:white'>Exploiting any service which is running as root will give you Root!</mark>
 The famous EternalBlue and SambaCry exploit, exploited smb service which generally runs as root.
