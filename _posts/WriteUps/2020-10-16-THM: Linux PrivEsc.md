@@ -1,5 +1,5 @@
 ---
-title : TryHackMe: Linux Privelage Escalation | Service Exploits
+title : "TryHackMe: Linux Privelage Escalation - Service Exploits"
 author : Seif-Allah
 description : Linux PrivEsc using running servives
 category : CTF-WriteUp
