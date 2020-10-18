@@ -1,8 +1,12 @@
 ---
-title: /
+title: /home
 layout: home
 ---
-Hello World!
-I'm Seif-Allah, I drink only expresso.  
+[Welcome.](https://www.youtube.com/watch?v=RatbYqc0-jE)
+[Welcome.](https://www.youtube.com/watch?v=Rx8pfheh6aI)
+[Welcome.](https://www.youtube.com/watch?v=HRYyhdTHraU) 
+[Welcome.](https://www.youtube.com/watch?v=GanHp3XCYgg) 
+
+
 
 
