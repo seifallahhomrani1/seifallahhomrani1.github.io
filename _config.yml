@@ -32,6 +32,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap	
   - jekyll-seo-tag
+  - jemoji
 header_pages: 
 - index.markdown
 - about.markdown
