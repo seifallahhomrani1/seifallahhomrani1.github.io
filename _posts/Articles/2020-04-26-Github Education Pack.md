@@ -1,5 +1,5 @@
 ---
-title : "Github Education Pack - A real Fortune"
+title : "Github Education Pack - A REAL FORTUNE"
 layout : post
 author : Seif-Allah
 category : Articles
