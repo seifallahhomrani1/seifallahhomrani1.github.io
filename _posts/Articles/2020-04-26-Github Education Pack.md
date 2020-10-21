@@ -1,6 +1,7 @@
 ---
 title : "Github Education Pack - A real Fortune"
 layout : post
+author : Seif-Allah
 category : Articles
 Tags : [github,free,education]
 image: /assets/images/Articles/GitHub-Education.png 
