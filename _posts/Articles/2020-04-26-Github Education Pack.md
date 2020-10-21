@@ -16,7 +16,7 @@ I will not tell you what is Github, if you don't know what the hell is it, GTFO 
  
 ### Useful Links 
 Follow this [Link](https://education.github.com/pack), go sign for the GitHub Student Developer Pack, It may gets a week or even more to get verified (In my case, it lasts about 3 weeks, I was hella checking my mail everyday, literally everyday!). If you get stuck, I recommend that you check this [article](https://hackernoon.com/guide-to-githubs-student-developer-pack-in-2020-qrx3uk6).  
-![Me Flexing with my pro badge](/assets/images/Articles/github_pro_snap.png)
+Check my [Github Account](https://github.com/seifallahhomrani1) to watch me flexing with my **PRO** badge.
 
 
 ### Why ? 
