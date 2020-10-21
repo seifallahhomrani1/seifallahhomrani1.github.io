@@ -26,5 +26,5 @@ Well, It depends, let me tell you how I used the education pack :
 ### Final thoughts 
 Getting this kind of deals is not an everyday thing! Don't waste it! 
 And, of course Don't waste the chance to be updated to those kind of deals by liking my [facebook page](https://www.facebook.com/seifallahhomrani1.social). 
-- - - 
-Made with :heart: by [Seif-Allah](https://www.facebook.com/seifallahhomrani1.social).
+
+Made with :heart:
