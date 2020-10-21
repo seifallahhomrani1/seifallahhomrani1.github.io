@@ -4,8 +4,8 @@ layout : post
 author : Seif-Allah
 category : Articles
 Tags : [github,free,education]
-header-img: /assets/images/Articles/GitHub-Education.png 
-subtitle : "How to get the Github Education Pack ?"
+image: /assets/images/Articles/GitHub-Education.png 
+description : "How to get the Github Education Pack ?"
 ---
 ### What is Github ?
 I will not tell you what is Github, if you don't know what the hell is it, GTFO of [here](https://en.wikipedia.org/wiki/GitHub)!

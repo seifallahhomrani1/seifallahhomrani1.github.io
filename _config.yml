@@ -37,7 +37,7 @@ header_pages:
 - index.markdown
 - about.markdown
 - Posts.md
-- Knowledge_is_freedom.md
+
 
 style: dark
 listen_for_clients_preferred_style: false
