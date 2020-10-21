@@ -4,14 +4,4 @@ layout: default
 
 {{ content }}
 {% assign contentwonl = content | strip_newlines %} {% unless contentwonl == ""  %} <br /> {% endunless %} <!-- add line break if there is any content -->
-<ul>
-{% for category in site.categories %}
-<b>[<mark style='background-color:white'>{{ category | first }}</mark>]</b>  <br>
-    <ul>
-    {% for post in category.last %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-    </ul>
 
-{% endfor %}
-</ul>

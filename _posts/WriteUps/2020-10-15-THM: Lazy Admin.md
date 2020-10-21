@@ -1,11 +1,11 @@
 ---
-title : Lazy Admin - TryHackMe WriteUp
+title : 'TryHackMe: Lazy Admin'
 author : Seif-Allah
 description : Beginner level writeUp for the "Lazy Admin" room.
 layout : post
 category : CTF-WriteUp
 ---
-
+Room Link : [Lazy Admin](https://tryhackme.com/room/lazyadmin)
 ### <mark style='background-color: white'>Introduction</mark>
 'Lazy Admin' is an easy room made by [MrSeth6797](https://tryhackme.com/p/MrSeth6797), great for practice challenges. 
 Let's get started! 
