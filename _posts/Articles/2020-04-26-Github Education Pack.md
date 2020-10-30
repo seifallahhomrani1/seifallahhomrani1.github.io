@@ -22,7 +22,7 @@ Check my [Github Account](https://github.com/seifallahhomrani1) to watch me flex
 ### Why ? 
 Well, It depends, let me tell you how I used the GitHub Student Developer Pack : 
 - I host this website using Github Pages in a Private Repository with enforced HTTPS (Available only in the PRO Vers.) and I got the domain name [seifallahhomrani1.social](https://seifallahhomrani1.social) FREELY ! Cool hein ? 
-- [Canva](https://Canva.com)With Canva, anyone can create professional looking graphics and designs. Featuring thousands of templates and an easy to use editor. Using the pro plan which actually costs 119$ per year, you can create stunning stuff !
+- [Canva](https://Canva.com), With Canva, anyone can create professional looking graphics and designs. Featuring thousands of templates and an easy to use editor. Using the pro plan which actually costs 119$ per year, you can create stunning stuff !
 
 - [JETBRAINS](https://jetbrains.com), which offers Professional desktop IDEs: IntelliJ IDEA, PyCharm, and more, you can use these IDEs for you programming projects, they're so fancy! 
 - [Unity](https://unity.com), The king of gaming delevopment plus Student Plan which offers alot of cool stuff. That would be great! 
