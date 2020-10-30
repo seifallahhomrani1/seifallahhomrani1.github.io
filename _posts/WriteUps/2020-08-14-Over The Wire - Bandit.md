@@ -4,7 +4,7 @@ author : Seif-Allah
 layout: post
 category : CTF-WriteUp
 Description : WriteUp for Bandit Wargame. Recommended for beginners. 
-image : /assets/images/writeups/OTW/bandit/bandit_cover_sm.png
+image : /assets/images/writeups/OTW/bandit/bandit_cover_sm2.png
 ---
 ### Basic Introduction : 
 The [Bandit](https://overthewire.org/wargames/bandit/) wargame is aimed at absolute beginners. It will teach the basics needed to be able to play other wargames. 
