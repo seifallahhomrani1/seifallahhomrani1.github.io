@@ -1,5 +1,5 @@
 ---
-title : "THM: Anonymous WriteUp"
+title : "TryHackMe: Anonymous WriteUp"
 author : Seif-Allah
 description : "TryHackMe: WriteUp for the Anonymous room (Level: Medium)"
 layout : post
