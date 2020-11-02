@@ -1,5 +1,5 @@
 ---
-title: Databases Introduction 
+title: Databases - Introduction 
 author: Seif-Allah
 layout: post
 Description : Introduction to Databases, Why we use them and how to manipulate them.
