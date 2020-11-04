@@ -83,7 +83,3 @@ Quit the server with CONTROL-C.
 ```
 [Hello World](/assets/images/Django/hello_localhost.png)
 
-Now that we have a very basic file structure in place, let's move on to adding more elements to serve up our files.
-
-
-
