@@ -1,18 +1,19 @@
 ---
-title : 'Django - The World's Smallest Django Project'
+title : "Django - The World's Smallest Django Project"
 layout : post
-image : 
-description : 
+image : /assets/images/Django/django_first_project.png
+description : Making my first Django project. 
 author : Seif-Allah
-tags : 
+tags : [Django,hello,world,Web,coding,first,tutorial]
+category : Django
 ---
 
 
 ### Brief Introduction
-> *What is Django ?*  :confused:
+>  - What is Django ?
 
 Django is a high-level Python web framework that enables rapid development of secure and maintainable websites.
-> *Why Django ?* 
+>  - Why Django ? 
 
 Django helps you write software that is : 
 - Complete 
@@ -24,6 +25,7 @@ Django helps you write software that is :
 
 ### "Hello World !" Project
 Building a 'Hello World' example in a new language or framework is a common first project.
+(I will assume that you have Django installed. If not, follow this [link.](https://docs.djangoproject.com/en/3.1/topics/install/))
 
 - - -
 ```python 
@@ -68,6 +70,7 @@ if __name__ == "__main__":
 
     execute_from_command_line(sys.argv)
 ```
+
 - - -
 Now we can start the example in the command line: 
 - - -
@@ -81,5 +84,5 @@ Django version 1.11.23, using settings None
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
-[Hello World](/assets/images/Django/hello_localhost.png)
-
+![Hello World](/assets/images/Django/hello_localhost.png "hello_localhost")
+- - -
