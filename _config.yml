@@ -19,7 +19,7 @@ google_analytics: UA-181011093-2
 
 style: dark
 listen_for_clients_preferred_style: false
-footer : 'mail: <a href="mailto:seifallahhomrani1@gmail.com">seifallahhomrani1@gmail.com</a>'
+footer : Boring ? <a href="javascript:(function () {var s = document.createElement('script');s.setAttribute('src', '/fontBomb/js/main2.js');document.body.appendChild(s);}());" title="What are waiting for ?"><strong>BOMB IT NOW !</strong></a>
 lang: en
 
 
