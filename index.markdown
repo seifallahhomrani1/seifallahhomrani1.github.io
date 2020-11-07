@@ -7,7 +7,7 @@ layout: home
 [Welcome.](https://www.youtube.com/watch?v=HRYyhdTHraU) 
 [Welcome.](https://www.youtube.com/watch?v=GanHp3XCYgg) 
 
-
+<pre>
         _nnnn_                      
         dGGGGMMb     ,"""""""""""""".
        @p~qp~~qMb    | Linux Rules! |
@@ -26,3 +26,4 @@ _)      \.___.,|     .'
      `-'       `--' hjm
 
 
+</pre>
