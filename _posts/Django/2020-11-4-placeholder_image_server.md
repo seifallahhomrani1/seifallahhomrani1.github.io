@@ -1,5 +1,5 @@
 ---
-title : "Project 1 - Placeholder Image Server "
+title : "Placeholder Image Server : First Steps"
 layout : post
 image : /assets/images/Django/stateless_web_app.png
 description : "Making my first Django project"  
@@ -93,3 +93,13 @@ urlpatterns = [
 ]
 ```
 
+The next step is to point the root URLconf at the *placeholder.urls* module in our site *urls.py*. 
+
+- - -
+```python 
+path('placeholder/', include('placeholder.urls') ),   
+```
+- - -
+
+With these patterns in place, incoming requests to the URL */image/30x25* for example will be routed the *placeholder* view and pass in those values (e.g width=30 and height=25). 
+ 

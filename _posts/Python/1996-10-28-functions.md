@@ -2,8 +2,8 @@
 title : "Python - Functions"
 layout : post
 category : Python 
-subtitle : "Python Functions, Local and Global Scope and Exception Handling"
- author : Seif-Allah
+Description : "Python Functions, Local and Global Scope and Exception Handling"
+author : Seif-Allah
 header-img : img/function.png
 tags : [programming language, development, python, introduction]
 ---

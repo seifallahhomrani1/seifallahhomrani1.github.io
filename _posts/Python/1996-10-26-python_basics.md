@@ -1,8 +1,8 @@
 ---
 layout : post
-title : "Python Basics"
- author : Seif-Allah
-subtitle : "Data types, comments and basic built-in functions"
+title : "Python - Basics"
+author : Seif-Allah
+Description : "Data types, comments and basic built-in functions"
 category : Python
 header-img : "img/basics.png"
 tags : [programming language, development, python, introduction]

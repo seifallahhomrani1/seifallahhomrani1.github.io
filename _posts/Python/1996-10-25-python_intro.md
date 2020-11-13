@@ -2,7 +2,7 @@
 layout : post
 title : "Python\_Introduction"
 author : Seif-Allah
-subtitle : "Introduction to Python  "
+Description : "Introduction to Python  "
 category : Python 
 date : 2020-10-25
 header-img : "img/intro.png"
