@@ -1,14 +1,12 @@
 ---
 title : "TryHackMe: Dogcat WriteUp"
 author : Seif-Allah
-description : "TryHackMe: WriteUp for the dogcat room (Level: Medium)"
+description : "TryHackMe: WriteUp for the 'dogcat' room (Level: Medium)"
 layout : post
 category: CTF-WriteUp
 tags : [THM,TryHackMe,WriteUp,dogcat,Medium,CTF]
 image : /assets/images/writeups/thm/anonymous/dogcat.png
 ---
-
-
 Link : [dogcat room](https://tryhackme.com/room/dogcat)
 
 Welcome, Welcome, Welcome and welcome ! 
