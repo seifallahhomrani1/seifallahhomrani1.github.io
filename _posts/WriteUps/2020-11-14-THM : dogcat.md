@@ -35,7 +35,7 @@ PORT   STATE SERVICE REASON         VERSION
 ```
 Nothing fancy here, there's a web server running on port 80, let's check it! 
 
-![homepage](/assets/thm/dogcat/homepage.png)
+![homepage](/assets/images/writeups/thm/dogcat/homepage.png)
 
 Basically, it's a web app that choose randomly a cat or a dog image based on user choice (images are stored inside a dog and cat folders - look at the source). 
 
