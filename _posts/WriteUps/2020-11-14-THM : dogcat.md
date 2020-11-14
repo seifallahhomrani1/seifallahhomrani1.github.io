@@ -5,7 +5,7 @@ description : "TryHackMe: WriteUp for the 'dogcat' room (Level: Medium)"
 layout : post
 category: CTF-WriteUp
 tags : [THM,TryHackMe,WriteUp,dogcat,Medium,CTF]
-image : /assets/images/writeups/thm/anonymous/dogcat.png
+image : /assets/images/writeups/thm/dogcat/dogcat.png
 ---
 Link : [dogcat room](https://tryhackme.com/room/dogcat)
 
