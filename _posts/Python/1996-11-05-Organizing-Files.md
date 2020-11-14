@@ -1,7 +1,7 @@
 ---
 title : "Organizing Files"
 layout : post
- author : Seif-Allah
+author : Seif-Allah
 category : Python
 ---
 ### The shutil Module

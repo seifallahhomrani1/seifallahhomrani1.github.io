@@ -1,7 +1,7 @@
 ---
 title : "Python - Pattern Matching"
 layout : post
- author : Seif-Allah
+author : Seif-Allah
 category : Python 
 ---
 

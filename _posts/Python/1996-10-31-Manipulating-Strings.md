@@ -2,7 +2,7 @@
 layout : post
 title : "Python - Manipulating Strings"
 author : Seif-Allah
-subtitle : "Introduction to Python  "
+Description : "Introduction to Python  "
 category : Python 
 header-img : "img/function.png"
 tags : [programming language, development, python, introduction]

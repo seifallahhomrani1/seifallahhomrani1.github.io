@@ -2,7 +2,7 @@
 layout : post
 title : "Python - Flow Control"
 author : Seif-Allah
-subtitle : "Booleans, Conditions, Blocks of Code, Flow Control Statements and Modules."
+Description : "Booleans, Conditions, Blocks of Code, Flow Control Statements and Modules."
 category : Python 
 header-img : "img/FlowControl.png"
 tags : [programming language, development, python, introduction]
