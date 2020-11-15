@@ -50,11 +50,13 @@ A Java class is the example of encapsulation. Java bean is the fully encapsulate
 - **Cohesion** : Cohesion refers to the level of a component which performs a single well-defined task. A single well defined task is one by a highly cohesive method. The weakly cohesive method will split the task into separate parts. The java.io package is a highly cohesive package because it has I/O related classes and interface. However, the java.util package is weakly cohesive package because it has unrelated classes and interfaces.
 
 - **Association** : Association represents the relationship between the objects. 
-    - One to One
-    - One to Many
-    - Many to One
-    - Many to May
-Association can be unidirectional or bidirectional.
+ 1. One to One
+ 2. One to Many
+ 3. Many to One
+ 4. Many to May
+ Association can be unidirectional or bidirectional.
+
+
 
 - **Aggregation** : Aggregation is a way to achieve Association. Aggregation represents the relationship where one object contains other objects as a part of its state. It represents the weak relationship between objects. It is also termed as **has-a** relationship in Java. Like, inheritance represents the **is-a** relationship. It is another way to reuse objects.
 
