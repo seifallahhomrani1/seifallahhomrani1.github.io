@@ -43,4 +43,19 @@ Command injection.
 - - -
 **PASSWORD 10 : nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu**
 ### Level 11 
-
+This level was quite interesting, first I tried encoding this command *;cat ../../../../etc/natas_webpass/natas11* but it didn't work, I took a look to the source code again 
+```
+ if(preg_match('/[;|&]/',$key)) {
+```
+So it allows the slash, that means we could insert the file location with no problem, good!
+```
+grep -i $key dictionary.txt
+```
+(-i means case insensitive) 
+Basically, this command search for $key in dictionary.txt, and we can insert our file location with no problem, What if we search for something in our file (I absolutely means /etc/natas_webpass/natas11) ? let's search for z for example ! 
+Our payload will look like : 
+```
+z /etc/natas_webpass/natas11
+```
+Bingo ! 
+Here's the password : U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
