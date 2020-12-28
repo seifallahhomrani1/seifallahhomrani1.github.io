@@ -3,7 +3,7 @@ title: "Java - JVM Architecture"
 author : Seif-Allah
 layout: post
 category : Java
-Description : "Java - JVM architecture".
+Description : "Java - JVM architecture"
 image : /assets/images/java/oop_concepts.png
 ---
 
