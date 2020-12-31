@@ -1,7 +1,7 @@
 ---
-title : "What are Sockets ?"
+title : "Socket Functions"
 author : Seif-Allah
-description : "Introduction to Sockets and how they work. " 
+description : "Introduction to Sockets functions and how they work. " 
 layout : post
 category: Networking
 tags : [networking,socket]
