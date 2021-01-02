@@ -7,6 +7,9 @@ category : Databases
 image: /assets/images/database/sql.png
 ---
 
+<br>
+
+<img src="/assets/images/database/sql.png" style="  width: 100%; max-width: 600px; height: auto;"/>
 
 ### What is SQL injection 
 
@@ -76,12 +79,16 @@ If the number of nulls does not match the number of columns, the database return
 *All queries combined using a UNION, INTERSECT or EXCEPT operator must have an equal number of expressions in their target lists.*
 
 
+Again, the application might actually return this error message, or might just return a generic error or no results. When the number of nulls matches the number of columns, the database returns an additional row in the result set, containing null values in each column. The effect on the resulting HTTP response depends on the application's code. If you are lucky, you will see some additional content within the response, such as an extra row on a HTML table. Otherwise, the null values might trigger a different error, such as a *NullPointerException*. Worst case, the response might be indistinguishable from that which is caused by an incorrect number of nulls, making this method of determining the column count ineffective.
+
+### Why using NULL ?
+
+The reason for using NULL as the values returned from the injected SELECT query is that the data types in each column must be compatible between the original and the injected queries. Since NULL is convertible to every commonly used data type, using NULL maximizes the chance that the payload will succeed when the column count is correct. 
+
+### Oracle Syntax 
+On Oracle, every SELECT query must use the FROM keyword and specify a valid table. There is a built-in table on Oracle Called DUAL which can be used for this purpose. So the injected queries on Oracle would need to look like : ' UNION SELECT NULL FROM DUAL--
+### Comments 
+The payloads described use the double-dash comment sequence -- to comment out the remainder of the original query following the injection point. On MySQL, the double-dash sequence must be followed by a space. Alternatively, the hash character # cna be used to identify a comment.
 
 
 
-
-- Examining the database: where you can extract information about the version and structure of the database.
-- Blind SQL injection: where the results of a query you control are not returned in the application's responses. 
-
-
-TO BE CONTINUED 
