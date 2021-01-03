@@ -1,10 +1,10 @@
 ---
-title: "Lord Of SQLi : gremlin"  
+title: "Lord Of SQLi : gremlin Writeup"  
 author: Seif-Allah
 layout: post
 Description : "'Lord of SQL Injection', a site where you can learn about SQL injection vulnerabilities while capturing dungeons'"
 category : CTF-WriteUp
-image: /assets/images/database/sql.png
+image: /assets/images/database/sql1.png
 ---
 <br>
 

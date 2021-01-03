@@ -2,6 +2,7 @@
 title: /home
 layout: home
 Description : I'm just a beginner sharing his CyberSecurity learning journey
+image : /assets/images/seifallah.png
 ---
 Welcome home friend! 
 You can consider this website as my notebook, this is where I write what I learn. 
