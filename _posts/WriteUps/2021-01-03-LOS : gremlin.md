@@ -13,7 +13,7 @@ image: /assets/images/writeups/los/sql1.png
 **Resources :** [SQL INJECTION - Introduction](/databases/2020/11/24/SQL-Injection.html)
 
 ### Introduction 
-'Lord of SQL Injection', a site where you can learn about SQL injection vulnerabilities while capturing dungeons. 
+['Lord of SQL Injection'](https://los.rubiya.kr/), a site where you can learn about SQL injection vulnerabilities while capturing dungeons. 
 LoS provides 49 stepwise SQLinjection challenges.
 Challenges are about SQLinjection at mysql, sqlite, mssql, mongodb, webapp what protected by WAF.
 - Site origin Country : Korea
