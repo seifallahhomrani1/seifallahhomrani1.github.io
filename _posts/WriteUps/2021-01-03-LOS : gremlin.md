@@ -8,7 +8,7 @@ image: /assets/images/database/sql1.png
 ---
 <br>
 
-<img src="/assets/images/database/sql.png" style="  width: 100%; max-width: 600px; height: auto;"/>
+<img src="/assets/images/database/sql1.png" style="  width: 100%; max-width: 600px; height: auto;"/>
 
 **Resources :** [SQL INJECTION - Introduction](/databases/2020/11/24/SQL-Injection.html)
 
