@@ -4,11 +4,11 @@ author: Seif-Allah
 layout: post
 Description : "'Lord of SQL Injection', a site where you can learn about SQL injection vulnerabilities while capturing dungeons'"
 category : CTF-WriteUp
-image: /assets/images/database/sql1.png
+image: /assets/images/writeups/los/sql1.png
 ---
 <br>
 
-<img src="/assets/images/database/sql1.png" style="  width: 100%; max-width: 600px; height: auto;"/>
+<img src="/assets/images/writeups/los/sql1.png" style="  width: 100%; max-width: 600px; height: auto;"/>
 
 **Resources :** [SQL INJECTION - Introduction](/databases/2020/11/24/SQL-Injection.html)
 
