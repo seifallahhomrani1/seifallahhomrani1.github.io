@@ -91,3 +91,6 @@ This function will cut the rows from offset-index to (offset+amount)-index.
 Start of index is 0,0. 
 
 -> *Payload* : /?no=0 or 1 limit 1,1
+
+
+Resources : [PortSwigger - Bypassing Common filters](https://portswigger.net/support/sql-injection-bypassing-common-filters)
