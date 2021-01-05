@@ -2,7 +2,7 @@
 title: "Lord Of SQLi : goblin Writeup"  
 author: Seif-Allah
 layout: post
-Description : "'Lord of SQL Injection', a site where you can learn about SQL injection vulnerabilities while capturing dungeons'"
+description : "'Lord of SQL Injection', a site where you can learn about SQL injection vulnerabilities while capturing dungeons'"
 category : CTF-WriteUp
 image: /assets/images/writeups/los/goblin.png
 ---
@@ -11,7 +11,7 @@ image: /assets/images/writeups/los/goblin.png
 
 <img src="/assets/images/writeups/los/goblin.png" style="  width: 100%; max-width: 600px; height: auto;"/>
 
-**Previous WriteUp : [gremlin](/ctf-writeup/2021/01/03/LOS-gremlin.html)
+**Previous WriteUp** : [gremlin](/ctf-writeup/2021/01/03/LOS-gremlin.html)
 
 ### Provided code 
 ```php
