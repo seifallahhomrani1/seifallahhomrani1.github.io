@@ -1,8 +1,8 @@
 ---
-title: "Find Command cheat gist "  
+title: "Linux - Find Command : Cheat Sheet "  
 author: Seif-Allah
 layout: post
-description : Find command cheat gist, a lot of basic and advanced commands.
+description : Find command cheat sheet, a lot of basic and advanced commands.
 category : Linux
 image: /assets/images/linux/find.png
 ---
