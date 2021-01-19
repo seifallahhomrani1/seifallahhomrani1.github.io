@@ -2,7 +2,7 @@
 title: "Find Command cheat gist "  
 author: Seif-Allah
 layout: post
-description : Find command cheat gist, a lot of basic and advanced usage/
+description : Find command cheat gist, a lot of basic and advanced commands.
 category : Linux
 image: /assets/images/linux/find.png
 ---
