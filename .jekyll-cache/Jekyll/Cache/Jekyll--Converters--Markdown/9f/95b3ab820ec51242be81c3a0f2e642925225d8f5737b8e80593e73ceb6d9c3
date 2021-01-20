@@ -1,0 +1,15 @@
+I"�
+<ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#the-list-data-type">The List Data Type</a></li>
+  <li><a href="#the-in-and-not-in-operators">The “in” and “not in” Operators</a></li>
+  <li><a href="#assignement">Assignement</a></li>
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#finding-a-value-in-a-list-with-index-method">Finding a Value in a list with index() Method</a></li>
+  <li><a href="#adding-values-to-lists-with-the-append-and-insert-methods">Adding Values to Lists with the append() and insert() Methods</a></li>
+  <li><a href="#removing-values-from-lists-with-remove">Removing Values from lists with remove()</a></li>
+  <li><a href="#sorting-the-values-in-a-list-with-the-sort-method">Sorting the Values in a list with the sort() method</a></li>
+  <li><a href="#list-like-types--strings-and-tuples">List-like Types : Strings and Tuples</a></li>
+  <li><a href="#references">References</a></li>
+</ul>
+:ET

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
+<link rel="icon" href="/seifallahhomrani1.github.io/assets/images/favicon.ico">
+
+<title>Python - Pattern Matching | Seif-Allah's Blog</title>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Python - Pattern Matching | Seif-Allah’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Python - Pattern Matching" />
+<meta name="author" content="Seif-Allah" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Using Regular expressions AKA Regex, making character classes, etc." />
+<meta property="og:description" content="Using Regular expressions AKA Regex, making character classes, etc." />
+<meta property="og:site_name" content="Seif-Allah’s Blog" />
+<meta property="og:image" content="/seifallahhomrani1.github.io/assets/images/python/python.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="1996-11-02T00:00:00+01:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/seifallahhomrani1.github.io/assets/images/python/python.png" />
+<meta property="twitter:title" content="Python - Pattern Matching" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/seifallahhomrani1.github.io/assets/images/cover.png"},"name":"Seif-Allah"},"image":"/seifallahhomrani1.github.io/assets/images/python/python.png","url":"/seifallahhomrani1.github.io/Pattern-Matching/","headline":"Python - Pattern Matching","dateModified":"1996-11-02T00:00:00+01:00","datePublished":"1996-11-02T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/seifallahhomrani1.github.io/Pattern-Matching/"},"author":{"@type":"Person","name":"Seif-Allah"},"description":"Using Regular expressions AKA Regex, making character classes, etc.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+<link href="/seifallahhomrani1.github.io/assets/css/prism.css" rel="stylesheet">
+
+<link href="/seifallahhomrani1.github.io/assets/css/theme.css" rel="stylesheet">
+
+<script src="/seifallahhomrani1.github.io/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+
+
+<!-- Begin Sidebar Navigation
+================================================== -->
+
+<div class="sidebar">    
+</div>   
+<div class="nav-icon">
+    <div class="hamburger-bar"></div>
+</div>
+<div id="blackover-nav" class="blackover"></div>
+<nav id="menu">
+    <ul>
+        <h3>Navigation</h3>
+        <li><a href="/seifallahhomrani1.github.io/">Home</a></li>
+        <li><a  href="/seifallahhomrani1.github.io/contact">Contact</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Python">Python</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Java">Java</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#CTF-WriteUp">CTF-WriteUp</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Articles">Articles</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Networking">Networking</a></li>    
+        <li><a href="/seifallahhomrani1.github.io/categories#Databases">Databases</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Django">Django</a></li>     
+        <li><a href="/seifallahhomrani1.github.io/categories#Linux">Linux</a></li>     
+    </ul>   
+</nav>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunr.js"></script>
+
+<style>
+    
+</style>
+
+<div class="wrap-search">
+    <div class="d-flex align-items-center ml-auto">
+        <i class="fas fa-search show-search"></i>
+        <form class="bd-search ml-3" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+            <input type="text" class="form-control bigradius text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+        </form>
+    </div>
+</div>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunrsearchengine.js"></script>
+
+
+<!-- End Sidebar Navigation
+================================================== -->
+
+<div class="site-content ">
+
+<div class="container">
+
+    <!-- Site Logo/Name
+    ================================================== -->
+   
+    <a class="navbar-brand" href="/seifallahhomrani1.github.io/">
+        <img src="/seifallahhomrani1.github.io/assets/images/cover.png" alt="Seif-Allah's Blog">
+    </a>  
+   
+
+    <!-- Site Tag
+    ================================================== -->
+    
+
+    <!-- Content
+    ================================================== -->
+    <div class="main-content">
+        <div class="entry-header">
+    <!-- Post Title -->
+    <h1 class="posttitle">Python - Pattern Matching</h1>
+    <!-- Author & Date  Box -->
+    
+    
+    <div class="d-flex align-items-center mt-4">
+        <div>
+            
+            <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+            
+        </div>            
+        <div>
+        Written by <a target="_blank" class="text-dark" href="seifallahhomrani1.social">Seif-Allah</a> on 
+        <span class="post-date"><time class="post-date" datetime="1996-11-02">02 Nov 1996</time></span>           
+        
+        </div>            
+    </div>
+    
+</div>
+
+<!-- Adsense under title if enabled from _config.yml (change your pub id and slot) -->
+
+
+<!-- Featured Image -->
+
+<div class="entry-featured-image">
+    
+    <img class="featured-image " src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Pattern Matching">
+    
+</div>
+
+
+<!-- Content -->
+<!-- Post, Page Content
+================================================== -->
+<div class="article-post">
+    <!-- Toc if any -->
+    
+    
+    <div class="toc mt-4 mb-4 lead">
+        <h3 class="font-weight-bold">Summary</h3>
+        <ul>
+  <li><a href="#creating-regex-objects">Creating Regex Objects</a></li>
+  <li><a href="#matching-regex-objects">Matching Regex Objects</a></li>
+  <li><a href="#review-of-regular-expression-matching">Review of Regular Expression Matching</a></li>
+  <li><a href="#more-pattern-matching-with-regular-expressions">More Pattern Matching with Regular Expressions</a></li>
+  <li><a href="#character-classes">Character Classes</a></li>
+  <li><a href="#making-your-own-character-classes">Making Your Own Character Classes</a></li>
+  <li><a href="#the-caret-and-dollar-sign-characters">The Caret and Dollar Sign Characters</a></li>
+  <li><a href="#the-wildcard-character">The Wildcard Character</a></li>
+  <li><a href="#matching-everything-with-dot-star">Matching Everything with Dot-Star</a></li>
+  <li><a href="#matching-newlines-with-the-dot-character">Matching Newlines with the Dot Character</a></li>
+  <li><a href="#reveiw-of-regex-symbols">Reveiw of Regex Symbols</a></li>
+  <li><a href="#case-insensitive-matching">Case-Insensitive Matching</a></li>
+</ul>
+    </div>
+    
+    <!-- End Toc -->
+    <p>Regular expressions, called <strong>regexes</strong> for short, are descriptions for a pattern of text.</p>
+
+<h3 id="creating-regex-objects">Creating Regex Objects</h3>
+
+<p>All the <strong>regex</strong> functions in Python are in the <strong>re</strong> module. 
+Passing a string value representing your regular expression to <strong>re.compile()</strong> returns a <strong>Regex</strong> pattern object (or simply, a Regex object)</p>
+
+<h3 id="matching-regex-objects">Matching Regex Objects</h3>
+
+<p>A <strong>regex</strong> object’s search() method searches the string it is apssed for any matches to the regex. The search() method will return <strong>None</strong> if the regex pattern is not found in the string. If the pattern is found, the <strong>search()</strong> method returns a <strong>Match</strong> object. <strong>Match objects</strong> have a <strong>group()</strong> method that will return the actual matched text from the searched string. 
+Knowing that result of the search contains a Match object and not the null value None, we can call group() to return the match.</p>
+
+<h3 id="review-of-regular-expression-matching">Review of Regular Expression Matching</h3>
+
+<p>While there are several steps to using regular expressions in Python, each step is fairly simple.</p>
+
+<ol>
+  <li>Import the regex module with <strong>import re</strong></li>
+  <li>Create a <strong>Regex object</strong> with <strong>re.compile</strong> function. (Remeber to use raw string.)</li>
+  <li>Pass the string you want to search into the Regex object’s search method. This returns a <strong>Match</strong> object.</li>
+  <li>Call the <strong>Match</strong> object’s group() method to return a string of the actual matched text.</li>
+</ol>
+
+<h3 id="more-pattern-matching-with-regular-expressions">More Pattern Matching with Regular Expressions</h3>
+
+<ol>
+  <li>
+    <p><strong>Grouping with Parentheses</strong> : Adding parentheses will create groups in the regex : (\d\d\d)-(\d\d\d-\d\d\d\d), then you can use the group() match object method to grab the matching text from just one group. Passing 0 or nothing to the group() method will return the entire matched text. Using the <strong>groups()</strong> method will retreive all the groups at once as a tuple. you can use <strong>multiple-assignment</strong> trick to assign each value to a seperate variable.
+To include parentheses inside the regular expression, we can use the \( and \) in the raw string passed to re.compile()</p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Matching Multiple Groups With the Pipe</strong> : The | charcter is called a <em>pipe</em>. You can use it anywhere you want to match one of many expressions. For example, the regular expression r’Russia</td>
+          <td>Amarica’ will match either ‘Russia’ or ‘America’.</td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>When both occur in the searched string, the first occurence of matching text will be returned as the <strong>Match object</strong>. You can also use the pipe to match one of several patterns as part of your regex (example : r’Bat(man</td>
+          <td>mobile</td>
+          <td>copter</td>
+          <td>bat)’ ).</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><strong>Optional Matching with the Question Mark</strong> : Sometimes there is a pattern that you want to match only oprtionally. That is, the regex should find a match whether or not that bit of text is there. The <strong>?</strong> charcter flags the group that precedes it as an optional part of the pattern. You can thing of the ? as saying :”if it’s there print it, if it’s not, don’t worry”.</li>
+  <li><strong>Matching Zero or More with the Star</strong> : The * (called the star or asterisk) means “match zero or more” - the group that precedes the star can occur any number of times in the text. It can be completely abscent or repeated over and over again.</li>
+  <li><strong>Matching One or More with the Plus</strong> : While * means “ match zero or more “, the + means “match one or more.”</li>
+  <li><strong>Matching Specific Repetitions with Curly Brackets</strong> : If you have a group that you want to repeat a specific number of times, follow the group in your regex with a number in curly brackets, you can also specify a range by writing a minimum, a comma, and a maximum in between curly brackets, or even leave out the first or second number in the curly brackets to leave the minimum or maximum unbounded.</li>
+  <li><strong>Greedy and Nongreedy Matching</strong> : Python’s regular expressions are <em>greedy</em> by default, which means that in ambiguous situtations they will match the longest string possible. The <em>non-greedy</em> version of the curly brackets, which matches the shortest string possible, has the closing curly bracket followed by a <strong>question mark</strong>. Note that the question mark can have two meanings in regular expressions: declaring a nongreedy match or flagging an optional group. These meanings are entirely unrelated.</li>
+  <li><strong>The findall() Method</strong> : In addition to the <em>search()</em> method, Regex objects also have a <strong>findall()</strong> method. While <em>search()</em> will return a Match object of the first matched text in the searched string, the <strong>findall()</strong> method will return the strings of <strong>every match in the searched string</strong>.
+find() will not return a Match object but a list of strings - as long as there are no groups in the regular expressions. Each string in the list is a piece of the searched text that matched the regular expression. If there are groups in the regular expression, the findall() will return a list of tuples. Each tuple represent a found match, and its items are the matched strings for each group in the regex.</li>
+</ol>
+
+<h3 id="character-classes">Character Classes</h3>
+<p>Here’s a table which represents shorthands codes for common charachter classes.</p>
+<pre>
+| Shorthand character class      | Represents                                                                                           |
+|--------------------------------|------------------------------------------------------------------------------------------------------|
+| \d                             | Any numeric digit from 0 to 9                                                                        |
+| \D                             | Any character that is not a numeric digit from 0 to 9                                                |
+| \w                             | Any letter, numeric digit, or the underscore character. Think of this as matching 'word' characters. |
+| \W                             | Any character that is not a letter, numeric digit, or the underscore character.                      |
+| \s                             | Any space, tab, or newline character. (Think of this as  matching 'space' characters.)               |
+| \S                             | Any character that is not a space, tab, or newline.                                                  |
+
+
+</pre>
+
+<p>Character classes are nice for shortening regular expressions.</p>
+
+<h3 id="making-your-own-character-classes">Making Your Own Character Classes</h3>
+<p>You can define your own character class using square brackets like for example r’[putin]’. You can also include ranges of letters or numbers by using a hyphen. For example : the character class [a-zA-Z0-9] will match all lowercase letters, uppercase letters, and numbers. Note that inside the square brackets, the normal regular expression symbols are not interpreted as such. This means you do not need to escape the .,*,? or () characters with a preceding backslash. For example, the character class [0-5.] will match digits 0 to 5 and a period. You do not need to write it as [0-5\.].
+By placing a caret character (^) just after the character class’s opening bracket, you can make a negative character class. A negative character class will match all the characters that are not in the character class.</p>
+
+<h3 id="the-caret-and-dollar-sign-characters">The Caret and Dollar Sign Characters</h3>
+<p>You can also use the caret symbol (^) at the start of a regex to indicate that a match must occur at the beginning of a searched text. Likewise, you can put dollar sign ($) at the end of the regex to indicate the string must end with this regex pattern. And you can use ^ and $ together to indicate that the entire string must match the regex - That is, it’s not enough for a match to be made on some subset of the string.</p>
+
+<h3 id="the-wildcard-character">The Wildcard Character</h3>
+<p>The . (or dot) character in a regular expression is called a <strong>wildcard</strong> and will match any character except for a newline.</p>
+
+<h3 id="matching-everything-with-dot-star">Matching Everything with Dot-Star</h3>
+<p>You can use the dot-star(.*) to stand in for that “anything.”. Remember that the dot character means “any single character except the newline” and the star character means “zero or more of the preceding character”.
+The dot-star uses <strong>greedy</strong> mode: It will always try to match as much text as possible. To match any and all text in a <strong>nongreedy</strong> fashion, use the dot, star, and question mark (.*?).</p>
+
+<h3 id="matching-newlines-with-the-dot-character">Matching Newlines with the Dot Character</h3>
+<p>The dot-star will match everything except a newline. By passing <strong>re.DOTALL</strong> as the second argument to <strong>re.compile()</strong>, you can make the dot character match all characters, including the newline character.</p>
+
+<!--25-04-2020 : 00:22-->
+
+<h3 id="reveiw-of-regex-symbols">Reveiw of Regex Symbols</h3>
+<ul>
+  <li>The ? matches zero on one of the preceding group.</li>
+  <li>The * matches zero or more of the preceding group.</li>
+  <li>The + matches one or more of the preceding group.</li>
+  <li>The {n} matches exactly n of the preceding group.</li>
+  <li>The {n,} matches n or more of the preceding group.</li>
+  <li>The {,m} matches 0 to m of the preceding group.</li>
+  <li>The {n,m} matches at least n and at most m of the preceding group.</li>
+  <li>{n,m}? or *? or +? performs a nongreedy match of the preceding group.</li>
+  <li>^spam means the string must begin with spam.</li>
+  <li>spam$ means the string must end with spam.</li>
+  <li>The . matches any character, except newline characters.</li>
+  <li>\d, \w, and \s match a digit, word, or space character, respectively.</li>
+  <li>\D, \W, and \S match anything except a digit, word, or space character, respectively.</li>
+  <li>[abc] matches any character between the brackets (such as a, b, or c).</li>
+  <li>[\^abc] matches any character that isn’t the brackets.</li>
+</ul>
+
+<h3 id="case-insensitive-matching">Case-Insensitive Matching</h3>
+<p>Normally, regular expressions match text with the exact casing you specify. But sometimes you care only about matching the letters without worrying whether they’re uppercase or lowercase. To make your regex case-insensitive, you can pass <strong>re.IGNORECASE</strong> or <strong>re.I</strong> as a second argument to <strong>re.compile()</strong>.</p>
+
+
+</div>
+
+<!-- Rating -->
+
+
+<!-- Author Box if enabled from _config.yml -->
+<!-- Author Box -->
+
+
+
+
+<!-- Comments if not disabled with comments: false -->
+<!-- Comments
+================================================== -->
+ 
+<div class="comments">
+    <button class="btn btn-dark show-comments">Load Comments</button>         
+    <div id="comments">  
+        <h4 class="mb-4">Comments</h4>                 
+            <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'demowebsite'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+     
+    <div class="clearfix"></div>              
+    </div>    
+</div>       
+
+
+<!-- Share -->
+<div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Python - Pattern Matching&url=/seifallahhomrani1.github.io/Pattern-Matching/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=/seifallahhomrani1.github.io/Pattern-Matching/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=/seifallahhomrani1.github.io/Pattern-Matching/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+
+<!-- Related Post -->
+<!-- Related Posts
+================================================== -->
+<div class=" related-posts ">  
+
+    
+    <h2 class="text-center mb-4">Explore more like this</h2>
+    
+    
+    <div class="d-flex justify-content-center align-items-center">
+    
+    <!-- Categories -->
+    
+    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/categories#Python">Python</a>                
+    
+
+    <!-- Tags -->  
+    
+    
+
+    </div>
+
+    
+    
+    
+    <div class="blog-grid-container">
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/Files/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Files"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/Files/">Python - Files</a>
+                
+            </h2>
+            <h4 class="card-text">Working with files in Python, the OS module and checking Path validity.</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">03 Nov 1996</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/Manipulating-Strings/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Manipulating Strings"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/Manipulating-Strings/">Python - Manipulating Strings</a>
+                
+            </h2>
+            <h4 class="card-text">Introduction to Python  </h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">31 Oct 1996</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/Dictionaries-and-structuring-data/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Dictionaries and Structuring Data"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/Dictionaries-and-structuring-data/">Python - Dictionaries and Structuring Data</a>
+                
+            </h2>
+            <h4 class="card-text">Dictionaries, Using Data Structures to Model Real-World Things</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">30 Oct 1996</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+                
+        </div>        
+</div>
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+    </div>
+
+    
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+                <div class="col-md-6 col-sm-12 text-center text-lg-left">
+                    Copyright © 2021 Seif-Allah's Blog 
+                </div>
+            <div class="col-md-6 col-sm-12 text-center text-lg-right">
+                Made with love by    
+                <a target="_blank" href="fb.com/seifallahhomrani1">Seif-Allah</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
+================================================== -->
+
+<script src="/seifallahhomrani1.github.io/assets/js/prism.js"></script>
+
+<script src="/seifallahhomrani1.github.io/assets/js/theme.js"></script>
+
+
+
+
+<script id="dsq-count-scr" src="//demowebsite.disqus.com/count.js"></script>
+
+
+</body>
+</html>

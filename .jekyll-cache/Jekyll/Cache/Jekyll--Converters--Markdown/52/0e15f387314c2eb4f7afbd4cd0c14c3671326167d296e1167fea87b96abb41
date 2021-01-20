@@ -1,0 +1,11 @@
+I"$
+<ul>
+  <li><a href="#escape-characters">Escape Characters</a></li>
+  <li><a href="#raw-strings">Raw Strings</a></li>
+  <li><a href="#multiline-strings-with-triple-quotes">Multiline Strings with Triple quotes</a></li>
+  <li><a href="#multiline-comments">Multiline Comments</a></li>
+  <li><a href="#indexing-and-slicing-string">Indexing and Slicing String</a></li>
+  <li><a href="#the-in-and-not-in-operators-with-strings">The in and not in Operators with Strings</a></li>
+  <li><a href="#useful-string-methods">Useful String Methods</a></li>
+</ul>
+:EF

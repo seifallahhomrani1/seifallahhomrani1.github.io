@@ -1,0 +1,72 @@
+I"/<p><br /></p>
+
+<p><img src="/assets/images/writeups/los/sql1.png" style="  width: 100%; max-width: 600px; height: auto;" /></p>
+
+<p><strong>Resources :</strong> <a href="/databases/2020/11/24/SQL-Injection.html">SQL INJECTION - Introduction</a></p>
+
+<h3 id="introduction">Introduction</h3>
+<p><a href="https://los.rubiya.kr/">‘Lord of SQL Injection’</a>, a site where you can learn about SQL injection vulnerabilities while capturing dungeons. 
+LoS provides 49 stepwise SQLinjection challenges.
+Challenges are about SQLinjection at mysql, sqlite, mssql, mongodb, webapp what protected by WAF.</p>
+<ul>
+  <li>Site origin Country : Korea</li>
+  <li>Language : English</li>
+</ul>
+
+<h3 id="gremlin">Gremlin</h3>
+<p>Given a php code :</p>
+<hr />
+
+<pre><code class="language-php"> &lt;?php
+  include "./config.php";
+  login_chk();
+  $db = dbconnect();
+  if(preg_match('/prob|_|\.|\(\)/i', $_GET[id])) exit("No Hack ~_~"); // do not try to attack another table, database!
+  if(preg_match('/prob|_|\.|\(\)/i', $_GET[pw])) exit("No Hack ~_~");
+  $query = "select id from prob_gremlin where id='{$_GET[id]}' and pw='{$_GET[pw]}'";
+  echo "&lt;hr&gt;query : &lt;strong&gt;{$query}&lt;/strong&gt;&lt;hr&gt;&lt;br&gt;";
+  $result = @mysqli_fetch_array(mysqli_query($db,$query));
+  if($result['id']) solve("gremlin");
+  highlight_file(__FILE__);
+?&gt; 
+</code></pre>
+<hr />
+
+<h3 id="explanation">Explanation</h3>
+
+<p>-&gt; <em>Challenge preparation</em>
+First of all, it includes this php file called <em>config.php</em>, then it checks if you are logged in or not. After that, it connect to the database.</p>
+
+<p>-&gt; <em>The fun begins</em>
+<a href="https://www.php.net/manual/en/function.preg-match.php">preg_match</a> is a php function that performs a regular expression match. If the provided regex found in the <em>id</em> or <em>pw</em> fields it exits with “No Hack ~_~” message?</p>
+
+<p>-&gt; <em>REGEX explanation</em>
+/prob|_|.|()/i
+<strong>1st Alternative prob</strong>
+prob matches the characters prob literally (case insensitive)
+<strong>2nd Alternative _</strong>
+_ matches the character _ literally (case insensitive)
+<strong>3rd Alternative .</strong>
+. matches the character . literally (case insensitive)
+<strong>4th Alternative ()</strong>
+( matches the character ( literally (case insensitive)
+) matches the character ) literally (case insensitive)
+<strong>Global pattern flags</strong>
+i modifier: insensitive. Case insensitive match (ignores case of [a-zA-Z])</p>
+
+<p>Then, with the provided <em>id</em> and <em>pw</em>, the SQL query is ready to be executed, and it is printed out using the following <em>echo</em>. 
+Using the <a href="https://www.php.net/manual/en/mysqli-result.fetch-array.php">mysqli_fetch_array</a> function, which fetch a result row as an associative, a numeric array, or both.</p>
+
+<p>Finally, it checks if the id has a value, if it has, the challenge is solved !</p>
+
+<p>I just want to mention that the <em>id</em> and <em>pw</em> field are gonna be passed in the url like this : ?id=
+If you’ve read my article mentioned above, you can solve this challenge easily by closing the id field using an apostrophe then executing a condition that returns true as a result like 1=1. 
+So the final result will be : 
+?id=’ OR 1=1 
+Then we need to comment out the <em>pw</em> field so we insert a double dash followed by a space (Black Space = %20 : URL encoding) or a hashtag(hashtag = %23 : URL encoding )
+?id=’ OR 1=1 –%20
+So the final query will be  :</p>
+<pre><code class="language-sql">select id from prob_gremlin where id='' OR 1=1 -- ' and pw=''
+</code></pre>
+<p>GREMLIN CLEAR !</p>
+:ET

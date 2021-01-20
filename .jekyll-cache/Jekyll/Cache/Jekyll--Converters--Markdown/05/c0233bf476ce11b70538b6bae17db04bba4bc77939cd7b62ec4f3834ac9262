@@ -1,0 +1,85 @@
+I"�<p><br />
+<strong>A function is like a mini-program within a program</strong>
+<br />
+<strong>Function Syntax :</strong></p>
+<pre>
+**def** functionName(SomeArguments)
+	&gt;Code 
+	&gt;Code
+	&gt;Code
+
+functionName(SomeArguments)  &lt;- **Function Call**
+</pre>
+<p><br />
+When the program execution reaches these calls, it will jump to the top line in the function and begin executing the code there. When it reaches the end of the function, the execution returns to the line that called the function and continues moving through the code as before.</p>
+
+<h3 id="def-statements-with-parameters">def statements with Parameters</h3>
+
+<p>A <strong>parameter</strong> is a variable that an argument is stored in when a function is called. 
+One special thing to note about parameters is that the value stored in a parameter is forgotten when the function returns. We will discuss this later.</p>
+
+<h3 id="return-values-and-return-statments">Return Values and return Statments</h3>
+<p>When you call the <strong>len()</strong> function and pass it an argument such as ‘hello’, the function call evaluates to the integer value 5, which is the length of the string you passed it. In general, the value that a function call evaluates to is called the <strong>return value</strong> of the function.
+When creating a function using the <strong>def</strong> statement, you can specify the return value should be with a return statelent. A return statement consists of the following :</p>
+<ul>
+  <li>The <strong>return</strong> keyword.</li>
+  <li>The value or expression that the function should return.</li>
+</ul>
+
+<p>When an expression is used with a <strong>return</strong> statement, the return value is what this expression evaluates to.</p>
+
+<p>Let’s take an example : 
+<script src="https://gist.github.com/pu71n/9fbe5f15931e56ac819760d371f9e8aa.js"></script></p>
+
+<h3 id="the-none-value">The <strong>None</strong> Value</h3>
+<p>In Python there is a value called <strong>None</strong>, which represents the abscence of a value. <strong>None</strong> is the only value of the <strong>NoneType</strong> data type. (Other programming languages might call this value null, nil or undefined.) Just like the boolean True and False values, None must be typed with a capital N. 
+This value-without-a-value can be helpful when you need to store somethin that won’t be confused for a real value in a variable. One place where <strong>None</strong> is used is as the return value of print(). The print() function displays text on the screen, but it doesn’t need to return anything like for example len(). But since all function calls need to evaluate to a return value, print =() returns None.
+<br /> 
+<script src="https://gist.github.com/pu71n/3ad89ef8f0fccdf25c9cd26e1e0ee98c.js"></script>
+Behind the scenes, <strong>Python adds return None to the end of any function definition with no return statement.</strong></p>
+
+<h3 id="keyword-arguments-and-print">Keyword Arguments and print()</h3>
+
+<p>Keyword arguments are often used for optional parameters. For example, the print() function has the optional parameters <strong>end</strong> and <strong>sep</strong> to specify what should be printed at the end of its arguments and between its arguments, respectively.</p>
+
+<script src="https://gist.github.com/pu71n/82caba62982857e316e22d251d76cd33.js"></script>
+
+<p>Similarly, when you pass multiple string values to print(), the function will automatically seperate them with a string space but you could replace the default seperating string by passing the <strong>sep</strong> keyword argument. 
+<br />
+<script src="https://gist.github.com/pu71n/afa307bda73b4b5c825b45a72f27a94a.js"></script></p>
+
+<h3 id="local-and-global-scope">Local and Global Scope</h3>
+
+<ul>
+  <li>Parameters and variables that are assigned in a called are said to exist in that function’s <strong>local scope</strong>.</li>
+  <li>Variables that are assigned outside all functions are said to exist in the <strong>global scope</strong>. A variable that exists in a local scope is called a <strong>local variable</strong>, while a variable that exists in the global scope is called <strong>global variable</strong>. A variable must be one or the other; it cannot be both local and global.</li>
+</ul>
+
+<p>A local scope is created whenever a function is called. When the function returns, the local scope is destroyed, and these variables are forgotten. 
+Scope matter for several reasons:</p>
+<ul>
+  <li>Code in the global scope cannot use any local scope variables.</li>
+  <li>However, a locale scope can access global variables.</li>
+  <li>Code in a function’s local scope cannot use variables in any other local scope.</li>
+  <li>You can use the same name for different variables if they are in different scopes.</li>
+</ul>
+
+<h3 id="the-global-statement">The Global Statement</h3>
+<p>If you need to modify a global variable from within a function, use the <strong>global</strong> statement. It tells Python that this variable in this function refers to the global variable, so don’t create a local variable with this name.
+Here’s an example :
+<br /> 
+<script src="https://gist.github.com/pu71n/b8d70462dd488971aed1c9c37fb27107.js"></script></p>
+
+<h3 id="excecption-handling">Excecption Handling</h3>
+
+<p>Errors can be handled with <strong>try</strong> and <strong>except</strong> statements. The code could potentially have an error is put intry clause. The program execution moves to the start of a following <strong>except</strong> clause if an error happens. 
+Here’s an example: 
+<br />	
+<script src="https://gist.github.com/pu71n/4751d420d6adc95c5677783dee5250f7.js"></script></p>
+
+<p>When code in a try clause causes an error, the program execution immeditly moves to the code in the <strong>except</strong> clause. After running that code, the execution continues as normal. 
+Note that once the execution jumps to the code in the <strong>except</strong> clause, it does not return to the <strong>try</strong> clause. Instead it just continues moving down as normal.</p>
+
+<p>Enough for today, stay tuned for the practice project. &lt;3
+pu71N  4lW4Y2 pu7 1n.</p>
+:ET

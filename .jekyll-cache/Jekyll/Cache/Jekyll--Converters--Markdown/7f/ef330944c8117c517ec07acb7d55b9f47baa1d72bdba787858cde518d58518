@@ -1,0 +1,15 @@
+I"<h3 id="what-are-sockets-">What are Sockets ?</h3>
+<p>A <a href="">socket</a> is a standard way to perform network communication through the OS. A socket can be thought of as an endpoint to a connection. 
+Sockets are just a programmer’s  abstraction that takes care of all the nitty-gritty details of the OSI model described above. 
+To the programmer, a socket can be used to send or receive data over a network. This data is transmitted at the session layer, above the lower layers (handled by the operating system) which take care of the routing. 
+There are several different types of sockets that determine the stricture of the transport layer. The most common types are <em>stream sockets</em> and <em>datagram sockets</em>.</p>
+
+<h3 id="stream-sockets">Stream Sockets</h3>
+<p>Stream sockets provide reliable two-way communication similar to when you call someone on the phone. One side initiates the connection to the other, and after the connection is established, either side can communicate to the other. 
+In addiction, there is immediate confirmation that what you said actually reached its destination. Stream sockets use a standard communication protocol called Transmission Control Protocol(TCP), which exists on the transport layer (4) of the OSI model. On computer networks, data is usually transmitted in chunks called packets. TCP is designed so that the packets of data will arrive without errors and is sequence, like words arriving at the other end in the order where they were spoken when you are talking on the telephone. Web servers, mail servers, and their respective client applications all use TCP and stream sockets to communicate.</p>
+
+<h3 id="datagram-socket">Datagram socket</h3>
+<p>Another common type of socket is a datagram socket. Communicating with a datagram socket is more like mailing a letter than making a phone call. The connection is one-way only and unreliable. If you mail several letters, you can’t be sure that they arrived in the same order, or even that they reached their destination at all. Stream sockets use TCP protocol, however Datagram sockets use another standard protocol called UDP (User Datagram Protocol). This protocol is very basic and lightweight, with few safeguards built into it. It’s not a real connection, just a basic method for sending data from one point to another. With datagram sockets, there is very little overhead in the protocol, but the protocol doesn’t do much. If your program needs to confirm that a packet was received by the other side, the other side must be coded to send back an acknowledgement packet. In some cases packet loss is acceptable.
+Datagram sockets and UDP are commonly used in networked games and streaming media, since developers can tailor their communications exactly as needed without the built-in overhead of TCP.</p>
+
+:ET

@@ -1,0 +1,49 @@
+I"~<p>Typing string values in Python code is fairly straightforward: They begin and end with a single quote or double quotes. The benifit of using the double quotes is that string can have a single quote character in it.</p>
+<h3 id="escape-characters">Escape Characters</h3>
+<p>An <strong>escape character</strong> lets you use characters that are otherwise impossible to put into a string. An escape character consists of a backslash <strong>()</strong> foloowed by the character you want to add to the string.</p>
+<pre>
+| Escape character    | Prints as    |
+|---------------------|--------------|
+| \'                  | Single quote |
+| \"                  | Double Quote |
+| \t                  | tab          |
+| \n                  | Newline      |
+| \\                  | Backslash    |
+</pre>
+
+<h3 id="raw-strings">Raw Strings</h3>
+<p>You can place an <strong>r</strong> before the beginning quotation mark of a string to make it a raw string : a <strong>raw string</strong> completely ignores all escape characters and prints any backslash that appears in the string.</p>
+
+<h3 id="multiline-strings-with-triple-quotes">Multiline Strings with Triple quotes</h3>
+<p>While you can use the \n escape character to put a newline into a tring, it is often easier to use multiline strings. A multiline string in Python begins and ends with either three single quotes or three double quotes. Any quotes, tabs, or newlines in between the triple quotes are considered part of the string. Python’s indentation rules for blocks do not apply to lines inside a multiline string.</p>
+
+<h3 id="multiline-comments">Multiline Comments</h3>
+
+<p>While the hash character (#) marks the beginning of a comment for the rest of the line, a multiline string is often used for comments that span multiple lines.</p>
+
+<h3 id="indexing-and-slicing-string">Indexing and Slicing String</h3>
+
+<p>Strings use indexes and slices the same way lists do. You can think of the string “I’m putin” as a list and each character in the string as an item with a corresponding index. 
+If you specify an index, you’ll get the character at that position in the string. If you specify a range from one index to another, the starting index id included and the ending index is not.</p>
+
+<h3 id="the-in-and-not-in-operators-with-strings">The in and not in Operators with Strings</h3>
+<p>The <strong>in</strong> and <strong>not in</strong> operators can be used with strings just like with list values. An expression with two strngs joined using <strong>in</strong> or <strong>not in</strong> will evaluate to boolean True or False.</p>
+
+<h3 id="useful-string-methods">Useful String Methods</h3>
+<ul>
+  <li><strong>upper()</strong> and <strong>lower()</strong> : return a new string where all the letters are converted to uppercase or lowercase. Note that these methods do not change the string itself but return new string values.</li>
+  <li><strong>isupper()</strong> and <strong>islower()</strong> : return a boolean if the string has at least one letter and all the letters are uppercase or lowercase, respectively.</li>
+  <li><strong>isalpha()</strong> : returns True if the string consists only of letters and is not blank.</li>
+  <li><strong>isalnum()</strong> : returns True if the string consists only of letters and numbers and is not blank (‘’).</li>
+  <li><strong>isdecimal()</strong> : returns True if the string consists only of numeric characters and is not blank.</li>
+  <li><strong>isspace()</strong> : returns True if the string consists only of spaces, tabs and newlines and is not blank.</li>
+  <li><strong>istitle()</strong> : returns True if the string consists only of words that begin with an uppercase letter followed by only lowercase letters.</li>
+  <li><strong>startswith()</strong> and <strong>endswith()</strong> : return True if the string value the are called on begins or ends (respectively) with the string passed to the method; otherwise, they return False.</li>
+  <li><strong>join()</strong> and <strong>split()</strong> :  The join() method is useful when you have a list of strings that need to be joined together into a single string value. The join() method is called on a string, gets passed a list of strings, and retruns a string. The returned string is the concatenation of each string in the passed in list. The split() method does the opposite : It’s called on a string value and returns a list of strings.</li>
+  <li><strong>rjust()</strong> and <strong>ljust()</strong> : return a padded versioon of the string they are called on, with spaces inserted to justify the text. The first argument to bith methods is an integer length for the justified string.</li>
+  <li><strong>center()</strong> : return a centered text that has the correct spacing than justifying it to the left or right.</li>
+  <li><strong>strip()</strong>, <strong>rstrip()</strong> and <strong>lstrip()</strong> : strip() method will return a new string without any whitespace characters at the beginning or end. The lstrip() and rstrip() methods will remove whitespace characters from the left and right ends, respectively. Optionally, a strip argument will specify which characters on the ends should be stripped. 
+<br />
+Enough for today &lt;3</li>
+</ul>
+:ET

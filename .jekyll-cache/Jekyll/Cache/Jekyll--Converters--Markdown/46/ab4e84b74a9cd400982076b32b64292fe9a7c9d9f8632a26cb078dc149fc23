@@ -1,0 +1,84 @@
+I"$<p>A file has two key properties : a <em>filename</em> (usually written as one word) and a <em>path</em>. The path specifies the location of a file on the computer.</p>
+
+<h3 id="the-current-working--directory">The Current Working  Directory</h3>
+<p>You can git the current working directory as a string value with the <strong>os.getcwd()</strong> function and change it with <strong>os.chdir()</strong>.</p>
+
+<h3 id="absolute-vs-relative-paths">Absolute vs Relative Paths</h3>
+<p>There are two ways to specify a file path:</p>
+<ol>
+  <li>An <strong>absolute path</strong>, which always begins with the root folder.</li>
+  <li>A <strong>relative path</strong>, which is relative to the program’s current working directory.</li>
+</ol>
+
+<p>There are also the <em>dot</em> (.) and <em>dot-dot</em> folders. These are not real folders but special names that can be used in a path. A single period (“dot”) for a folder name is shorthand for “this directory”. Two periods (“dot-dot”) means “the parent folder”.</p>
+
+<h3 id="creating-new-folders-with-osmakedirs">Creating New Folders with os.makedirs()</h3>
+<p>You can create new folders (directories) with the <strong>os.makedirs()</strong> function. For example : 
+—
+&gt;&gt;&gt; import os
+&gt;&gt;&gt; os.makedirs(‘/home/pu71n/test’)
+—</p>
+
+<h3 id="the-ospath-module">The os.path Module</h3>
+<ul>
+  <li><strong>Handling Absolute and Relative Paths</strong> : The <em>os.path</em> module provides functions for returning the abolute path of a relative path and for checking whether a given path is a an abolute path.
+Calling <em>os.path.abspath(path)</em> will return a string of the absolute path of the argument. This is an easy way to convert a relative path intoan absolute one.</li>
+  <li>Calling <em>os.path.isabs(path)</em> will return True if the argument is an absolute path and False if it is a relative path.</li>
+  <li>Calling <em>os.path.relpath(path,start)</em> will return a string of a relative path from <em>start</em> path to <em>path</em>. If <em>start</em> is not provided, the current working directory is used as the start path.</li>
+  <li>Calling <em>os.path.relpath()</em> will return a relative path either from the current working directory or from the given directory. (This method only computes the relative path. The existence of the given path or directory is not checked.</li>
+  <li>Calling <em>os.path.dirname()</em> will return a string of everything that comes before the last slash in the <em>path</em> argument.</li>
+  <li>Calling <em>os.path.basename(path)</em> will return a string of everything that comes after the last slash in the path argument.</li>
+  <li>If you need a path’s dir name and base name together, you can just call <em>os.path.split()</em> to get a tuple value with these two strings. Notice that you could create the same tuple by calling <em>os.path.dirname()</em> and <em>os.path.basename()</em> and placing their return values in a tuple.</li>
+</ul>
+
+<h3 id="finding-file-sizes-and-folder-contents">Finding File Sizes and Folder Contents</h3>
+<p>Once you have ways of handling file paths, you can then start gathering information about specific files and folders. The <em>os.path</em> module provides functions for finding the size of a file in bytes and the files and folders inside a given folder.</p>
+<ul>
+  <li>Calling <em>os.path.getsize(path)</em> will return the size in bytes of the file in the path argument.</li>
+  <li>Calling <em>os.listdir(path)</em> will return a list of filename strings for each file in the <em>path</em> argument. (Note that this function is in the os module, not os.path)</li>
+</ul>
+
+<h3 id="checking-path-validity">Checking Path Validity</h3>
+<p>Many Python functions will crash with an error if you supply them with a path that does not exist. Ths <em>os.path</em> module provides functions to check whether a given path exists and whether is is a file or folder.</p>
+<ul>
+  <li>Calling <em>os.path.exists(path)</em> will return True if the file or folder referred to in the argument exists and will return False if it does not exist.</li>
+  <li>Calling <em>os.path.isfile(path)</em> will return True if the path argument exists and is a file and will return False otherwise.</li>
+  <li>Calling <em>os.path.isdir(path)</em> will return True if the path argument exists and is a folder and will return False otherwise.</li>
+</ul>
+
+<h3 id="the-file-readingwriting-process">The File Reading/Writing Process</h3>
+<p>There are three steps to reading or writing files in Python :</p>
+<ol>
+  <li>Call the <strong>open()</strong> function to return a File object.</li>
+  <li>Call the <strong>read()</strong> or <strong>write()</strong> method on the File object.</li>
+  <li>Close the file by calling the <strong>close()</strong> method on the File object.</li>
+</ol>
+
+<p>####Opening Files with the open() Function
+To open a file with the <em>open()</em> function, you pass it a string path indicating the file you want to open; it can be either an absolute or realtive path. The <strong>open()</strong> function returns a File object. This command will open the file in ‘reading plaintext’ mode, or <em>read mode</em> for short. when a file is opened in read mode, Python lets you only read data from the file; you can’t write or modify it in any way. Read mode is the default mode for files you open un Python. The call to <strong>open()</strong> returns a <strong>File object</strong>. Now whenever you want to read from or write to the file, you can do so by calling methods on the File object.</p>
+
+<h3 id="reading-the-contents-of-files">Reading the Contents of Files</h3>
+<p>Now  that you have a File object, you can start reading from it. If you want to read the entire contents of a file as a string value, use the File object’s <strong>read()</strong> method. Alternatively, you can use the <strong>readlines()</strong> method to get a list of string values from the file, one string for each line of the text which ends with a newline character (\n), except for the last line of the file.</p>
+
+<h3 id="writing-to-files">Writing to Files</h3>
+<p>Python allows you to write contents to a file in a way similar to how the <em>print()</em> function “writes” strings to the screen. You can’t write to a file you’ve opened in read mode, though. Instead, you need to open it in “write plaintext” mode or “append plaintext” mode, or <em>write mode</em> and <em>append mode</em> for short.
+Write mode will overwrite a variable’s value with a new value. PAss <strong>‘w’</strong> as the second argument to <em>open()</em> to open the file in write mode. Append mode, on the other hand, will append text to the end of the existing file. You can think of this as appending to a list in a variable, rather than overwriting the variable altogether. Pass <strong>‘a’</strong> as the second argument to <em>open()</em> to open the file in append mode.
+If the filename passed to <em>open()</em> does not exist, both write and append mode will create a new, blank file. After reading or writing a file, call the <em>close()</em> method before opening the file again.</p>
+
+<!-- Saving variables with the shelve module -->
+<h3 id="saving-variables-with-the-shelve-module">Saving Variables with the shelve Module</h3>
+
+<p>You can save variables in your Python programs to binary shelf files using the <strong>shelve</strong> module. This way, your program can restore data to variables from the hard drive. The <em>shelve</em> modulewill let you add Save and Open features to your program. For example, if you ran a program and entered some configuration settings, you could save those settings to a shelf file and then have the program load them the next time it is run.
+Here’s an example :</p>
+<hr />
+<p>&gt;&gt;&gt; import shelve
+&gt;&gt;&gt; shelfFile = shelve.open(‘mydata’)
+&gt;&gt;&gt; cats = [‘Zophie’,’Pooka’,’Simon’]
+&gt;&gt;&gt; shelfFile[‘cats’] = cats
+&gt;&gt;&gt; shelfFile.close()</p>
+<hr />
+<p>To read and write data using the shelve module, you first import <strong>shelve</strong>. Call <strong>shelve.open()</strong> and pass it a filename, and then store the returned shelf value in a variable. You can make changes to the shelf value as if it were a dictionary. When you’re done, call <strong>close()</strong> on the shelf value. Here, our shelf value is stored in <strong>shelfFile</strong>. We create a list <em>cats</em> and write <em>shelfFile[‘cats’] = cats</em> to store the list in <em>shelfFile</em> as a value associated with the key ‘cats’ (like in a dictionary). Then we call close() on a shelfFile.
+After running the previous code, you’ll see a new file in the current working directory. These binary files contain the data you stored in your shelf. Your programs can use the <em>shelve module</em> to later reopen and retrieve the data from these shelf files.
+Just like dictionaries, shelf values have <strong>keys()</strong> and <strong>values</strong> methods that will return list-like values of the keys and values in the shelf. Since these methods return list-like values instead of true list, you should pass them to the list() function to get them in list form.</p>
+
+:ET

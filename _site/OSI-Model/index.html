@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
+<link rel="icon" href="/seifallahhomrani1.github.io/assets/images/favicon.ico">
+
+<title>OSI Model - Crash Course | Seif-Allah's Blog</title>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>OSI Model - Crash Course | Seif-Allah’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="OSI Model - Crash Course" />
+<meta name="author" content="Seif-Allah" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="OSI Model - Overview Questions &amp; Answers" />
+<meta property="og:description" content="OSI Model - Overview Questions &amp; Answers" />
+<meta property="og:site_name" content="Seif-Allah’s Blog" />
+<meta property="og:image" content="/seifallahhomrani1.github.io/assets/images/networking/osi_model.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-11-02T00:00:00+01:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/seifallahhomrani1.github.io/assets/images/networking/osi_model.png" />
+<meta property="twitter:title" content="OSI Model - Crash Course" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/seifallahhomrani1.github.io/assets/images/cover.png"},"name":"Seif-Allah"},"image":"/seifallahhomrani1.github.io/assets/images/networking/osi_model.png","url":"/seifallahhomrani1.github.io/OSI-Model/","headline":"OSI Model - Crash Course","dateModified":"2020-11-02T00:00:00+01:00","datePublished":"2020-11-02T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/seifallahhomrani1.github.io/OSI-Model/"},"author":{"@type":"Person","name":"Seif-Allah"},"description":"OSI Model - Overview Questions &amp; Answers","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+<link href="/seifallahhomrani1.github.io/assets/css/prism.css" rel="stylesheet">
+
+<link href="/seifallahhomrani1.github.io/assets/css/theme.css" rel="stylesheet">
+
+<script src="/seifallahhomrani1.github.io/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+
+
+<!-- Begin Sidebar Navigation
+================================================== -->
+
+<div class="sidebar">    
+</div>   
+<div class="nav-icon">
+    <div class="hamburger-bar"></div>
+</div>
+<div id="blackover-nav" class="blackover"></div>
+<nav id="menu">
+    <ul>
+        <h3>Navigation</h3>
+        <li><a href="/seifallahhomrani1.github.io/">Home</a></li>
+        <li><a  href="/seifallahhomrani1.github.io/contact">Contact</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Python">Python</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Java">Java</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#CTF-WriteUp">CTF-WriteUp</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Articles">Articles</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Networking">Networking</a></li>    
+        <li><a href="/seifallahhomrani1.github.io/categories#Databases">Databases</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Django">Django</a></li>     
+        <li><a href="/seifallahhomrani1.github.io/categories#Linux">Linux</a></li>     
+    </ul>   
+</nav>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunr.js"></script>
+
+<style>
+    
+</style>
+
+<div class="wrap-search">
+    <div class="d-flex align-items-center ml-auto">
+        <i class="fas fa-search show-search"></i>
+        <form class="bd-search ml-3" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+            <input type="text" class="form-control bigradius text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+        </form>
+    </div>
+</div>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunrsearchengine.js"></script>
+
+
+<!-- End Sidebar Navigation
+================================================== -->
+
+<div class="site-content ">
+
+<div class="container">
+
+    <!-- Site Logo/Name
+    ================================================== -->
+   
+    <a class="navbar-brand" href="/seifallahhomrani1.github.io/">
+        <img src="/seifallahhomrani1.github.io/assets/images/cover.png" alt="Seif-Allah's Blog">
+    </a>  
+   
+
+    <!-- Site Tag
+    ================================================== -->
+    
+
+    <!-- Content
+    ================================================== -->
+    <div class="main-content">
+        <div class="entry-header">
+    <!-- Post Title -->
+    <h1 class="posttitle">OSI Model - Crash Course</h1>
+    <!-- Author & Date  Box -->
+    
+    
+    <div class="d-flex align-items-center mt-4">
+        <div>
+            
+            <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+            
+        </div>            
+        <div>
+        Written by <a target="_blank" class="text-dark" href="seifallahhomrani1.social">Seif-Allah</a> on 
+        <span class="post-date"><time class="post-date" datetime="2020-11-02">02 Nov 2020</time></span>           
+        
+        </div>            
+    </div>
+    
+</div>
+
+<!-- Adsense under title if enabled from _config.yml (change your pub id and slot) -->
+
+
+<!-- Featured Image -->
+
+<div class="entry-featured-image">
+    
+    <img class="featured-image " src="/seifallahhomrani1.github.io//assets/images/networking/osi_model.png" alt="OSI Model - Crash Course">
+    
+</div>
+
+
+<!-- Content -->
+<!-- Post, Page Content
+================================================== -->
+<div class="article-post">
+    <!-- Toc if any -->
+    
+    <!-- End Toc -->
+    <h3 id="osi-open-systems-interconnection">OSI (Open Systems Interconnection)</h3>
+
+<p>The OSI (Open Systems Interconnection) Model is a standardized model which we use to demonstrate the theory behind computer networking. In practice, it’s actually the more compact TCP/IP model that real-world networking is based off; however the OSI model, in many ways, is easier to get an initial understanding from.</p>
+
+<p>The OSI Model consists of seven layers :</p>
+
+<pre><code>| OSI MODEL    |
+|--------------|
+| Application  |
+| Presentation |
+| Session      |
+| Transport    |
+| Network      |
+| Data Link    |
+| Physical     |
+</code></pre>
+
+<h3 id="layer-7--application">Layer 7 – Application</h3>
+
+<p>The application layer of the OSI model essentially provides networking options to programs running on a computer. It works almost exclusively with applications, providing an interface for them to use in order to transmit data. When data is given to the application layer, it is passed down into the presentation layer.</p>
+
+<h3 id="layer-6--presentation">Layer 6 – Presentation</h3>
+
+<p>The presentation layer receives data from the application layer. This data tends to be in a format that the application understands, but it’s not necessarily in a standardized format that could be understood by the application layer in the receiving computer. The presentation layer translates the data into a standardized format, as well as handling any encryption, compression or other transformations to the data. With this complete, the data is passed down to the session layer.</p>
+
+<h3 id="layer-5--session">Layer 5 – Session</h3>
+
+<p>When the session layer receives the correctly formatted data from the presentation layer, it looks to see if it can set uo a connection with the other computer across the network. It it can’t then it sends back an error and the process goes no further. If a session can be established then it’s the job of the session layer to maintain it, as well as co-operate with the session layer of the remote computer in order to synchronize communications. 
+This is what allows you to make multiple requests to different endpoints simultaneously without all the data getting mixed up. 
+When the session layer has successfully logged a connection between the host and remote computer, the data is passed down to Layer 4 : The transport Layer</p>
+
+<h3 id="layer-4--transport">Layer 4 – Transport</h3>
+
+<p>The transport layer is a very interesting layer that serves numerous important functions. Its first purpose is to choose the protocol over which the data is to be transmitted. The two most common protocols in the transport layer are TCP (Transmission Control Protocol) and UDP (User Datagram Protocol); with TCP the transmission is connection-based which means that a connection between the computers is established and maintained for the duration of the request. This allows for a reliable transmission, as the connection can be used to ensure that the data is sent at an acceptable speed, and that any lost data is re-sent. 
+With UDP, the opposite is true; packets of data are essentially throwing at the receiving computer.
+With a protocol selected, the transport layer then divides the transmission up unto bite-sized pieces (over TCP these are called segments, over UDP they’re called datagrams), which makes it easier to transmit the message successfully.</p>
+
+<h3 id="layer-3--network">Layer 3 – Network</h3>
+
+<p>The network layer is responsible for locating the destination of your request. For example, the Internet is a huge network; when you want to request information from a webpage, it’s the network layer that takes the IP address for the page and figures out the best route to take. At this stage we’re working with what is referred to as Logical addressing  (i.e. IP addresses) which are still software controlled. Logical addresses are used to provide  order to networks, categorizing them and allowing us to properly sort them. Currently the most common form of logical addressing is the IPV4 format, which you’ll likely already be familiar with.</p>
+
+<h3 id="layer-2--data-link">Layer 2 – Data Link</h3>
+
+<p>The data link layer focuses on the physical addressing of the transmission. It receives a packet from the network layer (that includes the IP address for the remote computer) and adds in the physical (MAC) address of the receiving endpoint. Inside every network enabled computer is a Network Interface Card (NIC) which comes with a unique MAC (Media Access Control) address to identify it.</p>
+
+<p>MAC addresses are set by the manufacturer and literally burnt into the card; they can’t be changer – although the can be spoofed. When information is sent across a network, it’s actually the physical address that is used to identify where exactly to send the information.</p>
+
+<p>Additionally, it’s also the job of the data link layer to present the data in a format suitable for transmission. 
+The data link layer also serves an important function when it receives data, as it checks the received information to make sure that it hasn’t been corrupted during transmission, which could well happen when the data is transmitted by layer 1: the physical layer.</p>
+
+<h3 id="layer-1--physical">Layer 1 – Physical</h3>
+
+<p>The physical layer is right down to the hardware of the computer. This is where the electrical pulses that make up data transfer over a network are sent and received. It’s the job if the physical layer to convert the binary data of the transmit them across the network, as well as receiving incoming signals and converting them back into binary data.</p>
+
+<p>Now it’s time for a Q/A :</p>
+
+<blockquote>
+  <p>Which layer would choose to send data over TCP or UDP ?</p>
+</blockquote>
+<details>
+<summary>Click to view answer !</summary>
+
+Layer 4 : Transport
+
+</details>
+
+<blockquote>
+  <p>Which layer Checks received packets to make sure that they haven’t been corrupted ?</p>
+</blockquote>
+<details>
+<summary>Click to view answer !</summary>
+
+Layer 2 : Data Link
+</details>
+
+<blockquote>
+  <p>In which layer would data be formatted in preparation for transmission ?</p>
+</blockquote>
+<details>
+<summary>Click to view answer !</summary>
+
+Layer 2 : Data Link
+
+</details>
+
+<blockquote>
+  <p>Which layer transmits and receives data ?</p>
+</blockquote>
+
+<details>
+<summary>Click to view answer !</summary>
+
+Layer 4 : Physical
+
+</details>
+
+<blockquote>
+  <p>Which layer encrypts, compresses, or otherwise transforms the initial data to give it a standardized format ?</p>
+</blockquote>
+<details>
+<summary>Click to view answer !</summary>
+
+Layer 6: Presentation
+
+</details>
+
+<blockquote>
+  <p>Which layer tracks communications between the host and receiving computers ?</p>
+</blockquote>
+<details>
+<summary>Click to view answer !</summary>
+
+Layer 5 : Session
+
+</details>
+
+<blockquote>
+  <p>Which layer accepts communication requests from applications ?</p>
+</blockquote>
+<details>
+<summary>Click to view answer !</summary>
+
+Layer 7 : Application
+
+</details>
+
+<blockquote>
+  <p>Which layer handles logical addressing ?</p>
+</blockquote>
+<details>
+<summary>Click to view answer !</summary>
+
+Layer 3 : Network
+
+</details>
+
+<blockquote>
+  <p>When sending data over TCP, what would you call the “bite-sized” pieces of data?</p>
+</blockquote>
+<details>
+<summary>Click to view answer !</summary>
+
+Segments
+
+</details>
+
+</div>
+
+<!-- Rating -->
+
+
+<!-- Author Box if enabled from _config.yml -->
+<!-- Author Box -->
+
+
+
+
+<!-- Comments if not disabled with comments: false -->
+<!-- Comments
+================================================== -->
+ 
+<div class="comments">
+    <button class="btn btn-dark show-comments">Load Comments</button>         
+    <div id="comments">  
+        <h4 class="mb-4">Comments</h4>                 
+            <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'demowebsite'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+     
+    <div class="clearfix"></div>              
+    </div>    
+</div>       
+
+
+<!-- Share -->
+<div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=OSI Model - Crash Course&url=/seifallahhomrani1.github.io/OSI-Model/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=/seifallahhomrani1.github.io/OSI-Model/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=/seifallahhomrani1.github.io/OSI-Model/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+
+<!-- Related Post -->
+<!-- Related Posts
+================================================== -->
+<div class=" related-posts ">  
+
+    
+    <h2 class="text-center mb-4">Explore more like this</h2>
+    
+    
+    <div class="d-flex justify-content-center align-items-center">
+    
+    <!-- Categories -->
+    
+    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/categories#Networking">Networking</a>                
+    
+
+    <!-- Tags -->  
+    
+                    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#OSI">OSI</a>               
+                    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#networking">networking</a>               
+    
+
+    </div>
+
+    
+    
+    
+    <div class="blog-grid-container">
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/Socket-Functions/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/networking/socket.png" alt="Socket Functions"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/Socket-Functions/">Socket Functions</a>
+                
+            </h2>
+            <h4 class="card-text">Introduction to Sockets functions and how they work. </h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">14 Dec 2020</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/What-are-sockets/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/networking/socket.png" alt="What are Sockets ?"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/What-are-sockets/">What are Sockets ?</a>
+                
+            </h2>
+            <h4 class="card-text">Introduction to Sockets and how they work. </h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">13 Dec 2020</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/Delays/">
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/Delays/">Delay</a>
+                
+            </h2>
+            <h4 class="card-text"></h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">21 May 2020</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+                
+        </div>        
+</div>
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+    </div>
+
+    
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+                <div class="col-md-6 col-sm-12 text-center text-lg-left">
+                    Copyright © 2021 Seif-Allah's Blog 
+                </div>
+            <div class="col-md-6 col-sm-12 text-center text-lg-right">
+                Made with love by    
+                <a target="_blank" href="fb.com/seifallahhomrani1">Seif-Allah</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
+================================================== -->
+
+<script src="/seifallahhomrani1.github.io/assets/js/prism.js"></script>
+
+<script src="/seifallahhomrani1.github.io/assets/js/theme.js"></script>
+
+
+
+
+<script id="dsq-count-scr" src="//demowebsite.disqus.com/count.js"></script>
+
+
+</body>
+</html>

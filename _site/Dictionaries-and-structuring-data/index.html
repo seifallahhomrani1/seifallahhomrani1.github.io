@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
+<link rel="icon" href="/seifallahhomrani1.github.io/assets/images/favicon.ico">
+
+<title>Python - Dictionaries and Structuring Data | Seif-Allah's Blog</title>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Python - Dictionaries and Structuring Data | Seif-Allah’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Python - Dictionaries and Structuring Data" />
+<meta name="author" content="Seif-Allah" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Dictionaries, Using Data Structures to Model Real-World Things" />
+<meta property="og:description" content="Dictionaries, Using Data Structures to Model Real-World Things" />
+<meta property="og:site_name" content="Seif-Allah’s Blog" />
+<meta property="og:image" content="/seifallahhomrani1.github.io/assets/images/python/python.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="1996-10-30T00:00:00+01:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/seifallahhomrani1.github.io/assets/images/python/python.png" />
+<meta property="twitter:title" content="Python - Dictionaries and Structuring Data" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/seifallahhomrani1.github.io/assets/images/cover.png"},"name":"Seif-Allah"},"image":"/seifallahhomrani1.github.io/assets/images/python/python.png","url":"/seifallahhomrani1.github.io/Dictionaries-and-structuring-data/","headline":"Python - Dictionaries and Structuring Data","dateModified":"1996-10-30T00:00:00+01:00","datePublished":"1996-10-30T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/seifallahhomrani1.github.io/Dictionaries-and-structuring-data/"},"author":{"@type":"Person","name":"Seif-Allah"},"description":"Dictionaries, Using Data Structures to Model Real-World Things","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+<link href="/seifallahhomrani1.github.io/assets/css/prism.css" rel="stylesheet">
+
+<link href="/seifallahhomrani1.github.io/assets/css/theme.css" rel="stylesheet">
+
+<script src="/seifallahhomrani1.github.io/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+
+
+<!-- Begin Sidebar Navigation
+================================================== -->
+
+<div class="sidebar">    
+</div>   
+<div class="nav-icon">
+    <div class="hamburger-bar"></div>
+</div>
+<div id="blackover-nav" class="blackover"></div>
+<nav id="menu">
+    <ul>
+        <h3>Navigation</h3>
+        <li><a href="/seifallahhomrani1.github.io/">Home</a></li>
+        <li><a  href="/seifallahhomrani1.github.io/contact">Contact</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Python">Python</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Java">Java</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#CTF-WriteUp">CTF-WriteUp</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Articles">Articles</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Networking">Networking</a></li>    
+        <li><a href="/seifallahhomrani1.github.io/categories#Databases">Databases</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Django">Django</a></li>     
+        <li><a href="/seifallahhomrani1.github.io/categories#Linux">Linux</a></li>     
+    </ul>   
+</nav>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunr.js"></script>
+
+<style>
+    
+</style>
+
+<div class="wrap-search">
+    <div class="d-flex align-items-center ml-auto">
+        <i class="fas fa-search show-search"></i>
+        <form class="bd-search ml-3" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+            <input type="text" class="form-control bigradius text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+        </form>
+    </div>
+</div>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunrsearchengine.js"></script>
+
+
+<!-- End Sidebar Navigation
+================================================== -->
+
+<div class="site-content ">
+
+<div class="container">
+
+    <!-- Site Logo/Name
+    ================================================== -->
+   
+    <a class="navbar-brand" href="/seifallahhomrani1.github.io/">
+        <img src="/seifallahhomrani1.github.io/assets/images/cover.png" alt="Seif-Allah's Blog">
+    </a>  
+   
+
+    <!-- Site Tag
+    ================================================== -->
+    
+
+    <!-- Content
+    ================================================== -->
+    <div class="main-content">
+        <div class="entry-header">
+    <!-- Post Title -->
+    <h1 class="posttitle">Python - Dictionaries and Structuring Data</h1>
+    <!-- Author & Date  Box -->
+    
+    
+    <div class="d-flex align-items-center mt-4">
+        <div>
+            
+            <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+            
+        </div>            
+        <div>
+        Written by <a target="_blank" class="text-dark" href="seifallahhomrani1.social">Seif-Allah</a> on 
+        <span class="post-date"><time class="post-date" datetime="1996-10-30">30 Oct 1996</time></span>           
+        
+        </div>            
+    </div>
+    
+</div>
+
+<!-- Adsense under title if enabled from _config.yml (change your pub id and slot) -->
+
+
+<!-- Featured Image -->
+
+<div class="entry-featured-image">
+    
+    <img class="featured-image " src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Dictionaries and Structuring Data">
+    
+</div>
+
+
+<!-- Content -->
+<!-- Post, Page Content
+================================================== -->
+<div class="article-post">
+    <!-- Toc if any -->
+    
+    <!-- End Toc -->
+    <h3 id="the-dictionary-data-type">The Dictionary Data Type</h3>
+<p>Like a list, a <strong>dictionary</strong> is a collection of many values. But unlike indexes for lists, indexes for dictionaries can use many different data types, not just integers. Indexes for dictionaries are called <strong>keys</strong>, and a key with its associated value is called a <strong>key-value pair</strong>.
+In code, a dictionary is typed with braces {}.
+<br />
+<script src="https://gist.github.com/pu71n/f0e79038bbe1f766afc714d40f7298c5.js"></script></p>
+
+<p>Dictionaries can still use integer values as keys, just like lists use integers for indexes, but they do not have to start at 0 and can be any number.</p>
+
+<h3 id="dictionaries-vs-lists">Dictionaries vs. Lists</h3>
+<p>Unlike lists, items in dictionaries are unordered. There’s no first item in a dictionary. 
+Trying to access a key that does not exist in a dictionary will result in a <strong>keyError</strong> message, much like a list’s “out-of-range” IndexError. 
+Though Dictionaries are not ordered, the fact that you can have arbitrary values for the keys allows you to organize you data in a powerful ways.</p>
+
+<h3 id="the-keys-values-and-items-methods">The keys(), values(), and items() Methods</h3>
+<p>There are three dictionary methods that will return list-like values of the dictionary’keys, values, or both keys and values: <strong>keys(), values()</strong> and <strong>items()</strong>.
+The values returned by these methods are not true lists: They cannot be modified and do not have and <strong>append()</strong> method. But these data types (dict_keys, dict_values, and dict_items, respectively) can be used in <strong>for</strong> loops. 
+Here’s an example : 
+<br />
+<script src="https://gist.github.com/pu71n/4cdffdae93fedbe51e38cd793ad8da95.js"></script>
+Using the keys(), values() and items() methods, a for loop can iterate over the keys, values, or key-value pairs in a dictionay, respectively. Notice that the values in the dict_items value returned by the items() method are tuples of the key and value.</p>
+
+<p>If you want a true list from one of these methods, pass its list-like return value to the list() function. If you want a true list from the one of these methods, pass its list-like return value to the list() function.</p>
+
+<p>You can also use the multiple assignement trick in a for loop to assign the key and a value to seperate variables.
+Here’s an example : 
+<br />
+<script src="https://gist.github.com/pu71n/4450808471e4407903661f346c2ca005.js"></script></p>
+
+<h3 id="checking-whether-a-key-or-value-exists-in-a-dictionary">Checking Whether a Key or Value Exists in a Dictionary</h3>
+<p>Recall from the previous post that the <strong>in</strong> and <strong>not in</strong> operators can check whether a value exists in a list. You can also use these operators to see whether a certain key or values exists in a dictionary. Like for example : 
+<br />
+<script src="https://gist.github.com/pu71n/be5750fddd92ab8c8815bdc388a18579.js"></script></p>
+
+<p>We can use “‘president’ in whoami” without the keys() method and get the same answer.</p>
+
+<h3 id="the-get-method">The get() Method</h3>
+<p>It’s tedious to check whether a key exists in a dictionary before accessing that key’s value. Fortunatly, dictionaries have a get() method that takes two arguments : the key of the value to retrieve and a fallback value to return if that key does not exist.</p>
+<h3 id="the-setdefault-method">The setdefault() Method</h3>
+<p>You’ll often have to set a value in a dictionary for a certain key only if that key does not already have a value. The <strong>setdefault()</strong> method offers a way to do this in one line of code. The first argument passed to the method is the key to check for, and the second argument is the value to set at that key if the key does not exist. If the key does exist, the <strong>setdefault()</strong> method returns the key’s value.</p>
+
+<p>Here’s an example : 
+<br />
+<script src="https://gist.github.com/pu71n/1ca8b06756806367ca823efa075c69a7.js"></script></p>
+
+<p>The setdefault() method is a nice shortcut to ensure that a key exists.</p>
+
+<p>Enough for today, see you tomorrow &lt;3</p>
+
+</div>
+
+<!-- Rating -->
+
+
+<!-- Author Box if enabled from _config.yml -->
+<!-- Author Box -->
+
+
+
+
+<!-- Comments if not disabled with comments: false -->
+<!-- Comments
+================================================== -->
+ 
+<div class="comments">
+    <button class="btn btn-dark show-comments">Load Comments</button>         
+    <div id="comments">  
+        <h4 class="mb-4">Comments</h4>                 
+            <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'demowebsite'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+     
+    <div class="clearfix"></div>              
+    </div>    
+</div>       
+
+
+<!-- Share -->
+<div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Python - Dictionaries and Structuring Data&url=/seifallahhomrani1.github.io/Dictionaries-and-structuring-data/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=/seifallahhomrani1.github.io/Dictionaries-and-structuring-data/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=/seifallahhomrani1.github.io/Dictionaries-and-structuring-data/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+
+<!-- Related Post -->
+<!-- Related Posts
+================================================== -->
+<div class=" related-posts ">  
+
+    
+    <h2 class="text-center mb-4">Explore more like this</h2>
+    
+    
+    <div class="d-flex justify-content-center align-items-center">
+    
+    <!-- Categories -->
+    
+    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/categories#Python">Python</a>                
+    
+
+    <!-- Tags -->  
+    
+    
+
+    </div>
+
+    
+    
+    
+    <div class="blog-grid-container">
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/Files/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Files"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/Files/">Python - Files</a>
+                
+            </h2>
+            <h4 class="card-text">Working with files in Python, the OS module and checking Path validity.</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">03 Nov 1996</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/Pattern-Matching/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Pattern Matching"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/Pattern-Matching/">Python - Pattern Matching</a>
+                
+            </h2>
+            <h4 class="card-text">Using Regular expressions AKA Regex, making character classes, etc.</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">02 Nov 1996</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/Manipulating-Strings/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Manipulating Strings"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/Manipulating-Strings/">Python - Manipulating Strings</a>
+                
+            </h2>
+            <h4 class="card-text">Introduction to Python  </h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">31 Oct 1996</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+                
+        </div>        
+</div>
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+    </div>
+
+    
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+                <div class="col-md-6 col-sm-12 text-center text-lg-left">
+                    Copyright © 2021 Seif-Allah's Blog 
+                </div>
+            <div class="col-md-6 col-sm-12 text-center text-lg-right">
+                Made with love by    
+                <a target="_blank" href="fb.com/seifallahhomrani1">Seif-Allah</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
+================================================== -->
+
+<script src="/seifallahhomrani1.github.io/assets/js/prism.js"></script>
+
+<script src="/seifallahhomrani1.github.io/assets/js/theme.js"></script>
+
+
+
+
+<script id="dsq-count-scr" src="//demowebsite.disqus.com/count.js"></script>
+
+
+</body>
+</html>

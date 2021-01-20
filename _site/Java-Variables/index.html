@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
+<link rel="icon" href="/seifallahhomrani1.github.io/assets/images/favicon.ico">
+
+<title>Java - Variables | Seif-Allah's Blog</title>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Java - Variables | Seif-Allah’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Java - Variables" />
+<meta name="author" content="Seif-Allah" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Java variables: Local, Instance and Static" />
+<meta property="og:description" content="Java variables: Local, Instance and Static" />
+<meta property="og:site_name" content="Seif-Allah’s Blog" />
+<meta property="og:image" content="/seifallahhomrani1.github.io/assets/images/java/oop_concepts.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-28T00:00:00+01:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/seifallahhomrani1.github.io/assets/images/java/oop_concepts.png" />
+<meta property="twitter:title" content="Java - Variables" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/seifallahhomrani1.github.io/assets/images/cover.png"},"name":"Seif-Allah"},"image":"/seifallahhomrani1.github.io/assets/images/java/oop_concepts.png","url":"/seifallahhomrani1.github.io/Java-Variables/","headline":"Java - Variables","dateModified":"2020-12-28T00:00:00+01:00","datePublished":"2020-12-28T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/seifallahhomrani1.github.io/Java-Variables/"},"author":{"@type":"Person","name":"Seif-Allah"},"description":"Java variables: Local, Instance and Static","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+<link href="/seifallahhomrani1.github.io/assets/css/prism.css" rel="stylesheet">
+
+<link href="/seifallahhomrani1.github.io/assets/css/theme.css" rel="stylesheet">
+
+<script src="/seifallahhomrani1.github.io/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+
+
+<!-- Begin Sidebar Navigation
+================================================== -->
+
+<div class="sidebar">    
+</div>   
+<div class="nav-icon">
+    <div class="hamburger-bar"></div>
+</div>
+<div id="blackover-nav" class="blackover"></div>
+<nav id="menu">
+    <ul>
+        <h3>Navigation</h3>
+        <li><a href="/seifallahhomrani1.github.io/">Home</a></li>
+        <li><a  href="/seifallahhomrani1.github.io/contact">Contact</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Python">Python</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Java">Java</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#CTF-WriteUp">CTF-WriteUp</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Articles">Articles</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Networking">Networking</a></li>    
+        <li><a href="/seifallahhomrani1.github.io/categories#Databases">Databases</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Django">Django</a></li>     
+        <li><a href="/seifallahhomrani1.github.io/categories#Linux">Linux</a></li>     
+    </ul>   
+</nav>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunr.js"></script>
+
+<style>
+    
+</style>
+
+<div class="wrap-search">
+    <div class="d-flex align-items-center ml-auto">
+        <i class="fas fa-search show-search"></i>
+        <form class="bd-search ml-3" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+            <input type="text" class="form-control bigradius text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+        </form>
+    </div>
+</div>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunrsearchengine.js"></script>
+
+
+<!-- End Sidebar Navigation
+================================================== -->
+
+<div class="site-content ">
+
+<div class="container">
+
+    <!-- Site Logo/Name
+    ================================================== -->
+   
+    <a class="navbar-brand" href="/seifallahhomrani1.github.io/">
+        <img src="/seifallahhomrani1.github.io/assets/images/cover.png" alt="Seif-Allah's Blog">
+    </a>  
+   
+
+    <!-- Site Tag
+    ================================================== -->
+    
+
+    <!-- Content
+    ================================================== -->
+    <div class="main-content">
+        <div class="entry-header">
+    <!-- Post Title -->
+    <h1 class="posttitle">Java - Variables</h1>
+    <!-- Author & Date  Box -->
+    
+    
+    <div class="d-flex align-items-center mt-4">
+        <div>
+            
+            <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+            
+        </div>            
+        <div>
+        Written by <a target="_blank" class="text-dark" href="seifallahhomrani1.social">Seif-Allah</a> on 
+        <span class="post-date"><time class="post-date" datetime="2020-12-28">28 Dec 2020</time></span>           
+        
+        </div>            
+    </div>
+    
+</div>
+
+<!-- Adsense under title if enabled from _config.yml (change your pub id and slot) -->
+
+
+<!-- Featured Image -->
+
+<div class="entry-featured-image">
+    
+    <img class="featured-image " src="/seifallahhomrani1.github.io//assets/images/java/oop_concepts.png" alt="Java - Variables">
+    
+</div>
+
+
+<!-- Content -->
+<!-- Post, Page Content
+================================================== -->
+<div class="article-post">
+    <!-- Toc if any -->
+    
+    <!-- End Toc -->
+    <h3 id="java-variables">Java Variables</h3>
+
+<p>A variable is a container which holds the value while the Java Program is executed. A variable is assigned with a data type.</p>
+
+<p>Variable is a name of memory location. There are three types of variables in java: local, instance and static.</p>
+
+<p>There are two types of data types in Java: primitive and non-primitive.</p>
+
+<ol>
+  <li><strong>Local Variable</strong>
+A variable declared inside the body of the method is called local variable. You can use this variable only within that method and the other methods in the class aren’t even aware that the variable exists.</li>
+</ol>
+
+<p>A local variable cannot be defined with static keyword.</p>
+
+<ol>
+  <li><strong>Instance Variable</strong>
+A variable declared inside the class but outside the body of the method, is called instance variable. 
+It is not declared as static.</li>
+</ol>
+
+<p>It is called instance variable because its value is instance specific and is not shared among instances.</p>
+
+<ol>
+  <li><strong>Static Variable</strong></li>
+</ol>
+
+<p>A variable which is declared as static is called static variable. It cannot be local. You can create a single copy of static variable and share among all the instances of the class . Memory allocation for static variable happens only once when the class is loaded in the memory.</p>
+
+<h4 id="example-to-understand-the-types-of-variables-in-java">Example to understand the types of variables in Java</h4>
+
+<pre><code class="language-java">class A {
+    int data=50; //instance variable
+    static int m=100; // static variable
+
+
+    void method(){
+        int n=90; //local variable
+    }
+} //end of class
+</code></pre>
+
+<h5 id="java-variable-example--add-two-numbers">Java Variable Example : Add Two Numbers</h5>
+
+<pre><code class="language-java">class Simple{
+    public static void main(String[] args){
+        int a=10; //a is an instance variable
+        int b=10; //b is an instance variable
+        int c=a+b; 
+        System.out.println(c);
+    }   
+}
+
+Output : 20
+</code></pre>
+
+<h5 id="java-variable-example--widening">Java Variable Example : Widening</h5>
+
+<pre><code class="language-java">class Simple{
+    public static void main(String[] args){
+        int a=10; 
+        float f=a;
+        System.out.println(a);
+        System.out.println(f);
+        
+    }
+}
+
+Output : 
+10
+10.0
+</code></pre>
+
+<h4 id="java-variable-example-narrowing-typecasting">Java Variable Example: Narrowing (Typecasting)</h4>
+
+<pre><code class="language-java">class simple{
+    public static void main(String[] args){
+        float f=10.5f; //f is placed after value because by default value is double, so to tell the compiler to treat is as float explicitly we use f or F
+        int a=f; // This will give a runtime error
+        int a = (int)f; // This is typecasting
+        System.out.println(f); 
+        System.out.println(a); 
+
+    }
+}
+
+Output : 
+10.5
+10
+</code></pre>
+
+<h4 id="java-variable-example--overflow">Java Variable Example : Overflow</h4>
+
+<p>Overflow occurs when we assign such a value to a variable which is more than the maximum permissible value.</p>
+
+<pre><code class="language-java">class Simple{
+    public static void main(String[] args){
+        //Overflow
+        int a=130; 
+        byte b = (byte)a; //Max Value of byte is 126  
+        System.out.println(a);
+        System.out.println(b);
+    }
+}
+
+Output : 
+130
+-126
+</code></pre>
+<h4 id="java-variable-example--adding-lower-type">Java Variable Example : Adding Lower Type</h4>
+
+<p>```java
+class Simple{
+    public static void main(String[] args){
+        byte a = 10; 
+        byte b = 10; 
+        byte c = a+b; // Compile Time Error : because a+b will be int 
+        byte c = (byte)(a+b);
+        System.out.println(c);
+    }
+}</p>
+
+<p>Output :
+20</p>
+
+</div>
+
+<!-- Rating -->
+
+
+<!-- Author Box if enabled from _config.yml -->
+<!-- Author Box -->
+
+
+
+
+<!-- Comments if not disabled with comments: false -->
+<!-- Comments
+================================================== -->
+ 
+<div class="comments">
+    <button class="btn btn-dark show-comments">Load Comments</button>         
+    <div id="comments">  
+        <h4 class="mb-4">Comments</h4>                 
+            <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'demowebsite'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+     
+    <div class="clearfix"></div>              
+    </div>    
+</div>       
+
+
+<!-- Share -->
+<div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Java - Variables&url=/seifallahhomrani1.github.io/Java-Variables/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=/seifallahhomrani1.github.io/Java-Variables/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=/seifallahhomrani1.github.io/Java-Variables/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+
+<!-- Related Post -->
+<!-- Related Posts
+================================================== -->
+<div class=" related-posts ">  
+
+    
+    <h2 class="text-center mb-4">Explore more like this</h2>
+    
+    
+    <div class="d-flex justify-content-center align-items-center">
+    
+    <!-- Categories -->
+    
+    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/categories#Java">Java</a>                
+    
+
+    <!-- Tags -->  
+    
+    
+
+    </div>
+
+    
+    
+    
+    <div class="blog-grid-container">
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/control-statements/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/java/oop_concepts.png" alt="Java - OOP Concepts"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/control-statements/">Java - OOP Concepts</a>
+                
+            </h2>
+            <h4 class="card-text">Java OOP concepts.</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">28 Dec 2020</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/JVM-architecture/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/java/oop_concepts.png" alt="Java - JVM Architecture"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/JVM-architecture/">Java - JVM Architecture</a>
+                
+            </h2>
+            <h4 class="card-text">Java - JVM architecture</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">28 Dec 2020</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/First-Java-program/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/java/oop_concepts.png" alt="Java - Clickable Pen program"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/First-Java-program/">Java - Clickable Pen program</a>
+                
+            </h2>
+            <h4 class="card-text">Java - First OOP program.</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">28 Dec 2020</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+                
+        </div>        
+</div>
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+    </div>
+
+    
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+                <div class="col-md-6 col-sm-12 text-center text-lg-left">
+                    Copyright © 2021 Seif-Allah's Blog 
+                </div>
+            <div class="col-md-6 col-sm-12 text-center text-lg-right">
+                Made with love by    
+                <a target="_blank" href="fb.com/seifallahhomrani1">Seif-Allah</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
+================================================== -->
+
+<script src="/seifallahhomrani1.github.io/assets/js/prism.js"></script>
+
+<script src="/seifallahhomrani1.github.io/assets/js/theme.js"></script>
+
+
+
+
+<script id="dsq-count-scr" src="//demowebsite.disqus.com/count.js"></script>
+
+
+</body>
+</html>

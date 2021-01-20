@@ -1,0 +1,125 @@
+I"Ð<h3 id="java-variables">Java Variables</h3>
+
+<p>A variable is a container which holds the value while the Java Program is executed. A variable is assigned with a data type.</p>
+
+<p>Variable is a name of memory location. There are three types of variables in java: local, instance and static.</p>
+
+<p>There are two types of data types in Java: primitive and non-primitive.</p>
+
+<ol>
+  <li><strong>Local Variable</strong>
+A variable declared inside the body of the method is called local variable. You can use this variable only within that method and the other methods in the class arenâ€™t even aware that the variable exists.</li>
+</ol>
+
+<p>A local variable cannot be defined with static keyword.</p>
+
+<ol>
+  <li><strong>Instance Variable</strong>
+A variable declared inside the class but outside the body of the method, is called instance variable. 
+It is not declared as static.</li>
+</ol>
+
+<p>It is called instance variable because its value is instance specific and is not shared among instances.</p>
+
+<ol>
+  <li><strong>Static Variable</strong></li>
+</ol>
+
+<p>A variable which is declared as static is called static variable. It cannot be local. You can create a single copy of static variable and share among all the instances of the class . Memory allocation for static variable happens only once when the class is loaded in the memory.</p>
+
+<h4 id="example-to-understand-the-types-of-variables-in-java">Example to understand the types of variables in Java</h4>
+
+<pre><code class="language-java">class A {
+    int data=50; //instance variable
+    static int m=100; // static variable
+
+
+    void method(){
+        int n=90; //local variable
+    }
+} //end of class
+</code></pre>
+
+<h5 id="java-variable-example--add-two-numbers">Java Variable Example : Add Two Numbers</h5>
+
+<pre><code class="language-java">class Simple{
+    public static void main(String[] args){
+        int a=10; //a is an instance variable
+        int b=10; //b is an instance variable
+        int c=a+b; 
+        System.out.println(c);
+    }   
+}
+
+Output : 20
+</code></pre>
+
+<h5 id="java-variable-example--widening">Java Variable Example : Widening</h5>
+
+<pre><code class="language-java">class Simple{
+    public static void main(String[] args){
+        int a=10; 
+        float f=a;
+        System.out.println(a);
+        System.out.println(f);
+        
+    }
+}
+
+Output : 
+10
+10.0
+</code></pre>
+
+<h4 id="java-variable-example-narrowing-typecasting">Java Variable Example: Narrowing (Typecasting)</h4>
+
+<pre><code class="language-java">class simple{
+    public static void main(String[] args){
+        float f=10.5f; //f is placed after value because by default value is double, so to tell the compiler to treat is as float explicitly we use f or F
+        int a=f; // This will give a runtime error
+        int a = (int)f; // This is typecasting
+        System.out.println(f); 
+        System.out.println(a); 
+
+    }
+}
+
+Output : 
+10.5
+10
+</code></pre>
+
+<h4 id="java-variable-example--overflow">Java Variable Example : Overflow</h4>
+
+<p>Overflow occurs when we assign such a value to a variable which is more than the maximum permissible value.</p>
+
+<pre><code class="language-java">class Simple{
+    public static void main(String[] args){
+        //Overflow
+        int a=130; 
+        byte b = (byte)a; //Max Value of byte is 126  
+        System.out.println(a);
+        System.out.println(b);
+    }
+}
+
+Output : 
+130
+-126
+</code></pre>
+<h4 id="java-variable-example--adding-lower-type">Java Variable Example : Adding Lower Type</h4>
+
+<p>```java
+class Simple{
+    public static void main(String[] args){
+        byte a = 10; 
+        byte b = 10; 
+        byte c = a+b; // Compile Time Error : because a+b will be int 
+        byte c = (byte)(a+b);
+        System.out.println(c);
+    }
+}</p>
+
+<p>Output :
+20</p>
+:ET

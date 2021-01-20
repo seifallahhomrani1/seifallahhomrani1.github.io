@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
+<link rel="icon" href="/seifallahhomrani1.github.io/assets/images/favicon.ico">
+
+<title>Python - Flow Control | Seif-Allah's Blog</title>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Python - Flow Control | Seif-Allah’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Python - Flow Control" />
+<meta name="author" content="Seif-Allah" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Booleans, Conditions, Blocks of Code, Flow Control Statements and Modules." />
+<meta property="og:description" content="Booleans, Conditions, Blocks of Code, Flow Control Statements and Modules." />
+<meta property="og:site_name" content="Seif-Allah’s Blog" />
+<meta property="og:image" content="/seifallahhomrani1.github.io/assets/images/python/python.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="1996-10-27T00:00:00+01:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/seifallahhomrani1.github.io/assets/images/python/python.png" />
+<meta property="twitter:title" content="Python - Flow Control" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/seifallahhomrani1.github.io/assets/images/cover.png"},"name":"Seif-Allah"},"image":"/seifallahhomrani1.github.io/assets/images/python/python.png","url":"/seifallahhomrani1.github.io/python-flow_control/","headline":"Python - Flow Control","dateModified":"1996-10-27T00:00:00+01:00","datePublished":"1996-10-27T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/seifallahhomrani1.github.io/python-flow_control/"},"author":{"@type":"Person","name":"Seif-Allah"},"description":"Booleans, Conditions, Blocks of Code, Flow Control Statements and Modules.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+<link href="/seifallahhomrani1.github.io/assets/css/prism.css" rel="stylesheet">
+
+<link href="/seifallahhomrani1.github.io/assets/css/theme.css" rel="stylesheet">
+
+<script src="/seifallahhomrani1.github.io/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+
+
+<!-- Begin Sidebar Navigation
+================================================== -->
+
+<div class="sidebar">    
+</div>   
+<div class="nav-icon">
+    <div class="hamburger-bar"></div>
+</div>
+<div id="blackover-nav" class="blackover"></div>
+<nav id="menu">
+    <ul>
+        <h3>Navigation</h3>
+        <li><a href="/seifallahhomrani1.github.io/">Home</a></li>
+        <li><a  href="/seifallahhomrani1.github.io/contact">Contact</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Python">Python</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Java">Java</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#CTF-WriteUp">CTF-WriteUp</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Articles">Articles</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Networking">Networking</a></li>    
+        <li><a href="/seifallahhomrani1.github.io/categories#Databases">Databases</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Django">Django</a></li>     
+        <li><a href="/seifallahhomrani1.github.io/categories#Linux">Linux</a></li>     
+    </ul>   
+</nav>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunr.js"></script>
+
+<style>
+    
+</style>
+
+<div class="wrap-search">
+    <div class="d-flex align-items-center ml-auto">
+        <i class="fas fa-search show-search"></i>
+        <form class="bd-search ml-3" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+            <input type="text" class="form-control bigradius text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+        </form>
+    </div>
+</div>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunrsearchengine.js"></script>
+
+
+<!-- End Sidebar Navigation
+================================================== -->
+
+<div class="site-content ">
+
+<div class="container">
+
+    <!-- Site Logo/Name
+    ================================================== -->
+   
+    <a class="navbar-brand" href="/seifallahhomrani1.github.io/">
+        <img src="/seifallahhomrani1.github.io/assets/images/cover.png" alt="Seif-Allah's Blog">
+    </a>  
+   
+
+    <!-- Site Tag
+    ================================================== -->
+    
+
+    <!-- Content
+    ================================================== -->
+    <div class="main-content">
+        <div class="entry-header">
+    <!-- Post Title -->
+    <h1 class="posttitle">Python - Flow Control</h1>
+    <!-- Author & Date  Box -->
+    
+    
+    <div class="d-flex align-items-center mt-4">
+        <div>
+            
+            <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+            
+        </div>            
+        <div>
+        Written by <a target="_blank" class="text-dark" href="seifallahhomrani1.social">Seif-Allah</a> on 
+        <span class="post-date"><time class="post-date" datetime="1996-10-27">27 Oct 1996</time></span>           
+        
+        </div>            
+    </div>
+    
+</div>
+
+<!-- Adsense under title if enabled from _config.yml (change your pub id and slot) -->
+
+
+<!-- Featured Image -->
+
+<div class="entry-featured-image">
+    
+    <img class="featured-image " src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Flow Control">
+    
+</div>
+
+
+<!-- Content -->
+<!-- Post, Page Content
+================================================== -->
+<div class="article-post">
+    <!-- Toc if any -->
+    
+    
+    <div class="toc mt-4 mb-4 lead">
+        <h3 class="font-weight-bold">Summary</h3>
+        <ul>
+  <li><a href="#prerequisite-">Prerequisite :</a></li>
+  <li><a href="#boolean-values-">Boolean Values :</a></li>
+  <li><a href="#comparison-operators">Comparison Operators</a></li>
+  <li><a href="#boolean-operators">Boolean Operators</a></li>
+  <li><a href="#the-not-operator">The not Operator</a></li>
+  <li><a href="#elements-of-flow-control">Elements of Flow Control</a></li>
+  <li><a href="#flow-control-statements">Flow Control Statements</a></li>
+  <li><a href="#importing-modules">Importing Modules</a></li>
+  <li><a href="#ending-a-program-early-with-sysexit">Ending a Program Early with sys.exit()</a></li>
+</ul>
+    </div>
+    
+    <!-- End Toc -->
+    <h3 id="prerequisite-">Prerequisite :</h3>
+<p>Last post.</p>
+
+<h3 id="boolean-values-">Boolean Values :</h3>
+<p>The Boolean data type has only two values : True and False.
+They also start with a capital T or F, with the rest of the word in lowercase.</p>
+
+<h3 id="comparison-operators">Comparison Operators</h3>
+<p>Comparison operators compare two values and evaluate down to a sing boolean value.</p>
+
+<pre>
+
+| Operator    | Meaning                  |
+|-------------|--------------------------|
+| ==          | Equal to                 |
+| !=          | Not equal to             |
+| &lt;           | Less than                |
+| &gt;           | Greater than             |
+| &lt;=          | Less than or equal to    |
+| &gt;=          | Greater than or equal to |
+
+
+</pre>
+
+<script src="https://gist.github.com/pu71n/25a79b6f9784b7a8b5068d502d703e36.js"></script>
+
+<ul>
+  <li>Note that an integer or floating-point value will always be unequal to a string value. Python considers strings as text.</li>
+  <li>The = operator is for assignment only, not to confuse with the == (equal to ) operator.</li>
+</ul>
+
+<h3 id="boolean-operators">Boolean Operators</h3>
+
+<p>The threee boolean operators (and, or, and not) are used to compare Boolean values. Like comparison operators, they evaluate these expressions down to a boolean value.</p>
+
+<p><strong>The “and” operator</strong>
+<br /></p>
+<pre>
+| Expression             | Evaluates to |
+|------------------------|--------------|
+| True and True          | True         |
+| True and False         | False        |
+| False and True         | False        |
+| False and False        | False        |
+</pre>
+<p><br />
+<strong>The “or” operator</strong></p>
+<pre>
+| Expression             | Evaluates to |
+|------------------------|--------------|
+| True or True           | True         |
+| True or False          | True         |
+| False or True          | True         |
+| False or False         | False        |
+</pre>
+
+<h3 id="the-not-operator">The not Operator</h3>
+<p>Unlike “and” and “or”, the not operator operates on only one boolean value (or expression). The not operator simply evaluates to the opposite boolean value.</p>
+
+<script src="https://gist.github.com/pu71n/dd5365f135cf9078ac6a15b34c5d3269.js"></script>
+
+<p>The Boolean operators have an order of operations just like the math operators do. After any math and comparison operators evaluate, Python evaluates the not operators first, then the and operators, and then the or operators.</p>
+
+<h3 id="elements-of-flow-control">Elements of Flow Control</h3>
+<p>Flow control statements often start with a “condition”, and all are followed by a block of code called the “clause”.</p>
+<ul>
+  <li>Conditions :
+The boolean expressions that we’ve talked about can be considered all as conditions, which are the same thing as expressions; condition is just a more specific name in the context of flow control statements. Conditions always evaluate down to a boolean value, True or False.</li>
+  <li>Blocks of Code : 
+Lines of Python code can be grouped together in blocks. You can tell when a block begins and ends from the indentation of the lines of code. The are three rules for blocks.
+    <ol>
+      <li>Blocks begin when the indentation increases.</li>
+      <li>Block’s can contain other blocks.</li>
+      <li>Blocks end when the indentation decreases to zero or to a containing block’s indentation.</li>
+    </ol>
+  </li>
+</ul>
+
+<p>Let’s take an example : 
+<script src="https://gist.github.com/pu71n/7e96e6a9d1436518cfa97d4e557084dd.js"></script></p>
+
+<p>By looking at the indentations, you’ll be able to identify the blocks of code.</p>
+
+<h3 id="flow-control-statements">Flow Control Statements</h3>
+<p>Now let’s take a look at the most important piece of flow control: **the statements themselves**.</p>
+
+<ol>
+  <li><strong>if statements</strong> : take a look at the previous example and you’ll understand the syntax of an if statement :
+    <ul>
+      <li>The <strong>if</strong> keyword .</li>
+      <li>A condition (that is, an expression that evaluates to Trus or False)</li>
+      <li>A colon</li>
+      <li>Starting on the next line, an indented block of code (called the if clause)</li>
+    </ul>
+  </li>
+  <li><strong>else statements</strong> :<br />
+The else clause is executed only when the if statement’s condition is false. 
+The else statement always consists of the following :
+    <ul>
+      <li>The <strong>else</strong> keyword.</li>
+      <li>A colon</li>
+      <li>Starting on the next line, an indented block of code (called the else clause)</li>
+    </ul>
+  </li>
+  <li><strong>elif statements</strong> : 
+The elif statement is an “else if” statement that always follows an if or another elif statement. It provides another condition that is checked only if any of the previous conditions were False. Its synax is :
+    <ul>
+      <li>The <strong>elif</strong> keyword.</li>
+      <li>A condition.</li>
+      <li>A colon</li>
+      <li>Starting on the next line, an indented block of code (called theelif clause)</li>
+    </ul>
+  </li>
+  <li><strong>while Loop Statement</strong> :
+The code in a while clause will be executed as long as the while statement’s condition is True. In code, a while statement always consists of the following :
+    <ul>
+      <li>The while keyword</li>
+      <li>A condition</li>
+      <li>A colon</li>
+      <li>Starting on the next line, an indented block of code (called the while clause)</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>break Statements</strong> :
+There’s a shortcut to getting the program execution to break out of a while loop’s clause early. If the execution reaches a break statement, it immediatly exits the while loop’s clause. In code, a break statement simply contains the <strong>break</strong> keyword.</p>
+  </li>
+  <li>
+    <p><strong>continue Statements</strong> : 
+Like break statements, continue statements are used inside loops. When the program execution reaches a continue statement, the program execution immediately jumps back to the start of the loop and reevaluates the loop’s condition.</p>
+  </li>
+  <li><strong>for loops and the rang() function</strong>:
+In code a for statement with a range() function looks something like <strong>for i in range(5):</strong> and always includes the following :
+    <ul>
+      <li>The <strong>for</strong> keyword</li>
+      <li>A variable name</li>
+      <li>The in keyword</li>
+      <li>A call to the range() method with up to three integers passed to it (Starting, Stopping, and Stepping Arguments)
+The first argument will be where the for loop’s variable starts, and the second argument will be up to, but not including, the number to stop at, and the third is the step; the amount that the variable is increased by after each iteration.</li>
+      <li>A colon</li>
+      <li>Starting on the next line, an indented block of code (called the for clause)
+Like the most programming languages for loops, the variable starts with a 0 and ends with 4 (n-1).
+Note that you can use <strong>break</strong> and <strong>continue</strong> statements inside for loops as well. The continue statement will continue to the next value of the for loop’s counter, as if the program execution had reached the end of the loop and returned to the start. In fact, you can use continue and break statements only inside while and for loops. If you try to use these statements elsewhere, Python will give you an error.</li>
+    </ul>
+  </li>
+</ol>
+
+<p><strong>Notes</strong> :</p>
+<ul>
+  <li>Python does not have a <strong>Do While</strong> loop but we can make one.</li>
+  <li>There are some values in other data types that conditions will consider equivalent to True and False such as : 0, 0.0 and ‘’ (The empty string).</li>
+  <li>A negative for loop example should be like :
+    <blockquote>
+      <p>&gt;&gt;&gt; for i in range(5,-1,-1): print (i)
+…
+5
+4
+3
+2
+1
+0</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h3 id="importing-modules">Importing Modules</h3>
+<p>All Python programs can call a basic set of functions called built-in functions, including the print(), input(), and len() functions you’ve see before. Python also comes with a set of modules called the standard library. Each module is a Python program that contains a related group of functions that can be embedded in your programs. For example the <strong>math</strong> module has mathematics related functions, the random <strong>random</strong> module has rundom number-related functions, and so on.
+Before you can use the functions in a module, you must import the module with an import statement. In code, an import statement consists of the following :</p>
+<ul>
+  <li>The <strong>import</strong> keyword</li>
+  <li>The name of the module</li>
+  <li>Optionally, more module names, as long as they are seperated by commas
+Once you import a module, you can use all the cool functions of that module.</li>
+</ul>
+
+<p><strong>Note</strong> : When we call imported functions, we need to use the name of the imported module as a prefix (e.g random.randint()). There’s an alternative form of the import statement which is <strong>from</strong>, composed by from keyword followed by the module name. Whith this form of import statement, calls to functions will not need the prefix. However, using the full name makes for more readable code, so it is better to use the normal form of the import statement.</p>
+
+<h3 id="ending-a-program-early-with-sysexit">Ending a Program Early with sys.exit()</h3>
+<p>The last flow control concept is how to terminate the program. This always happens if the program execution reaches the bottom of the instructions. However, you can cause the program to terminate, or exit, by calling the sys.exit() function. Since this function is in the <strong>sys</strong> module, you have to import it before your program can use it.</p>
+
+<p><br />
+That’s all for today ! See you tomorrow &lt;3</p>
+
+
+</div>
+
+<!-- Rating -->
+
+
+<!-- Author Box if enabled from _config.yml -->
+<!-- Author Box -->
+
+
+
+
+<!-- Comments if not disabled with comments: false -->
+<!-- Comments
+================================================== -->
+ 
+<div class="comments">
+    <button class="btn btn-dark show-comments">Load Comments</button>         
+    <div id="comments">  
+        <h4 class="mb-4">Comments</h4>                 
+            <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'demowebsite'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+     
+    <div class="clearfix"></div>              
+    </div>    
+</div>       
+
+
+<!-- Share -->
+<div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Python - Flow Control&url=/seifallahhomrani1.github.io/python-flow_control/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=/seifallahhomrani1.github.io/python-flow_control/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=/seifallahhomrani1.github.io/python-flow_control/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+
+<!-- Related Post -->
+<!-- Related Posts
+================================================== -->
+<div class=" related-posts ">  
+
+    
+    <h2 class="text-center mb-4">Explore more like this</h2>
+    
+    
+    <div class="d-flex justify-content-center align-items-center">
+    
+    <!-- Categories -->
+    
+    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/categories#Python">Python</a>                
+    
+
+    <!-- Tags -->  
+    
+    
+
+    </div>
+
+    
+    
+    
+    <div class="blog-grid-container">
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/Files/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Files"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/Files/">Python - Files</a>
+                
+            </h2>
+            <h4 class="card-text">Working with files in Python, the OS module and checking Path validity.</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">03 Nov 1996</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/Pattern-Matching/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Pattern Matching"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/Pattern-Matching/">Python - Pattern Matching</a>
+                
+            </h2>
+            <h4 class="card-text">Using Regular expressions AKA Regex, making character classes, etc.</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">02 Nov 1996</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/Manipulating-Strings/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Manipulating Strings"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/Manipulating-Strings/">Python - Manipulating Strings</a>
+                
+            </h2>
+            <h4 class="card-text">Introduction to Python  </h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">31 Oct 1996</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+                
+        </div>        
+</div>
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+    </div>
+
+    
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+                <div class="col-md-6 col-sm-12 text-center text-lg-left">
+                    Copyright © 2021 Seif-Allah's Blog 
+                </div>
+            <div class="col-md-6 col-sm-12 text-center text-lg-right">
+                Made with love by    
+                <a target="_blank" href="fb.com/seifallahhomrani1">Seif-Allah</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
+================================================== -->
+
+<script src="/seifallahhomrani1.github.io/assets/js/prism.js"></script>
+
+<script src="/seifallahhomrani1.github.io/assets/js/theme.js"></script>
+
+
+
+
+<script id="dsq-count-scr" src="//demowebsite.disqus.com/count.js"></script>
+
+
+</body>
+</html>

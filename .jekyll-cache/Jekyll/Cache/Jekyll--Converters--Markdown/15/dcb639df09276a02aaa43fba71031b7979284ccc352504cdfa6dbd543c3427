@@ -1,0 +1,52 @@
+I"�	<h3 id="level-1">Level 1</h3>
+<p>View Source. 
+<strong>PASSWORD 1 : gtVrDuiDfck831PqWsLEZy5gyDz1clto</strong></p>
+<h3 id="level-2">Level 2</h3>
+<p>View Source.
+<strong>PASSWORD 2 : ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi</strong></p>
+<h3 id="level-3">Level 3</h3>
+<p>../files/users.txt
+<strong>PASSWORD 3 : sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14</strong></p>
+<h3 id="level-4">Level 4</h3>
+<p>robots.txt
+<strong>PASSWORD 4 : Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ</strong></p>
+<h3 id="level-5">Level 5</h3>
+<p>Here we need to set the referer header to : “http://natas5.natas.labs.overthewire.org/” to get the password. 
+<strong>PASSWORD 5 : iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq</strong></p>
+<h3 id="level-6">Level 6</h3>
+<p>We need to change the logged cookie value from 0 to 1 to get the password. 
+<strong>PASSWORD 6 : aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1</strong></p>
+<h3 id="level-7">Level 7</h3>
+<p>The php script checks the secret included in secret.inc file with the secret typed in the form, checking this file we could find the secret : <em>FOEIUWGHFEEUHOFUOIU</em>
+<strong>PASSWORD 7 : 7z3hEENjQtflzgnT29q7wAvMNfZdh0i9</strong></p>
+<h3 id="level-8">Level 8</h3>
+<p>URL.
+<strong>PASSWORD 8 : DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe</strong></p>
+<h3 id="level-9">Level 9</h3>
+<p>Reversing the encoded secret : Hex -&gt; Reverse -&gt; Base64
+Secret : <em>oubWYf2kBq</em>
+<strong>PASSWORD 9 : W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl</strong></p>
+<h3 id="level-10">Level 10</h3>
+<p>Command injection.</p>
+<hr />
+
+<pre><code class="language-bash">;cat ../../../../etc/natas_webpass/natas10
+</code></pre>
+<hr />
+
+<p><strong>PASSWORD 10 : nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu</strong></p>
+<h3 id="level-11">Level 11</h3>
+<p>This level was quite interesting, first I tried encoding this command <em>;cat ../../../../etc/natas_webpass/natas11</em> but it didn’t work, I took a look to the source code again</p>
+<pre><code> if(preg_match('/[;|&amp;]/',$key)) {
+</code></pre>
+<p>So it allows the slash, that means we could insert the file location with no problem, good!</p>
+<pre><code>grep -i $key dictionary.txt
+</code></pre>
+<p>(-i means case insensitive) 
+Basically, this command search for $key in dictionary.txt, and we can insert our file location with no problem, What if we search for something in our file (I absolutely means /etc/natas_webpass/natas11) ? let’s search for z for example ! 
+Our payload will look like :</p>
+<pre><code>z /etc/natas_webpass/natas11
+</code></pre>
+<p>Bingo ! 
+Here’s the password : U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK</p>
+:ET

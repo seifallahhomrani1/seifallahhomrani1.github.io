@@ -1,0 +1,77 @@
+I"‘<p>Previous Post : <a href="/django/2020/11/04/placeholder_image_server.html">Placeholder Image Server : First Steps</a></p>
+
+<p>After configuring the url patterns, now we need to make the view.</p>
+
+<ol>
+  <li>
+    <p>Though the regular expression will ensure that the height and width consist of digits, they will be passed to the view as strings. The view will need to convert them and may also want to validate that they are a manageable size. We can easily do this by validating user input with <strong>Django Forms</strong>. 
+Typically forms are used to validate POST an GET content, but they can also be used to validate particular values from the URL, and if the form isnâ€™t valid, the view will send an error response to the vlient using <em>HttpResponse</em> subclass : <em>HttpResponseBadRequest</em> and sends a 400 Bad Request response.</p>
+  </li>
+  <li>
+    <p>After validating the height and width, now we need to generate the image using Pillow module (from PIL import Image) and convert it to bytes using <em>io</em> module (from io import BytesIO). Once the image has been validated, the view successfully returns the PNG image for the requested width an height.</p>
+  </li>
+  <li>
+    <p>However, an all-black image, with no sizing information, is not a very stylish or useful placeholder. With <em>Pillow</em> we can add this text to the image using the <em>ImageDraw</em> module.</p>
+  </li>
+</ol>
+
+<p>Here is the final result of <em>views.py</em> :</p>
+<hr />
+
+<pre><code class="language-python">from django.shortcuts import render
+from django.http import HttpResponse,HttpResponseBadRequest
+from django import forms
+from django.conf.urls import url
+from io import BytesIO
+from PIL import Image, ImageDraw
+
+
+
+class ImageForm(forms.Form):
+    height = forms.IntegerField(min_value=1,max_value=2000)
+    width = forms.IntegerField(min_value=1,max_value=2000)
+
+
+    def generate(self,image_format='PNG'):
+        height = self.cleaned_data['height']
+        width = self.cleaned_data['width']
+
+        #generate a new image with RGB mode
+        image = Image.new('RGB', (width,height))   
+
+        #Adding sizing information using Pillow     
+        draw = ImageDraw.Draw(image)
+        
+        #format is used to replace brackets with values
+        text = '{} X {}'.format(width,height) 
+        textwidth, textheight = draw.textsize(text) 
+     
+        #test if the text fit well in the image, if not  we don't print it
+        if textwidth &lt; width and textheight &lt; height : 
+            texttop = (height - textheight) // 2
+            textleft = (width - textwidth) // 2
+            draw.text((textleft,texttop),text,fill=(255,255,255))
+        
+        
+        #converting the image into bytes
+        content = BytesIO() 
+        image.save(content, image_format)
+        content.seek(0)
+        return content
+
+def index(request):
+    return HttpResponse('index')
+
+
+def placeholder(request, width, height):
+    form = ImageForm({'height':height,'width':width})
+    if form.is_valid():
+        image = form.generate()
+        return HttpResponse(image, content_type='/image/png')  
+    else:
+        return HttpResponseBadRequest('Invalid image request')
+
+</code></pre>
+<hr />
+
+:ET

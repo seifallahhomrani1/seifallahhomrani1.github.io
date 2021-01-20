@@ -1,0 +1,55 @@
+I"Ã<p>In C, sockets behavee a lot like files since they use file descriptors to identify themselves. Sockets behave a lot like files that you can actually use the <em>read()</em> and <em>write()</em> functions to receive and send data using socket file descriptors. However, there are several functions specifically designed for dealing with sockets.</p>
+
+<h3 id="socketint-domain-int-type-int-protocol">socket(int domain, int type, int protocol)</h3>
+<p>Used to create a new socket, returns a <em>file descriptor</em> for the socket or -1 on error.</p>
+<h3 id="connectint-fd-struct-sockaddr-remote_host-socklen_t-add_length">connect(int fd, struct sockaddr *remote_host, socklen_t add_length)</h3>
+<p>Connects a socket (described by <em>file descriptor fd</em>) to a remote host. Returns 0 on success and -1 on error.</p>
+<h3 id="bindint-fd-struct-sockaddr-local_addr-socklen_t-addr_length">bind(int fd, struct sockaddr *local_addr, socklen_t addr_length)</h3>
+<p>Binds a socket to a local address so it can listen for incoming connections. Returns 0 on success and -1 on error.</p>
+<h3 id="listenint-fd-int-backlog_queue_size">listen(int fd, int backlog_queue_size)</h3>
+<p>Listens for incoming connections and queues connection requests up to <em>backlog_queue_size</em>. Returns 0 on success and -1 or error.</p>
+<h3 id="acceptint-fd-sockaddr-remote_host-socklen_t-addr_length">accept(int fd, sockaddr *remote_host, socklen_t *addr_length)</h3>
+<p>Accepts an incoming connection on a bound socket. The address information from the remote host is written into the <em>remote_host</em> structure and the actual size of the address structure is written into *addr_length. This function returns a new socket file descriptor to identify the connected socket or -1 on error.</p>
+<h3 id="sendint-fd-void-buffer-size_t-n-int-flags">send(int fd, void *buffer, size_t n, int flags)</h3>
+<p>Sends <em>n</em> bytes from *buffer to socket fd; returns the number of bytes or -1 on error.</p>
+<h3 id="recvint-fd-void-buffer-size_t-n-int-flags">recv(int fd, void *buffer, size_t n, int flags)</h3>
+<p>Receives <em>n</em> bytes from socket fd into *buffer; returns the number of bytes received or -1 on error.</p>
+
+<p>When a socket is created with the <em>socket()</em> function, the domain, type, and protocol of the socket must be specified. 
+The <em>domain</em> refers to the protocol family of the socket. A socket can be used to communicate using a variety of protocol, from the standard Internet protocol used when you browse the Web to amateur radio protocols such as <a href="https://www.youtube.com/watch?v=lx6cm1rNDLM">AX.25</a></p>
+
+<p>These are the first 11 protocol families aka domain taken from : /usr/include/x86_64-linux-gnu/bits</p>
+
+<p>/* Protocol families.  <em>/
+#define PF_UNSPEC       0       /</em> Unspecified.  <em>/
+#define PF_LOCAL        1       /</em> Local to host (pipes and file-domain).  <em>/
+#define PF_UNIX         PF_LOCAL /</em> POSIX name for PF_LOCAL.  <em>/
+#define PF_FILE         PF_LOCAL /</em> Another non-standard name for PF_LOCAL.  <em>/
+#define PF_INET         2       /</em> IP protocol family.  <em>/
+#define PF_AX25         3       /</em> Amateur Radio AX.25.  <em>/
+#define PF_IPX          4       /</em> Novell Internet Protocol.  <em>/
+#define PF_APPLETALK    5       /</em> Appletalk DDP.  <em>/
+#define PF_NETROM       6       /</em> Amateur radio NetROM.  <em>/
+#define PF_BRIDGE       7       /</em> Multiprotocol bridge.  <em>/
+#define PF_ATMPVC       8       /</em> ATM PVCs.  <em>/
+#define PF_X25          9       /</em> Reserved for X.25 project.  <em>/
+#define PF_INET6        10      /</em> IP version 6.  <em>/
+#define PF_ROSE         11      /</em> Amateur Radio X.25 PLP.  */</p>
+
+<p>As mentioned before, there are several types of sockets, although stream sockets and datagram socket are the most commonly used.
+The types of sockets are defined in socket_type.h file in the same directory (/usr/include/x86_64-linux-gnu/bits).</p>
+<blockquote>
+  <p>Note : File locations may vary over systems.</p>
+</blockquote>
+
+<p>/* Types of sockets.  <em>/<br />
+enum __socket_type
+{
+  SOCK_STREAM = 1,              /</em> Sequenced, reliable, connection-based
+                                   byte streams.  <em>/<br />
+#define SOCK_STREAM SOCK_STREAM
+  SOCK_DGRAM = 2,               /</em> Connectionless, unreliable datagrams
+                                   of fixed maximum length.  */</p>
+
+<p>The final argument for the socket() function is the protocol, which should almost always be 0. The specification allows for multiple protocols within a protocol family, so this argument is used to select one of the protocols from the family. In practice however, most protocol families only have one protocol which means this should usually be set for 0.</p>
+:ET

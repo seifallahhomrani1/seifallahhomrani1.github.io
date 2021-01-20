@@ -1,0 +1,86 @@
+I"�
+<p>Java is <em>statically-typed</em> programming language.</p>
+
+<p>Data types specify the different sizes and values that be stored in the variable. There are two types of data types in Java :</p>
+
+<h3 id="java-primitive-data-types">Java Primitive Data Types</h3>
+
+<p>There are 8 types of primitive data types  :</p>
+<ul>
+  <li>boolean false</li>
+  <li>byte 0</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>char ‘\u0000’</td>
+          <td>Java uses 2 byte because it uses Unicode system instead of ASCII code system and the \u0000 is the lowest range of unicode system.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>short 0</li>
+  <li>int 0</li>
+  <li>long 0L</li>
+  <li>float 0.0f</li>
+  <li>double 0.0d</li>
+</ul>
+
+<h3 id="java-operators">Java Operators</h3>
+
+<p>There are many types of operators in Java which are given below :</p>
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Unary Operator  (expr++ / expr–</td>
+          <td>++expr / –expr</td>
+          <td>~(bitwise complement) !)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Arithmetic Operator (* / % + -)</li>
+  <li>Shift (The Java left shift operator « is used to shift all of the bits in a value to the left side of a specified number of times.)</li>
+  <li>Relational (Comparison &amp; equality)</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Bitwise (&amp; ^</td>
+          <td>)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Logical (AND, OR)</li>
+  <li>Ternary ( ? : )</li>
+  <li>Assignment (short + short = int : Compile Time Error -&gt; Solution : TypeCasting)</li>
+</ul>
+
+<h3 id="unicode-system">Unicode System</h3>
+
+<p>Unicode is a universal international standard character encoding that is capable of representing most the world’s written languages.</p>
+
+<p><strong>Why java uses Unicode system ?</strong>
+Before Unicode, there were many language standards:</p>
+<ul>
+  <li>ASCII (American Standard Code for Information Interchange) for the United States.</li>
+  <li>ISO 8859-1 for Western European Language.</li>
+  <li>KOI-8 for Russian.</li>
+  <li>GB18030 and BIG-5 for chinese.</li>
+</ul>
+
+<p>This caused two major problems which is :</p>
+<ul>
+  <li>A particular code value corresponds to different letters in the various language standards.</li>
+  <li>The encodings for languages with large character sets have variable length. Some common characters are encoded as single bytes, other require two or more byte.</li>
+</ul>
+
+<p>The solution for those problems is the Unicode System.
+The lowest value : \u0000
+The highest value : \uFFFF</p>
+
+<p>Resources : https://www.javatpoint.com/java-data-types</p>
+:ET

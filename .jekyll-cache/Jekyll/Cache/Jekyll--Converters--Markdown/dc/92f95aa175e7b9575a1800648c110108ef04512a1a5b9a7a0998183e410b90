@@ -1,0 +1,83 @@
+I"}<p><br /></p>
+
+<p><img src="/assets/images/writeups/los/goblin.png" style="  width: 100%; max-width: 600px; height: auto;" /></p>
+
+<p><strong>Previous WriteUp</strong> : <a href="/ctf-writeup/2021/01/03/LOS-gremlin.html">gremlin</a></p>
+
+<h3 id="provided-code">Provided code</h3>
+<pre><code class="language-php">&lt;?php 
+  //Challenge Preparation
+  include "./config.php"; 
+  login_chk(); 
+  $db = dbconnect(); 
+  // - - - - - - 
+  if(preg_match('/prob|_|\.|\(\)/i', $_GET[no])) exit("No Hack ~_~"); 
+  if(preg_match('/\'|\"|\`/i', $_GET[no])) exit("No Quotes ~_~"); 
+  $query = "select id from prob_goblin where id='guest' and no={$_GET[no]}"; 
+  echo "&lt;hr&gt;query : &lt;strong&gt;{$query}&lt;/strong&gt;&lt;hr&gt;&lt;br&gt;"; 
+  $result = @mysqli_fetch_array(mysqli_query($db,$query)); 
+  if($result['id']) echo "&lt;h2&gt;Hello {$result[id]}&lt;/h2&gt;"; 
+  if($result['id'] == 'admin') solve("goblin");
+  highlight_file(__FILE__); 
+?&gt;
+</code></pre>
+
+<h3 id="explanation">Explanation</h3>
+
+<p>-&gt; <em>Challenge preparation</em>
+First of all, it includes this php file called <em>config.php</em>, then it checks if you are logged in or not. After that, it connect to the database.</p>
+
+<p>-&gt; <em>no field check</em> 
+There’s a double check for the <em>no</em> field, firstly it checks for :</p>
+
+<p>-&gt; <em>First REGEX explanation</em>
+/prob|_|.|()/i
+<strong>1st Alternative prob</strong>
+prob matches the characters prob literally (case insensitive)
+<strong>2nd Alternative _</strong>
+_ matches the character _ literally (case insensitive)
+<strong>3rd Alternative .</strong>
+. matches the character . literally (case insensitive)
+<strong>4th Alternative ()</strong>
+( matches the character ( literally (case insensitive)
+) matches the character ) literally (case insensitive)
+<strong>Global pattern flags</strong>
+i modifier: insensitive. Case insensitive match (ignores case of [a-zA-Z])</p>
+
+<p>-&gt; <em>Second REGEX explanation</em>
+/'|"|`/i
+1st Alternative '
+' matches the character ‘ literally (case insensitive)
+2nd Alternative "
+" matches the character “ literally (case insensitive)
+3rd Alternative `
+` matches the character ` literally (case insensitive)
+Global pattern flags
+i modifier: insensitive. Case insensitive match (ignores case of [a-zA-Z])</p>
+
+<p>Then it executes the final query, and if result id == admin then the problem is solved, else, it returns “Hello {$result[id]}”</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>As mentioned before, we can’t use quotes, but we can use another methods like :</p>
+
+<h3 id="substr">SUBSTR()</h3>
+<p>The <a href="https://www.w3schools.com/sql/func_mysql_substr.asp">SUBSTR()</a> function extracts a substring from a string (starting at any position). 
+The main idea is that we extract the first character of the id field that matches if it equals 97 (ASCII character of ‘a’).</p>
+
+<p>-&gt; <em>Payload</em> : /?no=0 or ascii(substr(id,1,1))=97</p>
+
+<h3 id="order-by">ORDER BY</h3>
+<p>If we use this function, SQL will sort data by column according to asc.</p>
+
+<p>-&gt; <em>Payload</em> : /?no=2 or 1 order by id</p>
+
+<h3 id="limit-11">LIMIT 1,1</h3>
+<p>This function will cut the rows from offset-index to (offset+amount)-index.</p>
+
+<p>Start of index is 0,0.</p>
+
+<p>-&gt; <em>Payload</em> : /?no=0 or 1 limit 1,1</p>
+
+<p>Resources : <a href="https://portswigger.net/support/sql-injection-bypassing-common-filters">PortSwigger - Bypassing Common filters</a></p>
+:ET

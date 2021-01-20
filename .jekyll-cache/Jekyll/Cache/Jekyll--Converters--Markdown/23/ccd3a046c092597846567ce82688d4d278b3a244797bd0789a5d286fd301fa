@@ -1,0 +1,14 @@
+I"a
+<ul>
+  <li><a href="#the-current-working--directory">The Current Working  Directory</a></li>
+  <li><a href="#absolute-vs-relative-paths">Absolute vs Relative Paths</a></li>
+  <li><a href="#creating-new-folders-with-osmakedirs">Creating New Folders with os.makedirs()</a></li>
+  <li><a href="#the-ospath-module">The os.path Module</a></li>
+  <li><a href="#finding-file-sizes-and-folder-contents">Finding File Sizes and Folder Contents</a></li>
+  <li><a href="#checking-path-validity">Checking Path Validity</a></li>
+  <li><a href="#the-file-readingwriting-process">The File Reading/Writing Process</a></li>
+  <li><a href="#reading-the-contents-of-files">Reading the Contents of Files</a></li>
+  <li><a href="#writing-to-files">Writing to Files</a></li>
+  <li><a href="#saving-variables-with-the-shelve-module">Saving Variables with the shelve Module</a></li>
+</ul>
+:EF

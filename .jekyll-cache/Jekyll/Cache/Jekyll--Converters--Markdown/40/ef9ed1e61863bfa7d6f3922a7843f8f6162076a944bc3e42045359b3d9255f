@@ -1,0 +1,48 @@
+I"�<h3 id="the-dictionary-data-type">The Dictionary Data Type</h3>
+<p>Like a list, a <strong>dictionary</strong> is a collection of many values. But unlike indexes for lists, indexes for dictionaries can use many different data types, not just integers. Indexes for dictionaries are called <strong>keys</strong>, and a key with its associated value is called a <strong>key-value pair</strong>.
+In code, a dictionary is typed with braces {}.
+<br />
+<script src="https://gist.github.com/pu71n/f0e79038bbe1f766afc714d40f7298c5.js"></script></p>
+
+<p>Dictionaries can still use integer values as keys, just like lists use integers for indexes, but they do not have to start at 0 and can be any number.</p>
+
+<h3 id="dictionaries-vs-lists">Dictionaries vs. Lists</h3>
+<p>Unlike lists, items in dictionaries are unordered. There’s no first item in a dictionary. 
+Trying to access a key that does not exist in a dictionary will result in a <strong>keyError</strong> message, much like a list’s “out-of-range” IndexError. 
+Though Dictionaries are not ordered, the fact that you can have arbitrary values for the keys allows you to organize you data in a powerful ways.</p>
+
+<h3 id="the-keys-values-and-items-methods">The keys(), values(), and items() Methods</h3>
+<p>There are three dictionary methods that will return list-like values of the dictionary’keys, values, or both keys and values: <strong>keys(), values()</strong> and <strong>items()</strong>.
+The values returned by these methods are not true lists: They cannot be modified and do not have and <strong>append()</strong> method. But these data types (dict_keys, dict_values, and dict_items, respectively) can be used in <strong>for</strong> loops. 
+Here’s an example : 
+<br />
+<script src="https://gist.github.com/pu71n/4cdffdae93fedbe51e38cd793ad8da95.js"></script>
+Using the keys(), values() and items() methods, a for loop can iterate over the keys, values, or key-value pairs in a dictionay, respectively. Notice that the values in the dict_items value returned by the items() method are tuples of the key and value.</p>
+
+<p>If you want a true list from one of these methods, pass its list-like return value to the list() function. If you want a true list from the one of these methods, pass its list-like return value to the list() function.</p>
+
+<p>You can also use the multiple assignement trick in a for loop to assign the key and a value to seperate variables.
+Here’s an example : 
+<br />
+<script src="https://gist.github.com/pu71n/4450808471e4407903661f346c2ca005.js"></script></p>
+
+<h3 id="checking-whether-a-key-or-value-exists-in-a-dictionary">Checking Whether a Key or Value Exists in a Dictionary</h3>
+<p>Recall from the previous post that the <strong>in</strong> and <strong>not in</strong> operators can check whether a value exists in a list. You can also use these operators to see whether a certain key or values exists in a dictionary. Like for example : 
+<br />
+<script src="https://gist.github.com/pu71n/be5750fddd92ab8c8815bdc388a18579.js"></script></p>
+
+<p>We can use “‘president’ in whoami” without the keys() method and get the same answer.</p>
+
+<h3 id="the-get-method">The get() Method</h3>
+<p>It’s tedious to check whether a key exists in a dictionary before accessing that key’s value. Fortunatly, dictionaries have a get() method that takes two arguments : the key of the value to retrieve and a fallback value to return if that key does not exist.</p>
+<h3 id="the-setdefault-method">The setdefault() Method</h3>
+<p>You’ll often have to set a value in a dictionary for a certain key only if that key does not already have a value. The <strong>setdefault()</strong> method offers a way to do this in one line of code. The first argument passed to the method is the key to check for, and the second argument is the value to set at that key if the key does not exist. If the key does exist, the <strong>setdefault()</strong> method returns the key’s value.</p>
+
+<p>Here’s an example : 
+<br />
+<script src="https://gist.github.com/pu71n/1ca8b06756806367ca823efa075c69a7.js"></script></p>
+
+<p>The setdefault() method is a nice shortcut to ensure that a key exists.</p>
+
+<p>Enough for today, see you tomorrow &lt;3</p>
+:ET

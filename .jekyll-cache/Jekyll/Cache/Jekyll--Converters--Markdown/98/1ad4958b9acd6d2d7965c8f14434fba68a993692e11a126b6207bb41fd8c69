@@ -1,0 +1,57 @@
+I"�<p>JVM contains classloader, memory area, execution engine etc.</p>
+
+<p><img src="/assets/images/java/jvm-architecture.png" alt="JVM Architecture" /></p>
+
+<h3 id="classloader">Classloader</h3>
+
+<p>Classloader is a subsystem of JVM which is used to load class files. Whenever we run the java program, it is loaded first by the classloader. There are three built-in classloaders in Java.</p>
+
+<ul>
+  <li>
+    <p><strong>Bootstrap Class Loader</strong>: This is the first classloader which is the super class of Extension classloader. It loads the rt.jar file which contains all class files of Java Standard Edition like java.lang package classes, java.net package classes, java.util package classes. java.io package classes, java.sql package classes etc.</p>
+  </li>
+  <li>
+    <p><strong>Extension ClassLoader</strong>: This is the child classloader of Bootstrap and parent classloader of System classloader. It loader the jar files located inside $JAVA_HOME/jre/lib/ext directory.</p>
+  </li>
+  <li>
+    <p><strong>System/Application ClassLoader</strong>: This is the child classloader of Extension classloader. It loads the classfiles from classpath. By default, classpath is set to current directory. You can change the classpath using ‘-cp’ or ‘-classpath’ switch. It is also know as Application classloader.</p>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p><strong>Class(Method) Area</strong>
+Class(Method) Area stores per-class structures such as the runtime constant pool, field and method data, the code for methods.</p>
+  </li>
+  <li>
+    <p><strong>Heap</strong>
+It is the runtime data area in which objects are allocated.</p>
+  </li>
+  <li>
+    <p><strong>Stack</strong>
+Java Stack stores frames. It holds local variables and partial results, and plays a part in method invocation and return. 
+Each thread has a private JVM stack, created at the same time as thread. 
+A new frame is created each time a method in invoked. A frame is destroyed when its method invocation completes.</p>
+  </li>
+  <li>
+    <p><strong>Program Counter Register</strong>
+PC (program counter) register contains the address of the Java virtual machine instruction currently being executed.</p>
+  </li>
+  <li>
+    <p><strong>Native Method Stack</strong>
+It contains all the native methods used in the application.</p>
+  </li>
+  <li><strong>Execution Engine</strong>
+It contains:</li>
+  <li>A virtual processor</li>
+  <li>Interpreter : Read bytecode stream then execute the instructions.</li>
+  <li>
+    <p>Just-In-Time(JIT) compiler: It is used to improve the performance. JIT compiles parts of the byte code that have similar functionality at the same time, and hence reduces the amount of time needed for compilation. Here, the term “compiler” refers to a translator from the instruction set of a JVM to the instruction set of a specific CPU.</p>
+  </li>
+  <li>Java Native Interface
+Java Native Interface (JNI) is a framework which provides an interface to communicate with another application written in another language like C, C++, Assembly etc. Java uses JNI framework to send output to the Console or interact with OS libraries.</li>
+</ol>
+
+<p>Resources : https://www.javatpoint.com/jvm-java-virtual-machine</p>
+
+:ET

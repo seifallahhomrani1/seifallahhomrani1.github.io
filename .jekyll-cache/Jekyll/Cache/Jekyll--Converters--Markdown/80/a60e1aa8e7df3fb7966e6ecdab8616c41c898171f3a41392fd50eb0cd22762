@@ -1,0 +1,116 @@
+I",,<p>Regular expressions, called <strong>regexes</strong> for short, are descriptions for a pattern of text.</p>
+
+<h3 id="creating-regex-objects">Creating Regex Objects</h3>
+
+<p>All the <strong>regex</strong> functions in Python are in the <strong>re</strong> module. 
+Passing a string value representing your regular expression to <strong>re.compile()</strong> returns a <strong>Regex</strong> pattern object (or simply, a Regex object)</p>
+
+<h3 id="matching-regex-objects">Matching Regex Objects</h3>
+
+<p>A <strong>regex</strong> object’s search() method searches the string it is apssed for any matches to the regex. The search() method will return <strong>None</strong> if the regex pattern is not found in the string. If the pattern is found, the <strong>search()</strong> method returns a <strong>Match</strong> object. <strong>Match objects</strong> have a <strong>group()</strong> method that will return the actual matched text from the searched string. 
+Knowing that result of the search contains a Match object and not the null value None, we can call group() to return the match.</p>
+
+<h3 id="review-of-regular-expression-matching">Review of Regular Expression Matching</h3>
+
+<p>While there are several steps to using regular expressions in Python, each step is fairly simple.</p>
+
+<ol>
+  <li>Import the regex module with <strong>import re</strong></li>
+  <li>Create a <strong>Regex object</strong> with <strong>re.compile</strong> function. (Remeber to use raw string.)</li>
+  <li>Pass the string you want to search into the Regex object’s search method. This returns a <strong>Match</strong> object.</li>
+  <li>Call the <strong>Match</strong> object’s group() method to return a string of the actual matched text.</li>
+</ol>
+
+<h3 id="more-pattern-matching-with-regular-expressions">More Pattern Matching with Regular Expressions</h3>
+
+<ol>
+  <li>
+    <p><strong>Grouping with Parentheses</strong> : Adding parentheses will create groups in the regex : (\d\d\d)-(\d\d\d-\d\d\d\d), then you can use the group() match object method to grab the matching text from just one group. Passing 0 or nothing to the group() method will return the entire matched text. Using the <strong>groups()</strong> method will retreive all the groups at once as a tuple. you can use <strong>multiple-assignment</strong> trick to assign each value to a seperate variable.
+To include parentheses inside the regular expression, we can use the \( and \) in the raw string passed to re.compile()</p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Matching Multiple Groups With the Pipe</strong> : The | charcter is called a <em>pipe</em>. You can use it anywhere you want to match one of many expressions. For example, the regular expression r’Russia</td>
+          <td>Amarica’ will match either ‘Russia’ or ‘America’.</td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>When both occur in the searched string, the first occurence of matching text will be returned as the <strong>Match object</strong>. You can also use the pipe to match one of several patterns as part of your regex (example : r’Bat(man</td>
+          <td>mobile</td>
+          <td>copter</td>
+          <td>bat)’ ).</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><strong>Optional Matching with the Question Mark</strong> : Sometimes there is a pattern that you want to match only oprtionally. That is, the regex should find a match whether or not that bit of text is there. The <strong>?</strong> charcter flags the group that precedes it as an optional part of the pattern. You can thing of the ? as saying :”if it’s there print it, if it’s not, don’t worry”.</li>
+  <li><strong>Matching Zero or More with the Star</strong> : The * (called the star or asterisk) means “match zero or more” - the group that precedes the star can occur any number of times in the text. It can be completely abscent or repeated over and over again.</li>
+  <li><strong>Matching One or More with the Plus</strong> : While * means “ match zero or more “, the + means “match one or more.”</li>
+  <li><strong>Matching Specific Repetitions with Curly Brackets</strong> : If you have a group that you want to repeat a specific number of times, follow the group in your regex with a number in curly brackets, you can also specify a range by writing a minimum, a comma, and a maximum in between curly brackets, or even leave out the first or second number in the curly brackets to leave the minimum or maximum unbounded.</li>
+  <li><strong>Greedy and Nongreedy Matching</strong> : Python’s regular expressions are <em>greedy</em> by default, which means that in ambiguous situtations they will match the longest string possible. The <em>non-greedy</em> version of the curly brackets, which matches the shortest string possible, has the closing curly bracket followed by a <strong>question mark</strong>. Note that the question mark can have two meanings in regular expressions: declaring a nongreedy match or flagging an optional group. These meanings are entirely unrelated.</li>
+  <li><strong>The findall() Method</strong> : In addition to the <em>search()</em> method, Regex objects also have a <strong>findall()</strong> method. While <em>search()</em> will return a Match object of the first matched text in the searched string, the <strong>findall()</strong> method will return the strings of <strong>every match in the searched string</strong>.
+find() will not return a Match object but a list of strings - as long as there are no groups in the regular expressions. Each string in the list is a piece of the searched text that matched the regular expression. If there are groups in the regular expression, the findall() will return a list of tuples. Each tuple represent a found match, and its items are the matched strings for each group in the regex.</li>
+</ol>
+
+<h3 id="character-classes">Character Classes</h3>
+<p>Here’s a table which represents shorthands codes for common charachter classes.</p>
+<pre>
+| Shorthand character class      | Represents                                                                                           |
+|--------------------------------|------------------------------------------------------------------------------------------------------|
+| \d                             | Any numeric digit from 0 to 9                                                                        |
+| \D                             | Any character that is not a numeric digit from 0 to 9                                                |
+| \w                             | Any letter, numeric digit, or the underscore character. Think of this as matching 'word' characters. |
+| \W                             | Any character that is not a letter, numeric digit, or the underscore character.                      |
+| \s                             | Any space, tab, or newline character. (Think of this as  matching 'space' characters.)               |
+| \S                             | Any character that is not a space, tab, or newline.                                                  |
+
+
+</pre>
+
+<p>Character classes are nice for shortening regular expressions.</p>
+
+<h3 id="making-your-own-character-classes">Making Your Own Character Classes</h3>
+<p>You can define your own character class using square brackets like for example r’[putin]’. You can also include ranges of letters or numbers by using a hyphen. For example : the character class [a-zA-Z0-9] will match all lowercase letters, uppercase letters, and numbers. Note that inside the square brackets, the normal regular expression symbols are not interpreted as such. This means you do not need to escape the .,*,? or () characters with a preceding backslash. For example, the character class [0-5.] will match digits 0 to 5 and a period. You do not need to write it as [0-5\.].
+By placing a caret character (^) just after the character class’s opening bracket, you can make a negative character class. A negative character class will match all the characters that are not in the character class.</p>
+
+<h3 id="the-caret-and-dollar-sign-characters">The Caret and Dollar Sign Characters</h3>
+<p>You can also use the caret symbol (^) at the start of a regex to indicate that a match must occur at the beginning of a searched text. Likewise, you can put dollar sign ($) at the end of the regex to indicate the string must end with this regex pattern. And you can use ^ and $ together to indicate that the entire string must match the regex - That is, it’s not enough for a match to be made on some subset of the string.</p>
+
+<h3 id="the-wildcard-character">The Wildcard Character</h3>
+<p>The . (or dot) character in a regular expression is called a <strong>wildcard</strong> and will match any character except for a newline.</p>
+
+<h3 id="matching-everything-with-dot-star">Matching Everything with Dot-Star</h3>
+<p>You can use the dot-star(.*) to stand in for that “anything.”. Remember that the dot character means “any single character except the newline” and the star character means “zero or more of the preceding character”.
+The dot-star uses <strong>greedy</strong> mode: It will always try to match as much text as possible. To match any and all text in a <strong>nongreedy</strong> fashion, use the dot, star, and question mark (.*?).</p>
+
+<h3 id="matching-newlines-with-the-dot-character">Matching Newlines with the Dot Character</h3>
+<p>The dot-star will match everything except a newline. By passing <strong>re.DOTALL</strong> as the second argument to <strong>re.compile()</strong>, you can make the dot character match all characters, including the newline character.</p>
+
+<!--25-04-2020 : 00:22-->
+
+<h3 id="reveiw-of-regex-symbols">Reveiw of Regex Symbols</h3>
+<ul>
+  <li>The ? matches zero on one of the preceding group.</li>
+  <li>The * matches zero or more of the preceding group.</li>
+  <li>The + matches one or more of the preceding group.</li>
+  <li>The {n} matches exactly n of the preceding group.</li>
+  <li>The {n,} matches n or more of the preceding group.</li>
+  <li>The {,m} matches 0 to m of the preceding group.</li>
+  <li>The {n,m} matches at least n and at most m of the preceding group.</li>
+  <li>{n,m}? or *? or +? performs a nongreedy match of the preceding group.</li>
+  <li>^spam means the string must begin with spam.</li>
+  <li>spam$ means the string must end with spam.</li>
+  <li>The . matches any character, except newline characters.</li>
+  <li>\d, \w, and \s match a digit, word, or space character, respectively.</li>
+  <li>\D, \W, and \S match anything except a digit, word, or space character, respectively.</li>
+  <li>[abc] matches any character between the brackets (such as a, b, or c).</li>
+  <li>[\^abc] matches any character that isn’t the brackets.</li>
+</ul>
+
+<h3 id="case-insensitive-matching">Case-Insensitive Matching</h3>
+<p>Normally, regular expressions match text with the exact casing you specify. But sometimes you care only about matching the letters without worrying whether they’re uppercase or lowercase. To make your regex case-insensitive, you can pass <strong>re.IGNORECASE</strong> or <strong>re.I</strong> as a second argument to <strong>re.compile()</strong>.</p>
+
+:ET

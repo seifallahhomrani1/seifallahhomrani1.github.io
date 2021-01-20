@@ -1,0 +1,90 @@
+I"�<p>In 2005, Django was originally developed at World Online in Lawrence, Kansas, as a way for reporters to quickly create content for the Web. Since then, it has been used by publishing organizations such as the Washington Post, the Guardian, PolitiFact, and the Onion. This aspect of Django may give the impression that its main purpose is content publishing, or that Django itself is a content management system. With large organizations such as NASA adopting Django as their framework of choice, however, Django has obviously outgrown its original purpose.</p>
+
+<h3 id="why-stateless-">Why Stateless ?</h3>
+<p>HTTP itself is a stateless protocol, meaning each erequest that comes to the server is independent of the previous request. If a particular state is needed, it has to be added at the application layer. Frameworks like Django uses cookies and other mechanisms to tie together requests made by the same client.</p>
+
+<p>Along with a persistent session stire on the server, the application can then handle tasks, such as holding user authentication across requests. With that comes a number of challenges, as this consistent state reads, and potentially writes, on every request in a distributed server architecture.</p>
+
+<p>As you can imagine, a stateless application does not maintain this consistent state on a server. If authentication or other user credentials are required, then they must be passed by the client on every request.</p>
+
+<h3 id="placeholder-image-server--introduction">Placeholder Image Server | INTRODUCTION</h3>
+
+<p>Placeholder images are frequently used in application prototypes, example projects or testing environment. A typical placeholder image service will take a URL that indicates the size of the image and generate that image. The URL may contain additional information, such as the color of the image or text to display within the image. Since everything that is needed to construct the requested image is contained withing the URL, and there’s little need for authentication, this makes a good candidate for a stateless application.</p>
+
+<h3 id="first-steps">First Steps</h3>
+
+<p>First, we need to create our project using <em>django-admin startproject</em> command, migrate our new configurations and then start a new app using <em>python3 manage.py startapp placeholder</em>.</p>
+
+<hr />
+<pre><code>seifallah@seifallah-Aspire-E5-573:~/Documents/Django$ tree chapter2/
+chapter2/
+├── chapter2
+│   ├── asgi.py
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-36.pyc
+│   │   ├── settings.cpython-36.pyc
+│   │   └── urls.cpython-36.pyc
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── db.sqlite3
+├── manage.py
+└── placeholder
+    ├── admin.py
+    ├── apps.py
+    ├── __init__.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    ├── urls.py
+    └── views.py
+
+4 directories, 18 files
+</code></pre>
+<hr />
+
+<p>Now we need to edit our files, first let’s write the first view :</p>
+<hr />
+<pre><code class="language-python">#index view
+def index(request):
+    return HttpResponse('index')
+
+#placeholder view
+def placeholder(request, width, height):
+    return HttpResponse('Ok')
+
+</code></pre>
+
+<hr />
+<p>To call this view, we need to map it to a URL and for this we need URLConf.</p>
+
+<p>We created a file called <strong>urls.py</strong> inside our app folder :</p>
+<hr />
+<pre><code class="language-python">from django.urls import path, re_path 
+#re_path stands for regex path
+
+
+
+from . import views
+
+urlpatterns = [
+    path('',views.index, name='index'),
+# The stub of the placeholder view will take two arguments: width and height. 
+# As mentioned previously, those parameters will be captured by the URL and passed to the view.
+# URL patters in Django can use regular expressions to match the incoming URL so we'll use re_path.  
+    re_path(r'^image/(?P&lt;width&gt;[0-9]+)*(?P&lt;height&gt;[0-9]+)/$', placeholder, name='placeholder'),
+]
+</code></pre>
+
+<p>The next step is to point the root URLconf at the <em>placeholder.urls</em> module in our site <em>urls.py</em>.</p>
+
+<hr />
+<pre><code class="language-python">path('placeholder/', include('placeholder.urls') ),   
+</code></pre>
+<hr />
+
+<p>With these patterns in place, incoming requests to the URL <em>/image/30x25</em> for example will be routed the <em>placeholder</em> view and pass in those values (e.g width=30 and height=25).</p>
+
+:ET

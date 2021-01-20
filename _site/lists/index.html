@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
+<link rel="icon" href="/seifallahhomrani1.github.io/assets/images/favicon.ico">
+
+<title>Python - Lists | Seif-Allah's Blog</title>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Python - Lists | Seif-Allah’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Python - Lists" />
+<meta name="author" content="Seif-Allah" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Python Lists, Methods, Tuples and References" />
+<meta property="og:description" content="Python Lists, Methods, Tuples and References" />
+<meta property="og:site_name" content="Seif-Allah’s Blog" />
+<meta property="og:image" content="/seifallahhomrani1.github.io/assets/images/python/python.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="1996-10-29T00:00:00+01:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/seifallahhomrani1.github.io/assets/images/python/python.png" />
+<meta property="twitter:title" content="Python - Lists" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/seifallahhomrani1.github.io/assets/images/cover.png"},"name":"Seif-Allah"},"image":"/seifallahhomrani1.github.io/assets/images/python/python.png","url":"/seifallahhomrani1.github.io/lists/","headline":"Python - Lists","dateModified":"1996-10-29T00:00:00+01:00","datePublished":"1996-10-29T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/seifallahhomrani1.github.io/lists/"},"author":{"@type":"Person","name":"Seif-Allah"},"description":"Python Lists, Methods, Tuples and References","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+<link href="/seifallahhomrani1.github.io/assets/css/prism.css" rel="stylesheet">
+
+<link href="/seifallahhomrani1.github.io/assets/css/theme.css" rel="stylesheet">
+
+<script src="/seifallahhomrani1.github.io/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+
+
+<!-- Begin Sidebar Navigation
+================================================== -->
+
+<div class="sidebar">    
+</div>   
+<div class="nav-icon">
+    <div class="hamburger-bar"></div>
+</div>
+<div id="blackover-nav" class="blackover"></div>
+<nav id="menu">
+    <ul>
+        <h3>Navigation</h3>
+        <li><a href="/seifallahhomrani1.github.io/">Home</a></li>
+        <li><a  href="/seifallahhomrani1.github.io/contact">Contact</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Python">Python</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Java">Java</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#CTF-WriteUp">CTF-WriteUp</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Articles">Articles</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Networking">Networking</a></li>    
+        <li><a href="/seifallahhomrani1.github.io/categories#Databases">Databases</a></li>
+        <li><a href="/seifallahhomrani1.github.io/categories#Django">Django</a></li>     
+        <li><a href="/seifallahhomrani1.github.io/categories#Linux">Linux</a></li>     
+    </ul>   
+</nav>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunr.js"></script>
+
+<style>
+    
+</style>
+
+<div class="wrap-search">
+    <div class="d-flex align-items-center ml-auto">
+        <i class="fas fa-search show-search"></i>
+        <form class="bd-search ml-3" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+            <input type="text" class="form-control bigradius text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+        </form>
+    </div>
+</div>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/seifallahhomrani1.github.io/assets/js/lunrsearchengine.js"></script>
+
+
+<!-- End Sidebar Navigation
+================================================== -->
+
+<div class="site-content ">
+
+<div class="container">
+
+    <!-- Site Logo/Name
+    ================================================== -->
+   
+    <a class="navbar-brand" href="/seifallahhomrani1.github.io/">
+        <img src="/seifallahhomrani1.github.io/assets/images/cover.png" alt="Seif-Allah's Blog">
+    </a>  
+   
+
+    <!-- Site Tag
+    ================================================== -->
+    
+
+    <!-- Content
+    ================================================== -->
+    <div class="main-content">
+        <div class="entry-header">
+    <!-- Post Title -->
+    <h1 class="posttitle">Python - Lists</h1>
+    <!-- Author & Date  Box -->
+    
+    
+    <div class="d-flex align-items-center mt-4">
+        <div>
+            
+            <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+            
+        </div>            
+        <div>
+        Written by <a target="_blank" class="text-dark" href="seifallahhomrani1.social">Seif-Allah</a> on 
+        <span class="post-date"><time class="post-date" datetime="1996-10-29">29 Oct 1996</time></span>           
+        
+        </div>            
+    </div>
+    
+</div>
+
+<!-- Adsense under title if enabled from _config.yml (change your pub id and slot) -->
+
+
+<!-- Featured Image -->
+
+<div class="entry-featured-image">
+    
+    <img class="featured-image " src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Lists">
+    
+</div>
+
+
+<!-- Content -->
+<!-- Post, Page Content
+================================================== -->
+<div class="article-post">
+    <!-- Toc if any -->
+    
+    
+    <div class="toc mt-4 mb-4 lead">
+        <h3 class="font-weight-bold">Summary</h3>
+        <ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#the-list-data-type">The List Data Type</a></li>
+  <li><a href="#the-in-and-not-in-operators">The “in” and “not in” Operators</a></li>
+  <li><a href="#assignement">Assignement</a></li>
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#finding-a-value-in-a-list-with-index-method">Finding a Value in a list with index() Method</a></li>
+  <li><a href="#adding-values-to-lists-with-the-append-and-insert-methods">Adding Values to Lists with the append() and insert() Methods</a></li>
+  <li><a href="#removing-values-from-lists-with-remove">Removing Values from lists with remove()</a></li>
+  <li><a href="#sorting-the-values-in-a-list-with-the-sort-method">Sorting the Values in a list with the sort() method</a></li>
+  <li><a href="#list-like-types--strings-and-tuples">List-like Types : Strings and Tuples</a></li>
+  <li><a href="#references">References</a></li>
+</ul>
+    </div>
+    
+    <!-- End Toc -->
+    <h3 id="introduction">Introduction</h3>
+<p>I’ll assume that you’ve read last post, so one more topic you’ll need to understand before you can begin writing programs in earnest is the list data type and it’s cousin, the tuple. They can contain multiple values, which makes it easier to write programs that handle large amounts of data. And since lists themselves can contain other lists, you can use them to arrange data into hierarchical structures.</p>
+
+<h3 id="the-list-data-type">The List Data Type</h3>
+<p>A <strong>list</strong> is a value that contains multiple values in an ordered sequence. A list value looks like this : [‘Russia’,’Moscow’,’Samara’]. 
+Just as string values are typed with quote characters to mark where the string begins and ends, a list begins with an opening square bracket and ends with a closing square bracket, <strong>[]</strong>. Values inside the list are also called items. Items are seperated with commas.</p>
+
+<p>Python lets you index the list values, it start with a 0. If you use an index that exceeds the number of values in your list value, it will an <strong>IndexError : List index out of range</strong>.
+Note that you can use negative indexes. The integer value -1 refers to the last index in a list, the value -2 refers to the second-of-last index in a list, and so on.</p>
+
+<p><strong>Getting Sublists with Slices :</strong> Just as an index can get a single value from a list, a slice can get several values from a list, in the form of a new list. A slice is typed between square brackets, like an index, but it has two integers seperated by a colon. 
+In a slice, the first integer is the index where the slice starts. The second integer is the index where the slice ends. A slice hoes up to, but will not include, the value at the second index. A slice evaluates to a new list value. 
+Here’s an example of what I’ve been talking about.
+<br />
+<script src="https://gist.github.com/pu71n/3995fffde21927ab8c59e3a18aef166b.js"></script>
+As a shortcut, you can leave out one or both of the indexes on either side of the colon in the slice. Leaving out the first index is the same as using 0 and leaving the second is the same as using the length of the list.</p>
+
+<p>Note that you can <strong>concatenate, replicate, change the values</strong> of a list. For <strong>removing</strong> values from lists, we can use the <strong>del</strong> statement.</p>
+
+<h3 id="the-in-and-not-in-operators">The “in” and “not in” Operators</h3>
+<p>You can determine whether a value is or isn’t in a list with in and not in operators. Like other operators, in and not in are used in expressions and connect two values: a value to look for in a list and the list where it may be found. These expressions will evaluate to a boolean value.</p>
+
+<h3 id="assignement">Assignement</h3>
+<p>In lists, we can use th multiple assignement and the augmented assignement operators. The example below describes it all.
+<br />
+<script src="https://gist.github.com/pu71n/a9c8b99ee75c11de2cfd40f05eb6df10.js"></script></p>
+
+<h3 id="methods">Methods</h3>
+
+<p>A <strong>method</strong> is the same as a function, except it is “called on” a value. Each data type has its own set of methods. The list data type, for example, has several useful methods for finding, adding, removing, and otherwise manipulating values in a list.</p>
+
+<h3 id="finding-a-value-in-a-list-with-index-method">Finding a Value in a list with index() Method</h3>
+
+<p>List values have an index() method that can be passed a value, and if that value exists in the list, the index of the value is returned. If the value isn’t in the list, the Python produces a <strong>Value Error</strong>. 
+<br />
+<script src="https://gist.github.com/pu71n/3ff0d20cc02ec6fd77f4ec4eb28cabdf.js"></script></p>
+
+<p>When there are duplictes of the value in the list, the index of it’s first appearence is returned.</p>
+
+<h3 id="adding-values-to-lists-with-the-append-and-insert-methods">Adding Values to Lists with the append() and insert() Methods</h3>
+<p>The append() method call adds the argumennt to the end of the list. The insert() method can insert a value at any index in the list.
+The first argument to insert() is the index for the new value, and the second argument is the new value to be inserted.
+As I said before, methods belong to a single data type. The append() and insert() methods are list methods and can be called only on list values, not on other values such as strings or integers.</p>
+
+<p><br />
+<script src="https://gist.github.com/pu71n/141ce203d78dc21c775fdb8a6932a24c.js"></script></p>
+
+<h3 id="removing-values-from-lists-with-remove">Removing Values from lists with remove()</h3>
+<p>The remove() method is passed the value to be removed from the list it is called on. If the value appears multiple times in the list, only the first instance of the value will be removed.</p>
+
+<p>The <strong>del</strong> statement is good to use when you know the index of the value you want to remove from the list. The <strong>remove()</strong> method is good when you know to value you want to remove from the list.
+<br />
+<script src="https://gist.github.com/pu71n/2dcc0b30703a18d4f22e79c49bc59ea6.js"></script></p>
+
+<h3 id="sorting-the-values-in-a-list-with-the-sort-method">Sorting the Values in a list with the sort() method</h3>
+
+<p>Lists of number values or lists of strings can be stored with the <strong>sort</strong> method. You can also pass True for the <strong>reverse</strong> keyword argument to have sort() sort the values in reverse order. 
+There are three things you should note about the sort() method:</p>
+<ol>
+  <li>First, the sort() method sorts the list in place; don’t try to capture the return value.</li>
+  <li>You cannot sort lists that have both number values and string values in them, since Python doesn’t know how to compate values.</li>
+  <li>sort() uses “ASCIIbetical oreder” rather than actual alphabetical order for sorting strings. This means uppercase letters come before lowercase letters.</li>
+</ol>
+
+<h3 id="list-like-types--strings-and-tuples">List-like Types : Strings and Tuples</h3>
+<p>Lists aren’t the only data types that represent ordered sequences of values. For example, string and lists are actually similar, if you consider a string to be a “list” of single text characters.
+But lists and strings are different in an important way. A list value is a <strong>mutable</strong> data type: It can values added, removed or changed. However, a string is <strong>immutable</strong>: It cannot be changed. Trying to reassign a single character in a string results in a <strong>TypeError</strong>. 
+The <strong>tuple</strong> data type is almost identical to the list data type, exepct in two ways :</p>
+<ol>
+  <li>Tuples are typed with parentheses.</li>
+  <li>Tuples are immutable, tuples cannot have their values modified, appended, or removed.</li>
+</ol>
+
+<p>If you have only one value in your tuple, you can indicate this by placing a trailing camma after the value inside the parentheses. Otherwise python will think you’ve just typed a value inside regular parentheses.</p>
+
+<p>You can easily converts list to tuple or a tuple to a list using <strong>list()</strong> and <strong>tuple()</strong> functions.</p>
+
+<h3 id="references">References</h3>
+<p>Lists don’t get assigned the same way as other types. When you assign a list to a variable, you are actually assiging a list <strong>reference</strong> to the variable. A reference is a value that points to some bit of data, and a list reference is a value that points to a list. Although passing around references is often the handiest way to deal with lists, if the function modifies the list that is passed, you may not want these changes in the original list. For this Python provides a module named <strong>copy</strong> that provides both the <strong>copy()</strong> and <strong>deepcopy()</strong> functions. The first one can be used to make a duplicate copy of a mutable value like a list or dictionary, not just a copy of a reference. If the list you need to copy contains lists, then use the <strong>deepcopy()</strong> function which will copy the inner lists as well.</p>
+
+<p>Enough for today, see you tomorrow &lt;3</p>
+
+</div>
+
+<!-- Rating -->
+
+
+<!-- Author Box if enabled from _config.yml -->
+<!-- Author Box -->
+
+
+
+
+<!-- Comments if not disabled with comments: false -->
+<!-- Comments
+================================================== -->
+ 
+<div class="comments">
+    <button class="btn btn-dark show-comments">Load Comments</button>         
+    <div id="comments">  
+        <h4 class="mb-4">Comments</h4>                 
+            <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'demowebsite'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+     
+    <div class="clearfix"></div>              
+    </div>    
+</div>       
+
+
+<!-- Share -->
+<div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Python - Lists&url=/seifallahhomrani1.github.io/lists/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=/seifallahhomrani1.github.io/lists/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=/seifallahhomrani1.github.io/lists/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+
+<!-- Related Post -->
+<!-- Related Posts
+================================================== -->
+<div class=" related-posts ">  
+
+    
+    <h2 class="text-center mb-4">Explore more like this</h2>
+    
+    
+    <div class="d-flex justify-content-center align-items-center">
+    
+    <!-- Categories -->
+    
+    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/categories#Python">Python</a>                
+    
+
+    <!-- Tags -->  
+    
+    
+
+    </div>
+
+    
+    
+    
+    <div class="blog-grid-container">
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/Files/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Files"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/Files/">Python - Files</a>
+                
+            </h2>
+            <h4 class="card-text">Working with files in Python, the OS module and checking Path validity.</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">03 Nov 1996</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/Pattern-Matching/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Pattern Matching"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/Pattern-Matching/">Python - Pattern Matching</a>
+                
+            </h2>
+            <h4 class="card-text">Using Regular expressions AKA Regex, making character classes, etc.</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">02 Nov 1996</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/seifallahhomrani1.github.io/Manipulating-Strings/">
+                
+
+                    
+                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/python/python.png" alt="Python - Manipulating Strings"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/seifallahhomrani1.github.io/Manipulating-Strings/">Python - Manipulating Strings</a>
+                
+            </h2>
+            <h4 class="card-text">Introduction to Python  </h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">31 Oct 1996</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+                
+        </div>        
+</div>
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+    </div>
+
+    
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+                <div class="col-md-6 col-sm-12 text-center text-lg-left">
+                    Copyright © 2021 Seif-Allah's Blog 
+                </div>
+            <div class="col-md-6 col-sm-12 text-center text-lg-right">
+                Made with love by    
+                <a target="_blank" href="fb.com/seifallahhomrani1">Seif-Allah</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
+================================================== -->
+
+<script src="/seifallahhomrani1.github.io/assets/js/prism.js"></script>
+
+<script src="/seifallahhomrani1.github.io/assets/js/theme.js"></script>
+
+
+
+
+<script id="dsq-count-scr" src="//demowebsite.disqus.com/count.js"></script>
+
+
+</body>
+</html>

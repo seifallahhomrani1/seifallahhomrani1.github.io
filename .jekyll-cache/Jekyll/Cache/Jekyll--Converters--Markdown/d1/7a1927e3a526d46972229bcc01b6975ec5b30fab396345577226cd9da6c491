@@ -1,0 +1,30 @@
+I"K<blockquote>
+  <p>Lab : <a href="https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data">Retrieving hidden data</a></p>
+</blockquote>
+
+<p>Let’s take this SQL query as an example :</p>
+<pre><code class="language-sql">SELECT * FROM products WHERE category = 'Gifts' AND released = 1 
+</code></pre>
+<p>This SQL query asks the database to return:</p>
+
+<ul>
+  <li>all details</li>
+  <li>from the products table</li>
+  <li>where the category is Gifts</li>
+  <li>and released is 1</li>
+</ul>
+
+<p>The restriction <em>released = 1</em> is being used to hide products that are not released. For unreleased products, presumably released = 0.</p>
+
+<p>The application doesn’t implement any defenses against SQL injection attacks (like input validation, parametrized queries, etc…), so an attacker can construct an attack like :</p>
+<pre><code class="language-sql">SELECT * FROM products WHERE category = 'Gifts'--' AND released = 1 
+</code></pre>
+<p>The key thing here is that the double-dash sequence – is a comment indicator in SQL, and means that the rest of the query is interpreted as a comment. This effectively removes the remainder of the query, so it no longer includes <em>AND released = 1</em>. This means taht all products are displayed, including unreleased products.</p>
+
+<p>Going further, an attacker can cause the application to display all the products in any category, including categories that they don’t know about, by submitting this url : 
+https://insecure-website.com/products?category=Gifts’+OR+1=1– 
+This results in the SQL query:</p>
+<pre><code class="language-sql">SELECT * FROM products WHERE category = 'Gifts' OR 1=1' -- AND released = 1
+</code></pre>
+<p>The modified query will return all items where either the category is Gifts, or 1 is equal to 1. Since 1=1 is always true, the query will return all items.</p>
+:ET

@@ -1,0 +1,16 @@
+I"$
+<ul>
+  <li><a href="#creating-regex-objects">Creating Regex Objects</a></li>
+  <li><a href="#matching-regex-objects">Matching Regex Objects</a></li>
+  <li><a href="#review-of-regular-expression-matching">Review of Regular Expression Matching</a></li>
+  <li><a href="#more-pattern-matching-with-regular-expressions">More Pattern Matching with Regular Expressions</a></li>
+  <li><a href="#character-classes">Character Classes</a></li>
+  <li><a href="#making-your-own-character-classes">Making Your Own Character Classes</a></li>
+  <li><a href="#the-caret-and-dollar-sign-characters">The Caret and Dollar Sign Characters</a></li>
+  <li><a href="#the-wildcard-character">The Wildcard Character</a></li>
+  <li><a href="#matching-everything-with-dot-star">Matching Everything with Dot-Star</a></li>
+  <li><a href="#matching-newlines-with-the-dot-character">Matching Newlines with the Dot Character</a></li>
+  <li><a href="#reveiw-of-regex-symbols">Reveiw of Regex Symbols</a></li>
+  <li><a href="#case-insensitive-matching">Case-Insensitive Matching</a></li>
+</ul>
+:EF

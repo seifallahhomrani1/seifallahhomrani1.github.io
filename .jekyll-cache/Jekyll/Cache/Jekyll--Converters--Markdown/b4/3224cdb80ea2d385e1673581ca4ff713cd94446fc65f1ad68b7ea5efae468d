@@ -1,0 +1,88 @@
+I"�<p><br /></p>
+
+<p><img src="/assets/images/database/sql.png" style="  width: 100%; max-width: 600px; height: auto;" /></p>
+
+<h3 id="what-is-sql-injection">What is SQL injection</h3>
+
+<p>SQL injection is a <em>web security</em> vulnerability that allows an attacker to interfere with the queries that an application makes to its database. It generally allows an attacker to view data that they are not normally able to retrieve. This might include data belonging to other users, or any other data that the application itself is able to access. In many cases, an attacker can modify or delete this data, causing persistent changes to the application content or behavior. In some situations, an attacker can escalate an SQL injection attack to compromise the underlying server or other back-end infrastructure, or perform a denial-of-service attack.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_jKylhJtPmI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h3 id="results-of-a-successful-sql-injection-attack">Results of a successful SQL injection attack</h3>
+
+<p>The attacker can access to sensitive data (passwords, credit card details, personal information …) Many high-profile data breaches in recent years have been the result of SQL injection attacks, leading to reputational damage and regulatory fines. In some cases, an attacker can obtain a persistent backdoor into an organization’s systems, leading to a long-term compromise that can go unnoticed for an extended period.</p>
+
+<h3 id="sql-injection-examples">SQL injection examples</h3>
+<p>There are a wide variety of SQL injection vulnerabilities, attacks and techniques, which arise in different situations. Some common SQL injection examples include:</p>
+
+<ul>
+  <li>
+    <p><strong>Retrieving hidden data</strong>: where you can modify an SQL query to return additional results.</p>
+  </li>
+  <li>
+    <p><strong>Subverting application logic</strong>: where you can change a query to interfere with the application’s logic.</p>
+    <blockquote>
+      <p>Lab : <a href="https://portswigger.net/web-security/sql-injection/lab-login-bypass">Subverting application logic</a>
+Consider an application that lets users log in with a username and password. If a user submits the username <em>wiener</em> and the password <em>bluecheese</em>, the application checks he credentials by performing the following SQL query:</p>
+      <pre><code class="language-sql">SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'  
+</code></pre>
+      <p>If the query returns the details of a user, then the login is successful, otherwise, it’s rejected.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p>Here, an attacker can log in as any user without a password simply by using the SQL comment sequence – to remove the password check from the WHERE clause of the query. For example, submitting the username *administrator’– and a blank password results in the following query:</p>
+<pre><code class="language-sql">SELECT * FROM users WHERE username = 'administrator'--'AND password = ''
+</code></pre>
+<p>This query returns the user whose username is administrator and successfully logs th attacker in as that user.</p>
+
+<ul>
+  <li>Union attacks: where you can retrieve data from different database tables.</li>
+</ul>
+
+<p>In cases where the results of an SQL query are returned within the application’s responses, an attacker can leverage an SQL injection vulnerability to retrieve data from other tables within the database. This is done using the UNION keyword, which lets you execute an additional SELECT query and append the results to the original query.</p>
+
+<p>For example, if an application executes the following query containing the user input “Gifts”:</p>
+<pre><code class="language-sql">SELECT name, description FROM products WHERE category = 'Gifts'
+</code></pre>
+<p>then an attacker can submit the input:
+‘ UNION SELECT username, password FROM users–
+This will cause the application to return all usernames and passwords along with the names and descriptions of products.</p>
+
+<p>To carry out an SQL injection UNION attack, you need to ensure that your attack meets these two requirements. This generally involves figuring out:</p>
+<ul>
+  <li>How many columns are being returned from the original query ?</li>
+  <li>Which columns returned from the original query are of a suitable data type to hold the results from the injected query ?</li>
+</ul>
+
+<ol>
+  <li><em>Determining the number of columns required in an SQL injection UNION attack</em> : 
+First of all, you can inject a series of ORDER BY clauses and incrementing the specified column index until an error occurs. For example, assuming the injection point is a quotes string within the WHERE clause of the original query, you would submit: 
+‘ ORDER BY 1–
+‘ ORDER BY 2–
+‘ ORDER BY 3–
+‘ ORDER BY 4–
+Until the database returns an error such as :
+<em>The ORDER BY position number 3 is out of range of items in the select list.</em>
+The second method involves submitting a series of UNION SELECT payloads specifying a different number of null values:
+‘ UNION SELECT NULL–
+‘ UNION SELECT NULL,NULL–
+‘ UNION SELECT NULL,NULL,NULL–
+etc.</li>
+</ol>
+
+<p>If the number of nulls does not match the number of columns, the database returns an error such as:
+<em>All queries combined using a UNION, INTERSECT or EXCEPT operator must have an equal number of expressions in their target lists.</em></p>
+
+<p>Again, the application might actually return this error message, or might just return a generic error or no results. When the number of nulls matches the number of columns, the database returns an additional row in the result set, containing null values in each column. The effect on the resulting HTTP response depends on the application’s code. If you are lucky, you will see some additional content within the response, such as an extra row on a HTML table. Otherwise, the null values might trigger a different error, such as a <em>NullPointerException</em>. Worst case, the response might be indistinguishable from that which is caused by an incorrect number of nulls, making this method of determining the column count ineffective.</p>
+
+<h3 id="why-using-null-">Why using NULL ?</h3>
+
+<p>The reason for using NULL as the values returned from the injected SELECT query is that the data types in each column must be compatible between the original and the injected queries. Since NULL is convertible to every commonly used data type, using NULL maximizes the chance that the payload will succeed when the column count is correct.</p>
+
+<h3 id="oracle-syntax">Oracle Syntax</h3>
+<p>On Oracle, every SELECT query must use the FROM keyword and specify a valid table. There is a built-in table on Oracle Called DUAL which can be used for this purpose. So the injected queries on Oracle would need to look like : ‘ UNION SELECT NULL FROM DUAL–</p>
+<h3 id="comments">Comments</h3>
+<p>The payloads described use the double-dash comment sequence – to comment out the remainder of the original query following the injection point. On MySQL, the double-dash sequence must be followed by a space. Alternatively, the hash character # cna be used to identify a comment.</p>
+
+:ET

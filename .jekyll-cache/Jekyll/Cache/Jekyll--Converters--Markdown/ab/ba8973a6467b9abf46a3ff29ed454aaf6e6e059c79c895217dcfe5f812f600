@@ -1,0 +1,3 @@
+I"õ<h3 id="overview">Overview</h3>
+<p>Recall that a packet starts in a host, passes through a series of routers, and ends its journey in another host. As a packet travels from one node to the subsequent node along this path, the packet suffers from several types of delays at each node along the path. The most important of these delays are the <strong>nodal processing delay, queuing delay, transmission delay, and propagation delay</strong>; together, these delays accumulate to give a <strong>total nodal delay</strong>. The performance of many Internet applications are greatly affected by network delays. In order to acquire a deep understanding of packet switching and computer networks, we must understand the nature and importance of these delays.</p>
+:ET

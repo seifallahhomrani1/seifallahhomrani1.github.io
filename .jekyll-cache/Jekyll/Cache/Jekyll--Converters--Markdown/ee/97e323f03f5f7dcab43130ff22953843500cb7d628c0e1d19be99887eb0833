@@ -1,0 +1,60 @@
+I"<p>Basically, the Java control statements are the same as in C language.</p>
+
+<h3 id="if-else-statement">if-else statement</h3>
+
+<pre><code class="language-java">public class Java_Nested_if{
+    public static void main(String[] args){
+        int age = 25; 
+        int weight = 48; 
+
+
+        if (age&gt;=18){
+            if (weight&gt;50){
+                System.out.println("You can donate blood");
+            }
+            else{
+                System.out.println("Go eat some fucking food");
+            }
+        else{
+            System.out.println("Sorry lil boy, go play with your toys");
+        }
+        }
+    }
+}
+
+</code></pre>
+
+<h3 id="switch-statement">Switch statement</h3>
+
+<p>The switch statement tests the equality of a variable against multiple values.</p>
+
+<p>Rules :</p>
+<ul>
+  <li>There can be one or N number of case values for a switch expression.</li>
+  <li>The case value must be of switch expression type only. The case value must be literal or constant. It doesn”t allow variables.</li>
+  <li>The case values must be unique. In case of duplicate value, it renders compile-time error.</li>
+</ul>
+
+<blockquote>
+  <p>Switch statement example:
+```java</p>
+</blockquote>
+
+<p>public class SwitchExample2{
+    public static void main(String[] args){</p>
+
+<pre><code>    int number = 20; 
+
+    switch(number){
+        case 10 : System.out.println("10");
+        case 20: System.out.println("20");
+        case 30 : System.out.println("30");
+        default : System.out.println("Not in 10, 20,30");
+    }
+
+
+} }
+</code></pre>
+
+<p>```</p>
+:ET

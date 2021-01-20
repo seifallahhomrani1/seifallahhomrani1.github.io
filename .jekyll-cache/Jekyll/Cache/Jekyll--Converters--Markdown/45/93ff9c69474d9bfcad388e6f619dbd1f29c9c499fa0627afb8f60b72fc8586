@@ -1,0 +1,40 @@
+I"�
+<h3 id="when-do-we-actually-need-a-database--"><mark style="background-color: white">When do we actually need a Database ? </mark></h3>
+<p>You have some data, and you want to store them, but you are not sure if you need to use a database or a spreadsheet for example, so if you answer by yes to any of the following characters, yeah you need a <em>database</em> !</p>
+<ol>
+  <li><strong>Size</strong> : If you got big chunks of data like thousands of raws of customers, you basically need a database.</li>
+  <li><strong>Accuracy</strong> : You care about your data being correct ?</li>
+  <li><strong>Security</strong> : Are your data valuable and sensitive ?</li>
+  <li><strong>Redundancy</strong> : No one wants redundant data !</li>
+  <li><strong>Importance</strong> : Imagine like someone deleted your spreadsheet file that stores all your patients data ? I know you can’t imagine !</li>
+  <li><strong>Overwriting</strong> : How about having more than one person overwriting the same data at the same time ?</li>
+</ol>
+
+<p>If you answer “Yes” to any of these problems, you actually need a database.</p>
+
+<h3 id="database-management-systems-"><mark style="background-color:white">Database Management Systems </mark></h3>
+<p>Database contains Data, easy. But how we manage these Data ? Using something called <em>Database Managemenet systems</em> like Oracle, MySQL, SQL Server, MongoDB. Remember that those aren’t databases, those are softwares that surrounds and manages your actual data, and it enforces some rules that you specify on your data like the type of the data for example.</p>
+
+<p>There are different DBMS, and they are categorized under :</p>
+<ol>
+  <li>Relational database management system.</li>
+  <li>Hierarchical database system.</li>
+  <li>Network database system.</li>
+  <li>Object-Oriented database system.</li>
+  <li>NoSQL database system.</li>
+</ol>
+
+<h3 id="relational-databases-"><mark style="background-color:white">Relational Databases </mark></h3>
+<p>A relational database is a type of database. It uses a structure that allows us to identify and access data in relation to another piece of data in the database. Often, data in a relational database is organized into tables.</p>
+
+<h3 id="relational-database-management-system-or-rdbms-"><mark style="background-color: white">Relational Database Management System or RDBMS </mark></h3>
+
+<p>A relational database management system (RDBMS) is a program that allows you to create, update, and administer a relational database. Most relational database management systems use the SQL language to access the database.</p>
+
+<p>I’m going to focus on RDBMS because :</p>
+<ul>
+  <li>The most common used one.</li>
+  <li>The principales we are going to discuss here are usuable across all of them.</li>
+</ul>
+
+:ET
