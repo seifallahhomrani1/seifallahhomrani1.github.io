@@ -4,7 +4,7 @@ description: "“I wanted to save the world.”"
 logo: 'assets/images/cover.png'
 logo-footer: 'assets/images/cover_footer.png'
 favicon: 'assets/images/logo.png'
-baseurl: "/blog"
+baseurl: "/"
 google_analytics: UA-181011093-2  
 disqus: 'demowebsite'
 include: ["_pages"]
