@@ -1,10 +1,10 @@
 name: "Seif-Allah's Blog"
 title: "Seif-Allah's Blog"
 description: "“I wanted to save the world.”"
-logo: 'assets/images/cover.png'
-logo-footer: 'assets/images/cover_footer.png'
-favicon: 'assets/images/logo.png'
-baseurl: "/"
+logo: '/assets/images/cover.png'
+logo-footer: '/assets/images/cover_footer.png'
+baseurl: ''
+favicon: '/assets/images/logo.png'
 google_analytics: UA-181011093-2  
 disqus: 'demowebsite'
 include: ["_pages"]

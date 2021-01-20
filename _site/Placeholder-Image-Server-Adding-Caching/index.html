@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
-<link rel="icon" href="/seifallahhomrani1.github.io/assets/images/favicon.ico">
+<link rel="icon" href="/assets/images/favicon.ico">
 
 <title>Placeholder Image Server : Adding Caching | Seif-Allah's Blog</title>
 
@@ -18,22 +18,22 @@
 <meta name="description" content="Using caching to avoid unnecessary requests to our server." />
 <meta property="og:description" content="Using caching to avoid unnecessary requests to our server." />
 <meta property="og:site_name" content="Seif-Allah’s Blog" />
-<meta property="og:image" content="/seifallahhomrani1.github.io/assets/images/Django/stateless_web_app.png" />
+<meta property="og:image" content="/assets/images/Django/stateless_web_app.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-11-13T00:00:00+01:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="/seifallahhomrani1.github.io/assets/images/Django/stateless_web_app.png" />
+<meta property="twitter:image" content="/assets/images/Django/stateless_web_app.png" />
 <meta property="twitter:title" content="Placeholder Image Server : Adding Caching" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/seifallahhomrani1.github.io/assets/images/cover.png"},"name":"Seif-Allah"},"image":"/seifallahhomrani1.github.io/assets/images/Django/stateless_web_app.png","url":"/seifallahhomrani1.github.io/Placeholder-Image-Server-Adding-Caching/","headline":"Placeholder Image Server : Adding Caching","dateModified":"2020-11-13T00:00:00+01:00","datePublished":"2020-11-13T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/seifallahhomrani1.github.io/Placeholder-Image-Server-Adding-Caching/"},"author":{"@type":"Person","name":"Seif-Allah"},"description":"Using caching to avoid unnecessary requests to our server.","@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"/Placeholder-Image-Server-Adding-Caching/"},"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/cover.png"},"name":"Seif-Allah"},"author":{"@type":"Person","name":"Seif-Allah"},"url":"/Placeholder-Image-Server-Adding-Caching/","image":"/assets/images/Django/stateless_web_app.png","headline":"Placeholder Image Server : Adding Caching","dateModified":"2020-11-13T00:00:00+01:00","datePublished":"2020-11-13T00:00:00+01:00","description":"Using caching to avoid unnecessary requests to our server.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
-<link href="/seifallahhomrani1.github.io/assets/css/prism.css" rel="stylesheet">
+<link href="/assets/css/prism.css" rel="stylesheet">
 
-<link href="/seifallahhomrani1.github.io/assets/css/theme.css" rel="stylesheet">
+<link href="/assets/css/theme.css" rel="stylesheet">
 
-<script src="/seifallahhomrani1.github.io/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
 
 </head>
 
@@ -55,20 +55,20 @@
 <nav id="menu">
     <ul>
         <h3>Navigation</h3>
-        <li><a href="/seifallahhomrani1.github.io/">Home</a></li>
-        <li><a  href="/seifallahhomrani1.github.io/contact">Contact</a></li>
-        <li><a href="/seifallahhomrani1.github.io/categories#Python">Python</a></li>
-        <li><a href="/seifallahhomrani1.github.io/categories#Java">Java</a></li>
-        <li><a href="/seifallahhomrani1.github.io/categories#CTF-WriteUp">CTF-WriteUp</a></li>
-        <li><a href="/seifallahhomrani1.github.io/categories#Articles">Articles</a></li>
-        <li><a href="/seifallahhomrani1.github.io/categories#Networking">Networking</a></li>    
-        <li><a href="/seifallahhomrani1.github.io/categories#Databases">Databases</a></li>
-        <li><a href="/seifallahhomrani1.github.io/categories#Django">Django</a></li>     
-        <li><a href="/seifallahhomrani1.github.io/categories#Linux">Linux</a></li>     
+        <li><a href="/">Home</a></li>
+        <li><a  href="/contact">Contact</a></li>
+        <li><a href="/categories#Python">Python</a></li>
+        <li><a href="/categories#Java">Java</a></li>
+        <li><a href="/categories#CTF-WriteUp">CTF-WriteUp</a></li>
+        <li><a href="/categories#Articles">Articles</a></li>
+        <li><a href="/categories#Networking">Networking</a></li>    
+        <li><a href="/categories#Databases">Databases</a></li>
+        <li><a href="/categories#Django">Django</a></li>     
+        <li><a href="/categories#Linux">Linux</a></li>     
     </ul>   
 </nav>
 
-<script src="/seifallahhomrani1.github.io/assets/js/lunr.js"></script>
+<script src="//assets/js/lunr.js"></script>
 
 <style>
     
@@ -87,7 +87,7 @@
     <ul></ul>
 </div>
 
-<script src="/seifallahhomrani1.github.io/assets/js/lunrsearchengine.js"></script>
+<script src="//assets/js/lunrsearchengine.js"></script>
 
 
 <!-- End Sidebar Navigation
@@ -100,8 +100,8 @@
     <!-- Site Logo/Name
     ================================================== -->
    
-    <a class="navbar-brand" href="/seifallahhomrani1.github.io/">
-        <img src="/seifallahhomrani1.github.io/assets/images/cover.png" alt="Seif-Allah's Blog">
+    <a class="navbar-brand" href="/">
+        <img src="//assets/images/cover.png" alt="Seif-Allah's Blog">
     </a>  
    
 
@@ -140,7 +140,7 @@
 
 <div class="entry-featured-image">
     
-    <img class="featured-image " src="/seifallahhomrani1.github.io//assets/images/Django/stateless_web_app.png" alt="Placeholder Image Server : Adding Caching">
+    <img class="featured-image " src="///assets/images/Django/stateless_web_app.png" alt="Placeholder Image Server : Adding Caching">
     
 </div>
 
@@ -275,19 +275,19 @@ def placeholder(request, width, height):
     </p>
     <ul>
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://twitter.com/intent/tweet?text=Placeholder Image Server : Adding Caching&url=/seifallahhomrani1.github.io/Placeholder-Image-Server-Adding-Caching/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Placeholder Image Server : Adding Caching&url=/Placeholder-Image-Server-Adding-Caching/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fab fa-twitter"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://facebook.com/sharer.php?u=/seifallahhomrani1.github.io/Placeholder-Image-Server-Adding-Caching/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=/Placeholder-Image-Server-Adding-Caching/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
                 <i class="fab fa-facebook-f"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=/seifallahhomrani1.github.io/Placeholder-Image-Server-Adding-Caching/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=/Placeholder-Image-Server-Adding-Caching/" onclick="window.open(this.href, 'width=550,height=435');return false;">
                 <i class="fab fa-linkedin-in"></i>
             </a>
         </li>
@@ -310,27 +310,27 @@ def placeholder(request, width, height):
     <!-- Categories -->
     
     
-    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/categories#Django">Django</a>                
+    <a class="smoothscroll badge badge-primary text-capitalize" href="//categories#Django">Django</a>                
     
 
     <!-- Tags -->  
     
                     
-    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#Django">Django</a>               
+    <a class="smoothscroll badge badge-primary text-capitalize" href="//tags#Django">Django</a>               
                     
-    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#Web">Web</a>               
+    <a class="smoothscroll badge badge-primary text-capitalize" href="//tags#Web">Web</a>               
                     
-    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#coding">coding</a>               
+    <a class="smoothscroll badge badge-primary text-capitalize" href="//tags#coding">coding</a>               
                     
-    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#first">first</a>               
+    <a class="smoothscroll badge badge-primary text-capitalize" href="//tags#first">first</a>               
                     
-    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#placeholder">placeholder</a>               
+    <a class="smoothscroll badge badge-primary text-capitalize" href="//tags#placeholder">placeholder</a>               
                     
-    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#python">python</a>               
+    <a class="smoothscroll badge badge-primary text-capitalize" href="//tags#python">python</a>               
                     
-    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#tutorial">tutorial</a>               
+    <a class="smoothscroll badge badge-primary text-capitalize" href="//tags#tutorial">tutorial</a>               
                     
-    <a class="smoothscroll badge badge-primary text-capitalize" href="/seifallahhomrani1.github.io/tags#view">view</a>               
+    <a class="smoothscroll badge badge-primary text-capitalize" href="//tags#view">view</a>               
     
 
     </div>
@@ -506,11 +506,11 @@ def placeholder(request, width, height):
 <div class="blog-grid-item">
     <div class="card h-100">
         <div class="maxthumb">
-            <a href="/seifallahhomrani1.github.io/Placeholder-Image-Server-Views/">
+            <a href="//Placeholder-Image-Server-Views/">
                 
 
                     
-                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/Django/stateless_web_app.png" alt="Placeholder Image Server : Views"> 
+                        <img class="img-thumb" src="///assets/images/Django/stateless_web_app.png" alt="Placeholder Image Server : Views"> 
                     
 
                 
@@ -518,7 +518,7 @@ def placeholder(request, width, height):
         </div>
         <div class="card-body">
             <h2 class="card-title">
-                <a class="text-dark" href="/seifallahhomrani1.github.io/Placeholder-Image-Server-Views/">Placeholder Image Server : Views</a>
+                <a class="text-dark" href="//Placeholder-Image-Server-Views/">Placeholder Image Server : Views</a>
                 
             </h2>
             <h4 class="card-text">Generating the placeholder image using Pillow and BytesIO modules</h4>
@@ -560,11 +560,11 @@ def placeholder(request, width, height):
 <div class="blog-grid-item">
     <div class="card h-100">
         <div class="maxthumb">
-            <a href="/seifallahhomrani1.github.io/placeholder_image_server/">
+            <a href="//placeholder_image_server/">
                 
 
                     
-                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/Django/stateless_web_app.png" alt="Placeholder Image Server : First Steps"> 
+                        <img class="img-thumb" src="///assets/images/Django/stateless_web_app.png" alt="Placeholder Image Server : First Steps"> 
                     
 
                 
@@ -572,7 +572,7 @@ def placeholder(request, width, height):
         </div>
         <div class="card-body">
             <h2 class="card-title">
-                <a class="text-dark" href="/seifallahhomrani1.github.io/placeholder_image_server/">Placeholder Image Server : First Steps</a>
+                <a class="text-dark" href="//placeholder_image_server/">Placeholder Image Server : First Steps</a>
                 
             </h2>
             <h4 class="card-text">Making my first Django project</h4>
@@ -623,11 +623,11 @@ def placeholder(request, width, height):
 <div class="blog-grid-item">
     <div class="card h-100">
         <div class="maxthumb">
-            <a href="/seifallahhomrani1.github.io/The-World's-Smallest-Django-Project/">
+            <a href="//The-World's-Smallest-Django-Project/">
                 
 
                     
-                        <img class="img-thumb" src="/seifallahhomrani1.github.io//assets/images/Django/django_first_project.png" alt="The World's Smallest Django Project"> 
+                        <img class="img-thumb" src="///assets/images/Django/django_first_project.png" alt="The World's Smallest Django Project"> 
                     
 
                 
@@ -635,7 +635,7 @@ def placeholder(request, width, height):
         </div>
         <div class="card-body">
             <h2 class="card-title">
-                <a class="text-dark" href="/seifallahhomrani1.github.io/The-World's-Smallest-Django-Project/">The World's Smallest Django Project</a>
+                <a class="text-dark" href="//The-World's-Smallest-Django-Project/">The World's Smallest Django Project</a>
                 
             </h2>
             <h4 class="card-text">Making my first Django project</h4>
@@ -698,9 +698,9 @@ https://search.google.com/structured-data/testing-tool/u/0/
 <!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
 ================================================== -->
 
-<script src="/seifallahhomrani1.github.io/assets/js/prism.js"></script>
+<script src="/assets/js/prism.js"></script>
 
-<script src="/seifallahhomrani1.github.io/assets/js/theme.js"></script>
+<script src="/assets/js/theme.js"></script>
 
 
 

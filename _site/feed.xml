@@ -3,10 +3,10 @@
   <channel>
     <title>Seif-Allah's Blog</title>
     <description>“I wanted to save the world.”</description>
-    <link>/seifallahhomrani1.github.io/</link>
-    <atom:link href="/seifallahhomrani1.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 20 Jan 2021 21:53:48 +0100</pubDate>
-    <lastBuildDate>Wed, 20 Jan 2021 21:53:48 +0100</lastBuildDate>
+    <link>//</link>
+    <atom:link href="//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 20 Jan 2021 22:21:59 +0100</pubDate>
+    <lastBuildDate>Wed, 20 Jan 2021 22:21:59 +0100</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -15,8 +15,8 @@
 
 </description>
         <pubDate>Tue, 19 Jan 2021 00:00:00 +0100</pubDate>
-        <link>/seifallahhomrani1.github.io/Find-Command/</link>
-        <guid isPermaLink="true">/seifallahhomrani1.github.io/Find-Command/</guid>
+        <link>//Find-Command/</link>
+        <guid isPermaLink="true">//Find-Command/</guid>
         
         
         <category>Linux</category>
@@ -109,8 +109,8 @@ The main idea is that we extract the first character of the id field that matche
 &lt;p&gt;Resources : &lt;a href=&quot;https://portswigger.net/support/sql-injection-bypassing-common-filters&quot;&gt;PortSwigger - Bypassing Common filters&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 05 Jan 2021 00:00:00 +0100</pubDate>
-        <link>/seifallahhomrani1.github.io/LOS-goblin/</link>
-        <guid isPermaLink="true">/seifallahhomrani1.github.io/LOS-goblin/</guid>
+        <link>//LOS-goblin/</link>
+        <guid isPermaLink="true">//LOS-goblin/</guid>
         
         
         <category>CTF-WriteUp</category>
@@ -190,8 +190,8 @@ So the final query will be  :&lt;/p&gt;
 &lt;p&gt;GREMLIN CLEAR !&lt;/p&gt;
 </description>
         <pubDate>Sun, 03 Jan 2021 00:00:00 +0100</pubDate>
-        <link>/seifallahhomrani1.github.io/LOS-gremlin/</link>
-        <guid isPermaLink="true">/seifallahhomrani1.github.io/LOS-gremlin/</guid>
+        <link>//LOS-gremlin/</link>
+        <guid isPermaLink="true">//LOS-gremlin/</guid>
         
         
         <category>CTF-WriteUp</category>
@@ -261,8 +261,8 @@ So the final query will be  :&lt;/p&gt;
 &lt;p&gt;```&lt;/p&gt;
 </description>
         <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
-        <link>/seifallahhomrani1.github.io/control-statements/</link>
-        <guid isPermaLink="true">/seifallahhomrani1.github.io/control-statements/</guid>
+        <link>//control-statements/</link>
+        <guid isPermaLink="true">//control-statements/</guid>
         
         
         <category>Java</category>
@@ -397,8 +397,8 @@ class Simple{
 20&lt;/p&gt;
 </description>
         <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
-        <link>/seifallahhomrani1.github.io/Java-Variables/</link>
-        <guid isPermaLink="true">/seifallahhomrani1.github.io/Java-Variables/</guid>
+        <link>//Java-Variables/</link>
+        <guid isPermaLink="true">//Java-Variables/</guid>
         
         
         <category>Java</category>
@@ -465,8 +465,8 @@ Java Native Interface (JNI) is a framework which provides an interface to commun
 
 </description>
         <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
-        <link>/seifallahhomrani1.github.io/JVM-architecture/</link>
-        <guid isPermaLink="true">/seifallahhomrani1.github.io/JVM-architecture/</guid>
+        <link>//JVM-architecture/</link>
+        <guid isPermaLink="true">//JVM-architecture/</guid>
         
         
         <category>Java</category>
@@ -484,8 +484,8 @@ Java Native Interface (JNI) is a framework which provides an interface to commun
 &lt;p&gt;The source can be found in my github directory : &lt;a href=&quot;https://github.com/seifallahhomrani1/Java&quot;&gt;JAVA - OOP&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
-        <link>/seifallahhomrani1.github.io/First-Java-program/</link>
-        <guid isPermaLink="true">/seifallahhomrani1.github.io/First-Java-program/</guid>
+        <link>//First-Java-program/</link>
+        <guid isPermaLink="true">//First-Java-program/</guid>
         
         
         <category>Java</category>
@@ -526,8 +526,8 @@ It physically exists. It contains JRE + development tools.&lt;/p&gt;
 
 </description>
         <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
-        <link>/seifallahhomrani1.github.io/Difference-between-JDK,-JRE-and-JVM/</link>
-        <guid isPermaLink="true">/seifallahhomrani1.github.io/Difference-between-JDK,-JRE-and-JVM/</guid>
+        <link>//Difference-between-JDK,-JRE-and-JVM/</link>
+        <guid isPermaLink="true">//Difference-between-JDK,-JRE-and-JVM/</guid>
         
         
         <category>Java</category>
@@ -622,8 +622,8 @@ The highest value : \uFFFF&lt;/p&gt;
 &lt;p&gt;Resources : https://www.javatpoint.com/java-data-types&lt;/p&gt;
 </description>
         <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
-        <link>/seifallahhomrani1.github.io/Data-Types/</link>
-        <guid isPermaLink="true">/seifallahhomrani1.github.io/Data-Types/</guid>
+        <link>//Data-Types/</link>
+        <guid isPermaLink="true">//Data-Types/</guid>
         
         
         <category>Java</category>
@@ -752,8 +752,8 @@ cat local.txt
 &lt;p&gt;Bingo ! We got the first flag&lt;/p&gt;
 </description>
         <pubDate>Fri, 18 Dec 2020 00:00:00 +0100</pubDate>
-        <link>/seifallahhomrani1.github.io/THM-Chill-Hack/</link>
-        <guid isPermaLink="true">/seifallahhomrani1.github.io/THM-Chill-Hack/</guid>
+        <link>//THM-Chill-Hack/</link>
+        <guid isPermaLink="true">//THM-Chill-Hack/</guid>
         
         <category>THM</category>
         
