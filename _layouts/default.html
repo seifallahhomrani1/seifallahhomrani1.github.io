@@ -1,19 +1,135 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
+<link rel="icon" href="{{ site.baseurl }}/assets/images/favicon.ico">
 
-  {%- include head.html -%}
+<title>{{ page.title }} | {{site.name}}</title>
 
-  <body>
-    <div class="container">
+{% seo %}
+    
+<link href="{{ site.baseurl }}/assets/css/prism.css" rel="stylesheet">
 
-      {%- include header.html -%}
+<link href="{{ site.baseurl }}/assets/css/theme.css" rel="stylesheet">
 
-    <main>
-      {{ content }}
-    </main>
+<script src="{{ site.baseurl }}/assets/js/jquery.min.js"></script>
 
-    {%- include footer.html -%}
+</head>
 
+{% if jekyll.environment == 'production' %}
+<!-- change your GA id in _config.yml -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', '{{site.google_analytics}}', 'auto');
+ga('send', 'pageview');
+</script>
+{% endif %}
+
+{% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
+<body>
+
+
+<!-- Begin Sidebar Navigation
+================================================== -->
+
+<div class="sidebar">    
+</div>   
+<div class="nav-icon">
+    <div class="hamburger-bar"></div>
+</div>
+<div id="blackover-nav" class="blackover"></div>
+<nav id="menu">
+    <ul>
+        <h3>Navigation</h3>
+        <li><a href="{{ site.baseurl }}/">Home</a></li>
+        <li><a  href="{{ site.baseurl }}/contact">Contact</a></li>
+        <li><a href="{{ site.baseurl }}/categories#Python">Python</a></li>
+        <li><a href="{{ site.baseurl }}/categories#Java">Java</a></li>
+        <li><a href="{{ site.baseurl }}/categories#CTF-WriteUp">CTF-WriteUp</a></li>
+        <li><a href="{{ site.baseurl }}/categories#Articles">Articles</a></li>
+        <li><a href="{{ site.baseurl }}/categories#Networking">Networking</a></li>    
+        <li><a href="{{ site.baseurl }}/categories#Databases">Databases</a></li>
+        <li><a href="{{ site.baseurl }}/categories#Django">Django</a></li>     
+        <li><a href="{{ site.baseurl }}/categories#Linux">Linux</a></li>     
+    </ul>   
+</nav>
+
+{% include search-lunr.html %}
+
+
+<!-- End Sidebar Navigation
+================================================== -->
+
+<div class="site-content {% if page.url == '/' %} firstpage {% endif %}">
+
+<div class="container">
+
+    <!-- Site Logo/Name
+    ================================================== -->
+   
+    <a class="navbar-brand" href="{{ site.baseurl }}/">
+        <img src="{{ site.baseurl }}/{{ site.logo }}" alt="{{ site.name }}">
+    </a>  
+   
+
+    <!-- Site Tag
+    ================================================== -->
+    {% if page.url == '/' %}
+        <p class="sitetag">
+            {{ site.description }}
+        </p>
+    {% endif %}
+
+    <!-- Content
+    ================================================== -->
+    <div class="main-content">
+        {{ content }}
     </div>
-  </body>
+
+    
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+                <div class="col-md-6 col-sm-12 text-center text-lg-left">
+                    Copyright © {{ site.time | date: "%Y" }} {{ site.name }} 
+                </div>
+            <div class="col-md-6 col-sm-12 text-center text-lg-right">
+                Made with love by    
+                <a target="_blank" href="fb.com/seifallahhomrani1">Seif-Allah</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
+================================================== -->
+
+<script src="{{ site.baseurl }}/assets/js/prism.js"></script>
+
+<script src="{{ site.baseurl }}/assets/js/theme.js"></script>
+
+{% if site.lazyimages == "enabled" %}
+<script src="{{ site.baseurl }}/assets/js/lazyload.js"></script>
+{% endif %}
+
+{% if page.layout == 'post' %}
+<script id="dsq-count-scr" src="//{{site.disqus}}.disqus.com/count.js"></script>
+{% endif %}
+
+</body>
 </html>

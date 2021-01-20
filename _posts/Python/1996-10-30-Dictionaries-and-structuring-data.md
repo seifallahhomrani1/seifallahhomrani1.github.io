@@ -2,10 +2,9 @@
 layout : post
 title : "Python - Dictionaries and Structuring Data"
 author : Seif-Allah
-Description : "Dictionaries, Using Data Structures to Model Real-World Things"
+description : "Dictionaries, Using Data Structures to Model Real-World Things"
 category : Python 
-header-img : "img/intro.png"
-tags : [programming language, development, python, introduction]
+image : "/assets/images/python/python.png"
 ---
 ### The Dictionary Data Type
 Like a list, a **dictionary** is a collection of many values. But unlike indexes for lists, indexes for dictionaries can use many different data types, not just integers. Indexes for dictionaries are called **keys**, and a key with its associated value is called a **key-value pair**.

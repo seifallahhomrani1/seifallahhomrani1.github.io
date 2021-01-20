@@ -2,8 +2,8 @@
 title: Databases - Introduction 
 author: Seif-Allah
 layout: post
-Description : Introduction to Databases, Why we use them and how to manipulate them.
-category : Databases
+description : Introduction to Databases, Why we use them and how to manipulate them.
+categories : [Databases]
 ---
 ### <mark style='background-color: white'>When do we actually need a Database ? </mark>
 You have some data, and you want to store them, but you are not sure if you need to use a database or a spreadsheet for example, so if you answer by yes to any of the following characters, yeah you need a *database* ! 

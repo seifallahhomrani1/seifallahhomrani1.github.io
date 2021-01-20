@@ -2,11 +2,10 @@
 layout : post
 title : "Python\_Introduction"
 author : Seif-Allah
-Description : "Introduction to Python  "
+description : "Introduction to Python and its Zen."
 category : Python 
-date : 2020-10-25
-header-img : "img/intro.png"
-tags : [programming language, development, python, introduction]
+image : "/assets/images/python/python.png"
+toc : true 
 ---
 
 ### Prerequisite :

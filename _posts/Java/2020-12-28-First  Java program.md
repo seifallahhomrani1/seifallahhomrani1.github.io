@@ -3,7 +3,7 @@ title: "Java - Clickable Pen program"
 author : Seif-Allah
 layout: post
 category : Java
-Description : Java - First OOP program.
+description : Java - First OOP program.
 image : /assets/images/java/oop_concepts.png
 ---
 Following [Alex Lee](https://www.youtube.com/channel/UC_fFL5jgoCOrwAVoM_fBYwA) video about object oriented programming, I wrote this basic OOP program which create a pen as an object and two methods that click and unclick the pen. 

@@ -2,10 +2,11 @@
 title : "Python - Functions"
 layout : post
 category : Python 
-Description : "Python Functions, Local and Global Scope and Exception Handling"
+description : "Python Functions, Local and Global Scope and Exception Handling"
 author : Seif-Allah
-header-img : img/function.png
-tags : [programming language, development, python, introduction]
+image : "/assets/images/python/python.png"
+toc : true 
+
 ---
 <br>
 **A function is like a mini-program within a program**

@@ -3,8 +3,9 @@ title: "Java - Data Types"
 author : Seif-Allah
 layout: post
 category : Java
-Description : Java - Data types (Primitive) and Unicode System.
+description : Java - Data types (Primitive) and Unicode System.
 image : /assets/images/java/oop_concepts.png
+toc : true 
 ---
 
 Java is *statically-typed* programming language.

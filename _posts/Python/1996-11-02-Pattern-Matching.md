@@ -3,6 +3,10 @@ title : "Python - Pattern Matching"
 layout : post
 author : Seif-Allah
 category : Python 
+image : "/assets/images/python/python.png"
+
+toc : true 
+description : Using Regular expressions AKA Regex, making character classes, etc.
 ---
 
 Regular expressions, called **regexes** for short, are descriptions for a pattern of text. 

@@ -3,8 +3,9 @@ title: "Java - JDK, JRE and JVM"
 author : Seif-Allah
 layout: post
 category : Java
-Description : Difference between JDK, JRE and JVM.
+description : Difference between JDK, JRE and JVM.
 image : /assets/images/java/oop_concepts.png
+toc : true 
 ---
 
 Notes: 

@@ -5,6 +5,7 @@ layout: post
 description : "'Lord of SQL Injection', a site where you can learn about SQL injection vulnerabilities while capturing dungeons'"
 category : CTF-WriteUp
 image: /assets/images/writeups/los/goblin.png
+
 ---
 
 <br>

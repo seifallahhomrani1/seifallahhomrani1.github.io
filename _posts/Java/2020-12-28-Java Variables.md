@@ -3,7 +3,7 @@ title: "Java - Variables"
 author : Seif-Allah
 layout: post
 category : Java
-Description : "Java variables: Local, Instance and Static"
+description : "Java variables: Local, Instance and Static"
 image : /assets/images/java/oop_concepts.png
 ---
 

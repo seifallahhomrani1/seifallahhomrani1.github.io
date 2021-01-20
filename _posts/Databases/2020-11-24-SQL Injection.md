@@ -2,7 +2,7 @@
 title: "SQLi - SQL Injection"  
 author: Seif-Allah
 layout: post
-Description : Introduction to SQL Injection
+description : Introduction to SQL Injection
 category : Databases
 image: /assets/images/database/sql.png
 ---

@@ -3,8 +3,9 @@ title: "Java - OOP Concepts"
 author : Seif-Allah
 layout: post
 category : Java
-Description : Java OOP concepts.
+description : Java OOP concepts.
 image : /assets/images/java/oop_concepts.png
+toc : true 
 ---
 
 ### Introduction 

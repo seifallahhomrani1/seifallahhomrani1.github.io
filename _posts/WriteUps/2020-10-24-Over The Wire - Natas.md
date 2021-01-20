@@ -1,8 +1,10 @@
 ---
-title: "OverTheWire - Natas"
+title: "OverTheWire - Natas : 11 Levels"
 author : Seif-Allah
 layout: post
 category : CTF-WriteUp
+description : WriteUp for Natas Wargame. Recommended for beginners in the Web security field . 
+image : /assets/images/writeups/OTW/natas.png
 ---
 
 

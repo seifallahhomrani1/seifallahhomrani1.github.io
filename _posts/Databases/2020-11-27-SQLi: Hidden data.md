@@ -2,7 +2,7 @@
 title: "SQLi - Retrieving Hidden Data"  
 author: Seif-Allah
 layout: post
-Description : Retrieving Hidden Data using SQL injection
+description : Retrieving Hidden Data using SQL injection
 category : Databases
 image: /assets/images/database/sql.png
 ---

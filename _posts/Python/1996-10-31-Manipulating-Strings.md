@@ -2,10 +2,10 @@
 layout : post
 title : "Python - Manipulating Strings"
 author : Seif-Allah
-Description : "Introduction to Python  "
+description : "Introduction to Python  "
 category : Python 
-header-img : "img/function.png"
-tags : [programming language, development, python, introduction]
+image : "/assets/images/python/python.png"
+toc : true 
 ---
 
 Typing string values in Python code is fairly straightforward: They begin and end with a single quote or double quotes. The benifit of using the double quotes is that string can have a single quote character in it. 

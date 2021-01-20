@@ -3,7 +3,7 @@ title: "OverTheWire - Bandit"
 author : Seif-Allah
 layout: post
 category : CTF-WriteUp
-Description : WriteUp for Bandit Wargame. Recommended for beginners. 
+description : WriteUp for Bandit Wargame. Recommended for beginners. 
 image : /assets/images/writeups/OTW/bandit/bandit_cover_sm2.png
 ---
 ### Basic Introduction : 
