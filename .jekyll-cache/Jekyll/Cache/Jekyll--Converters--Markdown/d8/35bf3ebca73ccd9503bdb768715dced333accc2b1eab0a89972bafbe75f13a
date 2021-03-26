@@ -1,0 +1,11 @@
+I"²
+<ul>
+  <li><a href="#linux-bootloaders">Linux Bootloaders</a></li>
+  <li><a href="#grub-legacy">GRUB Legacy</a></li>
+  <li><a href="#configuring-grub-legacy">Configuring GRUB Legacy</a></li>
+  <li><a href="#grub-2">GRUB 2</a></li>
+  <li><a href="#configuring-grub2">Configuring GRUB2</a></li>
+  <li><a href="#installing-grub2">Installing GRUB2</a></li>
+  <li><a href="#alternative-bootloaders">Alternative Bootloaders</a></li>
+</ul>
+:EF

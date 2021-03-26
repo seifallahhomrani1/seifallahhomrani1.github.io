@@ -1,0 +1,11 @@
+I"á
+<ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#bridging-vs-lan-switching">Bridging vs LAN Switching</a></li>
+  <li><a href="#three-switch-functions-at-layer-2">Three Switch Functions at Layer 2</a></li>
+  <li><a href="#address-learning">Address Learning</a></li>
+  <li><a href="#forwardfilter-decisions">Forward/Filter Decisions</a></li>
+  <li><a href="#port-security">Port Security</a></li>
+  <li><a href="#loop-avoidance">Loop Avoidance</a></li>
+</ul>
+:EF

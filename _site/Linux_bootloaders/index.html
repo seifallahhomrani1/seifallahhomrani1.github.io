@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
+<link rel="icon" href="/assets/images/favicon.ico">
+
+<title>Linux Bootloaders | Seif-Allah's Blog</title>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Linux Bootloaders | Seif-Allah’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Linux Bootloaders" />
+<meta name="author" content="Seif-Allah" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="To Do" />
+<meta property="og:description" content="To Do" />
+<meta property="og:site_name" content="Seif-Allah’s Blog" />
+<meta property="og:image" content="/assets/images/linux/todo.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-07T00:00:00+01:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/assets/images/linux/todo.png" />
+<meta property="twitter:title" content="Linux Bootloaders" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","image":"/assets/images/linux/todo.png","headline":"Linux Bootloaders","dateModified":"2021-03-07T00:00:00+01:00","url":"/Linux_bootloaders/","datePublished":"2021-03-07T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/Linux_bootloaders/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/cover.png"},"name":"Seif-Allah"},"author":{"@type":"Person","name":"Seif-Allah"},"description":"To Do","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+<link href="/assets/css/prism.css" rel="stylesheet">
+
+<link href="/assets/css/theme.css" rel="stylesheet">
+
+<script src="/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+
+
+<!-- Begin Sidebar Navigation
+================================================== -->
+
+<div class="sidebar">    
+</div>   
+<div class="nav-icon">
+    <div class="hamburger-bar"></div>
+</div>
+<div id="blackover-nav" class="blackover"></div>
+<nav id="menu">
+    <ul>
+        <h3>Navigation</h3>
+        <li><a href="/">Home</a></li>
+        <li><a  href="/contact">Contact</a></li>
+        <li><a href="/categories#Python">Python</a></li>
+        <li><a href="/categories#Java">Java</a></li>
+        <li><a href="/categories#CTF-WriteUp">CTF-WriteUp</a></li>
+        <li><a href="/categories#Articles">Articles</a></li>
+        <li><a href="/categories#Networking">Networking</a></li>    
+        <li><a href="/categories#Databases">Databases</a></li>
+        <li><a href="/categories#Django">Django</a></li>     
+        <li><a href="/categories#Linux">Linux</a></li>     
+    </ul>   
+</nav>
+
+<script src="assets/js/lunr.js"></script>
+
+<style>
+    
+</style>
+
+<div class="wrap-search">
+    <div class="d-flex align-items-center ml-auto">
+        <i class="fas fa-search show-search"></i>
+        <form class="bd-search ml-3" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+            <input type="text" class="form-control bigradius text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+        </form>
+    </div>
+</div>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="assets/js/lunrsearchengine.js"></script>
+
+
+<!-- End Sidebar Navigation
+================================================== -->
+
+<div class="site-content ">
+
+<div class="container">
+
+    <!-- Site Logo/Name
+    ================================================== -->
+   
+    <a class="navbar-brand" href="/">
+        <img src="/assets/images/cover.png" alt="Seif-Allah's Blog">
+    </a>  
+   
+
+    <!-- Site Tag
+    ================================================== -->
+    
+
+    <!-- Content
+    ================================================== -->
+    <div class="main-content">
+        <div class="entry-header">
+    <!-- Post Title -->
+    <h1 class="posttitle">Linux Bootloaders</h1>
+    <!-- Author & Date  Box -->
+    
+    
+    <div class="d-flex align-items-center mt-4">
+        <div>
+            
+            <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+            
+        </div>            
+        <div>
+        Written by <a target="_blank" class="text-dark" href="seifallahhomrani1.social">Seif-Allah</a> on 
+        <span class="post-date"><time class="post-date" datetime="2021-03-07">07 Mar 2021</time></span>           
+        
+        </div>            
+    </div>
+    
+</div>
+
+<!-- Adsense under title if enabled from _config.yml (change your pub id and slot) -->
+
+
+<!-- Featured Image -->
+
+<div class="entry-featured-image">
+    
+    <img class="featured-image " src="//assets/images/linux/todo.png" alt="Linux Bootloaders">
+    
+</div>
+
+
+<!-- Content -->
+<!-- Post, Page Content
+================================================== -->
+<div class="article-post">
+    <!-- Toc if any -->
+    
+    
+    <div class="toc mt-4 mb-4 lead">
+        <h3 class="font-weight-bold">Summary</h3>
+        <ul>
+  <li><a href="#linux-bootloaders">Linux Bootloaders</a></li>
+  <li><a href="#grub-legacy">GRUB Legacy</a></li>
+  <li><a href="#configuring-grub-legacy">Configuring GRUB Legacy</a></li>
+  <li><a href="#grub-2">GRUB 2</a></li>
+  <li><a href="#configuring-grub2">Configuring GRUB2</a></li>
+  <li><a href="#installing-grub2">Installing GRUB2</a></li>
+  <li><a href="#alternative-bootloaders">Alternative Bootloaders</a></li>
+</ul>
+    </div>
+    
+    <!-- End Toc -->
+    <h3 id="linux-bootloaders">Linux Bootloaders</h3>
+
+<p>The bootloader program helps bridge the gap between the system firmware and the full Linux operating system kernel. In Linux, you have many choices of bootloaders. The most popular ones that you’ll run across are these :</p>
+<ul>
+  <li>Linux Loader (LILO)</li>
+  <li>Grand Unified Bootloader (GRUB) Legacy</li>
+  <li>GRUB2</li>
+</ul>
+
+<p>In the original versions of Linux, the Linux Loader (LILO) bootloader was the only one available. It was extremely limited in what it could do, but it accomplished its purpose, that is, loading the Linux kernel from the BIOS startup. LILO became the default bootloader used by Linux distributions in the 1990s. The LILO configuration file is stored in a single file, UEFI, <em>/etc/lilo.conf</em>, which defines the systems to boot. Unfortunately, LILO doesn’t work with UEFI systems, so it has limited use on modern systems and is quickly fading into history.</p>
+
+<p>The first version of the GRUB bootloader (now called GRUB Legacy) was created in 1999 to provide a more robust and configurable bootloader to replace LILO. GRUB quickly became the default bootloader for all linux distributions, whether they run on BIOS or UEFI systems.</p>
+
+<p>GRUB2 was created in 2005 as a total rewrite of the GRUB Legacy system. It supports advanced features, such as the ability to load hardware driver modules and use logic statements to alter the boot menu options dynamically, depending on conditions detected on the system (such as if an external hard drive is connected).</p>
+
+<h3 id="grub-legacy">GRUB Legacy</h3>
+
+<p>GRUB Legacy allows you to select multiple kernels and /or operating systems using a menu interface as well as an interactive shell. You configure the menu interface to provide options for each kernel or operating system you wish to boot. The interactive shell provides a way for you to customize boot commands on the fly.</p>
+
+<p>Both the menu and the interactive shell utilize a set of commands that control features of the bootloader.</p>
+
+<h3 id="configuring-grub-legacy">Configuring GRUB Legacy</h3>
+
+<p>When you use the GRUB Legacy interactive menu, you need to tell it what options to show. You do that using special GRUB menu commands.
+The GRUB Legacy system stores the menu commands in a standard text configuration file. The configuration file used by GRUB Legacy is <em>menu.lst</em>, and it is stored in the <em>/boot/grub</em> folder. (While not a requirement, some Linux Distributions create a separate <em>/boot</em> partition on the hard drive.) Red Hat-derived Linux distributions (such as CentOS and Fedora) use <em>grub.conf</em> for the configuration file.</p>
+
+<p>The GRUB Legacy configuration file consists of two sections:</p>
+
+<ul>
+  <li>Global definitions</li>
+  <li>Operating system boot definitions</li>
+</ul>
+
+<p>The global definitions section defines commands that control the overall operation of the GRUB Legacy boot menu. The global definitions must appear first in the configuration file. There are only handful of global settings.</p>
+
+<h3 id="grub-2">GRUB 2</h3>
+<p>Since the GRUB2 system was intended as an improvement over GRUB Legacy, many of the features are the same, with just a few twists. For example, the GRUB2 system changes the configuration filename to <em>grub.cfg</em>, and it stores it in the <em>/boot/grub/</em> folder. (This allows you to have both GRUB Legacy and GRUB2 installed at the same time.)</p>
+
+<h3 id="configuring-grub2">Configuring GRUB2</h3>
+
+<p>There are also a few changes to the commands used in GRUB2. FOr example, instead of the <em>title</em> command, GRUB uses the <em>menuentry</em> command, and you must also enclose each individual boot section within braces immediately following the <em>menuentry</em> command.
+Here’s an example of a GRUB2 configuration file:</p>
+
+<pre><code class="language-bash">menuentry "CentOS Linux"{
+    set root=(hd1,1)
+    linux /boot/vmlinuz
+    initrd /initrd
+}
+
+menuentry "Windows" {
+    set root=(hd0,1)
+}
+
+</code></pre>
+
+<p>The configuration process for GRUB2 is also somewhat different. While GRUB2 uses the <em>/boot/grub/grub.cfg</em> file as the configuration file, you should never modify that file. Instead, there are seperate configuration files stored in the <em>/etc/grub.d</em> folder. This allows you (or the system) to create individual configuration files for each boot option installed on your system (for example, one configurationo file for booting Linux and another for booting Windows).</p>
+
+<h3 id="installing-grub2">Installing GRUB2</h3>
+
+<p>Unlike GRUB Legacy, you don’t need t install GRUB2. All you need to do is to rebuild the main installation file by running the <em>grub-mkconfig</em> program to the <em>grub.cfg</em> configuration file or use the <em>-o</em> option to specify the output file. By default, the <em>grub-mkconfig</em> program just outputs the new configuration file commands to standard output.</p>
+
+<h3 id="alternative-bootloaders">Alternative Bootloaders</h3>
+
+<p>While GRUB Legacy and GRUB2 are the most popular Linux bootloader programs, you may run into a few others, depending on which Linux distributions you are using.</p>
+
+<p>The <em>Systemd-boot</em> bootloader program is starting to gain popularity in Linux Distributions that use the systemd init method.</p>
+
+</div>
+
+<!-- Rating -->
+
+
+<!-- Author Box if enabled from _config.yml -->
+<!-- Author Box -->
+
+
+
+
+<!-- Comments if not disabled with comments: false -->
+<!-- Comments
+================================================== -->
+ 
+<div class="comments">
+    <button class="btn btn-dark show-comments">Load Comments</button>         
+    <div id="comments">  
+        <h4 class="mb-4">Comments</h4>                 
+            <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'demowebsite'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+     
+    <div class="clearfix"></div>              
+    </div>    
+</div>       
+
+
+<!-- Share -->
+<div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Linux Bootloaders&url=/Linux_bootloaders/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=/Linux_bootloaders/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=/Linux_bootloaders/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+
+<!-- Related Post -->
+<!-- Related Posts
+================================================== -->
+<div class=" related-posts ">  
+
+    
+    <h2 class="text-center mb-4">Explore more like this</h2>
+    
+    
+    <div class="d-flex justify-content-center align-items-center">
+    
+    <!-- Categories -->
+    
+    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="categories#Linux">Linux</a>                
+    
+
+    <!-- Tags -->  
+    
+    
+
+    </div>
+
+    
+    
+    
+    <div class="blog-grid-container">
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/LPIC/">
+                
+
+                    
+                        <img class="img-thumb" src="/assets/images/linux/todo.png" alt="Linux Boot Process "> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/LPIC/">Linux Boot Process </a>
+                
+            </h2>
+            <h4 class="card-text">To Do</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">04 Mar 2021</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/Find-Command/">
+                
+
+                    
+                        <img class="img-thumb" src="/assets/images/linux/find.png" alt="Linux - Find Command : Cheat Sheet "> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/Find-Command/">Linux - Find Command : Cheat Sheet </a>
+                
+            </h2>
+            <h4 class="card-text">Find command cheat sheet, a lot of basic and advanced commands.</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">19 Jan 2021</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        </div>        
+</div>
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+    </div>
+
+    
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+                <div class="col-md-6 col-sm-12 text-center text-lg-left">
+                    Copyright © 2021 Seif-Allah's Blog 
+                </div>
+            <div class="col-md-6 col-sm-12 text-center text-lg-right">
+                Made with love by    
+                <a target="_blank" href="fb.com/seifallahhomrani1">Seif-Allah</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
+================================================== -->
+
+<script src="/assets/js/prism.js"></script>
+
+<script src="/assets/js/theme.js"></script>
+
+
+
+
+<script id="dsq-count-scr" src="//demowebsite.disqus.com/count.js"></script>
+
+
+</body>
+</html>

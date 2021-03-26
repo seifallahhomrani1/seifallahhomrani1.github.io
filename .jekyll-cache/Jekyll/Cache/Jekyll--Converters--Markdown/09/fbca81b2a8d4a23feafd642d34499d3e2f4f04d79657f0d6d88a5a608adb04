@@ -1,0 +1,24 @@
+I"A<h3 id="introduction">Introduction</h3>
+
+<p>When you define only one network, what happens if you wanted to take one network address and create six networks from it? You would have to do something called <em>subnetting</em>, because that’s what allows you to take one larger network and break it into a bunch of smaller networks.
+There are loads of reasons if favor of subnetting, including the following benefits:</p>
+
+<ul>
+  <li>
+    <p><strong>Reduced network traffic</strong></p>
+  </li>
+  <li>
+    <p><strong>Optimized network performance</strong></p>
+  </li>
+  <li>
+    <p><strong>Simplified management</strong></p>
+  </li>
+  <li>
+    <p><strong>Facilitated spanning of large geographical distances</strong></p>
+  </li>
+</ul>
+
+<h3 id="how-to-create-subnets">How to Create Subnets</h3>
+
+<p>To create subnetworks, you take</p>
+:ET

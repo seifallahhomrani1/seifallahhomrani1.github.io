@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
+<link rel="icon" href="/assets/images/favicon.ico">
+
+<title>Spanning Tree Protocol | Seif-Allah's Blog</title>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Spanning Tree Protocol | Seif-Allah’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Spanning Tree Protocol" />
+<meta name="author" content="Seif-Allah" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="STP’s main task is to stop network loops from occurring on your layer 2 network (bridges or switches). It vigilantly monitors the network to find all links, making sure that no loops occur by shutting down any redundant links." />
+<meta property="og:description" content="STP’s main task is to stop network loops from occurring on your layer 2 network (bridges or switches). It vigilantly monitors the network to find all links, making sure that no loops occur by shutting down any redundant links." />
+<meta property="og:site_name" content="Seif-Allah’s Blog" />
+<meta property="og:image" content="/assets/images/networking/STP.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-24T00:00:00+01:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/assets/images/networking/STP.png" />
+<meta property="twitter:title" content="Spanning Tree Protocol" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","image":"/assets/images/networking/STP.png","headline":"Spanning Tree Protocol","dateModified":"2021-01-24T00:00:00+01:00","url":"/STP/","datePublished":"2021-01-24T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/STP/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/cover.png"},"name":"Seif-Allah"},"author":{"@type":"Person","name":"Seif-Allah"},"description":"STP’s main task is to stop network loops from occurring on your layer 2 network (bridges or switches). It vigilantly monitors the network to find all links, making sure that no loops occur by shutting down any redundant links.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+<link href="/assets/css/prism.css" rel="stylesheet">
+
+<link href="/assets/css/theme.css" rel="stylesheet">
+
+<script src="/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+
+
+<!-- Begin Sidebar Navigation
+================================================== -->
+
+<div class="sidebar">    
+</div>   
+<div class="nav-icon">
+    <div class="hamburger-bar"></div>
+</div>
+<div id="blackover-nav" class="blackover"></div>
+<nav id="menu">
+    <ul>
+        <h3>Navigation</h3>
+        <li><a href="/">Home</a></li>
+        <li><a  href="/contact">Contact</a></li>
+        <li><a href="/categories#Python">Python</a></li>
+        <li><a href="/categories#Java">Java</a></li>
+        <li><a href="/categories#CTF-WriteUp">CTF-WriteUp</a></li>
+        <li><a href="/categories#Articles">Articles</a></li>
+        <li><a href="/categories#Networking">Networking</a></li>    
+        <li><a href="/categories#Databases">Databases</a></li>
+        <li><a href="/categories#Django">Django</a></li>     
+        <li><a href="/categories#Linux">Linux</a></li>     
+    </ul>   
+</nav>
+
+<script src="assets/js/lunr.js"></script>
+
+<style>
+    
+</style>
+
+<div class="wrap-search">
+    <div class="d-flex align-items-center ml-auto">
+        <i class="fas fa-search show-search"></i>
+        <form class="bd-search ml-3" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+            <input type="text" class="form-control bigradius text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+        </form>
+    </div>
+</div>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="assets/js/lunrsearchengine.js"></script>
+
+
+<!-- End Sidebar Navigation
+================================================== -->
+
+<div class="site-content ">
+
+<div class="container">
+
+    <!-- Site Logo/Name
+    ================================================== -->
+   
+    <a class="navbar-brand" href="/">
+        <img src="/assets/images/cover.png" alt="Seif-Allah's Blog">
+    </a>  
+   
+
+    <!-- Site Tag
+    ================================================== -->
+    
+
+    <!-- Content
+    ================================================== -->
+    <div class="main-content">
+        <div class="entry-header">
+    <!-- Post Title -->
+    <h1 class="posttitle">Spanning Tree Protocol</h1>
+    <!-- Author & Date  Box -->
+    
+    
+    <div class="d-flex align-items-center mt-4">
+        <div>
+            
+            <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+            
+        </div>            
+        <div>
+        Written by <a target="_blank" class="text-dark" href="seifallahhomrani1.social">Seif-Allah</a> on 
+        <span class="post-date"><time class="post-date" datetime="2021-01-24">24 Jan 2021</time></span>           
+        
+        </div>            
+    </div>
+    
+</div>
+
+<!-- Adsense under title if enabled from _config.yml (change your pub id and slot) -->
+
+
+<!-- Featured Image -->
+
+<div class="entry-featured-image">
+    
+    <img class="featured-image " src="/assets/images/networking/STP.png" alt="Spanning Tree Protocol">
+    
+</div>
+
+
+<!-- Content -->
+<!-- Post, Page Content
+================================================== -->
+<div class="article-post">
+    <!-- Toc if any -->
+    
+    
+    <div class="toc mt-4 mb-4 lead">
+        <h3 class="font-weight-bold">Summary</h3>
+        <ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#main-task-of-stp">Main task of STP</a></li>
+  <li><a href="#spanning-tree-terms">Spanning Tree Terms</a></li>
+  <li><a href="#spanning-tree-operations">Spanning Tree Operations</a></li>
+  <li><a href="#selecting-the-root-bridge">Selecting the Root Bridge</a></li>
+</ul>
+    </div>
+    
+    <!-- End Toc -->
+    <h3 id="introduction">Introduction</h3>
+
+<p>Once upon a time, a company called Digital Equipment Corporation (DEC) was purchased and renamed Compaq. But before that happened, DEC created the original version of <em>Spanning Tree Protocol</em>, or STP.</p>
+
+<h3 id="main-task-of-stp">Main task of STP</h3>
+
+<p>STP’s main task is to stop network loops from occurring on your layer 2 network (bridges or switches). It vigilantly monitors the network to find all links, making sure that no loops occur by shutting down any redundant links. STP uses the <em>spanning-tree algorithm</em> (STA) to first create a topology database and then search out and destroy redundant links. With STP running, frames will be forwarded only on the premium, STP-picked links.</p>
+
+<h3 id="spanning-tree-terms">Spanning Tree Terms</h3>
+
+<p>Before I get into describing the details of how STP works in the network, you need to understand some basic ideas and terms and how they relate within the layer 2 switched network:</p>
+
+<ul>
+  <li>
+    <p><strong>Root bridge</strong> : The root bridge is the bridge with the best bridge ID. With STP, the key is for all the switches in the network to elect a root bridge that becomes the focal point in the network. All other decisions in the network, such as which port is to be blocked and which port is to be put in forwarding mode, are made from the perspective of this root bridge.</p>
+  </li>
+  <li>
+    <p><strong>BPDU</strong> : All the switches exchange information to use in the selection of the root switch as well as in subsequent configuration of the network. Each switch compares the parameters in the <em>Bridge Protocol Data Unit (BPDU)</em> that it sends to one neighbor with the one that it receives from another neighbor.</p>
+  </li>
+  <li>
+    <p><strong>Bridge ID</strong> : The bridge ID is how STP keeps track of all the switches in the network. It is determined by a combination of the bridge priority and the base MAC address. The bridge with the lowest bridge ID becomes the root bridge in the network.</p>
+  </li>
+  <li>
+    <p><strong>Nonroot bridges</strong> : These are all bridges that are not the root bridge. Nonroot bridges exchange BPDUs with all bridges and update the STP topology database on all switches, preventing loops and providing a measure of defense against link failures.</p>
+  </li>
+  <li>
+    <p><strong>Port cost</strong> : Port cost determines the best path when multiple links are used between two switches and none of the links is a root port. The cost of a link is determined by the bandwidth of a link.</p>
+  </li>
+  <li>
+    <p><strong>Root port</strong> : The root port is always the link directly connected to the root bridge, or the shortest path to the root bridge. If more than one link connects to root bridge, then a port cost is determined by checking the bandwidth of each link. The lowest-cost port becomes the root port. If multiple links have the same cost, the bridge with the lower advertising bridge ID is used. Since multiple links can be from the same device, the lowest port number will be used.</p>
+  </li>
+  <li>
+    <p><strong>Designated port</strong> : A designated port is one that has been determined as having the best (lowest) cost. A designated port will be marked as a forwarding port.</p>
+  </li>
+  <li>
+    <p><strong>Nondesignated port</strong> : A nondesignated port is one with a higher cost than the designated port. Nondesignated ports are put in blocking mode - they are not forwarding ports.</p>
+  </li>
+  <li>
+    <p><strong>Forwarding port</strong> : A forwarding port forwards frames.</p>
+  </li>
+  <li>
+    <p><strong>Blocked port</strong> : A blocked port is the port that, in order to prevent loops, will not forward frames. However, a blocked port will always listen to frames.</p>
+  </li>
+</ul>
+
+<h3 id="spanning-tree-operations">Spanning Tree Operations</h3>
+
+<p>As I’ve said before, STP’s job is to find all links in the network and shut down any redundant ones, thereby preventing network loops from occurring.</p>
+
+<p>STP accomplishes this by first electing a root bridge that will forward through all ports and act as a point of reference for all other devices in the STP domain. Once all switches agree on who the root bridge is, every bridge must find its one and only allotted root port. Each and every link between two switches must have one, and only one, designated port, the port on that link that provides the highest bandwidth to the root. It’s really important to remember that a bridge can go through many other bridges to get to the root, meaning that it’s not always the shortest path but the fastest (highest bandwidth) path that will be the one used.</p>
+
+<p>Obviously, every port on the root switch is a designated port, as you can get no closer to the root than being the root.
+After the dust settles, any port that is not either root port or a designated port - which means it is a nonroot, nondesignated port - is placed in the blocking state, thus breaking the switching loop.</p>
+
+<h3 id="selecting-the-root-bridge">Selecting the Root Bridge</h3>
+
+<p>The bridge ID is used to elect the root bridge in the STP domain and to determine the root port for each of the remaining devices in the STP domain. This ID is 8 bytes long and includes both the priority and the MAC address of the device. The default priority on all devices running the IEEE STP version is 32.768.</p>
+
+<p>To determine the root bridge, you combine the priority of each bridge with its MAC address. If two switches or bridges happen to have the same priority value, the MAC address becomes the tiebreaker for figuring out which one has the lowest (best) ID. It’s like this: If two switches - I’ll name them A and B - Both use the default priority of 32768, then the MAC address will be used instead. Just remember that the lower value is the better one when it comes to electing a root bridge.</p>
+
+<p>By default, BPDUs are sent every two seconds out all active ports on a bridge/switch - again, the bridge with the lowest bridge ID is elected the root bridge. You can change the bridge’s ID by lowering its priority so that it will become a root bridge automatically.</p>
+
+<p>Being able to do that is important in a large switched network, it ensures that the best paths are chosen, efficiency is what you’re after here.</p>
+
+<p>To determine which port STP will shut down, it will first check each link’s amount of bandwidth and then shut down the link with the lowest bandwidth value. If both links have the same bandwidth value, STP will typically shut down the higher of the port numbers.</p>
+
+</div>
+
+<!-- Rating -->
+
+
+<!-- Author Box if enabled from _config.yml -->
+<!-- Author Box -->
+
+
+
+
+<!-- Comments if not disabled with comments: false -->
+<!-- Comments
+================================================== -->
+ 
+<div class="comments">
+    <button class="btn btn-dark show-comments">Load Comments</button>         
+    <div id="comments">  
+        <h4 class="mb-4">Comments</h4>                 
+            <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'demowebsite'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+     
+    <div class="clearfix"></div>              
+    </div>    
+</div>       
+
+
+<!-- Share -->
+<div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Spanning Tree Protocol&url=/STP/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=/STP/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=/STP/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+
+<!-- Related Post -->
+<!-- Related Posts
+================================================== -->
+<div class=" related-posts ">  
+
+    
+    <h2 class="text-center mb-4">Explore more like this</h2>
+    
+    
+    <div class="d-flex justify-content-center align-items-center">
+    
+    <!-- Categories -->
+    
+    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="categories#Networking">Networking</a>                
+    
+
+    <!-- Tags -->  
+    
+    
+
+    </div>
+
+    
+    
+    
+    <div class="blog-grid-container">
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/vlsm/">
+                
+
+                    
+                        <img class="img-thumb" src="assets/images/networking/todo.png" alt="Subnets"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/vlsm/">Subnets</a>
+                
+            </h2>
+            <h4 class="card-text">TO DO</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">13 Mar 2021</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/IPV6/">
+                
+
+                    
+                        <img class="img-thumb" src="assets/images/networking/todo.png" alt="IPV6"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/IPV6/">IPV6</a>
+                
+            </h2>
+            <h4 class="card-text">IPV6 is the latest version of the internet Protocol, people refer to IPV6 as 'the next-generation Internet Protocol' and it was originally created as the answer to IPv4's inevitable, looming...</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">08 Feb 2021</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/Switching_services/">
+                
+
+                    
+                        <img class="img-thumb" src="/assets/images/networking/todo.png" alt="Switching Services"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/Switching_services/">Switching Services</a>
+                
+            </h2>
+            <h4 class="card-text">Introduction to Raw Sockets, and using it to develop a ping program in C.</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">23 Jan 2021</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+                
+        </div>        
+</div>
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+    </div>
+
+    
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+                <div class="col-md-6 col-sm-12 text-center text-lg-left">
+                    Copyright © 2021 Seif-Allah's Blog 
+                </div>
+            <div class="col-md-6 col-sm-12 text-center text-lg-right">
+                Made with love by    
+                <a target="_blank" href="fb.com/seifallahhomrani1">Seif-Allah</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
+================================================== -->
+
+<script src="/assets/js/prism.js"></script>
+
+<script src="/assets/js/theme.js"></script>
+
+
+
+
+<script id="dsq-count-scr" src="//demowebsite.disqus.com/count.js"></script>
+
+
+</body>
+</html>

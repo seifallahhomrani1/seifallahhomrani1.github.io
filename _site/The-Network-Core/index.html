@@ -15,15 +15,17 @@
 <meta property="og:title" content="The Network Core" />
 <meta name="author" content="Seif-Allah" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Packet Switching To send a message from a source end system to a destination end system, the source breaks long messages into smaller chunks of data known as packets, between source and destination, each packet travels through communication links and packet switches (Routers and link-layer switches)" />
-<meta property="og:description" content="Packet Switching To send a message from a source end system to a destination end system, the source breaks long messages into smaller chunks of data known as packets, between source and destination, each packet travels through communication links and packet switches (Routers and link-layer switches)" />
+<meta name="description" content="Packet Switching" />
+<meta property="og:description" content="Packet Switching" />
 <meta property="og:site_name" content="Seif-Allah’s Blog" />
+<meta property="og:image" content="/assets/images/networking/core.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-04-27T00:00:00+01:00" />
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/assets/images/networking/core.png" />
 <meta property="twitter:title" content="The Network Core" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"/The-Network-Core/"},"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/cover.png"},"name":"Seif-Allah"},"author":{"@type":"Person","name":"Seif-Allah"},"url":"/The-Network-Core/","headline":"The Network Core","dateModified":"2020-04-27T00:00:00+01:00","datePublished":"2020-04-27T00:00:00+01:00","description":"Packet Switching To send a message from a source end system to a destination end system, the source breaks long messages into smaller chunks of data known as packets, between source and destination, each packet travels through communication links and packet switches (Routers and link-layer switches)","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","image":"/assets/images/networking/core.png","headline":"The Network Core","dateModified":"2020-04-27T00:00:00+01:00","url":"/The-Network-Core/","datePublished":"2020-04-27T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/The-Network-Core/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/cover.png"},"name":"Seif-Allah"},"author":{"@type":"Person","name":"Seif-Allah"},"description":"Packet Switching","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -99,7 +101,7 @@
     ================================================== -->
    
     <a class="navbar-brand" href="/">
-        <img src="//assets/images/cover.png" alt="Seif-Allah's Blog">
+        <img src="/assets/images/cover.png" alt="Seif-Allah's Blog">
     </a>  
    
 
@@ -136,6 +138,12 @@
 
 <!-- Featured Image -->
 
+<div class="entry-featured-image">
+    
+    <img class="featured-image " src="/assets/images/networking/core.png" alt="The Network Core">
+    
+</div>
+
 
 <!-- Content -->
 <!-- Post, Page Content
@@ -143,12 +151,28 @@
 <div class="article-post">
     <!-- Toc if any -->
     
+    
+    <div class="toc mt-4 mb-4 lead">
+        <h3 class="font-weight-bold">Summary</h3>
+        <ul>
+  <li><a href="#packet-switching">Packet Switching</a></li>
+  <li><a href="#store-and-forward-transmission">Store-and-Forward Transmission</a></li>
+  <li><a href="#queuing-delays-and-packet-loss">Queuing Delays and Packet Loss</a></li>
+  <li><a href="#forwarding-tables-and-routing-protocols">Forwarding Tables and Routing Protocols</a></li>
+  <li><a href="#circuit-switching">Circuit Switching</a></li>
+  <li><a href="#multiplexing-in-circuit-switched-networks">Multiplexing in Circuit-Switched Networks</a></li>
+  <li><a href="#a-network-of-networks">A Network of Networks</a></li>
+</ul>
+    </div>
+    
     <!-- End Toc -->
     <h3 id="packet-switching">Packet Switching</h3>
+
 <p>To send a message from a source end system to a destination end system, the source breaks long messages into smaller chunks of data known as <strong>packets</strong>, between source and destination, each packet travels through communication links and <strong>packet switches</strong> (Routers and <em>link-layer</em> switches)</p>
 
 <h3 id="store-and-forward-transmission">Store-and-Forward Transmission</h3>
-<p>Most packet switches use <strong>store-and-forward transmission</strong> at the inputs to the links, it means that the packet switch must receive the entire packet before it can begin to transmit the first but of the packet onto the outbound link. To gain some insight into store-and-forward transmission, let’s now caluclate the amount of time that elapses from when the source begins to send the packet until the destination has received the entire packet. (Here we will ignore the propagation delay - tje time it takes for the bits to travel across the wire at near speed of light). The source begins to transmit at time 0; at time <strong>L/R</strong> (L is the length of a packet in bits and R is the transmission rate in bits per second),the source has transmitted the entire packet, and the entire packet has been received and stored at the router (since there’s no propagation delay). At time L/R seconds, since the router has just received the entire packet, it can begin to transmit the packet onto the outband link towards the destination; at time 2L/R, the router has transmitted the entire packet, and the entire packet has been received by the destination. <strong>Thus, the total delay is 2L/R</strong>. If the switch instead forwarded bits as soon as they arrive (without first receiving the entire packet), then the total delay would be L/R since bits are not held up at the router.
+
+<p>Most packet switches use <strong>store-and-forward transmission</strong> at the inputs to the links, it means that the packet switch must receive the entire packet before it can begin to transmit the first but of the packet onto the outbound link. To gain some insight into store-and-forward transmission, let’s now caluclate the amount of time that elapses from when the source begins to send the packet until the destination has received the entire packet. (Here we will ignore the propagation delay - the time it takes for the bits to travel across the wire at near speed of light). The source begins to transmit at time 0; at time <strong>L/R</strong> (L is the length of a packet in bits and R is the transmission rate in bits per second),the source has transmitted the entire packet, and the entire packet has been received and stored at the router (since there’s no propagation delay). At time L/R seconds, since the router has just received the entire packet, it can begin to transmit the packet onto the outband link towards the destination; at time 2L/R, the router has transmitted the entire packet, and the entire packet has been received by the destination. <strong>Thus, the total delay is 2L/R</strong>. If the switch instead forwarded bits as soon as they arrive (without first receiving the entire packet), then the total delay would be L/R since bits are not held up at the router.
 Now let’s calculate the amount of time that elapses from when the source begins to send the first packet until the destination has received all three packets. As before, at time L/R, the router begins to forward the first packet, but also at time LR the source will begin ti send the second packet, since it has just finished sending the entire first packet. Same as the second and the third packets. Finally, at time 4L/R the destination has received all three packets!
 Let’s now consider the general case of sending one packet from source to destination over a path consisting of N links each of rate R (thus, there are N-1 routers between source and destination). Applying the same logic us above, we see that the end-to-end delay is : d = N * (L/R)</p>
 
@@ -157,18 +181,22 @@ Let’s now consider the general case of sending one packet from source to desti
 <p>Each packet switch has multiple links attached to it. For each attached link, the packet switch has an <strong>output buffer</strong> (also called an <strong>output queue</strong>), which stores packets that the router is about to send into that link. The output buffers play a key role in packet switching. If an arriving packet needs to be transmitted onto a link but finds the link busy with the transmission of another packet, the arriving packet must wait in the output buffer. Thus, in addition to the store-and-forward delays, packets suffer output buffer <strong>queuing delays</strong>. These delays are variable and depend on the level of congestion in the network. Since the amout of buffer space is finite, an arriving packet may find that the buffer is completely full with other packets waiting for transmission. In this case, <strong>packet loss</strong> will occur - either the arriving packet or one of the already-queued packets will be dropped.</p>
 
 <h3 id="forwarding-tables-and-routing-protocols">Forwarding Tables and Routing Protocols</h3>
+
 <p>In the Internet, every end system has an address called an IP address. When a source end system wants to send a packet to a destination end system, the source includes the destination’s IP address in the packet’s header. When a packet arrives at a router in the network, the router examines a portion of the packet’s destination address and forwards the packet to an adjacent router. More specifically, each router has a <strong>forwarding table</strong> that maps destination addresses (or portions of the destination addresses) to the router’s outbound links. When a packet arrives at a router, the router examines the address and searches its forwarding table, using this destination address, to find the appropriate outbound link. The router then directs the packet to this outbound link.
 Note that the Internet has a number of special <strong>routing protocols</strong> that are used to automatically set the forwarding tables. A routing protocol may, for example, determine the shortest path from each router to each destination and use the shortest path results to configure the forwarding tbales in the routers.</p>
 
 <h3 id="circuit-switching">Circuit Switching</h3>
-<p>There are two fundamental approaches to moving data through a network of links and switches: <strong>circuit switching</strong> and <strong>packet switching</strong>. 
+
+<p>There are two fundamental approaches to moving data through a network of links and switches: <strong>circuit switching</strong> and <strong>packet switching</strong>.
 In circuit-switched networks, the resources needed along a path (buffers, link, transmission rate) to provide communication between the end systems are preserved for the duration of the communication session between the end systems. In packet-switched networks, these resources are <em>not</em> reserved; a sessions’s messages use the resources on demand, and a consequence, may have to wait (that is, queue) for acess to a communication link.</p>
 
 <h3 id="multiplexing-in-circuit-switched-networks">Multiplexing in Circuit-Switched Networks</h3>
+
 <p>A circuit in a link is implemented with either <strong>frequency-division multiplexing (FDM)</strong> or <strong>time-division multiplexing (TDM)</strong>. With FDM, the frequency spectrum of a link is divided among the connections established across the link.
 For a TDM link, time is divided into frames of fixed duration, and each frame is divided into a fixed number of time slots.</p>
 
 <h3 id="a-network-of-networks">A Network of Networks</h3>
+
 <p>Over the years, the network of networks that forms the Internet has evolved into a very complex structure. Much of this evolution is driven by economics and national policy, rather than by performance considerations. In orer to understand today’s Internet network structure, let’s incrementally build a series of network structures, with each new structure being a better approximation of the complex Internet that we have today. Recall that the overarching goal is to interconnect the access ISPs so that all end systems can send packets to each other. One naive approach would be to have each access ISP directly connect with every other access ISP. Such a mesh desing is, of course, much too costly for the access ISPs, as it would require each access ISP to hava a separate communication link to each of the hundreds of thousands of other access ISPs all over the world. 
 Our first network structure, <em>Network structure 1</em>, interconnects all of the access ISPs with a single globale transit ISP. Our (imaginary) global transit ISP is a network of routers and communication links that not only spans the globe, but also has at least one router near each of the hundreds of thousands of access ISPs. Of course, it would be very costly for the global ISP to build such an extensive network. To be profitable, it would naturally charge each of the access ISPs for connectivity, with the pricing reflecting (but not necessarily directly propotional to) the amount of traffic an access ISP exchanges with the global ISP. Since the access ISP pays the global transit ISP, the access ISP is said to be a <em>customer</em> and the global transit ISP is said to be a <em>provider</em>. 
 Now if some company builds and operates a global transit ISP that is profitable, then it is natural for other companies to build their own global transit ISPs and compete with the original global transit ISP. This leads to <em>Network Structure 2</em>, which consists of the hundreds of the thousands of access ISPs and multiple global transit ISPs. The access ISPs certainly prefer Network Structure 2 over Network Structure 1 since they can now choose among the competing global transit providers as a function of their pricing and services. Note, however, that the global transit ISPs themselves must interconnect: Otherwise access ISPs connected to one of the global transit providers would not be able to communicate with access ISPs connected to the other global transit providers.
@@ -279,107 +307,17 @@ We finally arrive at <em>Network Structure 5</em>,  which builds on top of Netwo
             
         
             
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
             <!-- begin post -->
 
 
 <div class="blog-grid-item">
     <div class="card h-100">
         <div class="maxthumb">
-            <a href="/Socket-Functions/">
+            <a href="/vlsm/">
                 
 
                     
-                        <img class="img-thumb" src="/assets/images/networking/socket.png" alt="Socket Functions"> 
+                        <img class="img-thumb" src="assets/images/networking/todo.png" alt="Subnets"> 
                     
 
                 
@@ -387,10 +325,10 @@ We finally arrive at <em>Network Structure 5</em>,  which builds on top of Netwo
         </div>
         <div class="card-body">
             <h2 class="card-title">
-                <a class="text-dark" href="/Socket-Functions/">Socket Functions</a>
+                <a class="text-dark" href="/vlsm/">Subnets</a>
                 
             </h2>
-            <h4 class="card-text">Introduction to Sockets functions and how they work. </h4>
+            <h4 class="card-text">TO DO</h4>
         </div>
         <div class="card-footer bg-white">
             <div class="wrapfooter">
@@ -403,61 +341,7 @@ We finally arrive at <em>Network Structure 5</em>,  which builds on top of Netwo
                 <span class="author-meta">
                 <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
                 
-                <span class="post-date">14 Dec 2020</span>
-                </span>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end post -->
-            
-            
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-            <!-- begin post -->
-
-
-<div class="blog-grid-item">
-    <div class="card h-100">
-        <div class="maxthumb">
-            <a href="/What-are-sockets/">
-                
-
-                    
-                        <img class="img-thumb" src="/assets/images/networking/socket.png" alt="What are Sockets ?"> 
-                    
-
-                
-            </a>
-        </div>
-        <div class="card-body">
-            <h2 class="card-title">
-                <a class="text-dark" href="/What-are-sockets/">What are Sockets ?</a>
-                
-            </h2>
-            <h4 class="card-text">Introduction to Sockets and how they work. </h4>
-        </div>
-        <div class="card-footer bg-white">
-            <div class="wrapfooter">
-                
-                <span class="meta-footer-thumb">
-                
-                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
-                
-                </span>
-                <span class="author-meta">
-                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
-                
-                <span class="post-date">13 Dec 2020</span>
+                <span class="post-date">13 Mar 2021</span>
                 </span>
                 <div class="clearfix"></div>
             </div>
@@ -495,41 +379,50 @@ We finally arrive at <em>Network Structure 5</em>,  which builds on top of Netwo
             
         
             
-        
-        
-        
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/IPV6/">
+                
+
+                    
+                        <img class="img-thumb" src="assets/images/networking/todo.png" alt="IPV6"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/IPV6/">IPV6</a>
+                
+            </h2>
+            <h4 class="card-text">IPV6 is the latest version of the internet Protocol, people refer to IPV6 as 'the next-generation Internet Protocol' and it was originally created as the answer to IPv4's inevitable, looming...</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">08 Feb 2021</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
             
             
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
             
         
         
@@ -546,11 +439,11 @@ We finally arrive at <em>Network Structure 5</em>,  which builds on top of Netwo
 <div class="blog-grid-item">
     <div class="card h-100">
         <div class="maxthumb">
-            <a href="/OSI-Model/">
+            <a href="/STP/">
                 
 
                     
-                        <img class="img-thumb" src="/assets/images/networking/osi_model.png" alt="OSI Model - Crash Course"> 
+                        <img class="img-thumb" src="assets/images/networking/STP.png" alt="Spanning Tree Protocol"> 
                     
 
                 
@@ -558,10 +451,10 @@ We finally arrive at <em>Network Structure 5</em>,  which builds on top of Netwo
         </div>
         <div class="card-body">
             <h2 class="card-title">
-                <a class="text-dark" href="/OSI-Model/">OSI Model - Crash Course</a>
+                <a class="text-dark" href="/STP/">Spanning Tree Protocol</a>
                 
             </h2>
-            <h4 class="card-text">OSI Model - Overview | Questions & Answers</h4>
+            <h4 class="card-text">STP's main task is to stop network loops from occurring on your layer 2 network (bridges or switches). It vigilantly monitors the network to find all links, making sure that...</h4>
         </div>
         <div class="card-footer bg-white">
             <div class="wrapfooter">
@@ -574,7 +467,7 @@ We finally arrive at <em>Network Structure 5</em>,  which builds on top of Netwo
                 <span class="author-meta">
                 <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
                 
-                <span class="post-date">02 Nov 2020</span>
+                <span class="post-date">24 Jan 2021</span>
                 </span>
                 <div class="clearfix"></div>
             </div>

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
+<link rel="icon" href="/assets/images/favicon.ico">
+
+<title>Linux Boot Process  | Seif-Allah's Blog</title>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Linux Boot Process | Seif-Allah’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Linux Boot Process" />
+<meta name="author" content="Seif-Allah" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="To Do" />
+<meta property="og:description" content="To Do" />
+<meta property="og:site_name" content="Seif-Allah’s Blog" />
+<meta property="og:image" content="/assets/images/linux/todo.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-04T00:00:00+01:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/assets/images/linux/todo.png" />
+<meta property="twitter:title" content="Linux Boot Process" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","image":"/assets/images/linux/todo.png","headline":"Linux Boot Process","dateModified":"2021-03-04T00:00:00+01:00","url":"/LPIC/","datePublished":"2021-03-04T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/LPIC/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/cover.png"},"name":"Seif-Allah"},"author":{"@type":"Person","name":"Seif-Allah"},"description":"To Do","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+<link href="/assets/css/prism.css" rel="stylesheet">
+
+<link href="/assets/css/theme.css" rel="stylesheet">
+
+<script src="/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+
+
+<!-- Begin Sidebar Navigation
+================================================== -->
+
+<div class="sidebar">    
+</div>   
+<div class="nav-icon">
+    <div class="hamburger-bar"></div>
+</div>
+<div id="blackover-nav" class="blackover"></div>
+<nav id="menu">
+    <ul>
+        <h3>Navigation</h3>
+        <li><a href="/">Home</a></li>
+        <li><a  href="/contact">Contact</a></li>
+        <li><a href="/categories#Python">Python</a></li>
+        <li><a href="/categories#Java">Java</a></li>
+        <li><a href="/categories#CTF-WriteUp">CTF-WriteUp</a></li>
+        <li><a href="/categories#Articles">Articles</a></li>
+        <li><a href="/categories#Networking">Networking</a></li>    
+        <li><a href="/categories#Databases">Databases</a></li>
+        <li><a href="/categories#Django">Django</a></li>     
+        <li><a href="/categories#Linux">Linux</a></li>     
+    </ul>   
+</nav>
+
+<script src="assets/js/lunr.js"></script>
+
+<style>
+    
+</style>
+
+<div class="wrap-search">
+    <div class="d-flex align-items-center ml-auto">
+        <i class="fas fa-search show-search"></i>
+        <form class="bd-search ml-3" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+            <input type="text" class="form-control bigradius text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+        </form>
+    </div>
+</div>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="assets/js/lunrsearchengine.js"></script>
+
+
+<!-- End Sidebar Navigation
+================================================== -->
+
+<div class="site-content ">
+
+<div class="container">
+
+    <!-- Site Logo/Name
+    ================================================== -->
+   
+    <a class="navbar-brand" href="/">
+        <img src="/assets/images/cover.png" alt="Seif-Allah's Blog">
+    </a>  
+   
+
+    <!-- Site Tag
+    ================================================== -->
+    
+
+    <!-- Content
+    ================================================== -->
+    <div class="main-content">
+        <div class="entry-header">
+    <!-- Post Title -->
+    <h1 class="posttitle">Linux Boot Process </h1>
+    <!-- Author & Date  Box -->
+    
+    
+    <div class="d-flex align-items-center mt-4">
+        <div>
+            
+            <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+            
+        </div>            
+        <div>
+        Written by <a target="_blank" class="text-dark" href="seifallahhomrani1.social">Seif-Allah</a> on 
+        <span class="post-date"><time class="post-date" datetime="2021-03-04">04 Mar 2021</time></span>           
+        
+        </div>            
+    </div>
+    
+</div>
+
+<!-- Adsense under title if enabled from _config.yml (change your pub id and slot) -->
+
+
+<!-- Featured Image -->
+
+<div class="entry-featured-image">
+    
+    <img class="featured-image " src="//assets/images/linux/todo.png" alt="Linux Boot Process ">
+    
+</div>
+
+
+<!-- Content -->
+<!-- Post, Page Content
+================================================== -->
+<div class="article-post">
+    <!-- Toc if any -->
+    
+    
+    <div class="toc mt-4 mb-4 lead">
+        <h3 class="font-weight-bold">Summary</h3>
+        <ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#following-the-boot-process">Following the Boot Process</a></li>
+  <li><a href="#viewing-the-boot-process">Viewing the Boot Process</a></li>
+  <li><a href="#the-firmware-startup">The Firmware Startup</a></li>
+  <li><a href="#the-bios-startup">The BIOS Startup</a></li>
+  <li><a href="#the-uefi-startup">The UEFI Startup</a></li>
+</ul>
+    </div>
+    
+    <!-- End Toc -->
+    <h3 id="introduction">Introduction</h3>
+
+<p>When you on the power to your linux system, it triggers a series of events that eventually leads to the login prompt. There may be times when your linux systel doesn’t boot quite correctly, or perhaps an application that you expected to be running in background mode isn’t running. In those situations, it helps to have a basic understanding of how Linux boots the operating system and starts programs so that you can <strong>troubleshoot</strong> the problem.</p>
+
+<h3 id="following-the-boot-process">Following the Boot Process</h3>
+
+<p>The linux boot process can be split into three main steps:</p>
+
+<ol>
+  <li>
+    <p>The workstation firmware starts, performing a quick check of the hardware, called a <em>Power-On-Self Test (POST)</em>, and then it looks for a bootloader program to run from a bootable device.</p>
+  </li>
+  <li>
+    <p>The bootloader runs and determines what Linux kernel program to load.</p>
+  </li>
+  <li>
+    <p>The kernel program loads into memory and starts the necessary background programs required for the system to operate (such as a graphical desktop manager for desktops or web and database servers for servers.)</p>
+  </li>
+</ol>
+
+<p>These 3 steps might seem so simple on the surface, but a somewhat complicated ballet of operations happens behind the scenes to keep the boot process working. Each step performs several actions as it prepares your system to run Linux.</p>
+
+<h3 id="viewing-the-boot-process">Viewing the Boot Process</h3>
+
+<p>You can monitor the Linux boot process by watching the system console screen as the system boots. You’ll see lots of informative messages scroll by as the system detects hardware and loads the software.</p>
+
+<p>Usually the boot messages scroll by somewhat quickly, and it’s hard to see just what’s happening. If you need to troubleshoot boot problems, you can review the boot-time messages using the <em>dmesg</em> command. Most Linux distributions copy the boot kernel messages into a special ring buffer in memory called the <em>kernel ring buffer</em>. The buffer is circular and set to a predetrmined size. As new messages are logged into the buffer, older messages are rotated out.</p>
+
+<p>The <em>dmesg</em> command displays the most recent boot messages that are currently stored in the kernel ring buffer :</p>
+
+<pre><code class="language-text">[    0.000000] microcode: microcode updated early to revision 0x2f, date = 2019-11-12
+[    0.000000] Linux version 5.4.0-66-generic (buildd@lgw01-amd64-016) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #74~18.04.2-Ubuntu SMP Fri Feb 5 11:17:31 UTC 2021 (Ubuntu 5.4.0-66.74~18.04.2-generic 5.4.86)
+[    0.000000] Command line: BOOT_IMAGE=/boot/vmlinuz-5.4.0-66-generic root=UUID=735fb175-3ba7-44e8-9308-b1edab99ff24 ro quiet splash
+[    0.000000] KERNEL supported cpus:
+[    0.000000]   Intel GenuineIntel
+[    0.000000]   AMD AuthenticAMD
+[    0.000000]   Hygon HygonGenuine
+[    0.000000]   Centaur CentaurHauls
+[    0.000000]   zhaoxin   Shanghai  
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers'
+[    0.000000] x86/fpu: xstate_offset[2]:  576, xstate_sizes[2]:  256
+[    0.000000] x86/fpu: Enabled xstate features 0x7, context size is 832 bytes, using 'standard' format.
+[    0.000000] BIOS-provided physical RAM map:
+[    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009e7ff] usable
+[    0.000000] BIOS-e820: [mem 0x000000000009e800-0x000000000009ffff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000000e0000-0x00000000000fffff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000008ecb8fff] usable
+[    0.000000] BIOS-e820: [mem 0x000000008ecb9000-0x000000008f5b8fff] reserved
+[    0.000000] BIOS-e820: [mem 0x000000008f5b9000-0x000000009c9cdfff] usable[    0.000000] microcode: microcode updated early to revision 0x2f, date = 2019-11-12
+[    0.000000] Linux version 5.4.0-66-generic (buildd@lgw01-amd64-016) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #74~18.04.2-Ubuntu SMP Fri Feb 5 11:17:31 UTC 2021 (Ubuntu 5.4.0-66.74~18.04.2-generic 5.4.86)
+[    0.000000] Command line: BOOT_IMAGE=/boot/vmlinuz-5.4.0-66-generic root=UUID=735fb175-3ba7-44e8-9308-b1edab99ff24 ro quiet splash
+[    0.000000] KERNEL supported cpus:
+[    0.000000]   Intel GenuineIntel
+[    0.000000]   AMD AuthenticAMD
+[    0.000000]   Hygon HygonGenuine
+[    0.000000]   Centaur CentaurHauls
+[    0.000000]   zhaoxin   Shanghai  
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers'
+[    0.000000] x86/fpu: xstate_offset[2]:  576, xstate_sizes[2]:  256
+[    0.000000] x86/fpu: Enabled xstate features 0x7, context size is 832 bytes, using 'standard' format.
+[    0.000000] BIOS-provided physical RAM map:
+[    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009e7ff] usable
+[    0.000000] BIOS-e820: [mem 0x000000000009e800-0x000000000009ffff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000000e0000-0x00000000000fffff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000008ecb8fff] usable
+[    0.000000] BIOS-e820: [mem 0x000000008ecb9000-0x000000008f5b8fff] reserved
+[    0.000000] BIOS-e820: [mem 0x000000008f5b9000-0x000000009c9cdfff] usable
+[    0.000000] BIOS-e820: [mem 0x000000009c9ce000-0x000000009cebdfff] reserved
+[    0.000000] BIOS-e820: [mem 0x000000009cebe000-0x000000009cfbdfff] ACPI NVS
+[    0.000000] BIOS-e820: [mem 0x000000009cfbe000-0x000000009cffdfff] ACPI data
+[    0.000000] BIOS-e820: [mem 0x000000009cffe000-0x000000009cffefff] usable
+e000-0x000000009cffdfff] ACPI data
+[    0.000000] BIOS-e820: [mem 0x000000009cffe000-0x000000009cffefff] usable
+</code></pre>
+
+<p>Most linux distributions also store the boot messages in a log file, usually in the <em>/var/log</em> folder. For debian-based systems, the file is usually <em>/var/log/boot</em>.</p>
+
+<p>Although it helps to be able to see the different messages generated during boot time, it is also helpful to know just what generates those messages.</p>
+
+<h3 id="the-firmware-startup">The Firmware Startup</h3>
+
+<p>All IBM-compatible workstations and servers utilize some type of built-in firmware to control how the installed operating system starts. On older workstations and servers, this firmware was called the <em>Basic Input/Output System (BIOS)</em>. On newer workstations and servers, a new method, called the *Unified Extensible Firmware Interface (UEFI) * is responsible for maintaining the system hardware status and launching an installed operating system.</p>
+
+<p>Both methods eventually launch the main operating system program, however, and each method uses different ways of doing that.</p>
+
+<h3 id="the-bios-startup">The BIOS Startup</h3>
+
+<p>The BIOS firmware found in older workstations and servers was somewhat limited in what it could do. The BIOS firmware had a simplistic menu interface that allowed you to change some settings to control how the system found hardware and define what device the BIOS should use to start the operating system.</p>
+
+<p>One of the limitations of the original BIOS firmware was that it could read only one sector’s worth of data from a hard drive into memory in order to run. As you can probably guess, that’s not enough space to load an entire operating system. To get around that limitation, most operating systems (including Linux and Microsoft Windows) split the boot process into two parts.</p>
+
+<p>First, the BIOS runs a bootloader program, The <em>bootloader</em> is a small program that initializes the necessary hardware to find and run the full operating system, which is usually found at another location on the same hard drive but sometimes situated on  a separate internal or external storage device.</p>
+
+<p>The bootloader program usually has a configuration file, so you can tell it where to find tha actual operating system file to run or even to produce a small menu allowing the user to boot between multiple operating systems.</p>
+
+<p>To get things started, the BIOS must know where to find the bootloader program on 
+ab installed storage device. Most BIOS setups allow you yo load the bootloader program from several locations (internal/external hard drive, CD/DVD, etc.. )</p>
+
+<p>When booting from a hard drive, you must designate which hard drive, and which partition on the hard drive, the BIOS should load the bootloader program from. This is done by defining a <em>Master Boot Record (MBR)</em>.</p>
+
+<p>The MBR is the first sector on the first hard drive partition on the system. There is only one MBR for the computer system. The BIOS looks for the MBR and reads the program stored there into memory. Since the bootloader program must fit in one sector, it must be very small, so it can’t do much. The bootloader program mainly points to the location of the actual operating system kernel file, which is stored in a boot sector of a separate partition on the system. There are no size limitations on the kernel boot file.</p>
+
+<p>The bootloader program isn’t required to point directly to an operating system kernel file, it can point to any type of program including another bootloader program. You can create a primary bootloader program that points to a secondary bootloader program, which provides options to load multiple operating systems. This process is called chainloading.</p>
+
+<h3 id="the-uefi-startup">The UEFI Startup</h3>
+
+<p>While there were plenty of limitations with BIOS, computer manufactures learned to live with them, and BIOS was the default standard for IBM compatible systems for many years. However, as operating systems became more complicated, it eventually became clear that a new boot method needed to be developed.</p>
+
+<p>Intel created the <em>Extensible Firmware Interface (EFI)</em> in 1998 to address some of the limitations of  BIOS. The adoptions of EFI was somewhat of a slow process, but by 2005 the idea caught on with other vendors, and the Universal EFI (UEFI) specification was adopted as a standard. These days just about all IBM-compatible desktop and server systems utilize the UEFI firmware standard.</p>
+
+<p>Instead of relying on a single boot sector on a hard drive to hold the bootloader program, UEFI specifies a special disk partition, called the EFI system partition (ESP) to store bootloader programs. This allows for any size of bootloader program, plus the ability to store multiple bootloader programs for multiple operating systems.</p>
+
+<p>The ESP setup utilizes the old Microsoft File Allocation Table (FAT) filesystem to store the bootloader programs. On Linux Systems, the ESP is typically mounted in the <em>/boot/efi</em> folder, and the bootloader files are typically stored using the <em>.efi</em> filename extension.</p>
+
+<p>The UEFI firmware utilizes a built-in mini bootloader (sometimes referred to as a boot manager), which allows you to configure just which bootloader program file to launch.</p>
+
+<blockquote>
+  <p>Not all linux distributions support the UEFI firmware, it you’re using a UEFI system, make sure that the linux distribution you select supports it.</p>
+</blockquote>
+
+<p>With UEFI, you need to register each individual bootloader file that you want to appear at boot time in the boot manager interface menu. The <em>efibootmgr</em> Linux application allows you to create and remove boot entries or change the boot order. The UEFI interface includes a shell environment, allowing you to enter commands to alter boot settings, or select the bootloader to run each time you boot the system.</p>
+
+<p>Once the firmware finds and runs the bootloader, its job is done.</p>
+
+
+</div>
+
+<!-- Rating -->
+
+
+<!-- Author Box if enabled from _config.yml -->
+<!-- Author Box -->
+
+
+
+
+<!-- Comments if not disabled with comments: false -->
+<!-- Comments
+================================================== -->
+ 
+<div class="comments">
+    <button class="btn btn-dark show-comments">Load Comments</button>         
+    <div id="comments">  
+        <h4 class="mb-4">Comments</h4>                 
+            <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'demowebsite'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+     
+    <div class="clearfix"></div>              
+    </div>    
+</div>       
+
+
+<!-- Share -->
+<div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Linux Boot Process &url=/LPIC/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=/LPIC/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=/LPIC/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+
+<!-- Related Post -->
+<!-- Related Posts
+================================================== -->
+<div class=" related-posts ">  
+
+    
+    <h2 class="text-center mb-4">Explore more like this</h2>
+    
+    
+    <div class="d-flex justify-content-center align-items-center">
+    
+    <!-- Categories -->
+    
+    
+    <a class="smoothscroll badge badge-primary text-capitalize" href="categories#Linux">Linux</a>                
+    
+
+    <!-- Tags -->  
+    
+    
+
+    </div>
+
+    
+    
+    
+    <div class="blog-grid-container">
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/Linux_bootloaders/">
+                
+
+                    
+                        <img class="img-thumb" src="/assets/images/linux/todo.png" alt="Linux Bootloaders"> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/Linux_bootloaders/">Linux Bootloaders</a>
+                
+            </h2>
+            <h4 class="card-text">To Do</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">07 Mar 2021</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+            <!-- begin post -->
+
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="/Find-Command/">
+                
+
+                    
+                        <img class="img-thumb" src="/assets/images/linux/find.png" alt="Linux - Find Command : Cheat Sheet "> 
+                    
+
+                
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="/Find-Command/">Linux - Find Command : Cheat Sheet </a>
+                
+            </h2>
+            <h4 class="card-text">Find command cheat sheet, a lot of basic and advanced commands.</h4>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="wrapfooter">
+                
+                <span class="meta-footer-thumb">
+                
+                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
+                
+                </span>
+                <span class="author-meta">
+                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
+                
+                <span class="post-date">19 Jan 2021</span>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end post -->
+            
+            
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        
+            
+            
+        
+            
+        
+            
+        
+        
+        </div>        
+</div>
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+    </div>
+
+    
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+                <div class="col-md-6 col-sm-12 text-center text-lg-left">
+                    Copyright © 2021 Seif-Allah's Blog 
+                </div>
+            <div class="col-md-6 col-sm-12 text-center text-lg-right">
+                Made with love by    
+                <a target="_blank" href="fb.com/seifallahhomrani1">Seif-Allah</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
+================================================== -->
+
+<script src="/assets/js/prism.js"></script>
+
+<script src="/assets/js/theme.js"></script>
+
+
+
+
+<script id="dsq-count-scr" src="//demowebsite.disqus.com/count.js"></script>
+
+
+</body>
+</html>
