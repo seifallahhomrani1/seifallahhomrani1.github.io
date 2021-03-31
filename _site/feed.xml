@@ -5,30 +5,9 @@
     <description>“I wanted to save the world.”</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 31 Mar 2021 11:43:10 +0100</pubDate>
-    <lastBuildDate>Wed, 31 Mar 2021 11:43:10 +0100</lastBuildDate>
+    <pubDate>Wed, 31 Mar 2021 11:46:18 +0100</pubDate>
+    <lastBuildDate>Wed, 31 Mar 2021 11:46:18 +0100</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
-    
-      <item>
-        <title>TryHackMe: Lazy Admin</title>
-        <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;This room is a small vulnerable web application. In the [OWASP Juice shop], we looked at how some basic vulnerabilities worked. In this room, we’ll walk though the methodology and approach of testing a web application. As an ethical hacker, you need to test the web application from the perspective of an attacker. We’ll be using this mindset to establish a strategy to look for weaknesses in the web application.&lt;/p&gt;
-
-&lt;h2 id=&quot;web-crawlers&quot;&gt;Web Crawlers&lt;/h2&gt;
-
-&lt;p&gt;The crawl phase of a scan involves navigating around the application, following links, submitting forms, and logging in where necessary, to catalog the content of the application and the navigational paths within it.&lt;/p&gt;
-
-&lt;p&gt;To read more about web crawlers follow this &lt;a href=&quot;https://portswigger.net/burp/documentation/scanner/crawling&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 29 Mar 2021 00:00:00 +0100</pubDate>
-        <link>/webappsec101/</link>
-        <guid isPermaLink="true">/webappsec101/</guid>
-        
-        
-        <category>CTF-WriteUp</category>
-        
-      </item>
     
       <item>
         <title>Software Defined Network - University Project</title>
@@ -249,224 +228,6 @@ $ source /.bashrc
         
         
         <category>Networking</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux Bootloaders</title>
-        <description>&lt;h3 id=&quot;linux-bootloaders&quot;&gt;Linux Bootloaders&lt;/h3&gt;
-
-&lt;p&gt;The bootloader program helps bridge the gap between the system firmware and the full Linux operating system kernel. In Linux, you have many choices of bootloaders. The most popular ones that you’ll run across are these :&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Linux Loader (LILO)&lt;/li&gt;
-  &lt;li&gt;Grand Unified Bootloader (GRUB) Legacy&lt;/li&gt;
-  &lt;li&gt;GRUB2&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In the original versions of Linux, the Linux Loader (LILO) bootloader was the only one available. It was extremely limited in what it could do, but it accomplished its purpose, that is, loading the Linux kernel from the BIOS startup. LILO became the default bootloader used by Linux distributions in the 1990s. The LILO configuration file is stored in a single file, UEFI, &lt;em&gt;/etc/lilo.conf&lt;/em&gt;, which defines the systems to boot. Unfortunately, LILO doesn’t work with UEFI systems, so it has limited use on modern systems and is quickly fading into history.&lt;/p&gt;
-
-&lt;p&gt;The first version of the GRUB bootloader (now called GRUB Legacy) was created in 1999 to provide a more robust and configurable bootloader to replace LILO. GRUB quickly became the default bootloader for all linux distributions, whether they run on BIOS or UEFI systems.&lt;/p&gt;
-
-&lt;p&gt;GRUB2 was created in 2005 as a total rewrite of the GRUB Legacy system. It supports advanced features, such as the ability to load hardware driver modules and use logic statements to alter the boot menu options dynamically, depending on conditions detected on the system (such as if an external hard drive is connected).&lt;/p&gt;
-
-&lt;h3 id=&quot;grub-legacy&quot;&gt;GRUB Legacy&lt;/h3&gt;
-
-&lt;p&gt;GRUB Legacy allows you to select multiple kernels and /or operating systems using a menu interface as well as an interactive shell. You configure the menu interface to provide options for each kernel or operating system you wish to boot. The interactive shell provides a way for you to customize boot commands on the fly.&lt;/p&gt;
-
-&lt;p&gt;Both the menu and the interactive shell utilize a set of commands that control features of the bootloader.&lt;/p&gt;
-
-&lt;h3 id=&quot;configuring-grub-legacy&quot;&gt;Configuring GRUB Legacy&lt;/h3&gt;
-
-&lt;p&gt;When you use the GRUB Legacy interactive menu, you need to tell it what options to show. You do that using special GRUB menu commands.
-The GRUB Legacy system stores the menu commands in a standard text configuration file. The configuration file used by GRUB Legacy is &lt;em&gt;menu.lst&lt;/em&gt;, and it is stored in the &lt;em&gt;/boot/grub&lt;/em&gt; folder. (While not a requirement, some Linux Distributions create a separate &lt;em&gt;/boot&lt;/em&gt; partition on the hard drive.) Red Hat-derived Linux distributions (such as CentOS and Fedora) use &lt;em&gt;grub.conf&lt;/em&gt; for the configuration file.&lt;/p&gt;
-
-&lt;p&gt;The GRUB Legacy configuration file consists of two sections:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Global definitions&lt;/li&gt;
-  &lt;li&gt;Operating system boot definitions&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The global definitions section defines commands that control the overall operation of the GRUB Legacy boot menu. The global definitions must appear first in the configuration file. There are only handful of global settings.&lt;/p&gt;
-
-&lt;h3 id=&quot;grub-2&quot;&gt;GRUB 2&lt;/h3&gt;
-&lt;p&gt;Since the GRUB2 system was intended as an improvement over GRUB Legacy, many of the features are the same, with just a few twists. For example, the GRUB2 system changes the configuration filename to &lt;em&gt;grub.cfg&lt;/em&gt;, and it stores it in the &lt;em&gt;/boot/grub/&lt;/em&gt; folder. (This allows you to have both GRUB Legacy and GRUB2 installed at the same time.)&lt;/p&gt;
-
-&lt;h3 id=&quot;configuring-grub2&quot;&gt;Configuring GRUB2&lt;/h3&gt;
-
-&lt;p&gt;There are also a few changes to the commands used in GRUB2. FOr example, instead of the &lt;em&gt;title&lt;/em&gt; command, GRUB uses the &lt;em&gt;menuentry&lt;/em&gt; command, and you must also enclose each individual boot section within braces immediately following the &lt;em&gt;menuentry&lt;/em&gt; command.
-Here’s an example of a GRUB2 configuration file:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;menuentry &quot;CentOS Linux&quot;{
-    set root=(hd1,1)
-    linux /boot/vmlinuz
-    initrd /initrd
-}
-
-menuentry &quot;Windows&quot; {
-    set root=(hd0,1)
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The configuration process for GRUB2 is also somewhat different. While GRUB2 uses the &lt;em&gt;/boot/grub/grub.cfg&lt;/em&gt; file as the configuration file, you should never modify that file. Instead, there are seperate configuration files stored in the &lt;em&gt;/etc/grub.d&lt;/em&gt; folder. This allows you (or the system) to create individual configuration files for each boot option installed on your system (for example, one configurationo file for booting Linux and another for booting Windows).&lt;/p&gt;
-
-&lt;h3 id=&quot;installing-grub2&quot;&gt;Installing GRUB2&lt;/h3&gt;
-
-&lt;p&gt;Unlike GRUB Legacy, you don’t need t install GRUB2. All you need to do is to rebuild the main installation file by running the &lt;em&gt;grub-mkconfig&lt;/em&gt; program to the &lt;em&gt;grub.cfg&lt;/em&gt; configuration file or use the &lt;em&gt;-o&lt;/em&gt; option to specify the output file. By default, the &lt;em&gt;grub-mkconfig&lt;/em&gt; program just outputs the new configuration file commands to standard output.&lt;/p&gt;
-
-&lt;h3 id=&quot;alternative-bootloaders&quot;&gt;Alternative Bootloaders&lt;/h3&gt;
-
-&lt;p&gt;While GRUB Legacy and GRUB2 are the most popular Linux bootloader programs, you may run into a few others, depending on which Linux distributions you are using.&lt;/p&gt;
-
-&lt;p&gt;The &lt;em&gt;Systemd-boot&lt;/em&gt; bootloader program is starting to gain popularity in Linux Distributions that use the systemd init method.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 07 Mar 2021 00:00:00 +0100</pubDate>
-        <link>/Linux_bootloaders/</link>
-        <guid isPermaLink="true">/Linux_bootloaders/</guid>
-        
-        
-        <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux Boot Process </title>
-        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
-
-&lt;p&gt;When you on the power to your linux system, it triggers a series of events that eventually leads to the login prompt. There may be times when your linux systel doesn’t boot quite correctly, or perhaps an application that you expected to be running in background mode isn’t running. In those situations, it helps to have a basic understanding of how Linux boots the operating system and starts programs so that you can &lt;strong&gt;troubleshoot&lt;/strong&gt; the problem.&lt;/p&gt;
-
-&lt;h3 id=&quot;following-the-boot-process&quot;&gt;Following the Boot Process&lt;/h3&gt;
-
-&lt;p&gt;The linux boot process can be split into three main steps:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;The workstation firmware starts, performing a quick check of the hardware, called a &lt;em&gt;Power-On-Self Test (POST)&lt;/em&gt;, and then it looks for a bootloader program to run from a bootable device.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;The bootloader runs and determines what Linux kernel program to load.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;The kernel program loads into memory and starts the necessary background programs required for the system to operate (such as a graphical desktop manager for desktops or web and database servers for servers.)&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;These 3 steps might seem so simple on the surface, but a somewhat complicated ballet of operations happens behind the scenes to keep the boot process working. Each step performs several actions as it prepares your system to run Linux.&lt;/p&gt;
-
-&lt;h3 id=&quot;viewing-the-boot-process&quot;&gt;Viewing the Boot Process&lt;/h3&gt;
-
-&lt;p&gt;You can monitor the Linux boot process by watching the system console screen as the system boots. You’ll see lots of informative messages scroll by as the system detects hardware and loads the software.&lt;/p&gt;
-
-&lt;p&gt;Usually the boot messages scroll by somewhat quickly, and it’s hard to see just what’s happening. If you need to troubleshoot boot problems, you can review the boot-time messages using the &lt;em&gt;dmesg&lt;/em&gt; command. Most Linux distributions copy the boot kernel messages into a special ring buffer in memory called the &lt;em&gt;kernel ring buffer&lt;/em&gt;. The buffer is circular and set to a predetrmined size. As new messages are logged into the buffer, older messages are rotated out.&lt;/p&gt;
-
-&lt;p&gt;The &lt;em&gt;dmesg&lt;/em&gt; command displays the most recent boot messages that are currently stored in the kernel ring buffer :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-text&quot;&gt;[    0.000000] microcode: microcode updated early to revision 0x2f, date = 2019-11-12
-[    0.000000] Linux version 5.4.0-66-generic (buildd@lgw01-amd64-016) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #74~18.04.2-Ubuntu SMP Fri Feb 5 11:17:31 UTC 2021 (Ubuntu 5.4.0-66.74~18.04.2-generic 5.4.86)
-[    0.000000] Command line: BOOT_IMAGE=/boot/vmlinuz-5.4.0-66-generic root=UUID=735fb175-3ba7-44e8-9308-b1edab99ff24 ro quiet splash
-[    0.000000] KERNEL supported cpus:
-[    0.000000]   Intel GenuineIntel
-[    0.000000]   AMD AuthenticAMD
-[    0.000000]   Hygon HygonGenuine
-[    0.000000]   Centaur CentaurHauls
-[    0.000000]   zhaoxin   Shanghai  
-[    0.000000] x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
-[    0.000000] x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
-[    0.000000] x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers'
-[    0.000000] x86/fpu: xstate_offset[2]:  576, xstate_sizes[2]:  256
-[    0.000000] x86/fpu: Enabled xstate features 0x7, context size is 832 bytes, using 'standard' format.
-[    0.000000] BIOS-provided physical RAM map:
-[    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009e7ff] usable
-[    0.000000] BIOS-e820: [mem 0x000000000009e800-0x000000000009ffff] reserved
-[    0.000000] BIOS-e820: [mem 0x00000000000e0000-0x00000000000fffff] reserved
-[    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000008ecb8fff] usable
-[    0.000000] BIOS-e820: [mem 0x000000008ecb9000-0x000000008f5b8fff] reserved
-[    0.000000] BIOS-e820: [mem 0x000000008f5b9000-0x000000009c9cdfff] usable[    0.000000] microcode: microcode updated early to revision 0x2f, date = 2019-11-12
-[    0.000000] Linux version 5.4.0-66-generic (buildd@lgw01-amd64-016) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #74~18.04.2-Ubuntu SMP Fri Feb 5 11:17:31 UTC 2021 (Ubuntu 5.4.0-66.74~18.04.2-generic 5.4.86)
-[    0.000000] Command line: BOOT_IMAGE=/boot/vmlinuz-5.4.0-66-generic root=UUID=735fb175-3ba7-44e8-9308-b1edab99ff24 ro quiet splash
-[    0.000000] KERNEL supported cpus:
-[    0.000000]   Intel GenuineIntel
-[    0.000000]   AMD AuthenticAMD
-[    0.000000]   Hygon HygonGenuine
-[    0.000000]   Centaur CentaurHauls
-[    0.000000]   zhaoxin   Shanghai  
-[    0.000000] x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
-[    0.000000] x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
-[    0.000000] x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers'
-[    0.000000] x86/fpu: xstate_offset[2]:  576, xstate_sizes[2]:  256
-[    0.000000] x86/fpu: Enabled xstate features 0x7, context size is 832 bytes, using 'standard' format.
-[    0.000000] BIOS-provided physical RAM map:
-[    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009e7ff] usable
-[    0.000000] BIOS-e820: [mem 0x000000000009e800-0x000000000009ffff] reserved
-[    0.000000] BIOS-e820: [mem 0x00000000000e0000-0x00000000000fffff] reserved
-[    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000008ecb8fff] usable
-[    0.000000] BIOS-e820: [mem 0x000000008ecb9000-0x000000008f5b8fff] reserved
-[    0.000000] BIOS-e820: [mem 0x000000008f5b9000-0x000000009c9cdfff] usable
-[    0.000000] BIOS-e820: [mem 0x000000009c9ce000-0x000000009cebdfff] reserved
-[    0.000000] BIOS-e820: [mem 0x000000009cebe000-0x000000009cfbdfff] ACPI NVS
-[    0.000000] BIOS-e820: [mem 0x000000009cfbe000-0x000000009cffdfff] ACPI data
-[    0.000000] BIOS-e820: [mem 0x000000009cffe000-0x000000009cffefff] usable
-e000-0x000000009cffdfff] ACPI data
-[    0.000000] BIOS-e820: [mem 0x000000009cffe000-0x000000009cffefff] usable
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Most linux distributions also store the boot messages in a log file, usually in the &lt;em&gt;/var/log&lt;/em&gt; folder. For debian-based systems, the file is usually &lt;em&gt;/var/log/boot&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Although it helps to be able to see the different messages generated during boot time, it is also helpful to know just what generates those messages.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-firmware-startup&quot;&gt;The Firmware Startup&lt;/h3&gt;
-
-&lt;p&gt;All IBM-compatible workstations and servers utilize some type of built-in firmware to control how the installed operating system starts. On older workstations and servers, this firmware was called the &lt;em&gt;Basic Input/Output System (BIOS)&lt;/em&gt;. On newer workstations and servers, a new method, called the *Unified Extensible Firmware Interface (UEFI) * is responsible for maintaining the system hardware status and launching an installed operating system.&lt;/p&gt;
-
-&lt;p&gt;Both methods eventually launch the main operating system program, however, and each method uses different ways of doing that.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-bios-startup&quot;&gt;The BIOS Startup&lt;/h3&gt;
-
-&lt;p&gt;The BIOS firmware found in older workstations and servers was somewhat limited in what it could do. The BIOS firmware had a simplistic menu interface that allowed you to change some settings to control how the system found hardware and define what device the BIOS should use to start the operating system.&lt;/p&gt;
-
-&lt;p&gt;One of the limitations of the original BIOS firmware was that it could read only one sector’s worth of data from a hard drive into memory in order to run. As you can probably guess, that’s not enough space to load an entire operating system. To get around that limitation, most operating systems (including Linux and Microsoft Windows) split the boot process into two parts.&lt;/p&gt;
-
-&lt;p&gt;First, the BIOS runs a bootloader program, The &lt;em&gt;bootloader&lt;/em&gt; is a small program that initializes the necessary hardware to find and run the full operating system, which is usually found at another location on the same hard drive but sometimes situated on  a separate internal or external storage device.&lt;/p&gt;
-
-&lt;p&gt;The bootloader program usually has a configuration file, so you can tell it where to find tha actual operating system file to run or even to produce a small menu allowing the user to boot between multiple operating systems.&lt;/p&gt;
-
-&lt;p&gt;To get things started, the BIOS must know where to find the bootloader program on 
-ab installed storage device. Most BIOS setups allow you yo load the bootloader program from several locations (internal/external hard drive, CD/DVD, etc.. )&lt;/p&gt;
-
-&lt;p&gt;When booting from a hard drive, you must designate which hard drive, and which partition on the hard drive, the BIOS should load the bootloader program from. This is done by defining a &lt;em&gt;Master Boot Record (MBR)&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;The MBR is the first sector on the first hard drive partition on the system. There is only one MBR for the computer system. The BIOS looks for the MBR and reads the program stored there into memory. Since the bootloader program must fit in one sector, it must be very small, so it can’t do much. The bootloader program mainly points to the location of the actual operating system kernel file, which is stored in a boot sector of a separate partition on the system. There are no size limitations on the kernel boot file.&lt;/p&gt;
-
-&lt;p&gt;The bootloader program isn’t required to point directly to an operating system kernel file, it can point to any type of program including another bootloader program. You can create a primary bootloader program that points to a secondary bootloader program, which provides options to load multiple operating systems. This process is called chainloading.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-uefi-startup&quot;&gt;The UEFI Startup&lt;/h3&gt;
-
-&lt;p&gt;While there were plenty of limitations with BIOS, computer manufactures learned to live with them, and BIOS was the default standard for IBM compatible systems for many years. However, as operating systems became more complicated, it eventually became clear that a new boot method needed to be developed.&lt;/p&gt;
-
-&lt;p&gt;Intel created the &lt;em&gt;Extensible Firmware Interface (EFI)&lt;/em&gt; in 1998 to address some of the limitations of  BIOS. The adoptions of EFI was somewhat of a slow process, but by 2005 the idea caught on with other vendors, and the Universal EFI (UEFI) specification was adopted as a standard. These days just about all IBM-compatible desktop and server systems utilize the UEFI firmware standard.&lt;/p&gt;
-
-&lt;p&gt;Instead of relying on a single boot sector on a hard drive to hold the bootloader program, UEFI specifies a special disk partition, called the EFI system partition (ESP) to store bootloader programs. This allows for any size of bootloader program, plus the ability to store multiple bootloader programs for multiple operating systems.&lt;/p&gt;
-
-&lt;p&gt;The ESP setup utilizes the old Microsoft File Allocation Table (FAT) filesystem to store the bootloader programs. On Linux Systems, the ESP is typically mounted in the &lt;em&gt;/boot/efi&lt;/em&gt; folder, and the bootloader files are typically stored using the &lt;em&gt;.efi&lt;/em&gt; filename extension.&lt;/p&gt;
-
-&lt;p&gt;The UEFI firmware utilizes a built-in mini bootloader (sometimes referred to as a boot manager), which allows you to configure just which bootloader program file to launch.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Not all linux distributions support the UEFI firmware, it you’re using a UEFI system, make sure that the linux distribution you select supports it.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;With UEFI, you need to register each individual bootloader file that you want to appear at boot time in the boot manager interface menu. The &lt;em&gt;efibootmgr&lt;/em&gt; Linux application allows you to create and remove boot entries or change the boot order. The UEFI interface includes a shell environment, allowing you to enter commands to alter boot settings, or select the bootloader to run each time you boot the system.&lt;/p&gt;
-
-&lt;p&gt;Once the firmware finds and runs the bootloader, its job is done.&lt;/p&gt;
-
-</description>
-        <pubDate>Thu, 04 Mar 2021 00:00:00 +0100</pubDate>
-        <link>/LPIC/</link>
-        <guid isPermaLink="true">/LPIC/</guid>
-        
-        
-        <category>Linux</category>
         
       </item>
     
@@ -937,6 +698,135 @@ class Simple{
         <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
         <link>/Java-Variables/</link>
         <guid isPermaLink="true">/Java-Variables/</guid>
+        
+        
+        <category>Java</category>
+        
+      </item>
+    
+      <item>
+        <title>Java - JVM Architecture</title>
+        <description>&lt;p&gt;JVM contains classloader, memory area, execution engine etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/java/jvm-architecture.png&quot; alt=&quot;JVM Architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;classloader&quot;&gt;Classloader&lt;/h3&gt;
+
+&lt;p&gt;Classloader is a subsystem of JVM which is used to load class files. Whenever we run the java program, it is loaded first by the classloader. There are three built-in classloaders in Java.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Bootstrap Class Loader&lt;/strong&gt;: This is the first classloader which is the super class of Extension classloader. It loads the rt.jar file which contains all class files of Java Standard Edition like java.lang package classes, java.net package classes, java.util package classes. java.io package classes, java.sql package classes etc.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Extension ClassLoader&lt;/strong&gt;: This is the child classloader of Bootstrap and parent classloader of System classloader. It loader the jar files located inside $JAVA_HOME/jre/lib/ext directory.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;System/Application ClassLoader&lt;/strong&gt;: This is the child classloader of Extension classloader. It loads the classfiles from classpath. By default, classpath is set to current directory. You can change the classpath using ‘-cp’ or ‘-classpath’ switch. It is also know as Application classloader.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Class(Method) Area&lt;/strong&gt;
+Class(Method) Area stores per-class structures such as the runtime constant pool, field and method data, the code for methods.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Heap&lt;/strong&gt;
+It is the runtime data area in which objects are allocated.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Stack&lt;/strong&gt;
+Java Stack stores frames. It holds local variables and partial results, and plays a part in method invocation and return. 
+Each thread has a private JVM stack, created at the same time as thread. 
+A new frame is created each time a method in invoked. A frame is destroyed when its method invocation completes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Program Counter Register&lt;/strong&gt;
+PC (program counter) register contains the address of the Java virtual machine instruction currently being executed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Native Method Stack&lt;/strong&gt;
+It contains all the native methods used in the application.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Execution Engine&lt;/strong&gt;
+It contains:&lt;/li&gt;
+  &lt;li&gt;A virtual processor&lt;/li&gt;
+  &lt;li&gt;Interpreter : Read bytecode stream then execute the instructions.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Just-In-Time(JIT) compiler: It is used to improve the performance. JIT compiles parts of the byte code that have similar functionality at the same time, and hence reduces the amount of time needed for compilation. Here, the term “compiler” refers to a translator from the instruction set of a JVM to the instruction set of a specific CPU.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Java Native Interface
+Java Native Interface (JNI) is a framework which provides an interface to communicate with another application written in another language like C, C++, Assembly etc. Java uses JNI framework to send output to the Console or interact with OS libraries.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Resources : https://www.javatpoint.com/jvm-java-virtual-machine&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
+        <link>/JVM-architecture/</link>
+        <guid isPermaLink="true">/JVM-architecture/</guid>
+        
+        
+        <category>Java</category>
+        
+      </item>
+    
+      <item>
+        <title>Java - Clickable Pen program</title>
+        <description>&lt;p&gt;Following &lt;a href=&quot;https://www.youtube.com/channel/UC_fFL5jgoCOrwAVoM_fBYwA&quot;&gt;Alex Lee&lt;/a&gt; video about object oriented programming, I wrote this basic OOP program which create a pen as an object and two methods that click and unclick the pen.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/j0lBrYSlYaU&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The source can be found in my github directory : &lt;a href=&quot;https://github.com/seifallahhomrani1/Java&quot;&gt;JAVA - OOP&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
+        <link>/First-Java-program/</link>
+        <guid isPermaLink="true">/First-Java-program/</guid>
+        
+        
+        <category>Java</category>
+        
+      </item>
+    
+      <item>
+        <title>Java - JDK, JRE and JVM</title>
+        <description>&lt;p&gt;Notes:&lt;/p&gt;
+
+&lt;p&gt;JVM, JRE, and JDK are platform dependent because the configuration of each OS is different from each other. However Java is platform independent.&lt;/p&gt;
+
+&lt;h4 id=&quot;jvm&quot;&gt;JVM&lt;/h4&gt;
+&lt;p&gt;JVM (Java Virtual Machine) is an abstract machine.
+It is a specification that provides a runtime environment in Which Java bytecode can be executed.
+It can also run those programs which are written in other languages and compiled to Java bytecode.&lt;/p&gt;
+
+&lt;p&gt;JVMs are availbale for many hardware and software platforms.&lt;/p&gt;
+
+&lt;p&gt;The JVM performs the following main tasks :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Loads code&lt;/li&gt;
+  &lt;li&gt;Verifies code&lt;/li&gt;
+  &lt;li&gt;Executes code&lt;/li&gt;
+  &lt;li&gt;Provides runtime environment&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;jre&quot;&gt;JRE&lt;/h4&gt;
+&lt;p&gt;JRE (Java Runtime Environment) is a set of software tools which are used for developing Java applications. It is used to provide the runtime environment. It contains a set of libraries + other files that JVM uses at runtime.&lt;/p&gt;
+
+&lt;h4 id=&quot;jdk&quot;&gt;JDK&lt;/h4&gt;
+
+&lt;p&gt;JDK is an acronym for Java Development Kit. The Java Development Kit is a software development environment which is used to develop Java applications and applets.
+It physically exists. It contains JRE + development tools.&lt;/p&gt;
+
+&lt;p&gt;Resources : https://www.javatpoint.com/difference-between-jdk-jre-and-jvm&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
+        <link>/Difference-between-JDK,-JRE-and-JVM/</link>
+        <guid isPermaLink="true">/Difference-between-JDK,-JRE-and-JVM/</guid>
         
         
         <category>Java</category>
