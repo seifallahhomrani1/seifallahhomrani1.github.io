@@ -1,0 +1,10 @@
+I"_<h2 id="introduction">Introduction</h2>
+
+<p>This room is a small vulnerable web application. In the [OWASP Juice shop], we looked at how some basic vulnerabilities worked. In this room, we’ll walk though the methodology and approach of testing a web application. As an ethical hacker, you need to test the web application from the perspective of an attacker. We’ll be using this mindset to establish a strategy to look for weaknesses in the web application.</p>
+
+<h2 id="web-crawlers">Web Crawlers</h2>
+
+<p>The crawl phase of a scan involves navigating around the application, following links, submitting forms, and logging in where necessary, to catalog the content of the application and the navigational paths within it.</p>
+
+<p>To read more about web crawlers follow this <a href="https://portswigger.net/burp/documentation/scanner/crawling">link</a></p>
+:ET
