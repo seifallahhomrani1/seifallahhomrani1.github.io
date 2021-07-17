@@ -1,135 +1,38 @@
+---
+layout: compress
+---
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
-<link rel="icon" href="/assets/images/favicon.ico">
+<html lang="{{ page.lang | default: site.lang | default: " en " }}">
+{% include header.html %}
 
-<title>{{ page.title }} | {{site.name}}</title>
+<body data-theme="{{ site.mode }}" class="notransition">
 
-{% seo %}
+  <script>
+    const body = document.body;
+    const data = body.getAttribute("data-theme");
+
+    const initTheme = (state) => {
+      if (state === "dark") {
+        body.setAttribute("data-theme", "dark");
+      } else if (state === "light") {
+        body.removeAttribute("data-theme");
+      } else {
+        localStorage.setItem("theme", data);
+      }
+    };
+ 
+    initTheme(localStorage.getItem("theme"));
     
-<link href="/assets/css/prism.css" rel="stylesheet">
+    setTimeout(() => body.classList.remove("notransition"), 75);
+  </script>
 
-<link href="/assets/css/theme.css" rel="stylesheet">
-
-<script src="/assets/js/jquery.min.js"></script>
-
-</head>
-
-{% if jekyll.environment == 'production' %}
-<!-- change your GA id in _config.yml -->
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', '{{site.google_analytics}}', 'auto');
-ga('send', 'pageview');
-</script>
-{% endif %}
-
-{% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
-<body>
-
-
-<!-- Begin Sidebar Navigation
-================================================== -->
-
-<div class="sidebar">    
-</div>   
-<div class="nav-icon">
-    <div class="hamburger-bar"></div>
-</div>
-<div id="blackover-nav" class="blackover"></div>
-<nav id="menu">
-    <ul>
-        <h3>Navigation</h3>
-        <li><a href="/">Home</a></li>
-        <li><a  href="/contact">Contact</a></li>
-        <li><a href="/categories#Python">Python</a></li>
-        <li><a href="/categories#Java">Java</a></li>
-        <li><a href="/categories#CTF-WriteUp">CTF-WriteUp</a></li>
-        <li><a href="/categories#Articles">Articles</a></li>
-        <li><a href="/categories#Networking">Networking</a></li>    
-        <li><a href="/categories#Databases">Databases</a></li>
-        <li><a href="/categories#Django">Django</a></li>     
-        <li><a href="/categories#Linux">Linux</a></li>     
-    </ul>   
-</nav>
-
-{% include search-lunr.html %}
-
-
-<!-- End Sidebar Navigation
-================================================== -->
-
-<div class="site-content {% if page.url == '/' %} firstpage {% endif %}">
-
-<div class="container">
-
-    <!-- Site Logo/Name
-    ================================================== -->
-   
-    <a class="navbar-brand" href="/">
-        <img src="{{ site.logo }}" alt="{{ site.name }}">
-    </a>  
-   
-
-    <!-- Site Tag
-    ================================================== -->
-    {% if page.url == '/' %}
-        <p class="sitetag">
-            {{ site.description }}
-        </p>
-    {% endif %}
-
-    <!-- Content
-    ================================================== -->
-    <div class="main-content">
-        {{ content }}
-    </div>
-
-    
-</div>
-
-<!-- Begin Footer
-================================================== -->
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-
-                <div class="col-md-6 col-sm-12 text-center text-lg-left">
-                    Copyright © {{ site.time | date: "%Y" }} {{ site.name }} 
-                </div>
-            <div class="col-md-6 col-sm-12 text-center text-lg-right">
-                Made with love by    
-                <a target="_blank" href="fb.com/seifallahhomrani1">Seif-Allah</a>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- End Footer
-================================================== -->
-
-</div> <!-- /.site-content -->
-
-<!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
-================================================== -->
-
-<script src="/assets/js/prism.js"></script>
-
-<script src="/assets/js/theme.js"></script>
-
-{% if site.lazyimages == "enabled" %}
-<script src="/assets/js/lazyload.js"></script>
-{% endif %}
-
-{% if page.layout == 'post' %}
-<script id="dsq-count-scr" src="//{{site.disqus}}.disqus.com/count.js"></script>
-{% endif %}
-
+  {% include navbar.html %}
+  <div class="wrapper">
+    {% include author.html %}
+    <main aria-label="Content">
+      {{ content }}
+    </main>
+    {% include footer.html %}
+  </div>
 </body>
 </html>

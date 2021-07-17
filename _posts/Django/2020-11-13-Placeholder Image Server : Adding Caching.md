@@ -1,5 +1,5 @@
 ---
-title : "Placeholder Image Server : Adding Caching"
+title : "Django - Placeholder Image Server : Adding Caching"
 layout : post
 image : /assets/images/Django/stateless_web_app.png
 description : "Using caching to avoid unnecessary requests to our server."  
@@ -9,17 +9,17 @@ category : Django
 ---
 Previous Post : [Placeholder Image Server : Views](/django/2020/11/12/Placeholder-Image-Server-Views.html)
 
->To cache something is to save the result of an expensive calculation so that you don't have to perform the calculation next time. 
+>To cache something is to save the result of an expensive calculation so that you don't have to perform the calculation next time.
 
 To better understanding what is caching, check [this](https://docs.djangoproject.com/en/3.1/topics/cache/).
 
-In our new *view.py* file, a cache key generated that depends on the width, height, and image format. Before a new image is created, the cache is checked to see if the image is already stored. 
-When there is a cache miss and a new image is created, the image is cached using the key for an hour. 
+In our new *view.py* file, a cache key generated that depends on the width, height, and image format. Before a new image is created, the cache is checked to see if the image is already stored.
+When there is a cache miss and a new image is created, the image is cached using the key for an hour.
 
 
-Content of the new *views.py* file will be : 
+Content of the new *views.py* file will be :
 - - -
-```python 
+```python
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseBadRequest
 from django import forms
@@ -27,7 +27,7 @@ from django.conf.urls import url
 from io import BytesIO
 from PIL import Image, ImageDraw
 # importing the cache module
-from django.core.cache import cache 
+from django.core.cache import cache
 
 
 
@@ -42,27 +42,27 @@ class ImageForm(forms.Form):
         #generating a key based on width, height and image_format
         key = '{}.{}.{}'.format(width,height,image_format)
         #checking if we have key in the cache
-        content = cache.get(key) 
+        content = cache.get(key)
         if content is None : # if there's no key cacked :
             #generate a new image with RGB mode
             image = Image.new('RGB', (width,height))   
 
             #Adding sizing information using Pillow     
             draw = ImageDraw.Draw(image)
-            
+
             #format is used to replace brackets with values
-            text = '{} X {}'.format(width,height) 
-            textwidth, textheight = draw.textsize(text) 
-        
+            text = '{} X {}'.format(width,height)
+            textwidth, textheight = draw.textsize(text)
+
             #test if the text fit well in the image, if not  we don't print it
-            if textwidth < width and textheight < height : 
+            if textwidth < width and textheight < height :
                 texttop = (height - textheight) // 2
                 textleft = (width - textwidth) // 2
                 draw.text((textleft,texttop),text,fill=(255,255,255))
-            
-            
+
+
             #converting the image into bytes
-            content = BytesIO() 
+            content = BytesIO()
             image.save(content, image_format)
             content.seek(0)
             cache.set(key,content, 60*60) # set the key for 1 hour

@@ -1,71 +1,89 @@
-name: "Seif-Allah's Blog"
-title: "Seif-Allah's Blog"
-description: "“I wanted to save the world.”"
-logo: '/assets/images/cover.png'
-logo-footer: '/assets/images/cover_footer.png'
-baseurl: ''
-favicon: '/assets/images/logo.png'
-google_analytics: UA-181011093-2  
-disqus: 'demowebsite'
-include: ["_pages"]
+# Site settings
+title: Seif-Allah's Blog # site title
+description: >- # site description
+  “A person who is only educated by others is an uneducated person; without self-education, you will not be able to get an education in the strict sense of the word.”
+lang: en-US # default lang
+timezone: Africa/Tunis # set your timezone
+image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
+mode: dark # default theme "dark" | "light"
+
+# Profile settings
+author:
+  name: Seif-Allah Homrani # author name
+  bio: >- # tell to the world
+    “A person who is only educated by others is an uneducated person; without self-education, you will not be able to get an education in the strict sense of the word.”
+  username: seifallahhomrani1 # general username
+  github: seifallahhomrani1 # github username
+  twitter: seifallah1 # twitter username
+  facebook: seifallahhomrani1 # facebook username
+  email: seif.allah.homrani@gmail.com # email adress
+  avatar: /assets/img/avatar.jpg # change with your own avatar
+
+# URL settings
+url: "https://seifallahhomrani1.github.io" #
+baseurl:
 permalink: /:title/
-email: seif.allah.homrani@gmail.com
+google_analytics: # leave it blank if not wish
+fb_appid:
 
-# Authors
-authors:
-  Seif-Allah:
-    name: Seif-Allah
-    display_name: Seif-Allah
-    gravatar: 87daf283c8d29fa33059e59cf5d183bb
-    email: seif.allah.homrani@gmail.com
-    web: seifallahhomrani1.social
-    description: "Author of this blog, a script kiddie and an anarchist."
-# Plugins
-plugins:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-archives
-  - jekyll-figure
-    
-# Archives
-jekyll-archives:
-  enabled:
-    - categories
-  layout: archive
-  permalinks:
-    category: '/category/:name/'
-    
-# Pagination 
-paginate: 6
-paginate_path: /page:num/
-    
-# Other
-highlighter: none
+# Collection setting
+collections:
+  posts:
+    output: true
+
+# Markdown settings
 markdown: kramdown
+highlighter: rouge
 kramdown:
-   syntax_highlighter_opts:
-      disable : true
+  syntax_highlighter: rouge
 
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: post
+      comments: false
 
+# Jekyll Compose default front matter
+jekyll_compose:
+  post_default_front_matter:
+    modified:
+    tags: []
+    description:
+  draft_default_front_matter:
+    modified:
+    tags: []
+    description:
 
-# Adsense (change to "enabled" to activate, also your client id and ad slot. Create a new ad unit from your Adsense account to get the slot.)
-adsense: "disabled"
-adsense-data-ad-client: "ca-pub-3412143450191416"
-adsense-data-ad-slot: "1363087678"
+# Homepage limit posts
+number_of_posts: 5
 
-# Lazy Images ("enabled" or "disabled")
-lazyimages: "disabled"
-
-# Post Author Box ("enabled" or "disabled")
-authorbox: "disabled"
-
-# Sass
+# Build settings
+# theme: klise
 sass:
-  sass_dir: _sass
   style: compressed
 
+include:
+  - _redirects
+  - .htaccess
 
+exclude:
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - CHANGELOG.md
+  - README.md
+  - node_modules
+  - CODE_OF_CONDUCT.md
+  - CONTRIBUTING.md
+  - lighthouse.png
+  - klise-*.gem
+  - klise.gemspec
 
-exclude: [changelog.md, LICENSE.txt, README.md, Gemfile, Gemfile.lock]
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-postfiles

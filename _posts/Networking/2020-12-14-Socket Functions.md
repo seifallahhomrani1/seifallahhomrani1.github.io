@@ -1,7 +1,7 @@
 ---
-title : "Socket Functions"
+title : "Networking - Socket Functions"
 author : Seif-Allah
-description : "Introduction to Sockets functions and how they work. " 
+description : "Introduction to Sockets functions and how they work. "
 layout : post
 category: Networking
 tags : [networking,socket]
@@ -9,24 +9,24 @@ image : /assets/images/networking/socket.png
 ---
 
 
-In C, sockets behavee a lot like files since they use file descriptors to identify themselves. Sockets behave a lot like files that you can actually use the *read()* and *write()* functions to receive and send data using socket file descriptors. However, there are several functions specifically designed for dealing with sockets. 
+In C, sockets behavee a lot like files since they use file descriptors to identify themselves. Sockets behave a lot like files that you can actually use the *read()* and *write()* functions to receive and send data using socket file descriptors. However, there are several functions specifically designed for dealing with sockets.
 
 ### socket(int domain, int type, int protocol)
-Used to create a new socket, returns a *file descriptor* for the socket or -1 on error. 
+Used to create a new socket, returns a *file descriptor* for the socket or -1 on error.
 ### connect(int fd, struct sockaddr *remote_host, socklen_t add_length)
 Connects a socket (described by *file descriptor fd*) to a remote host. Returns 0 on success and -1 on error.
 ### bind(int fd, struct sockaddr *local_addr, socklen_t addr_length)
-Binds a socket to a local address so it can listen for incoming connections. Returns 0 on success and -1 on error. 
+Binds a socket to a local address so it can listen for incoming connections. Returns 0 on success and -1 on error.
 ### listen(int fd, int backlog_queue_size)
 Listens for incoming connections and queues connection requests up to *backlog_queue_size*. Returns 0 on success and -1 or error.
 ### accept(int fd, sockaddr *remote_host, socklen_t *addr_length)
-Accepts an incoming connection on a bound socket. The address information from the remote host is written into the *remote_host* structure and the actual size of the address structure is written into *addr_length. This function returns a new socket file descriptor to identify the connected socket or -1 on error. 
+Accepts an incoming connection on a bound socket. The address information from the remote host is written into the *remote_host* structure and the actual size of the address structure is written into *addr_length. This function returns a new socket file descriptor to identify the connected socket or -1 on error.
 ### send(int fd, void *buffer, size_t n, int flags)
-Sends *n* bytes from *buffer to socket fd; returns the number of bytes or -1 on error. 
+Sends *n* bytes from *buffer to socket fd; returns the number of bytes or -1 on error.
 ### recv(int fd, void *buffer, size_t n, int flags)
 Receives *n* bytes from socket fd into *buffer; returns the number of bytes received or -1 on error.
 
-When a socket is created with the *socket()* function, the domain, type, and protocol of the socket must be specified. 
+When a socket is created with the *socket()* function, the domain, type, and protocol of the socket must be specified.
 The *domain* refers to the protocol family of the socket. A socket can be used to communicate using a variety of protocol, from the standard Internet protocol used when you browse the Web to amateur radio protocols such as [AX.25](https://www.youtube.com/watch?v=lx6cm1rNDLM)
 
 
@@ -51,8 +51,8 @@ These are the first 11 protocol families aka domain taken from : /usr/include/x8
 
 
 As mentioned before, there are several types of sockets, although stream sockets and datagram socket are the most commonly used.
-The types of sockets are defined in socket_type.h file in the same directory (/usr/include/x86_64-linux-gnu/bits). 
-> Note : File locations may vary over systems. 
+The types of sockets are defined in socket_type.h file in the same directory (/usr/include/x86_64-linux-gnu/bits).
+> Note : File locations may vary over systems.
 
 
 /* Types of sockets.  */  
@@ -62,7 +62,7 @@ enum __socket_type
                                    byte streams.  */  
 #define SOCK_STREAM SOCK_STREAM
   SOCK_DGRAM = 2,               /* Connectionless, unreliable datagrams
-                                   of fixed maximum length.  */ 
+                                   of fixed maximum length.  */
 
 
 

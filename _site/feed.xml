@@ -1,17 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Seif-Allah's Blog</title>
-    <description>“I wanted to save the world.”</description>
-    <link>/</link>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 31 Mar 2021 11:46:18 +0100</pubDate>
-    <lastBuildDate>Wed, 31 Mar 2021 11:46:18 +0100</lastBuildDate>
-    <generator>Jekyll v4.2.0</generator>
-    
-      <item>
-        <title>Software Defined Network - University Project</title>
-        <description>&lt;h2 id=&quot;why-sdn&quot;&gt;Why SDN&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2021-07-17T13:04:53+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Seif-Allah’s Blog</title><subtitle>“A person who is only educated by others is an uneducated person; without self-education, you will not be able to get an education in the strict sense of the word.”</subtitle><author><name>Seif-Allah Homrani</name><email>seif.allah.homrani@gmail.com</email></author><entry><title type="html">Networking - Software Defined Network (University Project)</title><link href="http://localhost:4000/SDN/" rel="alternate" type="text/html" title="Networking - Software Defined Network (University Project)" /><published>2021-03-15T00:00:00+01:00</published><updated>2021-03-15T00:00:00+01:00</updated><id>http://localhost:4000/SDN</id><content type="html" xml:base="http://localhost:4000/SDN/">&lt;h2 id=&quot;why-sdn&quot;&gt;Why SDN&lt;/h2&gt;
 
 &lt;p&gt;“Software-Defined Networking (SDN)” is a term of the programmable networks paradigm. (A paradigm is a standard, perspective, or set of ideas.)&lt;/p&gt;
 
@@ -29,7 +16,7 @@
   &lt;li&gt;Open standards-based and vendor-neutral: When implemented through open standards, SDN simplifies network design and operation because instructions are provided by SDN controllers instead of multiple, vendor-specific devices and protocols.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;assets/images/networking/sdn.webp&quot; alt=&quot;sdn&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/networking/sdn.webp&quot; alt=&quot;sdn&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;sdn-history&quot;&gt;SDN History&lt;/h2&gt;
 
@@ -58,18 +45,10 @@
 &lt;p&gt;My setup :&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Host : Ubuntu 18.04&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;CPU : Intel i3 5005U&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;RAM : 12 GB&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Hypervisor : VirtualBox 6&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;Host : Ubuntu 18.04&lt;/li&gt;
+  &lt;li&gt;CPU : Intel i3 5005U&lt;/li&gt;
+  &lt;li&gt;RAM : 12 GB&lt;/li&gt;
+  &lt;li&gt;Hypervisor : VirtualBox 6&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;setting-up-the-opendaylight-virtual-machine&quot;&gt;Setting up the OpenDaylight Virtual Machine&lt;/h3&gt;
@@ -100,9 +79,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/networking/odl_ssh.png&quot; alt=&quot;odl_ssh&quot; /&gt;&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Optional&lt;/strong&gt; : To enable SSH auto login, I suggest you this &lt;a href=&quot;https://www.linuxbabe.com/linux-server/setup-passwordless-ssh-login&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Optional&lt;/strong&gt; : To enable SSH auto login, I suggest you this &lt;a href=&quot;https://www.linuxbabe.com/linux-server/setup-passwordless-ssh-login&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Now you are connected to the OpenDaylight virtual machine and can see that the host name in the prompt is changed to is odl, which I configured when installing Ubuntu on the VM.&lt;/p&gt;
 
@@ -112,53 +89,51 @@
 
 &lt;p&gt;In this lab, we’re gonna use Nitrogen release (0.7.3) since l2switch was removed in Fluorine, so any version before that (Oxygen would be the most recent) should have l2switch. It was removed because the project no longer had an active community.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;# Run an apt-get update to ensure that your server receives all of the most recent security and application packages.
-$ sudo apt-get update
-# Now, install the following convenience packages, to make life easier.
-$ sudo apt-get -y install unzip vim wget
-# Run the following command to install the JRE.
-$ sudo apt-get -y install openjdk-8-jre
-# Now, ensure that Ubuntu points to JAVA 8. Run the following command. If it does not point to JAVA 8, be sure to select version 8 from the list.
-$ sudo update-alternatives --config java
-# With the path in hand, run the following command to update your BASHRC file.
-$ echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre' &amp;gt;&amp;gt; ~/.bashrc
-# Now source your BASHRC file and then check to ensure $JAVA_HOME lives in the environment.
-$ source ~/.bashrc
-# Double check that $JAVA_HOME ends with /jre.
-$ echo $JAVA_HOME
-# Download the OpenDaylight Zip Archive using Wget
-$ wget https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/karaf/0.7.3/karaf-0.7.3.zip
-# Make a directory for the binary.
-$ sudo mkdir /usr/local/karaf
-# Move the zip archive to the install workspace
-$ sudo mv karaf-0.7.3.zip /usr/local/karaf 
-$ sudo unzip /usr/local/karaf/karaf-0.8.4.zip -d /usr/local/karaf/ #Unzipping
-# Install karaf into user space.
-$ sudo update-alternatives --install /usr/bin/karaf karaf /usr/local/karaf/karaf-0.8.4/bin/karaf 1
-$ sudo update-alternatives --config karaf
-# Execute the karaf command via sudo and pass the -E flag to keep the $JAVA_HOME environment variable.   
-$ sudo -E karaf
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Run an apt-get update to ensure that your server receives all of the most recent security and application packages.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
+&lt;span class=&quot;c&quot;&gt;# Now, install the following convenience packages, to make life easier.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;unzip vim wget
+&lt;span class=&quot;c&quot;&gt;# Run the following command to install the JRE.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;openjdk-8-jre
+&lt;span class=&quot;c&quot;&gt;# Now, ensure that Ubuntu points to JAVA 8. Run the following command. If it does not point to JAVA 8, be sure to select version 8 from the list.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;update-alternatives &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; java
+&lt;span class=&quot;c&quot;&gt;# With the path in hand, run the following command to update your BASHRC file.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.bashrc
+&lt;span class=&quot;c&quot;&gt;# Now source your BASHRC file and then check to ensure $JAVA_HOME lives in the environment.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.bashrc
+&lt;span class=&quot;c&quot;&gt;# Double check that $JAVA_HOME ends with /jre.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$JAVA_HOME&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Download the OpenDaylight Zip Archive using Wget&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;wget https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/karaf/0.7.3/karaf-0.7.3.zip
+&lt;span class=&quot;c&quot;&gt;# Make a directory for the binary.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo mkdir&lt;/span&gt; /usr/local/karaf
+&lt;span class=&quot;c&quot;&gt;# Move the zip archive to the install workspace&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo mv &lt;/span&gt;karaf-0.7.3.zip /usr/local/karaf
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;unzip /usr/local/karaf/karaf-0.8.4.zip &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; /usr/local/karaf/ &lt;span class=&quot;c&quot;&gt;#Unzipping&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Install karaf into user space.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;update-alternatives &lt;span class=&quot;nt&quot;&gt;--install&lt;/span&gt; /usr/bin/karaf karaf /usr/local/karaf/karaf-0.8.4/bin/karaf 1
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;update-alternatives &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; karaf
+&lt;span class=&quot;c&quot;&gt;# Execute the karaf command via sudo and pass the -E flag to keep the $JAVA_HOME environment variable.   &lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-E&lt;/span&gt; karaf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/networking/odl_karaf.png&quot; alt=&quot;odl_karaf&quot; /&gt;&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Java terminal error troubleshoot ([ERROR] Failed to construct terminal; falling back to unsupported
+&lt;p&gt;Java terminal error troubleshoot ([ERROR] Failed to construct terminal; falling back to unsupported
 java.lang.NumberFormatException: For input string: “0x100”) :&lt;/p&gt;
-&lt;/blockquote&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;
-$ export TERM=xterm-color
-$ source /.bashrc
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;TERM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;xterm-color
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /.bashrc
 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;installing-opendaylight-features&quot;&gt;Installing OpenDayLight features&lt;/h3&gt;
 
 &lt;p&gt;Next, install the minimum set of features required to test OpenDaylight and the OpenDaylight GUI, type this command inside the karaf cli:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;opendaylight-user@root&amp;gt; feature:install odl-restconf odl-l2switch-switch odl-mdsal-apidocs odl-dlux-core odl-dluxapps-nodes odl-dluxapps-topology odl-dluxapps-yangui odl-dluxapps-yangvisualizer odl-dluxapps-yangman
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;opendaylight-user@root&amp;gt; feature:install odl-restconf odl-l2switch-switch odl-mdsal-apidocs odl-dlux-core odl-dluxapps-nodes odl-dluxapps-topology odl-dluxapps-yangui odl-dluxapps-yangvisualizer odl-dluxapps-yangman
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Once installed, these features are permanently added to the controller and will run every time it starts.&lt;/p&gt;
 
@@ -168,9 +143,7 @@ $ source /.bashrc
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/networking/mininet_ip.png&quot; alt=&quot;mininet_ip&quot; /&gt;&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Note: The Mininet VM is based on Ubuntu Server 14.04, which does not yet use the predictable network interface names like enp0s3 and enp0s8, so we see interface names like eth0 and eth1.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Note: The Mininet VM is based on Ubuntu Server 14.04, which does not yet use the predictable network interface names like enp0s3 and enp0s8, so we see interface names like eth0 and eth1.&lt;/p&gt;
 
 &lt;h3 id=&quot;connect-to-the-mininet-vm-using-ssh&quot;&gt;Connect to the Mininet VM using SSH&lt;/h3&gt;
 
@@ -183,24 +156,16 @@ $ source /.bashrc
 &lt;p&gt;On the Mininet VM, start a simple network topology. In this case, we will do the following:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Set up three switches in a linear topology&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Each switch will be connected to one host&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;The MAC address on each host will be set to a simple number&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;The remote controller, OpenDaylight, is at IP address 192.168.56.101:6633 (We will use OpenFlow version 1.3)&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;Set up three switches in a linear topology&lt;/li&gt;
+  &lt;li&gt;Each switch will be connected to one host&lt;/li&gt;
+  &lt;li&gt;The MAC address on each host will be set to a simple number&lt;/li&gt;
+  &lt;li&gt;The remote controller, OpenDaylight, is at IP address 192.168.56.101:6633 (We will use OpenFlow version 1.3)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;The Mininet command to start this is:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;mininet@mininet-vm:~$ sudo mn --topo linear,3 --mac --controller=remote,ip=192.168.56.101,port=6633 --switch ovs,protocols=OpenFlow13
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mininet@mininet-vm:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;mn &lt;span class=&quot;nt&quot;&gt;--topo&lt;/span&gt; linear,3 &lt;span class=&quot;nt&quot;&gt;--mac&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--controller&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;remote,ip&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;192.168.56.101,port&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;6633 &lt;span class=&quot;nt&quot;&gt;--switch&lt;/span&gt; ovs,protocols&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;OpenFlow13
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Then test it with &lt;em&gt;pingall&lt;/em&gt; command.&lt;/p&gt;
 
@@ -220,20 +185,7 @@ $ source /.bashrc
 
 &lt;h2 id=&quot;other-resources&quot;&gt;Other Resources&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://tools.ietf.org/html/rfc7426&quot;&gt;RFC 7426&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 15 Mar 2021 00:00:00 +0100</pubDate>
-        <link>/SDN/</link>
-        <guid isPermaLink="true">/SDN/</guid>
-        
-        
-        <category>Networking</category>
-        
-      </item>
-    
-      <item>
-        <title>Spanning Tree Protocol</title>
-        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://tools.ietf.org/html/rfc7426&quot;&gt;RFC 7426&lt;/a&gt;&lt;/p&gt;</content><author><name>Seif-Allah</name></author><category term="Networking" /><category term="Networking" /><summary type="html">Why SDN</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/networking/sdn.png" /><media:content medium="image" url="http://localhost:4000/assets/images/networking/sdn.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Networking - Spanning Tree Protocol</title><link href="http://localhost:4000/STP/" rel="alternate" type="text/html" title="Networking - Spanning Tree Protocol" /><published>2021-01-24T00:00:00+01:00</published><updated>2021-01-24T00:00:00+01:00</updated><id>http://localhost:4000/STP</id><content type="html" xml:base="http://localhost:4000/STP/">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
 &lt;p&gt;Once upon a time, a company called Digital Equipment Corporation (DEC) was purchased and renamed Compaq. But before that happened, DEC created the original version of &lt;em&gt;Spanning Tree Protocol&lt;/em&gt;, or STP.&lt;/p&gt;
 
@@ -244,38 +196,17 @@ $ source /.bashrc
 &lt;h3 id=&quot;spanning-tree-terms&quot;&gt;Spanning Tree Terms&lt;/h3&gt;
 
 &lt;p&gt;Before I get into describing the details of how STP works in the network, you need to understand some basic ideas and terms and how they relate within the layer 2 switched network:&lt;/p&gt;
-
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Root bridge&lt;/strong&gt; : The root bridge is the bridge with the best bridge ID. With STP, the key is for all the switches in the network to elect a root bridge that becomes the focal point in the network. All other decisions in the network, such as which port is to be blocked and which port is to be put in forwarding mode, are made from the perspective of this root bridge.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;BPDU&lt;/strong&gt; : All the switches exchange information to use in the selection of the root switch as well as in subsequent configuration of the network. Each switch compares the parameters in the &lt;em&gt;Bridge Protocol Data Unit (BPDU)&lt;/em&gt; that it sends to one neighbor with the one that it receives from another neighbor.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Bridge ID&lt;/strong&gt; : The bridge ID is how STP keeps track of all the switches in the network. It is determined by a combination of the bridge priority and the base MAC address. The bridge with the lowest bridge ID becomes the root bridge in the network.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Nonroot bridges&lt;/strong&gt; : These are all bridges that are not the root bridge. Nonroot bridges exchange BPDUs with all bridges and update the STP topology database on all switches, preventing loops and providing a measure of defense against link failures.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Port cost&lt;/strong&gt; : Port cost determines the best path when multiple links are used between two switches and none of the links is a root port. The cost of a link is determined by the bandwidth of a link.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Root port&lt;/strong&gt; : The root port is always the link directly connected to the root bridge, or the shortest path to the root bridge. If more than one link connects to root bridge, then a port cost is determined by checking the bandwidth of each link. The lowest-cost port becomes the root port. If multiple links have the same cost, the bridge with the lower advertising bridge ID is used. Since multiple links can be from the same device, the lowest port number will be used.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Designated port&lt;/strong&gt; : A designated port is one that has been determined as having the best (lowest) cost. A designated port will be marked as a forwarding port.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Nondesignated port&lt;/strong&gt; : A nondesignated port is one with a higher cost than the designated port. Nondesignated ports are put in blocking mode - they are not forwarding ports.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Forwarding port&lt;/strong&gt; : A forwarding port forwards frames.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Blocked port&lt;/strong&gt; : A blocked port is the port that, in order to prevent loops, will not forward frames. However, a blocked port will always listen to frames.&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Root bridge&lt;/strong&gt; : The root bridge is the bridge with the best bridge ID. With STP, the key is for all the switches in the network to elect a root bridge that becomes the focal point in the network. All other decisions in the network, such as which port is to be blocked and which port is to be put in forwarding mode, are made from the perspective of this root bridge.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;BPDU&lt;/strong&gt; : All the switches exchange information to use in the selection of the root switch as well as in subsequent configuration of the network. Each switch compares the parameters in the &lt;em&gt;Bridge Protocol Data Unit (BPDU)&lt;/em&gt; that it sends to one neighbor with the one that it receives from another neighbor.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Bridge ID&lt;/strong&gt; : The bridge ID is how STP keeps track of all the switches in the network. It is determined by a combination of the bridge priority and the base MAC address. The bridge with the lowest bridge ID becomes the root bridge in the network.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Nonroot bridges&lt;/strong&gt; : These are all bridges that are not the root bridge. Nonroot bridges exchange BPDUs with all bridges and update the STP topology database on all switches, preventing loops and providing a measure of defense against link failures.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Port cost&lt;/strong&gt; : Port cost determines the best path when multiple links are used between two switches and none of the links is a root port. The cost of a link is determined by the bandwidth of a link.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Root port&lt;/strong&gt; : The root port is always the link directly connected to the root bridge, or the shortest path to the root bridge. If more than one link connects to root bridge, then a port cost is determined by checking the bandwidth of each link. The lowest-cost port becomes the root port. If multiple links have the same cost, the bridge with the lower advertising bridge ID is used. Since multiple links can be from the same device, the lowest port number will be used.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Designated port&lt;/strong&gt; : A designated port is one that has been determined as having the best (lowest) cost. A designated port will be marked as a forwarding port.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Nondesignated port&lt;/strong&gt; : A nondesignated port is one with a higher cost than the designated port. Nondesignated ports are put in blocking mode - they are not forwarding ports.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Forwarding port&lt;/strong&gt; : A forwarding port forwards frames.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Blocked port&lt;/strong&gt; : A blocked port is the port that, in order to prevent loops, will not forward frames. However, a blocked port will always listen to frames.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;spanning-tree-operations&quot;&gt;Spanning Tree Operations&lt;/h3&gt;
@@ -297,56 +228,155 @@ After the dust settles, any port that is not either root port or a designated po
 
 &lt;p&gt;Being able to do that is important in a large switched network, it ensures that the best paths are chosen, efficiency is what you’re after here.&lt;/p&gt;
 
-&lt;p&gt;To determine which port STP will shut down, it will first check each link’s amount of bandwidth and then shut down the link with the lowest bandwidth value. If both links have the same bandwidth value, STP will typically shut down the higher of the port numbers.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 24 Jan 2021 00:00:00 +0100</pubDate>
-        <link>/STP/</link>
-        <guid isPermaLink="true">/STP/</guid>
-        
-        
-        <category>Networking</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux - Find Command : Cheat Sheet </title>
-        <description>&lt;script src=&quot;https://gist.github.com/seifallahhomrani1/c3c02887aab8f077690505bfb726d34e.js&quot;&gt;&lt;/script&gt;
+&lt;p&gt;To determine which port STP will shut down, it will first check each link’s amount of bandwidth and then shut down the link with the lowest bandwidth value. If both links have the same bandwidth value, STP will typically shut down the higher of the port numbers.&lt;/p&gt;</content><author><name>Seif-Allah</name></author><category term="Networking" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/networking/STP.png" /><media:content medium="image" url="http://localhost:4000/assets/images/networking/STP.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Linux - Find Command : Cheat Sheet</title><link href="http://localhost:4000/Find-Command/" rel="alternate" type="text/html" title="Linux - Find Command : Cheat Sheet" /><published>2021-01-19T00:00:00+01:00</published><updated>2021-01-19T00:00:00+01:00</updated><id>http://localhost:4000/Find%20Command</id><content type="html" xml:base="http://localhost:4000/Find-Command/">&lt;script src=&quot;https://gist.github.com/seifallahhomrani1/c3c02887aab8f077690505bfb726d34e.js&quot;&gt;&lt;/script&gt;</content><author><name>Seif-Allah</name></author><category term="Linux" /><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/linux/find.png" /><media:content medium="image" url="http://localhost:4000/assets/images/linux/find.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Networking - IPv6 (Intro)</title><link href="http://localhost:4000/IPV6/" rel="alternate" type="text/html" title="Networking - IPv6 (Intro)" /><published>2021-01-08T00:00:00+01:00</published><updated>2021-01-08T00:00:00+01:00</updated><id>http://localhost:4000/IPV6</id><content type="html" xml:base="http://localhost:4000/IPV6/">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
-</description>
-        <pubDate>Tue, 19 Jan 2021 00:00:00 +0100</pubDate>
-        <link>/Find-Command/</link>
-        <guid isPermaLink="true">/Find-Command/</guid>
-        
-        
-        <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Lord Of SQLi : goblin Writeup</title>
-        <description>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;IPV6 is the latest version of the internet Protocol, people refer to IPV6 as “the next-generation Internet Protocol” and it was originally created as the answer to IPv4’s inevitable, looming address-exhaustion crisis.&lt;/p&gt;
+
+&lt;p&gt;The IPv6 header and address structure has been completely overhauled, and many of the features that were basically just afterthoughts and addendums in IPv4 are now included as full-blown standards in IPv6. It’s seriously well equiped, poised, and ready to manage the mind-blowing demands of the Internet to come.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-do-we-need-ipv6-&quot;&gt;Why Do We Need IPv6 ?&lt;/h3&gt;
+
+&lt;p&gt;Well, the short answer is, because we need to communicate, and our current system isn’t really cutting it anymore, kind of like how the Pony Express can’t compete with airmail. Just look at how much time and effort we’ve invested in coming up with slick new ways to conserve bandwidth and IP addresses. We’ve even come up with Variable Length Subnet Masks (VLSMs) in our struggle to overcome the worsening address drought.&lt;/p&gt;
+
+&lt;h3 id=&quot;ipv6-addressing-and-expressions&quot;&gt;IPv6 Addressing and Expressions&lt;/h3&gt;
+
+&lt;p&gt;Just as understanding how IP addresses are structured and used is critical with IPv4 addressing, it’s also vital when it comes to IPv6. You’ve already read about the fact that at 128 bits, and IPv6 address is much larger than an IPv4 address.&lt;/p&gt;
+
+&lt;p&gt;Here’s an example of an IPv6 address :&lt;/p&gt;
+
+&lt;p&gt;2001:0db8:3c4d:0012:0000:0000:1234:56ab&lt;/p&gt;
+
+&lt;p&gt;Breaking down this IPv6 address into 3 sections :&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Global Prefix&lt;/strong&gt; : 2001:0db8:3c4d&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Subnet&lt;/strong&gt; : 0012&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Interface ID&lt;/strong&gt; : 0000:0000:1234:56ab&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So as you can now see, the address is truly much larger, but what else is different? Well, first, notice that it has eight groups of numbers instead of four and also that those groups are separated by colons instead of periods. And hey wait a second.. There are letters in that address! Yep, the address is expressed in hexadecimal just like a MAC address is, so you could say this address has eight 16-bit hexadecimal colon-delimited blocks. That’s already quite a mouthful, and you probably haven’t even tried to say the address out loud yet!&lt;/p&gt;
+
+&lt;p&gt;One other thing I want to point out us for when you set up your test network to play with IPv6, is when you use a web browser to make an HTTP connection to an IPv6 device, you have to type the address into the browser with brackets [] around the literal address. Why ? Well, a colon is already being used by the browser for specifying a port number. So basically, if you don’t enclose the address in brackets, the browser will have no way to identify the information.&lt;/p&gt;
+
+&lt;h3 id=&quot;shortened-expression&quot;&gt;Shortened Expression&lt;/h3&gt;
+
+&lt;p&gt;The good news is there are a fex tricks to help rescue us when writing these monster addresses. For one thing, you can actually leave out parts of the address to abbreviate it, but to get away with doing that you have to follow a couple of rules.
+First, you can drop any leading zeros in each of the individual blocks.&lt;/p&gt;
+
+&lt;p&gt;After you do that, the sample address from earlier would then look like this:&lt;/p&gt;
+
+&lt;p&gt;2001:db8:3c4d:12:0:0:1234:56ab&lt;/p&gt;
+
+&lt;p&gt;Okay, that’s a definite improvement, at least we don’t have to write all of those extra zeros!
+But what about whole blocks that don’t have anything in them except zeros? Well, we can kind of lose those too, at least some of them. Again referring to our sample address, we can remove the two blocks of zeros by replacing them with double colons, like this:&lt;/p&gt;
+
+&lt;p&gt;2001:db8:3c4d:12:0:0:1234:56ab&lt;/p&gt;
+
+&lt;p&gt;Cool, we replaced the blocks of all zeros with double colons. The rule you have to follow to get away with this is that &lt;strong&gt;you can only replace one contiguous block of zeros&lt;/strong&gt; in an address. So if my address has four blocks of zeros and each of them were separated, I just don’t get to replace them all; remember the rule is that you can only replace one contiguous block with a double colon. Check out this example :&lt;/p&gt;
+
+&lt;p&gt;2001:0000:0000:0012:0000:1234:56ab&lt;/p&gt;
+
+&lt;p&gt;And just know that &lt;strong&gt;you can’t do this&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;2001::12::1234:56ab&lt;/p&gt;
+
+&lt;p&gt;Instead, this is the best that you can do:&lt;/p&gt;
+
+&lt;p&gt;2001::12:0:0:1234:56ab&lt;/p&gt;
+
+&lt;p&gt;The reason why the above example is our best shot is that if we remove two sets of zeros, the device looking at the address will have no way of knowing where the zeros go back in. Basically, the router would look at the incorrect address and say, “Well, do I place two blocks into the first set of double colons and two into the second st, or do I place three blocks into the first set and one block into the second set?” and on and on it would go because the information the router needs just isn’t there.&lt;/p&gt;
+
+&lt;h3 id=&quot;address-types&quot;&gt;Address Types&lt;/h3&gt;
+
+&lt;p&gt;We’re all familiar with IPv4’s unicast, broadcast, and multicast addresses that basically define who or at least how many other devices we’re talking to. But, the IPv6 adds to that trio and introduces the anycast. Broadcasts, as we know them, have been eliminated in IPv6 because of their cumbersome inefficiency.&lt;/p&gt;
+
+&lt;p&gt;So let’s find out what each of these types of IPv6 addressing and communication methods do for us.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Unicast&lt;/strong&gt; : Packets addressed to a unicast address are delivered to a single interface. For load balancing, multiple interfaces can use the same address. There are a few different types of unicast addresses, but we don’t need to get into here.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Global Unicast Addresses&lt;/strong&gt; These are your typical publicly routable addresses, and they’re the same as they are in IPv4.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Link-Local addresses&lt;/strong&gt; These are like the private addresses in IPv4 in that they’re not meant to be routed. Think of them as a handy tool that gives you the ability to throw a temporary LAN together or for creating a small LAN that’s not going to be routed but still needs to share and access files and services locally.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Unique local addresses&lt;/strong&gt; These addresses are also intended for non-routing purposes, but they are nearly globally unique, so it’s unlikely you’ll ever have one of them overlap. Unique local addresses were designed to replace site-local addresses, so they basically do almost exactly what IPv4 private addresses do : allow communication throughout a site while being routable to multiple local networks. Site-local addresses were denounced as of September 2004.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Multicast&lt;/strong&gt; Again, same as in IPv4, packets addresses to a multicast address are delivered to all interfaces identified by the multicast address. Sometimes people call them one-to-many addresses. It’s really easy to spot a multicast address in IPv6 because they always start with FF.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Anycast&lt;/strong&gt; Like multicast addresses, an anycast address identifies multiple interfaces, but there’s a big difference: the any cast packet is only delivered to one address, actually, to the first one it finds defined in terms of routing distance. And again, this address is special because you can apply a single address to more than one interface. You could call them one-to-one-of-many addresses, but just saying “anycast” is a lot easier.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You’re probably wondering if there are any special, reserved addresses in IPv6 because you know they’re in IPv4. Well there are plenty of them ! Let’s go over them now.&lt;/p&gt;
+
+&lt;h3 id=&quot;special-addresses&quot;&gt;Special Addresses&lt;/h3&gt;
+
+&lt;p&gt;I’m going to list some of the addresses and address ranges that you should definitely make a point to remember because you’ll eventually use them. They’re all special or reserved for specific use, but unlike IPv4, IPv6 gives us a galaxy of addresses, so reserving a few here and there doesn’t hurt a thing!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;0:0:0:0:0:0:0:0&lt;/strong&gt; Equals &lt;strong&gt;::&lt;/strong&gt;. This is the equivalent of IPv4’s 0.0.0.0, and is typically the source address of a host when you’re using stateful configuration.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;0:0:0:0:0:0:0:1&lt;/strong&gt; Equals &lt;strong&gt;::1&lt;/strong&gt;. The equivalent of 127.0.0.1 in IPv4.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;0:0:0:0:0:0:192.168.100.1&lt;/strong&gt; This is how an IPv4 address would be written in a mixed IPv6/IPv4 network environment.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2000::/3&lt;/strong&gt; The global unicast address range.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;FC00::/7&lt;/strong&gt; The unique local unicast range.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;FE80::/10&lt;/strong&gt; The link-local unicast range.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;FF00::/8&lt;/strong&gt; The multicast range.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3FFF:FFFF::/32&lt;/strong&gt; Reserved for examples and documentation.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2001:0DB8::/32&lt;/strong&gt; Also reserved for examples and documentation&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2002::/16&lt;/strong&gt; Used with 6to4 , which is the transition system, the structure that allows IPv6 packets to be transmitted over an IPv4 network without the need to configure explicit tunnels.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-ipv6-works-in-an-internetwork&quot;&gt;How IPv6 Works in an InternetWork&lt;/h3&gt;
+
+&lt;p&gt;It’s time to explore the finer points of IPv6. A great place to start is by showing you how to address a host and what gives it the ability to find other hosts and resources on a network.&lt;/p&gt;
+
+&lt;p&gt;I’ll also demonstrate a  device’s ability to automatically address itself, something called stateless autoconfiguration, plus another type of autoconfiguration known as stateful. Keep in mind that stateful autoconfiguration uses a DHCP server in a very similar way to how it’s used in an IPv4 configuration. I’ll also show you how Internet Control Message Protocol (ICMP) and multicast works for us on an IPv6 network.&lt;/p&gt;
+
+&lt;h3 id=&quot;autoconfiguration&quot;&gt;Autoconfiguration&lt;/h3&gt;
+
+&lt;p&gt;Autoconfiguration is an incredibly useful solution because it allows devices on a network to address themselves with a link-local unicast address. This process happens through first learning the prefix information from the router and then appending the device’s own interface address as the interface ID. But where does it get that interface ID? Well, you know every device on an Ethernet network has a physical MAC address, and that’s exactly what’s used for the interface ID. But since the interface ID in an IPv6 is 64 bits length and a MC address is only 48 bits, where do the extra 16 bits come from? The MAC address is &lt;strong&gt;padded&lt;/strong&gt; in the middle with the extra bits, it’s &lt;strong&gt;padded with FFFE&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;For example, let’s say I have a device with a MAC address that looks like this: 00:60:d6:79:19:87&lt;/p&gt;
+
+&lt;p&gt;After it’s been padded, it would look like this: 02:60:d6:FF:FE:73:19:87&lt;/p&gt;
+
+&lt;p&gt;So where did that 2 in the beginning of the address come from ? another good question.&lt;/p&gt;
+
+&lt;p&gt;You see, part of the process of padding (called modified eui-644 format) changes a bit to specify if the address is locally unique or globally unique. And the bit that gets changed is the seventh bit in the address. A bit value of 1 means globally unique, and a bit value of 0 means locally unique, so looking at this example, would you say that this address is globally or locally unique? If you answered that it’s globally unique address, you’re right! Trust me, this is going to save you time in addressing your hosts machines because they communicate with the router to make this happen.&lt;/p&gt;
+
+&lt;p&gt;To perform autoconfiguration, a host goes through a basic twi-step process:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;First, the host needs the prefix information (similar to the network portion of an IPv4 address) to configure its interface, so it sends a router solicitation (RS) request for it. This RS is then sent out as a multicast to each router’s multicast address. The actual information being sent is a type of ICMP message, and like everything in networking, this ICMP message has a number that identifies it. The RS message is ICMP type 133.&lt;/li&gt;
+  &lt;li&gt;The router answers back with the required prefix information  via a router advertisement (RA). An RA message also happens to be a multicast packet that’s sent to each nod’s multicast address and is ICMP type 134. RA messages are sent on a periodic basis, but the host sends the RS for an immediate response so it doesn’t have to wait until the next scheduled RA to get what it needs.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;By the way, this type of autoconfiguration is also know as stateless autoconfiguration because it doesn’t contact or connect any further information from the other device.&lt;/p&gt;
+
+&lt;h2 id=&quot;to-be-continued&quot;&gt;To Be Continued&lt;/h2&gt;</content><author><name>Seif-Allah</name></author><category term="Networking" /><category term="Networking," /><category term="IPv6" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/networking/todo.png" /><media:content medium="image" url="http://localhost:4000/assets/images/networking/todo.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Lord Of SQLi : goblin Writeup</title><link href="http://localhost:4000/LOS-goblin/" rel="alternate" type="text/html" title="Lord Of SQLi : goblin Writeup" /><published>2021-01-05T00:00:00+01:00</published><updated>2021-01-05T00:00:00+01:00</updated><id>http://localhost:4000/LOS%20:%20goblin</id><content type="html" xml:base="http://localhost:4000/LOS-goblin/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/writeups/los/goblin.png&quot; style=&quot;  width: 100%; max-width: 600px; height: auto;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Previous WriteUp&lt;/strong&gt; : &lt;a href=&quot;/ctf-writeup/2021/01/03/LOS-gremlin.html&quot;&gt;gremlin&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;provided-code&quot;&gt;Provided code&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;&amp;lt;?php 
-  //Challenge Preparation
-  include &quot;./config.php&quot;; 
-  login_chk(); 
-  $db = dbconnect(); 
-  // - - - - - - 
-  if(preg_match('/prob|_|\.|\(\)/i', $_GET[no])) exit(&quot;No Hack ~_~&quot;); 
-  if(preg_match('/\'|\&quot;|\`/i', $_GET[no])) exit(&quot;No Quotes ~_~&quot;); 
-  $query = &quot;select id from prob_goblin where id='guest' and no={$_GET[no]}&quot;; 
-  echo &quot;&amp;lt;hr&amp;gt;query : &amp;lt;strong&amp;gt;{$query}&amp;lt;/strong&amp;gt;&amp;lt;hr&amp;gt;&amp;lt;br&amp;gt;&quot;; 
-  $result = @mysqli_fetch_array(mysqli_query($db,$query)); 
-  if($result['id']) echo &quot;&amp;lt;h2&amp;gt;Hello {$result[id]}&amp;lt;/h2&amp;gt;&quot;; 
-  if($result['id'] == 'admin') solve(&quot;goblin&quot;);
-  highlight_file(__FILE__); 
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt; 
+  &lt;span class=&quot;c1&quot;&gt;//Challenge Preparation&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;./config.php&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+  &lt;span class=&quot;nf&quot;&gt;login_chk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; 
+  &lt;span class=&quot;nv&quot;&gt;$db&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dbconnect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; 
+  &lt;span class=&quot;c1&quot;&gt;// - - - - - - &lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;preg_match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/prob|_|\.|\(\)/i'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;no&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;No Hack ~_~&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;preg_match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/\'|\&quot;|\`/i'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;no&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;No Quotes ~_~&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+  &lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;select id from prob_goblin where id='guest' and no=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;no&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+  &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;hr&amp;gt;query : &amp;lt;strong&amp;gt;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;/strong&amp;gt;&amp;lt;hr&amp;gt;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+  &lt;span class=&quot;nv&quot;&gt;$result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;mysqli_fetch_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;mysqli_query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; 
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;h2&amp;gt;Hello &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;/h2&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'admin'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;goblin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;highlight_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;__FILE__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
 
@@ -405,20 +435,7 @@ The main idea is that we extract the first character of the id field that matche
 
 &lt;p&gt;-&amp;gt; &lt;em&gt;Payload&lt;/em&gt; : /?no=0 or 1 limit 1,1&lt;/p&gt;
 
-&lt;p&gt;Resources : &lt;a href=&quot;https://portswigger.net/support/sql-injection-bypassing-common-filters&quot;&gt;PortSwigger - Bypassing Common filters&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Tue, 05 Jan 2021 00:00:00 +0100</pubDate>
-        <link>/LOS-goblin/</link>
-        <guid isPermaLink="true">/LOS-goblin/</guid>
-        
-        
-        <category>CTF-WriteUp</category>
-        
-      </item>
-    
-      <item>
-        <title>Lord Of SQLi : gremlin Writeup</title>
-        <description>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Resources : &lt;a href=&quot;https://portswigger.net/support/sql-injection-bypassing-common-filters&quot;&gt;PortSwigger - Bypassing Common filters&lt;/a&gt;&lt;/p&gt;</content><author><name>Seif-Allah</name></author><category term="CTF-WriteUp" /><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/writeups/los/goblin.png" /><media:content medium="image" url="http://localhost:4000/assets/images/writeups/los/goblin.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Lord Of SQLi : gremlin Writeup</title><link href="http://localhost:4000/LOS-gremlin/" rel="alternate" type="text/html" title="Lord Of SQLi : gremlin Writeup" /><published>2021-01-03T00:00:00+01:00</published><updated>2021-01-03T00:00:00+01:00</updated><id>http://localhost:4000/LOS%20:%20gremlin</id><content type="html" xml:base="http://localhost:4000/LOS-gremlin/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/writeups/los/sql1.png&quot; style=&quot;  width: 100%; max-width: 600px; height: auto;&quot; /&gt;&lt;/p&gt;
 
@@ -436,19 +453,19 @@ Challenges are about SQLinjection at mysql, sqlite, mssql, mongodb, webapp what 
 &lt;h3 id=&quot;gremlin&quot;&gt;Gremlin&lt;/h3&gt;
 &lt;p&gt;Given a php code :&lt;/p&gt;
 &lt;hr /&gt;
-&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt; &amp;lt;?php
-  include &quot;./config.php&quot;;
-  login_chk();
-  $db = dbconnect();
-  if(preg_match('/prob|_|\.|\(\)/i', $_GET[id])) exit(&quot;No Hack ~_~&quot;); // do not try to attack another table, database!
-  if(preg_match('/prob|_|\.|\(\)/i', $_GET[pw])) exit(&quot;No Hack ~_~&quot;);
-  $query = &quot;select id from prob_gremlin where id='{$_GET[id]}' and pw='{$_GET[pw]}'&quot;;
-  echo &quot;&amp;lt;hr&amp;gt;query : &amp;lt;strong&amp;gt;{$query}&amp;lt;/strong&amp;gt;&amp;lt;hr&amp;gt;&amp;lt;br&amp;gt;&quot;;
-  $result = @mysqli_fetch_array(mysqli_query($db,$query));
-  if($result['id']) solve(&quot;gremlin&quot;);
-  highlight_file(__FILE__);
-?&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;./config.php&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nf&quot;&gt;login_chk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$db&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dbconnect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;preg_match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/prob|_|\.|\(\)/i'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;No Hack ~_~&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// do not try to attack another table, database!&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;preg_match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/prob|_|\.|\(\)/i'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;No Hack ~_~&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;select id from prob_gremlin where id='&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;' and pw='&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;'&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;hr&amp;gt;query : &amp;lt;strong&amp;gt;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;/strong&amp;gt;&amp;lt;hr&amp;gt;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;mysqli_fetch_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;mysqli_query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gremlin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;highlight_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;__FILE__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;hr /&gt;
 &lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
 
@@ -484,229 +501,126 @@ So the final result will be :
 Then we need to comment out the &lt;em&gt;pw&lt;/em&gt; field so we insert a double dash followed by a space (Black Space = %20 : URL encoding) or a hashtag(hashtag = %23 : URL encoding )
 ?id=’ OR 1=1 –%20
 So the final query will be  :&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-sql&quot;&gt;select id from prob_gremlin where id='' OR 1=1 -- ' and pw=''
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;GREMLIN CLEAR !&lt;/p&gt;
-</description>
-        <pubDate>Sun, 03 Jan 2021 00:00:00 +0100</pubDate>
-        <link>/LOS-gremlin/</link>
-        <guid isPermaLink="true">/LOS-gremlin/</guid>
-        
-        
-        <category>CTF-WriteUp</category>
-        
-      </item>
-    
-      <item>
-        <title>Java - OOP Concepts</title>
-        <description>&lt;p&gt;Basically, the Java control statements are the same as in C language.&lt;/p&gt;
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prob_gremlin&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- ' and pw=''&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;GREMLIN CLEAR !&lt;/p&gt;</content><author><name>Seif-Allah</name></author><category term="CTF-WriteUp" /><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/writeups/los/sql1.png" /><media:content medium="image" url="http://localhost:4000/assets/images/writeups/los/sql1.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Java - Data Types</title><link href="http://localhost:4000/Data-Types/" rel="alternate" type="text/html" title="Java - Data Types" /><published>2020-12-28T00:00:00+01:00</published><updated>2020-12-28T00:00:00+01:00</updated><id>http://localhost:4000/Data%20Types</id><content type="html" xml:base="http://localhost:4000/Data-Types/">&lt;p&gt;Java is &lt;em&gt;statically-typed&lt;/em&gt; programming language.&lt;/p&gt;
 
-&lt;h3 id=&quot;if-else-statement&quot;&gt;if-else statement&lt;/h3&gt;
+&lt;p&gt;Data types specify the different sizes and values that be stored in the variable. There are two types of data types in Java :&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;public class Java_Nested_if{
-    public static void main(String[] args){
-        int age = 25; 
-        int weight = 48; 
+&lt;h3 id=&quot;java-primitive-data-types&quot;&gt;Java Primitive Data Types&lt;/h3&gt;
 
-
-        if (age&amp;gt;=18){
-            if (weight&amp;gt;50){
-                System.out.println(&quot;You can donate blood&quot;);
-            }
-            else{
-                System.out.println(&quot;Go eat some fucking food&quot;);
-            }
-        else{
-            System.out.println(&quot;Sorry lil boy, go play with your toys&quot;);
-        }
-        }
-    }
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;switch-statement&quot;&gt;Switch statement&lt;/h3&gt;
-
-&lt;p&gt;The switch statement tests the equality of a variable against multiple values.&lt;/p&gt;
-
-&lt;p&gt;Rules :&lt;/p&gt;
+&lt;p&gt;There are 8 types of primitive data types  :&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;There can be one or N number of case values for a switch expression.&lt;/li&gt;
-  &lt;li&gt;The case value must be of switch expression type only. The case value must be literal or constant. It doesn”t allow variables.&lt;/li&gt;
-  &lt;li&gt;The case values must be unique. In case of duplicate value, it renders compile-time error.&lt;/li&gt;
+  &lt;li&gt;boolean false&lt;/li&gt;
+  &lt;li&gt;byte 0&lt;/li&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;char ‘\u0000’&lt;/td&gt;
+          &lt;td&gt;Java uses 2 byte because it uses Unicode system instead of ASCII code system and the \u0000 is the lowest range of unicode system.&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;short 0&lt;/li&gt;
+  &lt;li&gt;int 0&lt;/li&gt;
+  &lt;li&gt;long 0L&lt;/li&gt;
+  &lt;li&gt;float 0.0f&lt;/li&gt;
+  &lt;li&gt;double 0.0d&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Switch statement example:
-```java&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&quot;java-operators&quot;&gt;Java Operators&lt;/h3&gt;
 
-&lt;p&gt;public class SwitchExample2{
-    public static void main(String[] args){&lt;/p&gt;
+&lt;p&gt;There are many types of operators in Java which are given below :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Unary Operator  (expr++ / expr–&lt;/td&gt;
+          &lt;td&gt;++expr / –expr&lt;/td&gt;
+          &lt;td&gt;~(bitwise complement) !)&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Arithmetic Operator (* / % + -)&lt;/li&gt;
+  &lt;li&gt;Shift (The Java left shift operator « is used to shift all of the bits in a value to the left side of a specified number of times.)&lt;/li&gt;
+  &lt;li&gt;Relational (Comparison &amp;amp; equality)&lt;/li&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Bitwise (&amp;amp; ^&lt;/td&gt;
+          &lt;td&gt;)&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Logical (AND, OR)&lt;/li&gt;
+  &lt;li&gt;Ternary ( ? : )&lt;/li&gt;
+  &lt;li&gt;Assignment (short + short = int : Compile Time Error -&amp;gt; Solution : TypeCasting)&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;    int number = 20; 
+&lt;h3 id=&quot;unicode-system&quot;&gt;Unicode System&lt;/h3&gt;
 
-    switch(number){
-        case 10 : System.out.println(&quot;10&quot;);
-        case 20: System.out.println(&quot;20&quot;);
-        case 30 : System.out.println(&quot;30&quot;);
-        default : System.out.println(&quot;Not in 10, 20,30&quot;);
-    }
+&lt;p&gt;Unicode is a universal international standard character encoding that is capable of representing most the world’s written languages.&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;Why java uses Unicode system ?&lt;/strong&gt;
+Before Unicode, there were many language standards:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;ASCII (American Standard Code for Information Interchange) for the United States.&lt;/li&gt;
+  &lt;li&gt;ISO 8859-1 for Western European Language.&lt;/li&gt;
+  &lt;li&gt;KOI-8 for Russian.&lt;/li&gt;
+  &lt;li&gt;GB18030 and BIG-5 for chinese.&lt;/li&gt;
+&lt;/ul&gt;
 
-} }
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This caused two major problems which is :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A particular code value corresponds to different letters in the various language standards.&lt;/li&gt;
+  &lt;li&gt;The encodings for languages with large character sets have variable length. Some common characters are encoded as single bytes, other require two or more byte.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;```&lt;/p&gt;
-</description>
-        <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
-        <link>/control-statements/</link>
-        <guid isPermaLink="true">/control-statements/</guid>
-        
-        
-        <category>Java</category>
-        
-      </item>
-    
-      <item>
-        <title>Java - Variables</title>
-        <description>&lt;h3 id=&quot;java-variables&quot;&gt;Java Variables&lt;/h3&gt;
+&lt;p&gt;The solution for those problems is the Unicode System.
+The lowest value : \u0000
+The highest value : \uFFFF&lt;/p&gt;
 
-&lt;p&gt;A variable is a container which holds the value while the Java Program is executed. A variable is assigned with a data type.&lt;/p&gt;
+&lt;p&gt;Resources : https://www.javatpoint.com/java-data-types&lt;/p&gt;</content><author><name>Seif-Allah</name></author><category term="Java" /><summary type="html">Java is statically-typed programming language.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/java/oop_concepts.png" /><media:content medium="image" url="http://localhost:4000/assets/images/java/oop_concepts.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Java - JDK, JRE and JVM</title><link href="http://localhost:4000/Difference-between-JDK,-JRE-and-JVM/" rel="alternate" type="text/html" title="Java - JDK, JRE and JVM" /><published>2020-12-28T00:00:00+01:00</published><updated>2020-12-28T00:00:00+01:00</updated><id>http://localhost:4000/Difference%20%20between%20JDK,%20JRE%20and%20JVM</id><content type="html" xml:base="http://localhost:4000/Difference-between-JDK,-JRE-and-JVM/">&lt;p&gt;Notes:&lt;/p&gt;
 
-&lt;p&gt;Variable is a name of memory location. There are three types of variables in java: local, instance and static.&lt;/p&gt;
+&lt;p&gt;JVM, JRE, and JDK are platform dependent because the configuration of each OS is different from each other. However Java is platform independent.&lt;/p&gt;
 
-&lt;p&gt;There are two types of data types in Java: primitive and non-primitive.&lt;/p&gt;
+&lt;h4 id=&quot;jvm&quot;&gt;JVM&lt;/h4&gt;
+&lt;p&gt;JVM (Java Virtual Machine) is an abstract machine.
+It is a specification that provides a runtime environment in Which Java bytecode can be executed.
+It can also run those programs which are written in other languages and compiled to Java bytecode.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Local Variable&lt;/strong&gt;
-A variable declared inside the body of the method is called local variable. You can use this variable only within that method and the other methods in the class aren’t even aware that the variable exists.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;JVMs are availbale for many hardware and software platforms.&lt;/p&gt;
 
-&lt;p&gt;A local variable cannot be defined with static keyword.&lt;/p&gt;
+&lt;p&gt;The JVM performs the following main tasks :&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Instance Variable&lt;/strong&gt;
-A variable declared inside the class but outside the body of the method, is called instance variable. 
-It is not declared as static.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;ul&gt;
+  &lt;li&gt;Loads code&lt;/li&gt;
+  &lt;li&gt;Verifies code&lt;/li&gt;
+  &lt;li&gt;Executes code&lt;/li&gt;
+  &lt;li&gt;Provides runtime environment&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;It is called instance variable because its value is instance specific and is not shared among instances.&lt;/p&gt;
+&lt;h4 id=&quot;jre&quot;&gt;JRE&lt;/h4&gt;
+&lt;p&gt;JRE (Java Runtime Environment) is a set of software tools which are used for developing Java applications. It is used to provide the runtime environment. It contains a set of libraries + other files that JVM uses at runtime.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Static Variable&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h4 id=&quot;jdk&quot;&gt;JDK&lt;/h4&gt;
 
-&lt;p&gt;A variable which is declared as static is called static variable. It cannot be local. You can create a single copy of static variable and share among all the instances of the class . Memory allocation for static variable happens only once when the class is loaded in the memory.&lt;/p&gt;
+&lt;p&gt;JDK is an acronym for Java Development Kit. The Java Development Kit is a software development environment which is used to develop Java applications and applets.
+It physically exists. It contains JRE + development tools.&lt;/p&gt;
 
-&lt;h4 id=&quot;example-to-understand-the-types-of-variables-in-java&quot;&gt;Example to understand the types of variables in Java&lt;/h4&gt;
+&lt;p&gt;Resources : https://www.javatpoint.com/difference-between-jdk-jre-and-jvm&lt;/p&gt;</content><author><name>Seif-Allah</name></author><category term="Java" /><summary type="html">Notes:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/java/oop_concepts.png" /><media:content medium="image" url="http://localhost:4000/assets/images/java/oop_concepts.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Java - Clickable Pen program</title><link href="http://localhost:4000/First-Java-program/" rel="alternate" type="text/html" title="Java - Clickable Pen program" /><published>2020-12-28T00:00:00+01:00</published><updated>2020-12-28T00:00:00+01:00</updated><id>http://localhost:4000/First%20%20Java%20program</id><content type="html" xml:base="http://localhost:4000/First-Java-program/">&lt;p&gt;Following &lt;a href=&quot;https://www.youtube.com/channel/UC_fFL5jgoCOrwAVoM_fBYwA&quot;&gt;Alex Lee&lt;/a&gt; video about object oriented programming, I wrote this basic OOP program which create a pen as an object and two methods that click and unclick the pen.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class A {
-    int data=50; //instance variable
-    static int m=100; // static variable
+&lt;p align=&quot;center&quot;&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/j0lBrYSlYaU&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/p&gt;
 
-
-    void method(){
-        int n=90; //local variable
-    }
-} //end of class
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&quot;java-variable-example--add-two-numbers&quot;&gt;Java Variable Example : Add Two Numbers&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Simple{
-    public static void main(String[] args){
-        int a=10; //a is an instance variable
-        int b=10; //b is an instance variable
-        int c=a+b; 
-        System.out.println(c);
-    }   
-}
-
-Output : 20
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&quot;java-variable-example--widening&quot;&gt;Java Variable Example : Widening&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Simple{
-    public static void main(String[] args){
-        int a=10; 
-        float f=a;
-        System.out.println(a);
-        System.out.println(f);
-        
-    }
-}
-
-Output : 
-10
-10.0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;java-variable-example-narrowing-typecasting&quot;&gt;Java Variable Example: Narrowing (Typecasting)&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class simple{
-    public static void main(String[] args){
-        float f=10.5f; //f is placed after value because by default value is double, so to tell the compiler to treat is as float explicitly we use f or F
-        int a=f; // This will give a runtime error
-        int a = (int)f; // This is typecasting
-        System.out.println(f); 
-        System.out.println(a); 
-
-    }
-}
-
-Output : 
-10.5
-10
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;java-variable-example--overflow&quot;&gt;Java Variable Example : Overflow&lt;/h4&gt;
-
-&lt;p&gt;Overflow occurs when we assign such a value to a variable which is more than the maximum permissible value.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Simple{
-    public static void main(String[] args){
-        //Overflow
-        int a=130; 
-        byte b = (byte)a; //Max Value of byte is 126  
-        System.out.println(a);
-        System.out.println(b);
-    }
-}
-
-Output : 
-130
--126
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h4 id=&quot;java-variable-example--adding-lower-type&quot;&gt;Java Variable Example : Adding Lower Type&lt;/h4&gt;
-
-&lt;p&gt;```java
-class Simple{
-    public static void main(String[] args){
-        byte a = 10; 
-        byte b = 10; 
-        byte c = a+b; // Compile Time Error : because a+b will be int 
-        byte c = (byte)(a+b);
-        System.out.println(c);
-    }
-}&lt;/p&gt;
-
-&lt;p&gt;Output :
-20&lt;/p&gt;
-</description>
-        <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
-        <link>/Java-Variables/</link>
-        <guid isPermaLink="true">/Java-Variables/</guid>
-        
-        
-        <category>Java</category>
-        
-      </item>
-    
-      <item>
-        <title>Java - JVM Architecture</title>
-        <description>&lt;p&gt;JVM contains classloader, memory area, execution engine etc.&lt;/p&gt;
+&lt;p&gt;The source can be found in my github directory : &lt;a href=&quot;https://github.com/seifallahhomrani1/Java&quot;&gt;JAVA - OOP&lt;/a&gt;&lt;/p&gt;</content><author><name>Seif-Allah</name></author><category term="Java" /><summary type="html">Following Alex Lee video about object oriented programming, I wrote this basic OOP program which create a pen as an object and two methods that click and unclick the pen.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/java/oop_concepts.png" /><media:content medium="image" url="http://localhost:4000/assets/images/java/oop_concepts.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Java - JVM Architecture</title><link href="http://localhost:4000/JVM-architecture/" rel="alternate" type="text/html" title="Java - JVM Architecture" /><published>2020-12-28T00:00:00+01:00</published><updated>2020-12-28T00:00:00+01:00</updated><id>http://localhost:4000/JVM%20architecture</id><content type="html" xml:base="http://localhost:4000/JVM-architecture/">&lt;p&gt;JVM contains classloader, memory area, execution engine etc.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/java/jvm-architecture.png&quot; alt=&quot;JVM Architecture&quot; /&gt;&lt;/p&gt;
 
@@ -760,78 +674,4 @@ It contains:&lt;/li&gt;
 Java Native Interface (JNI) is a framework which provides an interface to communicate with another application written in another language like C, C++, Assembly etc. Java uses JNI framework to send output to the Console or interact with OS libraries.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Resources : https://www.javatpoint.com/jvm-java-virtual-machine&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
-        <link>/JVM-architecture/</link>
-        <guid isPermaLink="true">/JVM-architecture/</guid>
-        
-        
-        <category>Java</category>
-        
-      </item>
-    
-      <item>
-        <title>Java - Clickable Pen program</title>
-        <description>&lt;p&gt;Following &lt;a href=&quot;https://www.youtube.com/channel/UC_fFL5jgoCOrwAVoM_fBYwA&quot;&gt;Alex Lee&lt;/a&gt; video about object oriented programming, I wrote this basic OOP program which create a pen as an object and two methods that click and unclick the pen.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/j0lBrYSlYaU&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;/p&gt;
-
-&lt;p&gt;The source can be found in my github directory : &lt;a href=&quot;https://github.com/seifallahhomrani1/Java&quot;&gt;JAVA - OOP&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
-        <link>/First-Java-program/</link>
-        <guid isPermaLink="true">/First-Java-program/</guid>
-        
-        
-        <category>Java</category>
-        
-      </item>
-    
-      <item>
-        <title>Java - JDK, JRE and JVM</title>
-        <description>&lt;p&gt;Notes:&lt;/p&gt;
-
-&lt;p&gt;JVM, JRE, and JDK are platform dependent because the configuration of each OS is different from each other. However Java is platform independent.&lt;/p&gt;
-
-&lt;h4 id=&quot;jvm&quot;&gt;JVM&lt;/h4&gt;
-&lt;p&gt;JVM (Java Virtual Machine) is an abstract machine.
-It is a specification that provides a runtime environment in Which Java bytecode can be executed.
-It can also run those programs which are written in other languages and compiled to Java bytecode.&lt;/p&gt;
-
-&lt;p&gt;JVMs are availbale for many hardware and software platforms.&lt;/p&gt;
-
-&lt;p&gt;The JVM performs the following main tasks :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Loads code&lt;/li&gt;
-  &lt;li&gt;Verifies code&lt;/li&gt;
-  &lt;li&gt;Executes code&lt;/li&gt;
-  &lt;li&gt;Provides runtime environment&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;jre&quot;&gt;JRE&lt;/h4&gt;
-&lt;p&gt;JRE (Java Runtime Environment) is a set of software tools which are used for developing Java applications. It is used to provide the runtime environment. It contains a set of libraries + other files that JVM uses at runtime.&lt;/p&gt;
-
-&lt;h4 id=&quot;jdk&quot;&gt;JDK&lt;/h4&gt;
-
-&lt;p&gt;JDK is an acronym for Java Development Kit. The Java Development Kit is a software development environment which is used to develop Java applications and applets.
-It physically exists. It contains JRE + development tools.&lt;/p&gt;
-
-&lt;p&gt;Resources : https://www.javatpoint.com/difference-between-jdk-jre-and-jvm&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 28 Dec 2020 00:00:00 +0100</pubDate>
-        <link>/Difference-between-JDK,-JRE-and-JVM/</link>
-        <guid isPermaLink="true">/Difference-between-JDK,-JRE-and-JVM/</guid>
-        
-        
-        <category>Java</category>
-        
-      </item>
-    
-  </channel>
-</rss>
+&lt;p&gt;Resources : https://www.javatpoint.com/jvm-java-virtual-machine&lt;/p&gt;</content><author><name>Seif-Allah</name></author><category term="Java" /><summary type="html">JVM contains classloader, memory area, execution engine etc.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/java/oop_concepts.png" /><media:content medium="image" url="http://localhost:4000/assets/images/java/oop_concepts.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

