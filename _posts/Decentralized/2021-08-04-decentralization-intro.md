@@ -1,5 +1,5 @@
 ---
-title: "In a world of digital clouds, who's moving them ? - Part 1"
+title: "Articles : In a world of digital clouds, who's moving them ? (Part 1)"
 author : Seif-Allah
 layout: post
 category : networking
