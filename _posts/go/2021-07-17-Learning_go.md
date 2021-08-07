@@ -39,7 +39,10 @@ func main() {
 }
 ```
 ## Effective Go
-## Packages
+
+Go is a new language. Although it borrows ideas from existing languages, it has unusual properties that make effective Go programs different in character from programs written in its relatives. A straightforward translation of a C++ or Java program into Go is unlikely to produce a satisfactory result—Java programs are written in Java, not Go. On the other hand, thinking about the problem from a Go perspective could produce a successful but quite different program. In other words, to write Go well, it's important to understand its properties and idioms. It's also important to know the established conventions for programming in Go, such as naming, formatting, program construction, and so on, so that programs you write will be easy for other Go programmers to understand.
+
+### Packages
 
 Go programs are organized into packages. A package is a collection of source files in the same directory that are compiled together. Functions, types, variables, and constants defined in one source file are visible to all other source files within the same package.
 
@@ -47,6 +50,17 @@ The standard library that ships with Go is a set of packages. These packages con
 
 To make use of the functions in a package, you need to access the package with an import statement. An import statement is made up of the import keyword along with the name of the package.
 
+
+### Formatting
+What's been impressive for me was the formatting approach; Go let the machine take care of most formatting issues, the *gofmt* program reads a Go program and emits the source in a standard style of indentation and vertical alignment,retaining and if necessary reformatting comments.
+
+### Semicolons
+
+Like C, Go's formal grammar uses semicolons to terminate statements, but unlike in C, those semicolons do not appear in the source. Instead the lexer uses a simple rule to insert semicolons automatically as it scans, so the input text is mostly free of them.
+
+The rule is this. If the last token before a newline is an identifier (which includes words like int and float64), a basic literal such as a number or string constant, or one of the tokens: **break contine fallthrough return ++ -- ) }**
+
+**For more : [https://golang.org/doc/effective_go](https://golang.org/doc/effective_go)**  
 
 ## First Program (QR Code Generator)
 
@@ -107,15 +121,6 @@ func main() {
 }
 
 ```
-
-## Formatting
-What's been impressive for me was the formatting approach; Go let the machine take care of most formatting issues, the *gofmt* program reads a Go program and emits the source in a standard style of indentation and vertical alignment,retaining and if necessary reformatting comments.
-
-## Semicolons
-
-Like C, Go's formal grammar uses semicolons to terminate statements, but unlike in C, those semicolons do not appear in the source. Instead the lexer uses a simple rule to insert semicolons automatically as it scans, so the input text is mostly free of them.
-
-The rule is this. If the last token before a newline is an identifier (which includes words like int and float64), a basic literal such as a number or string constant, or one of the tokens: **break contine fallthrough return ++ -- ) }**
 
 
 

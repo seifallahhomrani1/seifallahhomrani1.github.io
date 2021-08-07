@@ -17,7 +17,7 @@ In the modern era of global NSA surveillance, China's Great Firewall, and FBI ag
 
 You can find the **decentralized version** of the following declaration hosted on ipfs nodes *nowhere* in the cyberspace : [https://ipfs.io/ipfs/QmVDWmkM87NfR85WE1LvfwfJLRcMEtfNnCBiCJQRePP7Ly](https://ipfs.io/ipfs/QmVDWmkM87NfR85WE1LvfwfJLRcMEtfNnCBiCJQRePP7Ly)
 
-## A Declaration of the Independence of Cyberspace
+## The Declaration of the Independence of Cyberspace
 
 by John Perry Barlow <barlow@eff.org>
 
