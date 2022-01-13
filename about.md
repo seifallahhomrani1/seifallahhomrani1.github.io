@@ -15,3 +15,6 @@ You can [report](https://github.com/seifallahhomrani1/seifallahhomrani1.github.i
 
 - {{ site.author.email }}
 - github.com/{{ site.author.github }}
+
+**Badges**
+<script src="https://tryhackme.com/badge/50327"></script>
