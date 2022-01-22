@@ -48,11 +48,11 @@ So basically, we can input octal characters inside double quoted string and this
 
 Running some Octal encoding of "system"("ls"); using CyberChef, will result : "\163\171\163\164\145\155"("\154\163"); (I've replaced the ",(,; characters to reduce the payload size since they don't get filtered), and here we are : 
 
-![sec2_ls](/assets/images/ctf/knight/sec2_ls_.png)
+![sec2_ls](/assets/images/ctf/knight/sec2_ls.png)
 
 Final payload: "\163\171\163\164\145\155"("\143\141\164\040\146\154\141\147\056\164\170\164");
 
-![sec2_flag](/assets/images/ctf/knight/sec2_flag_.png)
+![sec2_flag](/assets/images/ctf/knight/sec2_flag.png)
 
 
 ## Conclusion
