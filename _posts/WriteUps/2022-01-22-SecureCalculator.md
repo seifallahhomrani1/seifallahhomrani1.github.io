@@ -4,8 +4,8 @@ author : Seif-Allah
 description : "KnightCTF: Most Secure Calculator Writeup (50+250 Points)"
 layout : post
 category: CTF-WriteUp
-tags : [CTF,WriteUp,Medium,CTF]
-image : /assets/images/ctf/knight/seccalc.png
+tags : [CTF,WriteUp,Medium]
+image : /assets/images/ctf/knight/rsz_seccalc.png
 ---
 
 
