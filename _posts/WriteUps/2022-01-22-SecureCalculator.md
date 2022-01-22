@@ -11,7 +11,7 @@ image : /assets/images/ctf/knight/rsz_seccalc.png
 
 ## Introduction
 
-KnightCTF 2022 was a beginner level CTF hosted yesterday, The web challenges were basically easy and I was playing solo just for fun. The following is a detailed writeup for "Most Secure Calculator 1/2" challs since they have the highest points of all other challs (The first one has : 50 Pts, and the second has 250 Pts). 
+KnightCTF 2022 was a beginner level CTF hosted yesterday, The web challenges were basically easy and I was playing solo just for fun. The following is a detailed writeup for "Most Secure Calculator 1/2" (The first one has : 50 Pts, and the second has 250 Pts). 
 
 ## Most Secure Calculator - 1
 
@@ -38,9 +38,9 @@ Running : system("cat flag.txt") will prints the flag:
 
 ![sec2](/assets/images/ctf/knight/sec2.png)
 
-Same as the first chall, but this one it executes some input filter to execute only numbers and symbols
+Same as the first chall, but this one has some filter running to make sure that the input accepts only numbers and symbols
 
-![sec2_comment](/assets/images/ctf/knight/sec2_comment_.png)
+![sec2_comment](/assets/images/ctf/knight/sec2_comment.png)
 
 The main idea was to try to find a way to inject some code only by numbers, doing some google-fu results in this [stackoverflow thread](https://stackoverflow.com/questions/27468974/php-convert-an-octal-characters-to-string)
 
