@@ -5,7 +5,7 @@ description : "KnightCTF: Most Secure Calculator Writeup (50+250 Points)"
 layout : post
 category: CTF-WriteUp
 tags : [CTF,WriteUp,Medium,CTF]
-image : /assets/images/writeups/ctf/knight/seccalc.png
+image : /assets/images/ctf/knight/seccalc.png
 ---
 
 
